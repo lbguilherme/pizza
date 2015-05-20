@@ -15,7 +15,7 @@ public class PizzaSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        pizzasystem.ui.Login.main(null);
     }
     
 }
