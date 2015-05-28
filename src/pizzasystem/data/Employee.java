@@ -12,7 +12,7 @@ public class Employee extends Person {
     private String user;
     private String hashPass;
     private Role role;
-
+    
     public String getUser() {
         return user;
     }
