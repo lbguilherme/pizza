@@ -2,6 +2,7 @@ package pizzasystem.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import newpackage.businesslogic.Pizzaria;
 
 public class ClientRequest {
     
@@ -22,9 +23,16 @@ public class ClientRequest {
         float maxPizzaPrice = 0f;
         if (pizzas != null)
             for (PizzaTaste pizza : pizzas) {
-                maxPizzaPrice = Math.max(maxPizzaPrice, (pizza.getPrice()));
+                switch(pizza.getSize()){
+                    case Medium:
+                        maxPizzaPrice = Math.max(maxPizzaPrice, (Pizzaria.getMenu().getPizzas().get(pizza.getTasteName()))[0]);
+                    case Big:
+                        maxPizzaPrice = Math.max(maxPizzaPrice, (Pizzaria.getMenu().getPizzas().get(pizza.getTasteName()))[1]);
+                    case Family:
+                        maxPizzaPrice = Math.max(maxPizzaPrice, (Pizzaria.getMenu().getPizzas().get(pizza.getTasteName()))[2]);
+                }
             }
-        return (drink != null ? drink.getPrice() : 0) + maxPizzaPrice;
+        return (drink != null ? Pizzaria.getMenu().getDrinks().get(drink.getName()) : 0) + maxPizzaPrice;
     }
     
     public String[] getPizzaTastes() {

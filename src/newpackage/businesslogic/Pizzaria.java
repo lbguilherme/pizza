@@ -8,14 +8,13 @@ import pizzasystem.data.Client;
 import pizzasystem.data.ClientRequest;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Menu;
-import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
 
 public class Pizzaria {
-    private ArrayList<Employee> employees = new ArrayList<>();
-    private ArrayList<Client> clients = new ArrayList<>();
-    private Menu menu = new Menu();
-    private Queue<ClientRequest> requests = new ArrayDeque<>();
+    private static final ArrayList<Employee> employees = new ArrayList<>();
+    private static final ArrayList<Client> clients = new ArrayList<>();
+    private static final Menu menu = new Menu();
+    private static final Queue<ClientRequest> requests = new ArrayDeque<>();
     
     private Employee currentUser;
     
@@ -92,57 +91,62 @@ public class Pizzaria {
         addClient(request.getClient());
     }
     
-        public void registerPizza(String pizzaName, Float[] prices){
+    public void registerPizza(String pizzaName, Float[] prices){
         if ((pizzaName == null) ||
                 (prices == null)){
             throw new RuntimeException("Can't insert null pizza");
         }
         else{
-            if (menu.getPizzas().containsKey(pizzaName)){
+            if (getMenu().getPizzas().containsKey(pizzaName)){
                 throw new RuntimeException("Pizza already registered");
             }
             else{
-            HashMap<String, Float[]> newMenu = (HashMap<String, Float[]>) menu.getPizzas();
+            HashMap<String, Float[]> newMenu = (HashMap<String, Float[]>) getMenu().getPizzas();
             newMenu.put(pizzaName, prices);
-            menu.setPizzas(newMenu);
+                getMenu().setPizzas(newMenu);
             }    
         }
     }
         
-        public void registerDrink(String drinkName, Float price){
+    public void registerDrink(String drinkName, Float price){
         if ((drinkName == null) ||
                 (price == null)){
             throw new RuntimeException("Can't insert null drink");
         }
         else{
-            if (menu.getDrinks().containsKey(drinkName)){
+            if (getMenu().getDrinks().containsKey(drinkName)){
                 throw new RuntimeException("drink already registered");
             }
             else{
-            HashMap<String, Float> newMenu = (HashMap<String, Float>) menu.getDrinks();
+            HashMap<String, Float> newMenu = (HashMap<String, Float>) getMenu().getDrinks();
             newMenu.put(drinkName, price);
-            menu.setDrinks(newMenu);
+                getMenu().setDrinks(newMenu);
             }    
         }
     }
-        public void registerEmployee(Employee employee){
-            if (employee == null){
-                throw new RuntimeException("Can't insert null drink");
+    
+    public void registerEmployee(Employee employee){
+        if (employee == null){
+            throw new RuntimeException("Can't insert null drink");
+        }
+        else{
+            if (employee.getAddress() == null ||
+            employee.getCep() == null ||
+            employee.getCpf() == null ||
+    employee.getPhoneNumber() == null ||
+           employee.getName() == null ||
+       employee.getHashPass() == null ||
+           employee.getRole() == null ||
+           employee.getUser() == null){
+                throw new RuntimeException("Unable to register employee, employee data missing.");
             }
             else{
-                if (employee.getAddress() == null ||
-                employee.getCep() == null ||
-                employee.getCpf() == null ||
-        employee.getPhoneNumber() == null ||
-               employee.getName() == null ||
-           employee.getHashPass() == null ||
-               employee.getRole() == null ||
-               employee.getUser() == null){
-                    throw new RuntimeException("Unable to register employee, employee data missing.");
-                }
-                else{
-                    employees.add(employee);
-                }
+                employees.add(employee);
             }
         }
+    }
+
+    public static Menu getMenu() {
+        return menu;
+    }
 }

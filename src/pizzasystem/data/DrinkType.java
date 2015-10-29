@@ -2,7 +2,6 @@ package pizzasystem.data;
 
 public class DrinkType {
     private String name;
-    private Integer price;
 
     public String getName() {
         return name;
@@ -10,13 +9,5 @@ public class DrinkType {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
     }
 }
