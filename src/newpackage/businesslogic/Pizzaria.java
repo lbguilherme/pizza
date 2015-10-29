@@ -125,4 +125,24 @@ public class Pizzaria {
             }    
         }
     }
+        public void registerEmployee(Employee employee){
+            if (employee == null){
+                throw new RuntimeException("Can't insert null drink");
+            }
+            else{
+                if (employee.getAddress() == null ||
+                employee.getCep() == null ||
+                employee.getCpf() == null ||
+        employee.getPhoneNumber() == null ||
+               employee.getName() == null ||
+           employee.getHashPass() == null ||
+               employee.getRole() == null ||
+               employee.getUser() == null){
+                    throw new RuntimeException("Unable to register employee, employee data missing.");
+                }
+                else{
+                    employees.add(employee);
+                }
+            }
+        }
 }
