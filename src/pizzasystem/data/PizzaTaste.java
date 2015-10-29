@@ -8,15 +8,22 @@ public class PizzaTaste {
         Medium,
     }
     
-    private String tasteName;
+    public enum Taste {
+        Calabresa,
+        QuatroQueijos,
+        Frango         
+    }
+
+
+    private Taste tasteName;
     private Size size;
     private Integer price;
 
-    public String getTasteName() {
+    public Taste getTasteName() {
         return tasteName;
     }
 
-    public void setTasteName(String tasteName) {
+    public void setTasteName(Taste tasteName) {
         this.tasteName = tasteName;
     }
 
