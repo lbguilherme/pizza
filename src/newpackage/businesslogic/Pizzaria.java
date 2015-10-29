@@ -2,17 +2,19 @@ package newpackage.businesslogic;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Queue;
 import pizzasystem.data.Client;
 import pizzasystem.data.ClientRequest;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Menu;
+import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
 
 public class Pizzaria {
     private ArrayList<Employee> employees = new ArrayList<>();
     private ArrayList<Client> clients = new ArrayList<>();
-    private Menu menu;
+    private Menu menu = new Menu();
     private Queue<ClientRequest> requests = new ArrayDeque<>();
     
     private Employee currentUser;
@@ -88,5 +90,39 @@ public class Pizzaria {
             throw new RuntimeException("Can't insert null ClientRequest");
         
         addClient(request.getClient());
+    }
+    
+        public void registerPizza(String pizzaName, Float[] prices){
+        if ((pizzaName == null) ||
+                (prices == null)){
+            throw new RuntimeException("Can't insert null pizza");
+        }
+        else{
+            if (menu.getPizzas().containsKey(pizzaName)){
+                throw new RuntimeException("Pizza already registered");
+            }
+            else{
+            HashMap<String, Float[]> newMenu = (HashMap<String, Float[]>) menu.getPizzas();
+            newMenu.put(pizzaName, prices);
+            menu.setPizzas(newMenu);
+            }    
+        }
+    }
+        
+        public void registerDrink(String drinkName, Float price){
+        if ((drinkName == null) ||
+                (price == null)){
+            throw new RuntimeException("Can't insert null drink");
+        }
+        else{
+            if (menu.getDrinks().containsKey(drinkName)){
+                throw new RuntimeException("drink already registered");
+            }
+            else{
+            HashMap<String, Float> newMenu = (HashMap<String, Float>) menu.getDrinks();
+            newMenu.put(drinkName, price);
+            menu.setDrinks(newMenu);
+            }    
+        }
     }
 }

@@ -18,11 +18,11 @@ public class ClientRequest {
     private Status status;
     private Client client;
 
-    public Integer getTotalPrice() {
-        Integer maxPizzaPrice = 0;
+    public Float getTotalPrice() {
+        float maxPizzaPrice = 0f;
         if (pizzas != null)
             for (PizzaTaste pizza : pizzas) {
-                maxPizzaPrice = Math.max(maxPizzaPrice, pizza.getPrice());
+                maxPizzaPrice = Math.max(maxPizzaPrice, (pizza.getPrice()));
             }
         return (drink != null ? drink.getPrice() : 0) + maxPizzaPrice;
     }
