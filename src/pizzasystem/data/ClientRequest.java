@@ -1,8 +1,6 @@
 package pizzasystem.data;
 
 import java.util.ArrayList;
-import java.util.List;
-import newpackage.businesslogic.Pizzaria;
 
 public class ClientRequest {
     
@@ -14,36 +12,27 @@ public class ClientRequest {
         Delivered
     }
     
-    private List<PizzaTaste> pizzas;
-    private DrinkType drink;
+    private ArrayList<PizzaTaste> pizzas = new ArrayList<>();
+    private ArrayList<DrinkType> drinks = new ArrayList<>();
     private Status status;
     private Client client;
 
     public Float getTotalPrice() {
-        float maxPizzaPrice = 0f;
-        if (pizzas != null)
-            for (PizzaTaste pizza : pizzas) {
-                switch(pizza.getSize()){
-                    case Medium:
-                        maxPizzaPrice = Math.max(maxPizzaPrice, (Pizzaria.getMenu().getPizzas().get(pizza.getTasteName()))[0]);
-                    case Big:
-                        maxPizzaPrice = Math.max(maxPizzaPrice, (Pizzaria.getMenu().getPizzas().get(pizza.getTasteName()))[1]);
-                    case Family:
-                        maxPizzaPrice = Math.max(maxPizzaPrice, (Pizzaria.getMenu().getPizzas().get(pizza.getTasteName()))[2]);
-                }
+        Float pizzaPrice = 0f;
+        Float drinkPrice = 0f;
+        if (pizzas != null){
+            for (PizzaTaste pizza : pizzas){
+                pizzaPrice += pizza.getPrice();
             }
-        return (drink != null ? Pizzaria.getMenu().getDrinks().get(drink.getName()) : 0) + maxPizzaPrice;
+        }
+        if (drinks != null){
+            for (DrinkType drink :drinks){
+                drinkPrice += drink.getPrice();
+            }
+        }
+        return pizzaPrice + drinkPrice;
     }
     
-    public String[] getPizzaTastes() {
-        if (pizzas == null) return new String[0];
-        
-        String[] tastes = new String[pizzas.size()];
-        for (int i = 0; i < pizzas.size(); ++i) {
-            tastes[i] = pizzas.get(i).getTasteName();
-        }
-        return tastes;
-    }
     
     public PizzaTaste.Size getPizzaSize() {
         if (pizzas == null) return null;
@@ -64,16 +53,16 @@ public class ClientRequest {
         return pizzas != null;
     }
 
-    public DrinkType getDrink() {
-        return drink;
+    public ArrayList<DrinkType> getDrink() {
+        return drinks;
     }
 
-    public void setDrink(DrinkType drink) {
-        this.drink = drink;
+    public void setDrink(ArrayList<DrinkType> drinks) {
+        this.drinks = drinks;
     }
     
     public boolean hasDrink() {
-        return drink != null;
+        return drinks != null;
     }
 
     public Status getStatus() {

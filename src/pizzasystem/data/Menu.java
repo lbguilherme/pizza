@@ -1,28 +1,28 @@
 package pizzasystem.data;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class Menu {
     
-    private Map<String, Float[]> pizzas = new HashMap<String, Float[]>();
-    private Map<String, Float> drinks = new HashMap<>();
+    private ArrayList<PizzaTaste> pizzas = new ArrayList<>();
+    private ArrayList<DrinkType> drinks = new ArrayList<>();
 
-    public Map<String, Float[]> getPizzas() {
+    public ArrayList<PizzaTaste> getPizzas() {
         return pizzas;
     }
 
-    public void setPizzas(Map<String, Float[]> pizzas) {
+    public void setPizzas(ArrayList<PizzaTaste> pizzas) {
         this.pizzas = pizzas;
     }
 
-    public Map<String, Float> getDrinks() {
+    public ArrayList<DrinkType> getDrinks() {
         return drinks;
     }
 
-    public void setDrinks(Map<String, Float> drinks) {
+    public void setDrinks(ArrayList<DrinkType> drinks) {
         this.drinks = drinks;
     }
+    
 
     
 }

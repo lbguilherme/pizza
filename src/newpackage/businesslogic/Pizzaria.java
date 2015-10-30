@@ -2,12 +2,13 @@ package newpackage.businesslogic;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Queue;
 import pizzasystem.data.Client;
 import pizzasystem.data.ClientRequest;
+import pizzasystem.data.DrinkType;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Menu;
+import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
 
 public class Pizzaria {
@@ -91,36 +92,37 @@ public class Pizzaria {
         addClient(request.getClient());
     }
     
-    public void registerPizza(String pizzaName, Float[] prices){
-        if ((pizzaName == null) ||
-                (prices == null)){
-            throw new RuntimeException("Can't insert null pizza");
+    public void registerPizza(PizzaTaste pizza){
+        if (pizza.getTasteName() == null ||
+                pizza.getPrice() == null ||
+                pizza.getSize() == null){
+            throw new RuntimeException("Couldn't register new pizza, this pizza is missing some information");
         }
         else{
-            if (getMenu().getPizzas().containsKey(pizzaName)){
+            if (getMenu().getPizzas().contains(pizza)){
                 throw new RuntimeException("Pizza already registered");
             }
             else{
-            HashMap<String, Float[]> newMenu = (HashMap<String, Float[]>) getMenu().getPizzas();
-            newMenu.put(pizzaName, prices);
-                getMenu().setPizzas(newMenu);
+            ArrayList<PizzaTaste> newMenu = (ArrayList<PizzaTaste>) getMenu().getPizzas();
+            newMenu.add(pizza);
+            getMenu().setPizzas(newMenu);
             }    
         }
     }
         
-    public void registerDrink(String drinkName, Float price){
-        if ((drinkName == null) ||
-                (price == null)){
-            throw new RuntimeException("Can't insert null drink");
+    public void registerDrink(DrinkType drink){
+        if ((drink.getName() == null) ||
+                (drink.getPrice() == null)){
+            throw new RuntimeException("Couldn't register new drink, this drink is missing some information");
         }
         else{
-            if (getMenu().getDrinks().containsKey(drinkName)){
+            if (getMenu().getDrinks().contains(drink)){
                 throw new RuntimeException("drink already registered");
             }
             else{
-            HashMap<String, Float> newMenu = (HashMap<String, Float>) getMenu().getDrinks();
-            newMenu.put(drinkName, price);
-                getMenu().setDrinks(newMenu);
+            ArrayList<DrinkType> newMenu = (ArrayList<DrinkType>) getMenu().getDrinks();
+            newMenu.add(drink);
+            getMenu().setDrinks(newMenu);
             }    
         }
     }
