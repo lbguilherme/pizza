@@ -1,5 +1,4 @@
 package pizzasystem.data;
-import pizzasystem.data.Menu;
 import newpackage.businesslogic.Pizzaria;
         
 public class PizzaTaste {

@@ -532,15 +532,12 @@
                 <Component class="javax.swing.JComboBox" name="tasteList1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultComboBoxModel(((Pizzaria.getMenu().getPizzas().keySet().toArray(new String[Pizzaria.getMenu().getPizzas().keySet().size()]))))" type="code"/>
+                      <Connection code="new DefaultComboBoxModel(getTasteList())" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tasteList1ActionPerformed"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JComboBox((Pizzaria.getMenu().getPizzas().keySet().toArray(new String[Pizzaria.getMenu().getPizzas().keySet().size()])));"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
@@ -558,16 +555,22 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultComboBoxModel(((Pizzaria.getMenu().getPizzas().keySet().toArray(new String[Pizzaria.getMenu().getPizzas().keySet().size()]))))" type="code"/>
+                      <Connection code="new DefaultComboBoxModel(getTasteList())" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox4">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultComboBoxModel(((Pizzaria.getMenu().getPizzas().keySet().toArray(new String[Pizzaria.getMenu().getPizzas().keySet().size()]))))" type="code"/>
+                      <Connection code="new DefaultComboBoxModel(getTasteList())" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
                   <Properties>
@@ -590,14 +593,17 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox6">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultComboBoxModel(((Pizzaria.getMenu().getDrinks().keySet().toArray(new String[Pizzaria.getMenu().getDrinks().keySet().size()]))))" type="code"/>
+                      <Connection code="new DefaultComboBoxModel(new Integer[]{1,2,3,4,5})" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox6ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox9">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultComboBoxModel(((Pizzaria.getMenu().getDrinks().keySet().toArray(new String[Pizzaria.getMenu().getDrinks().keySet().size()]))))" type="code"/>
+                      <Connection code="new DefaultComboBoxModel(getDrinkList())" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -609,7 +615,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox10">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultComboBoxModel(Size.values())" type="code"/>
+                      <Connection code="new DefaultComboBoxModel(PizzaTaste.Size.values())" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
