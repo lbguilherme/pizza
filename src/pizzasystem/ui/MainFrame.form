@@ -3,6 +3,9 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[750, 500]"/>
+    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -210,11 +213,13 @@
                       <Font name="Arial" size="11" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="false" title="Numero" type="java.lang.Object"/>
+                      <Table columnCount="6" rowCount="1">
+                        <Column editable="false" title="N&#xfa;mero" type="java.lang.Object"/>
                         <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                        <Column editable="false" title="Pedido" type="java.lang.Object"/>
+                        <Column editable="false" title="Status" type="java.lang.Object"/>
                         <Column editable="false" title="Valor" type="java.lang.Object"/>
+                        <Column editable="false" title="Endere&#xe7;o" type="java.lang.Object"/>
+                        <Column editable="false" title="Pedido" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -383,11 +388,13 @@
                       <Font name="Arial" size="11" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="false" title="Numero" type="java.lang.Object"/>
+                      <Table columnCount="6" rowCount="1">
+                        <Column editable="false" title="N&#xfa;mero" type="java.lang.Object"/>
                         <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                        <Column editable="false" title="Pedido" type="java.lang.Object"/>
+                        <Column editable="false" title="Status" type="java.lang.Object"/>
                         <Column editable="false" title="Valor" type="java.lang.Object"/>
+                        <Column editable="false" title="Endere&#xe7;o" type="java.lang.Object"/>
+                        <Column editable="false" title="Pedido" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -447,7 +454,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="AdminForm_RegisterUser">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastrar Usuario"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar Usu&#xe1;rio"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdminForm_RegisterUserActionPerformed"/>
@@ -455,7 +462,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="AdminForm_RegisterPizza">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastrar Pizzas"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar Pizza"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdminForm_RegisterPizzaActionPerformed"/>
@@ -500,6 +507,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="PizzaioloForm_OrdersLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="PizzaioloForm_FinishPizza" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -522,7 +530,9 @@
                           <Component id="PizzaioloForm_FinishPizza" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PizzaioloForm_Logout" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                      <EmptySpace pref="109" max="32767" attributes="0"/>
+                      <Component id="PizzaioloForm_OrdersLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="PizzaioloForm_Orders" min="-2" pref="228" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -551,11 +561,9 @@
                       <Font name="Arial" size="11" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="false" title="Numero" type="java.lang.Object"/>
-                        <Column editable="false" title="Telefone" type="java.lang.Object"/>
+                      <Table columnCount="2" rowCount="1">
+                        <Column editable="false" title="N&#xfa;mero" type="java.lang.Object"/>
                         <Column editable="false" title="Pedido" type="java.lang.Object"/>
-                        <Column editable="false" title="Valor" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -611,6 +619,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PizzaioloForm_LogoutActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="PizzaioloForm_OrdersLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pedidos"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="Entregador">
@@ -626,6 +642,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="EntregadorForm_OrdersLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="EntregadorForm_FinishOrder" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -648,7 +665,9 @@
                           <Component id="EntregadorForm_FinishOrder" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="EntregadorForm_Logout" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                      <EmptySpace pref="109" max="32767" attributes="0"/>
+                      <Component id="EntregadorForm_OrdersLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="EntregadorForm_Orders2" min="-2" pref="228" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -677,11 +696,13 @@
                       <Font name="Arial" size="11" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="false" title="Numero" type="java.lang.Object"/>
+                      <Table columnCount="6" rowCount="1">
+                        <Column editable="false" title="N&#xfa;mero" type="java.lang.Object"/>
                         <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                        <Column editable="false" title="Pedido" type="java.lang.Object"/>
+                        <Column editable="false" title="Status" type="java.lang.Object"/>
                         <Column editable="false" title="Valor" type="java.lang.Object"/>
+                        <Column editable="false" title="Endere&#xe7;o" type="java.lang.Object"/>
+                        <Column editable="false" title="Pedido" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -736,6 +757,962 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EntregadorForm_LogoutActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EntregadorForm_OrdersLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pedidos"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="RegisterOrder">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="RegisterOrder_PizzaTitle" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_Title" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="RegisterOrder_QuantitySpinner3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_QuantitySpinner2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_QuantitySpinner1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="RegisterOrder_Taste1" pref="184" max="32767" attributes="0"/>
+                                          <Component id="RegisterOrder_Taste2" pref="0" max="32767" attributes="0"/>
+                                          <Component id="RegisterOrder_Taste3" alignment="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="RegisterOrder_QuantityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_TasteLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="RegisterOrder_SizeLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_Size1" min="-2" pref="114" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="RegisterOrder_Size2" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_Size3" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_RegisterOrderButton" min="-2" pref="118" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="RegisterOrder_NameLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_PhoneNumberLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_AddressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_CEPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="RegisterOrder_PhoneNumberField" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_SearchClientButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_UpdateClientButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="RegisterOrder_BackButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="RegisterOrder_NameField" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_AddressField" min="-2" pref="250" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_CEPField" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="RegisterOrder_Separator" alignment="0" min="-2" pref="670" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="RegisterOrder_Title" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterOrder_PhoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_PhoneNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_SearchClientButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_UpdateClientButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_BackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterOrder_NameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_NameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="RegisterOrder_AddressLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_AddressField" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterOrder_CEPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_CEPField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="RegisterOrder_Separator" min="-2" pref="17" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="RegisterOrder_PizzaTitle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterOrder_QuantityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_TasteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_SizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="RegisterOrder_QuantitySpinner1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_Taste1" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_Size1" min="-2" pref="29" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="RegisterOrder_QuantitySpinner2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_Taste2" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_Size2" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              <Component id="RegisterOrder_RegisterOrderButton" min="-2" pref="57" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="RegisterOrder_QuantitySpinner3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_Taste3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="RegisterOrder_Size3" min="-2" pref="29" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registrar Pedido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_PhoneNumberLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="11" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Telefone"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterOrder_PhoneNumberField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="11" style="0"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_NameLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="11" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nome"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterOrder_NameField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="11" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_AddressLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterOrder_AddressField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_CEPLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CEP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterOrder_CEPField">
+            </Component>
+            <Component class="javax.swing.JSeparator" name="RegisterOrder_Separator">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_PizzaTitle">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_QuantityLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Quantidade"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_TasteLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sabores"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterOrder_SizeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tamanho"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="RegisterOrder_QuantitySpinner1">
+            </Component>
+            <Component class="javax.swing.JSpinner" name="RegisterOrder_QuantitySpinner2">
+            </Component>
+            <Component class="javax.swing.JSpinner" name="RegisterOrder_QuantitySpinner3">
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="RegisterOrder_Taste1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList2">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="RegisterOrder_Taste2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList3">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="RegisterOrder_Taste3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList1">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="RegisterOrder_Size1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList4">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Fam&#xed;lia"/>
+                        <StringItem index="1" value="Grande"/>
+                        <StringItem index="2" value="M&#xe9;dia"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="RegisterOrder_Size2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList5">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Fam&#xed;lia"/>
+                        <StringItem index="1" value="Grande"/>
+                        <StringItem index="2" value="M&#xe9;dia"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="RegisterOrder_Size3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList6">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Fam&#xed;lia"/>
+                        <StringItem index="1" value="Grande"/>
+                        <StringItem index="2" value="M&#xe9;dia"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="RegisterOrder_RegisterOrderButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Realizar Pedido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterOrder_SearchClientButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Procurar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterOrder_UpdateClientButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar ou Registrar Novo Cliente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterOrder_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="RegisterClient">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="RegisterClient_NameLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterClient_PhoneNumberLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterClient_AddressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterClient_CEPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="RegisterClient_PhoneNumberField" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="RegisterClient_NameField" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="RegisterClient_AddressField" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                                          <Component id="RegisterClient_CEPField" min="-2" pref="100" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="RegisterClient_RegisterClientButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="397" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="RegisterClient_Title" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="RegisterClient_BackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterClient_Title" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterClient_BackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterClient_PhoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterClient_PhoneNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterClient_NameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterClient_NameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterClient_AddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterClient_AddressField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterClient_CEPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterClient_CEPField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="RegisterClient_RegisterClientButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="251" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="RegisterClient_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registrar Cliente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterClient_PhoneNumberLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Telefone"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterClient_PhoneNumberField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterClient_NameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterClient_NameField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterClient_AddressLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterClient_AddressField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterClient_CEPLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CEP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterClient_CEPField">
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterClient_RegisterClientButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Novo Cliente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterClient_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="RegisterUser">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="RegisterUser_Title" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="RegisterUser_NameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_PhoneNumberLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_AddressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_CEPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_CPFLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="RegisterUser_AddressField" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_CPFFied" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="RegisterUser_PhoneNumberField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="RegisterUser_NameField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="RegisterUser_CEPField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="RegisterUser_UserLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterUser_PasswordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterUser_TypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="RegisterUser_PasswordField" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="RegisterUser_TypeScrollPane" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="RegisterUser_UserField" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace pref="121" max="32767" attributes="0"/>
+                                              <Component id="RegisterUser_BackButton" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Component id="RegisterUser_RegisterUserButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="RegisterUser_Title" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RegisterUser_PhoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_PhoneNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_UserLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_UserField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="RegisterUser_BackButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterUser_NameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterUser_NameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterUser_PasswordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterUser_PasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterUser_AddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterUser_AddressField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RegisterUser_CEPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_CEPField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_TypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RegisterUser_CPFLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterUser_CPFFied" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="RegisterUser_TypeScrollPane" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="RegisterUser_RegisterUserButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="203" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="RegisterUser_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registrar Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_PhoneNumberLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Telefone"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterUser_PhoneNumberField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_NameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterUser_NameField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_AddressLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterUser_AddressField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_CEPLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CEP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterUser_CEPField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_CPFLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CPF"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterUser_CPFFied">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_UserLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterUser_UserField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_PasswordLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Senha"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterUser_PasswordField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterUser_TypeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="RegisterUser_TypeScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList7">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Administrador"/>
+                        <StringItem index="1" value="Atendente"/>
+                        <StringItem index="2" value="Pizzaiolo"/>
+                        <StringItem index="3" value="Entregador"/>
+                      </StringArray>
+                    </Property>
+                    <Property name="selectionMode" type="int" value="0"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="RegisterUser_RegisterUserButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Novo Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterUser_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="RegisterPizza">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="RegisterPizza_RegisterPizzaButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="RegisterPizza_TasteLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="RegisterPizza_TasteField" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="RegisterPizza_Title" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="478" max="32767" attributes="0"/>
+                              <Component id="RegisterPizza_BackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="RegisterPizza_Title" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterPizza_BackButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterPizza_TasteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterPizza_TasteField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="RegisterPizza_RegisterPizzaButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="380" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="RegisterPizza_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registrar Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterPizza_TasteLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sabor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterPizza_TasteField">
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterPizza_RegisterPizzaButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Nova Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterPizza_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="FinishPizza">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FinishPizza_FinishPizzaButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="FinishPizza_NumberLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="FinishPizza_NumberField" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="555" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="FinishPizza_Title" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="FinishPizza_BackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="FinishPizza_Title" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishPizza_BackButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FinishPizza_NumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishPizza_NumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="FinishPizza_FinishPizzaButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="380" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="FinishPizza_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Finalizar Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FinishPizza_NumberLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FinishPizza_NumberField">
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishPizza_FinishPizzaButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishPizza_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="FinishOrder">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FinishOrder_FinishOrderButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="FinishOrder_NumberLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="FinishOrder_NumberField" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="555" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="FinishOrder_Title" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="FinishOrder_BackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="FinishOrder_Title" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishOrder_BackButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FinishOrder_NumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishOrder_NumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="FinishOrder_FinishOrderButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="380" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="FinishOrder_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Finalizar Pedido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FinishOrder_NumberLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FinishOrder_NumberField">
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishOrder_FinishOrderButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar Pedido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishOrder_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
