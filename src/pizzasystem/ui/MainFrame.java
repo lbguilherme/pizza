@@ -650,6 +650,11 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_UpdateClientButton.setText("Atualizar ou Registrar Novo Cliente");
 
         RegisterOrder_BackButton.setText("Voltar");
+        RegisterOrder_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_BackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegisterOrderLayout = new javax.swing.GroupLayout(RegisterOrder);
         RegisterOrder.setLayout(RegisterOrderLayout);
@@ -781,6 +786,11 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterClient_RegisterClientButton.setText("Registrar Novo Cliente");
 
         RegisterClient_BackButton.setText("Voltar");
+        RegisterClient_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterClient_BackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegisterClientLayout = new javax.swing.GroupLayout(RegisterClient);
         RegisterClient.setLayout(RegisterClientLayout);
@@ -871,6 +881,11 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterUser_RegisterUserButton.setText("Registrar Novo Usuário");
 
         RegisterUser_BackButton.setText("Voltar");
+        RegisterUser_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterUser_BackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegisterUserLayout = new javax.swing.GroupLayout(RegisterUser);
         RegisterUser.setLayout(RegisterUserLayout);
@@ -965,6 +980,11 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterPizza_RegisterPizzaButton.setText("Registrar Nova Pizza");
 
         RegisterPizza_BackButton.setText("Voltar");
+        RegisterPizza_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterPizza_BackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegisterPizzaLayout = new javax.swing.GroupLayout(RegisterPizza);
         RegisterPizza.setLayout(RegisterPizzaLayout);
@@ -1013,6 +1033,11 @@ public class MainFrame extends javax.swing.JFrame {
         FinishPizza_FinishPizzaButton.setText("Finalizar Pizza");
 
         FinishPizza_BackButton.setText("Voltar");
+        FinishPizza_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FinishPizza_BackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FinishPizzaLayout = new javax.swing.GroupLayout(FinishPizza);
         FinishPizza.setLayout(FinishPizzaLayout);
@@ -1061,6 +1086,11 @@ public class MainFrame extends javax.swing.JFrame {
         FinishOrder_FinishOrderButton.setText("Finalizar Pedido");
 
         FinishOrder_BackButton.setText("Voltar");
+        FinishOrder_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FinishOrder_BackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FinishOrderLayout = new javax.swing.GroupLayout(FinishOrder);
         FinishOrder.setLayout(FinishOrderLayout);
@@ -1200,6 +1230,36 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.Logout();
     }                                                     
+
+    private void RegisterOrder_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                         
+        // TODO add your handling code here:
+        this.GoBack();
+    }                                                        
+
+    private void RegisterClient_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+        // TODO add your handling code here:
+        this.GoBack();
+    }                                                         
+
+    private void RegisterUser_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        // TODO add your handling code here:
+        this.GoBack();
+    }                                                       
+
+    private void RegisterPizza_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                         
+        // TODO add your handling code here:
+        this.GoBack();
+    }                                                        
+
+    private void FinishPizza_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+        // TODO add your handling code here:
+        this.GoBack();
+    }                                                      
+
+    private void FinishOrder_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+        // TODO add your handling code here:
+        this.GoBack();
+    }                                                      
 
     private void RegisterOrder() {
         MainJPanel.removeAll();
