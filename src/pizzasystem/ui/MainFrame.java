@@ -14,6 +14,8 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+     // para diferentes usuarios quando voltar a tela
+    
     public MainFrame() {
         initComponents();
         MainJPanel.removeAll();
@@ -21,6 +23,7 @@ public class MainFrame extends javax.swing.JFrame {
         MainJPanel.revalidate();
     }
 
+    private int LoginPower = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,14 +67,102 @@ public class MainFrame extends javax.swing.JFrame {
         Orders_Table2 = new javax.swing.JTable();
         PizzaioloForm_FinishPizza = new javax.swing.JButton();
         PizzaioloForm_Logout = new javax.swing.JButton();
+        PizzaioloForm_OrdersLabel = new javax.swing.JLabel();
         Entregador = new javax.swing.JPanel();
         EntregadorForm_Name = new javax.swing.JLabel();
         EntregadorForm_Orders2 = new javax.swing.JScrollPane();
         Orders_Table3 = new javax.swing.JTable();
         EntregadorForm_FinishOrder = new javax.swing.JButton();
         EntregadorForm_Logout = new javax.swing.JButton();
+        EntregadorForm_OrdersLabel = new javax.swing.JLabel();
+        RegisterOrder = new javax.swing.JPanel();
+        RegisterOrder_Title = new javax.swing.JLabel();
+        RegisterOrder_PhoneNumberLabel = new javax.swing.JLabel();
+        RegisterOrder_PhoneNumberField = new javax.swing.JTextField();
+        RegisterOrder_NameLabel = new javax.swing.JLabel();
+        RegisterOrder_NameField = new javax.swing.JTextField();
+        RegisterOrder_AddressLabel = new javax.swing.JLabel();
+        RegisterOrder_AddressField = new javax.swing.JTextField();
+        RegisterOrder_CEPLabel = new javax.swing.JLabel();
+        RegisterOrder_CEPField = new javax.swing.JTextField();
+        RegisterOrder_Separator = new javax.swing.JSeparator();
+        RegisterOrder_PizzaTitle = new javax.swing.JLabel();
+        RegisterOrder_QuantityLabel = new javax.swing.JLabel();
+        RegisterOrder_TasteLabel = new javax.swing.JLabel();
+        RegisterOrder_SizeLabel = new javax.swing.JLabel();
+        RegisterOrder_QuantitySpinner1 = new javax.swing.JSpinner();
+        RegisterOrder_QuantitySpinner2 = new javax.swing.JSpinner();
+        RegisterOrder_QuantitySpinner3 = new javax.swing.JSpinner();
+        RegisterOrder_Taste1 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList();
+        RegisterOrder_Taste2 = new javax.swing.JScrollPane();
+        jList3 = new javax.swing.JList();
+        RegisterOrder_Taste3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        RegisterOrder_Size1 = new javax.swing.JScrollPane();
+        jList4 = new javax.swing.JList();
+        RegisterOrder_Size2 = new javax.swing.JScrollPane();
+        jList5 = new javax.swing.JList();
+        RegisterOrder_Size3 = new javax.swing.JScrollPane();
+        jList6 = new javax.swing.JList();
+        RegisterOrder_RegisterOrderButton = new javax.swing.JButton();
+        RegisterOrder_SearchClientButton = new javax.swing.JButton();
+        RegisterOrder_UpdateClientButton = new javax.swing.JButton();
+        RegisterOrder_BackButton = new javax.swing.JButton();
+        RegisterClient = new javax.swing.JPanel();
+        RegisterClient_Title = new javax.swing.JLabel();
+        RegisterClient_PhoneNumberLabel = new javax.swing.JLabel();
+        RegisterClient_PhoneNumberField = new javax.swing.JTextField();
+        RegisterClient_NameLabel = new javax.swing.JLabel();
+        RegisterClient_NameField = new javax.swing.JTextField();
+        RegisterClient_AddressLabel = new javax.swing.JLabel();
+        RegisterClient_AddressField = new javax.swing.JTextField();
+        RegisterClient_CEPLabel = new javax.swing.JLabel();
+        RegisterClient_CEPField = new javax.swing.JTextField();
+        RegisterClient_RegisterClientButton = new javax.swing.JButton();
+        RegisterClient_BackButton = new javax.swing.JButton();
+        RegisterUser = new javax.swing.JPanel();
+        RegisterUser_Title = new javax.swing.JLabel();
+        RegisterUser_PhoneNumberLabel = new javax.swing.JLabel();
+        RegisterUser_PhoneNumberField = new javax.swing.JTextField();
+        RegisterUser_NameLabel = new javax.swing.JLabel();
+        RegisterUser_NameField = new javax.swing.JTextField();
+        RegisterUser_AddressLabel = new javax.swing.JLabel();
+        RegisterUser_AddressField = new javax.swing.JTextField();
+        RegisterUser_CEPLabel = new javax.swing.JLabel();
+        RegisterUser_CEPField = new javax.swing.JTextField();
+        RegisterUser_CPFLabel = new javax.swing.JLabel();
+        RegisterUser_CPFFied = new javax.swing.JTextField();
+        RegisterUser_UserLabel = new javax.swing.JLabel();
+        RegisterUser_UserField = new javax.swing.JTextField();
+        RegisterUser_PasswordLabel = new javax.swing.JLabel();
+        RegisterUser_PasswordField = new javax.swing.JTextField();
+        RegisterUser_TypeLabel = new javax.swing.JLabel();
+        RegisterUser_TypeScrollPane = new javax.swing.JScrollPane();
+        jList7 = new javax.swing.JList();
+        RegisterUser_RegisterUserButton = new javax.swing.JButton();
+        RegisterUser_BackButton = new javax.swing.JButton();
+        RegisterPizza = new javax.swing.JPanel();
+        RegisterPizza_Title = new javax.swing.JLabel();
+        RegisterPizza_TasteLabel = new javax.swing.JLabel();
+        RegisterPizza_TasteField = new javax.swing.JTextField();
+        RegisterPizza_RegisterPizzaButton = new javax.swing.JButton();
+        RegisterPizza_BackButton = new javax.swing.JButton();
+        FinishPizza = new javax.swing.JPanel();
+        FinishPizza_Title = new javax.swing.JLabel();
+        FinishPizza_NumberLabel = new javax.swing.JLabel();
+        FinishPizza_NumberField = new javax.swing.JTextField();
+        FinishPizza_FinishPizzaButton = new javax.swing.JButton();
+        FinishPizza_BackButton = new javax.swing.JButton();
+        FinishOrder = new javax.swing.JPanel();
+        FinishOrder_Title = new javax.swing.JLabel();
+        FinishOrder_NumberLabel = new javax.swing.JLabel();
+        FinishOrder_NumberField = new javax.swing.JTextField();
+        FinishOrder_FinishOrderButton = new javax.swing.JButton();
+        FinishOrder_BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         MainJPanel.setLayout(new java.awt.CardLayout());
@@ -141,17 +232,14 @@ public class MainFrame extends javax.swing.JFrame {
         Orders_Table1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Orders_Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Numero", "Telefone", "Pedido", "Valor"
+                "Número", "Telefone", "Status", "Valor", "Endereço", "Pedido"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -230,17 +318,14 @@ public class MainFrame extends javax.swing.JFrame {
         Orders_Table.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Orders_Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Numero", "Telefone", "Pedido", "Valor"
+                "Número", "Telefone", "Status", "Valor", "Endereço", "Pedido"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -266,14 +351,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        AdminForm_RegisterUser.setText("Cadastrar Usuario");
+        AdminForm_RegisterUser.setText("Cadastrar Usuário");
         AdminForm_RegisterUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdminForm_RegisterUserActionPerformed(evt);
             }
         });
 
-        AdminForm_RegisterPizza.setText("Cadastrar Pizzas");
+        AdminForm_RegisterPizza.setText("Cadastrar Pizza");
         AdminForm_RegisterPizza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdminForm_RegisterPizzaActionPerformed(evt);
@@ -360,17 +445,14 @@ public class MainFrame extends javax.swing.JFrame {
         Orders_Table2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Orders_Table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null}
             },
             new String [] {
-                "Numero", "Telefone", "Pedido", "Valor"
+                "Número", "Pedido"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -395,6 +477,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        PizzaioloForm_OrdersLabel.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        PizzaioloForm_OrdersLabel.setText("Pedidos");
+
         javax.swing.GroupLayout PizzaioloLayout = new javax.swing.GroupLayout(Pizzaiolo);
         Pizzaiolo.setLayout(PizzaioloLayout);
         PizzaioloLayout.setHorizontalGroup(
@@ -402,6 +487,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(PizzaioloLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(PizzaioloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PizzaioloForm_OrdersLabel)
                     .addGroup(PizzaioloLayout.createSequentialGroup()
                         .addComponent(PizzaioloForm_FinishPizza)
                         .addGap(18, 18, 18)
@@ -419,7 +505,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(PizzaioloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PizzaioloForm_FinishPizza)
                     .addComponent(PizzaioloForm_Logout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(PizzaioloForm_OrdersLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PizzaioloForm_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -432,17 +520,14 @@ public class MainFrame extends javax.swing.JFrame {
         Orders_Table3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Orders_Table3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Numero", "Telefone", "Pedido", "Valor"
+                "Número", "Telefone", "Status", "Valor", "Endereço", "Pedido"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -467,6 +552,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        EntregadorForm_OrdersLabel.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        EntregadorForm_OrdersLabel.setText("Pedidos");
+
         javax.swing.GroupLayout EntregadorLayout = new javax.swing.GroupLayout(Entregador);
         Entregador.setLayout(EntregadorLayout);
         EntregadorLayout.setHorizontalGroup(
@@ -474,6 +562,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(EntregadorLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(EntregadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EntregadorForm_OrdersLabel)
                     .addGroup(EntregadorLayout.createSequentialGroup()
                         .addComponent(EntregadorForm_FinishOrder)
                         .addGap(18, 18, 18)
@@ -491,12 +580,526 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(EntregadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EntregadorForm_FinishOrder)
                     .addComponent(EntregadorForm_Logout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(EntregadorForm_OrdersLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(EntregadorForm_Orders2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
         MainJPanel.add(Entregador, "card2");
+
+        RegisterOrder_Title.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        RegisterOrder_Title.setText("Registrar Pedido");
+
+        RegisterOrder_PhoneNumberLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        RegisterOrder_PhoneNumberLabel.setText("Telefone");
+
+        RegisterOrder_PhoneNumberField.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        RegisterOrder_PhoneNumberField.setToolTipText("");
+
+        RegisterOrder_NameLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        RegisterOrder_NameLabel.setText("Nome");
+
+        RegisterOrder_NameField.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+
+        RegisterOrder_AddressLabel.setText("Endereço");
+
+        RegisterOrder_CEPLabel.setText("CEP");
+
+        RegisterOrder_PizzaTitle.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        RegisterOrder_PizzaTitle.setText("Pizza");
+
+        RegisterOrder_QuantityLabel.setText("Quantidade");
+
+        RegisterOrder_TasteLabel.setText("Sabores");
+
+        RegisterOrder_SizeLabel.setText("Tamanho");
+
+        RegisterOrder_Taste1.setViewportView(jList2);
+
+        RegisterOrder_Taste2.setViewportView(jList3);
+
+        RegisterOrder_Taste3.setViewportView(jList1);
+
+        jList4.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Família", "Grande", "Média" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        RegisterOrder_Size1.setViewportView(jList4);
+
+        jList5.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Família", "Grande", "Média" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        RegisterOrder_Size2.setViewportView(jList5);
+
+        jList6.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Família", "Grande", "Média" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        RegisterOrder_Size3.setViewportView(jList6);
+
+        RegisterOrder_RegisterOrderButton.setText("Realizar Pedido");
+
+        RegisterOrder_SearchClientButton.setText("Procurar");
+
+        RegisterOrder_UpdateClientButton.setText("Atualizar ou Registrar Novo Cliente");
+
+        RegisterOrder_BackButton.setText("Voltar");
+
+        javax.swing.GroupLayout RegisterOrderLayout = new javax.swing.GroupLayout(RegisterOrder);
+        RegisterOrder.setLayout(RegisterOrderLayout);
+        RegisterOrderLayout.setHorizontalGroup(
+            RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterOrderLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RegisterOrder_PizzaTitle)
+                    .addComponent(RegisterOrder_Title)
+                    .addGroup(RegisterOrderLayout.createSequentialGroup()
+                        .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RegisterOrderLayout.createSequentialGroup()
+                                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(RegisterOrder_QuantitySpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterOrder_QuantitySpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterOrder_QuantitySpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(46, 46, 46)
+                                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(RegisterOrder_Taste1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                                    .addComponent(RegisterOrder_Taste2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(RegisterOrder_Taste3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addGroup(RegisterOrderLayout.createSequentialGroup()
+                                .addComponent(RegisterOrder_QuantityLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(RegisterOrder_TasteLabel)))
+                        .addGap(18, 18, 18)
+                        .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RegisterOrder_SizeLabel)
+                            .addComponent(RegisterOrder_Size1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(RegisterOrderLayout.createSequentialGroup()
+                                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegisterOrder_Size2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterOrder_Size3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(96, 96, 96)
+                                .addComponent(RegisterOrder_RegisterOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, RegisterOrderLayout.createSequentialGroup()
+                            .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(RegisterOrder_NameLabel)
+                                .addComponent(RegisterOrder_PhoneNumberLabel)
+                                .addComponent(RegisterOrder_AddressLabel)
+                                .addComponent(RegisterOrder_CEPLabel))
+                            .addGap(18, 18, 18)
+                            .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(RegisterOrderLayout.createSequentialGroup()
+                                    .addComponent(RegisterOrder_PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(33, 33, 33)
+                                    .addComponent(RegisterOrder_SearchClientButton)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(RegisterOrder_UpdateClientButton)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(RegisterOrder_BackButton))
+                                .addComponent(RegisterOrder_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(RegisterOrder_AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(RegisterOrder_CEPField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(RegisterOrder_Separator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        RegisterOrderLayout.setVerticalGroup(
+            RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterOrderLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(RegisterOrder_Title)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterOrder_PhoneNumberLabel)
+                    .addComponent(RegisterOrder_PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterOrder_SearchClientButton)
+                    .addComponent(RegisterOrder_UpdateClientButton)
+                    .addComponent(RegisterOrder_BackButton))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterOrder_NameLabel)
+                    .addComponent(RegisterOrder_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RegisterOrder_AddressLabel)
+                    .addComponent(RegisterOrder_AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterOrder_CEPLabel)
+                    .addComponent(RegisterOrder_CEPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(RegisterOrder_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(RegisterOrder_PizzaTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterOrder_QuantityLabel)
+                    .addComponent(RegisterOrder_TasteLabel)
+                    .addComponent(RegisterOrder_SizeLabel))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RegisterOrder_QuantitySpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterOrder_Taste1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterOrder_Size1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegisterOrderLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RegisterOrder_QuantitySpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterOrder_Taste2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterOrder_Size2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(RegisterOrderLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(RegisterOrder_RegisterOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RegisterOrder_QuantitySpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterOrder_Taste3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterOrder_Size3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(RegisterOrder, "card2");
+
+        RegisterClient_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        RegisterClient_Title.setText("Registrar Cliente");
+
+        RegisterClient_PhoneNumberLabel.setText("Telefone");
+
+        RegisterClient_NameLabel.setText("Nome");
+
+        RegisterClient_AddressLabel.setText("Endereço");
+
+        RegisterClient_CEPLabel.setText("CEP");
+
+        RegisterClient_RegisterClientButton.setText("Registrar Novo Cliente");
+
+        RegisterClient_BackButton.setText("Voltar");
+
+        javax.swing.GroupLayout RegisterClientLayout = new javax.swing.GroupLayout(RegisterClient);
+        RegisterClient.setLayout(RegisterClientLayout);
+        RegisterClientLayout.setHorizontalGroup(
+            RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterClientLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegisterClientLayout.createSequentialGroup()
+                        .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RegisterClientLayout.createSequentialGroup()
+                                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(RegisterClient_NameLabel)
+                                    .addComponent(RegisterClient_PhoneNumberLabel)
+                                    .addComponent(RegisterClient_AddressLabel)
+                                    .addComponent(RegisterClient_CEPLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegisterClient_PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterClient_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterClient_AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterClient_CEPField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(RegisterClient_RegisterClientButton))
+                        .addContainerGap(397, Short.MAX_VALUE))
+                    .addGroup(RegisterClientLayout.createSequentialGroup()
+                        .addComponent(RegisterClient_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(RegisterClient_BackButton)
+                        .addGap(40, 40, 40))))
+        );
+        RegisterClientLayout.setVerticalGroup(
+            RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterClientLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterClient_Title)
+                    .addComponent(RegisterClient_BackButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterClient_PhoneNumberLabel)
+                    .addComponent(RegisterClient_PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterClient_NameLabel)
+                    .addComponent(RegisterClient_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterClient_AddressLabel)
+                    .addComponent(RegisterClient_AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterClient_CEPLabel)
+                    .addComponent(RegisterClient_CEPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(RegisterClient_RegisterClientButton)
+                .addContainerGap(251, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(RegisterClient, "card2");
+
+        RegisterUser_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        RegisterUser_Title.setText("Registrar Usuário");
+
+        RegisterUser_PhoneNumberLabel.setText("Telefone");
+
+        RegisterUser_NameLabel.setText("Nome");
+
+        RegisterUser_AddressLabel.setText("Endereço");
+
+        RegisterUser_CEPLabel.setText("CEP");
+
+        RegisterUser_CPFLabel.setText("CPF");
+
+        RegisterUser_UserLabel.setText("Usuário");
+
+        RegisterUser_PasswordLabel.setText("Senha");
+
+        RegisterUser_TypeLabel.setText("Tipo");
+
+        jList7.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Administrador", "Atendente", "Pizzaiolo", "Entregador" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jList7.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        RegisterUser_TypeScrollPane.setViewportView(jList7);
+
+        RegisterUser_RegisterUserButton.setText("Registrar Novo Usuário");
+
+        RegisterUser_BackButton.setText("Voltar");
+
+        javax.swing.GroupLayout RegisterUserLayout = new javax.swing.GroupLayout(RegisterUser);
+        RegisterUser.setLayout(RegisterUserLayout);
+        RegisterUserLayout.setHorizontalGroup(
+            RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterUserLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RegisterUser_Title)
+                    .addGroup(RegisterUserLayout.createSequentialGroup()
+                        .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(RegisterUser_NameLabel)
+                            .addComponent(RegisterUser_PhoneNumberLabel)
+                            .addComponent(RegisterUser_AddressLabel)
+                            .addComponent(RegisterUser_CEPLabel)
+                            .addComponent(RegisterUser_CPFLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RegisterUser_AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterUser_CPFFied, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(RegisterUserLayout.createSequentialGroup()
+                                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegisterUser_PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterUser_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterUser_CEPField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(171, 171, 171)
+                                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegisterUser_UserLabel)
+                                    .addComponent(RegisterUser_PasswordLabel)
+                                    .addComponent(RegisterUser_TypeLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegisterUser_PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RegisterUser_TypeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(RegisterUserLayout.createSequentialGroup()
+                                        .addComponent(RegisterUser_UserField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                                        .addComponent(RegisterUser_BackButton))))))
+                    .addComponent(RegisterUser_RegisterUserButton))
+                .addGap(40, 40, 40))
+        );
+        RegisterUserLayout.setVerticalGroup(
+            RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterUserLayout.createSequentialGroup()
+                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegisterUserLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(RegisterUser_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RegisterUser_PhoneNumberLabel)
+                            .addComponent(RegisterUser_PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterUser_UserLabel)
+                            .addComponent(RegisterUser_UserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(RegisterUserLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(RegisterUser_BackButton)))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterUser_NameLabel)
+                    .addComponent(RegisterUser_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterUser_PasswordLabel)
+                    .addComponent(RegisterUser_PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterUser_AddressLabel)
+                    .addComponent(RegisterUser_AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(RegisterUserLayout.createSequentialGroup()
+                        .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RegisterUser_CEPLabel)
+                            .addComponent(RegisterUser_CEPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterUser_TypeLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(RegisterUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RegisterUser_CPFLabel)
+                            .addComponent(RegisterUser_CPFFied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(RegisterUser_TypeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(RegisterUser_RegisterUserButton)
+                .addContainerGap(203, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(RegisterUser, "card2");
+
+        RegisterPizza_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        RegisterPizza_Title.setText("Registrar Pizza");
+
+        RegisterPizza_TasteLabel.setText("Sabor");
+
+        RegisterPizza_RegisterPizzaButton.setText("Registrar Nova Pizza");
+
+        RegisterPizza_BackButton.setText("Voltar");
+
+        javax.swing.GroupLayout RegisterPizzaLayout = new javax.swing.GroupLayout(RegisterPizza);
+        RegisterPizza.setLayout(RegisterPizzaLayout);
+        RegisterPizzaLayout.setHorizontalGroup(
+            RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                        .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RegisterPizza_RegisterPizzaButton)
+                            .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                                .addComponent(RegisterPizza_TasteLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(RegisterPizza_TasteField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                        .addComponent(RegisterPizza_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
+                        .addComponent(RegisterPizza_BackButton)
+                        .addGap(40, 40, 40))))
+        );
+        RegisterPizzaLayout.setVerticalGroup(
+            RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RegisterPizza_Title)
+                    .addComponent(RegisterPizza_BackButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterPizza_TasteLabel)
+                    .addComponent(RegisterPizza_TasteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(RegisterPizza_RegisterPizzaButton)
+                .addContainerGap(380, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(RegisterPizza, "card2");
+
+        FinishPizza_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        FinishPizza_Title.setText("Finalizar Pizza");
+
+        FinishPizza_NumberLabel.setText("Número");
+
+        FinishPizza_FinishPizzaButton.setText("Finalizar Pizza");
+
+        FinishPizza_BackButton.setText("Voltar");
+
+        javax.swing.GroupLayout FinishPizzaLayout = new javax.swing.GroupLayout(FinishPizza);
+        FinishPizza.setLayout(FinishPizzaLayout);
+        FinishPizzaLayout.setHorizontalGroup(
+            FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishPizzaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FinishPizzaLayout.createSequentialGroup()
+                        .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FinishPizza_FinishPizzaButton)
+                            .addGroup(FinishPizzaLayout.createSequentialGroup()
+                                .addComponent(FinishPizza_NumberLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(FinishPizza_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(555, Short.MAX_VALUE))
+                    .addGroup(FinishPizzaLayout.createSequentialGroup()
+                        .addComponent(FinishPizza_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FinishPizza_BackButton)
+                        .addGap(40, 40, 40))))
+        );
+        FinishPizzaLayout.setVerticalGroup(
+            FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishPizzaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FinishPizza_Title)
+                    .addComponent(FinishPizza_BackButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FinishPizza_NumberLabel)
+                    .addComponent(FinishPizza_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FinishPizza_FinishPizzaButton)
+                .addContainerGap(380, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(FinishPizza, "card2");
+
+        FinishOrder_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        FinishOrder_Title.setText("Finalizar Pedido");
+
+        FinishOrder_NumberLabel.setText("Número");
+
+        FinishOrder_FinishOrderButton.setText("Finalizar Pedido");
+
+        FinishOrder_BackButton.setText("Voltar");
+
+        javax.swing.GroupLayout FinishOrderLayout = new javax.swing.GroupLayout(FinishOrder);
+        FinishOrder.setLayout(FinishOrderLayout);
+        FinishOrderLayout.setHorizontalGroup(
+            FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishOrderLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FinishOrderLayout.createSequentialGroup()
+                        .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FinishOrder_FinishOrderButton)
+                            .addGroup(FinishOrderLayout.createSequentialGroup()
+                                .addComponent(FinishOrder_NumberLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(FinishOrder_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(555, Short.MAX_VALUE))
+                    .addGroup(FinishOrderLayout.createSequentialGroup()
+                        .addComponent(FinishOrder_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FinishOrder_BackButton)
+                        .addGap(40, 40, 40))))
+        );
+        FinishOrderLayout.setVerticalGroup(
+            FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishOrderLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FinishOrder_Title)
+                    .addComponent(FinishOrder_BackButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FinishOrder_NumberLabel)
+                    .addComponent(FinishOrder_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FinishOrder_FinishOrderButton)
+                .addContainerGap(380, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(FinishOrder, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -515,9 +1118,14 @@ public class MainFrame extends javax.swing.JFrame {
     private void LoginForm_LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
 
-        if(true) { // sistema de login aqui
+        //if(this.Login()) { // sistema de login aqui
+        if(true) { 
             MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
             MainJPanel.add(Admin);
+            MainJPanel.repaint();
             MainJPanel.revalidate();
         }
 
@@ -594,35 +1202,122 @@ public class MainFrame extends javax.swing.JFrame {
     }                                                     
 
     private void RegisterOrder() {
-        
+        MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
+            MainJPanel.add(RegisterOrder);
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
     }
     
     private void RegisterClient() {
-        
+        MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
+            MainJPanel.add(RegisterClient);
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
     }
     
     private void RegisterUser() {
-        
+        MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
+            MainJPanel.add(RegisterUser);
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
     }
     
     private void RegisterPizza() {
-        
+        MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
+            MainJPanel.add(RegisterPizza);
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
     }
     
     private void FinishPizza() {
-        
+        MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
+            MainJPanel.add(FinishPizza);
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
     }
     
     private void FinishOrder() {
-        
+        MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
+            MainJPanel.add(FinishOrder);
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
     }
     
     private void Logout() {
-        
+        MainJPanel.removeAll();
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
+            
+            MainJPanel.add(Login);
+            MainJPanel.repaint();
+            MainJPanel.revalidate();
     }
     
     private void Login() {
         
+    }
+    
+    private void GoBack() {
+        switch(this.LoginPower) {
+            case 1: // admin
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+
+                MainJPanel.add(Admin);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                break;
+            case 2: // atendente
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+
+                MainJPanel.add(Atendente);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                break;
+            case 3: // pizzaiolo
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+
+                MainJPanel.add(Pizzaiolo);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                break;
+            case 4: // entregador
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+
+                MainJPanel.add(Entregador);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                break;
+            default: // outros(teste/error)
+                this.Logout();
+                break;
+                
+        }
     }
     /**
      * @param args the command line arguments
@@ -683,6 +1378,19 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton EntregadorForm_Logout;
     private javax.swing.JLabel EntregadorForm_Name;
     private javax.swing.JScrollPane EntregadorForm_Orders2;
+    private javax.swing.JLabel EntregadorForm_OrdersLabel;
+    private javax.swing.JPanel FinishOrder;
+    private javax.swing.JButton FinishOrder_BackButton;
+    private javax.swing.JButton FinishOrder_FinishOrderButton;
+    private javax.swing.JTextField FinishOrder_NumberField;
+    private javax.swing.JLabel FinishOrder_NumberLabel;
+    private javax.swing.JLabel FinishOrder_Title;
+    private javax.swing.JPanel FinishPizza;
+    private javax.swing.JButton FinishPizza_BackButton;
+    private javax.swing.JButton FinishPizza_FinishPizzaButton;
+    private javax.swing.JTextField FinishPizza_NumberField;
+    private javax.swing.JLabel FinishPizza_NumberLabel;
+    private javax.swing.JLabel FinishPizza_Title;
     private javax.swing.JPanel Login;
     private javax.swing.JButton LoginForm_LoginButton;
     private javax.swing.JTextField LoginForm_PasswordField;
@@ -700,5 +1408,79 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton PizzaioloForm_Logout;
     private javax.swing.JLabel PizzaioloForm_Name;
     private javax.swing.JScrollPane PizzaioloForm_Orders;
+    private javax.swing.JLabel PizzaioloForm_OrdersLabel;
+    private javax.swing.JPanel RegisterClient;
+    private javax.swing.JTextField RegisterClient_AddressField;
+    private javax.swing.JLabel RegisterClient_AddressLabel;
+    private javax.swing.JButton RegisterClient_BackButton;
+    private javax.swing.JTextField RegisterClient_CEPField;
+    private javax.swing.JLabel RegisterClient_CEPLabel;
+    private javax.swing.JTextField RegisterClient_NameField;
+    private javax.swing.JLabel RegisterClient_NameLabel;
+    private javax.swing.JTextField RegisterClient_PhoneNumberField;
+    private javax.swing.JLabel RegisterClient_PhoneNumberLabel;
+    private javax.swing.JButton RegisterClient_RegisterClientButton;
+    private javax.swing.JLabel RegisterClient_Title;
+    private javax.swing.JPanel RegisterOrder;
+    private javax.swing.JTextField RegisterOrder_AddressField;
+    private javax.swing.JLabel RegisterOrder_AddressLabel;
+    private javax.swing.JButton RegisterOrder_BackButton;
+    private javax.swing.JTextField RegisterOrder_CEPField;
+    private javax.swing.JLabel RegisterOrder_CEPLabel;
+    private javax.swing.JTextField RegisterOrder_NameField;
+    private javax.swing.JLabel RegisterOrder_NameLabel;
+    private javax.swing.JTextField RegisterOrder_PhoneNumberField;
+    private javax.swing.JLabel RegisterOrder_PhoneNumberLabel;
+    private javax.swing.JLabel RegisterOrder_PizzaTitle;
+    private javax.swing.JLabel RegisterOrder_QuantityLabel;
+    private javax.swing.JSpinner RegisterOrder_QuantitySpinner1;
+    private javax.swing.JSpinner RegisterOrder_QuantitySpinner2;
+    private javax.swing.JSpinner RegisterOrder_QuantitySpinner3;
+    private javax.swing.JButton RegisterOrder_RegisterOrderButton;
+    private javax.swing.JButton RegisterOrder_SearchClientButton;
+    private javax.swing.JSeparator RegisterOrder_Separator;
+    private javax.swing.JScrollPane RegisterOrder_Size1;
+    private javax.swing.JScrollPane RegisterOrder_Size2;
+    private javax.swing.JScrollPane RegisterOrder_Size3;
+    private javax.swing.JLabel RegisterOrder_SizeLabel;
+    private javax.swing.JScrollPane RegisterOrder_Taste1;
+    private javax.swing.JScrollPane RegisterOrder_Taste2;
+    private javax.swing.JScrollPane RegisterOrder_Taste3;
+    private javax.swing.JLabel RegisterOrder_TasteLabel;
+    private javax.swing.JLabel RegisterOrder_Title;
+    private javax.swing.JButton RegisterOrder_UpdateClientButton;
+    private javax.swing.JPanel RegisterPizza;
+    private javax.swing.JButton RegisterPizza_BackButton;
+    private javax.swing.JButton RegisterPizza_RegisterPizzaButton;
+    private javax.swing.JTextField RegisterPizza_TasteField;
+    private javax.swing.JLabel RegisterPizza_TasteLabel;
+    private javax.swing.JLabel RegisterPizza_Title;
+    private javax.swing.JPanel RegisterUser;
+    private javax.swing.JTextField RegisterUser_AddressField;
+    private javax.swing.JLabel RegisterUser_AddressLabel;
+    private javax.swing.JButton RegisterUser_BackButton;
+    private javax.swing.JTextField RegisterUser_CEPField;
+    private javax.swing.JLabel RegisterUser_CEPLabel;
+    private javax.swing.JTextField RegisterUser_CPFFied;
+    private javax.swing.JLabel RegisterUser_CPFLabel;
+    private javax.swing.JTextField RegisterUser_NameField;
+    private javax.swing.JLabel RegisterUser_NameLabel;
+    private javax.swing.JTextField RegisterUser_PasswordField;
+    private javax.swing.JLabel RegisterUser_PasswordLabel;
+    private javax.swing.JTextField RegisterUser_PhoneNumberField;
+    private javax.swing.JLabel RegisterUser_PhoneNumberLabel;
+    private javax.swing.JButton RegisterUser_RegisterUserButton;
+    private javax.swing.JLabel RegisterUser_Title;
+    private javax.swing.JLabel RegisterUser_TypeLabel;
+    private javax.swing.JScrollPane RegisterUser_TypeScrollPane;
+    private javax.swing.JTextField RegisterUser_UserField;
+    private javax.swing.JLabel RegisterUser_UserLabel;
+    private javax.swing.JList jList1;
+    private javax.swing.JList jList2;
+    private javax.swing.JList jList3;
+    private javax.swing.JList jList4;
+    private javax.swing.JList jList5;
+    private javax.swing.JList jList6;
+    private javax.swing.JList jList7;
     // End of variables declaration                   
 }
