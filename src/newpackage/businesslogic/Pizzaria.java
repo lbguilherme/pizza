@@ -46,7 +46,7 @@ public class Pizzaria {
         clients = aClients;
     }
     
-    private Employee currentUser;
+    private static Employee currentUser;
     
     public static void Pizzaria() {
         if (employees.isEmpty()) {
@@ -62,7 +62,7 @@ public class Pizzaria {
         }
     }
     
-    public boolean doLogin(String user, String pass) {
+    public static boolean doLogin(String user, String pass) {
         if (currentUser != null)
             throw new RuntimeException("Already logged in");
         
@@ -77,7 +77,7 @@ public class Pizzaria {
         return false;
     }
     
-    public Employee.Role currentEmployeeRole() {
+    public static Employee.Role currentEmployeeRole() {
         if (currentUser == null)
             throw new RuntimeException("Not logged in");
         
@@ -115,14 +115,14 @@ public class Pizzaria {
         return null;
     }
     
-    public void addClientRequest(ClientRequest request) {
+    public static void addClientRequest(ClientRequest request) {
         if (request == null)
             throw new RuntimeException("Can't insert null ClientRequest");
         
         addClient(request.getClient());
     }
     
-    public void registerPizza(PizzaTaste pizza){
+    public static void registerPizza(PizzaTaste pizza){
         if (pizza.getTasteName() == null ||
                 pizza.getPrice() == null ||
                 pizza.getSize() == null){
@@ -140,7 +140,7 @@ public class Pizzaria {
         }
     }
         
-    public void registerDrink(DrinkType drink){
+    public static void registerDrink(DrinkType drink){
         if ((drink.getName() == null) ||
                 (drink.getPrice() == null)){
             throw new RuntimeException("Couldn't register new drink, this drink is missing some information");
@@ -157,7 +157,7 @@ public class Pizzaria {
         }
     }
     
-    public void registerEmployee(Employee employee){
+    public static void registerEmployee(Employee employee){
         if (employee == null){
             throw new RuntimeException("Can't insert null drink");
         }
