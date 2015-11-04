@@ -3,6 +3,7 @@ package newpackage.businesslogic;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
+import javax.swing.JOptionPane;
 import pizzasystem.data.Client;
 import pizzasystem.data.ClientRequest;
 import pizzasystem.data.DrinkType;
@@ -14,8 +15,8 @@ import pizzasystem.utility.PasswordHasher;
 public class Pizzaria {
     private static ArrayList<Employee> employees = new ArrayList<>();
     private static ArrayList<Client> clients = new ArrayList<>();
-    private static final Menu menu = new Menu();
-    private static final Queue<ClientRequest> requests = new ArrayDeque<>();
+    private static Menu menu = new Menu();
+    private static Queue<ClientRequest> requests = new ArrayDeque<>();
 
     /**
      * @return the employees
@@ -47,7 +48,7 @@ public class Pizzaria {
     
     private Employee currentUser;
     
-    Pizzaria() {
+    public static void Pizzaria() {
         if (employees.isEmpty()) {
             Employee admin = new Employee();
             admin.setName("admin");
@@ -83,28 +84,29 @@ public class Pizzaria {
         return currentUser.getRole();
     }
     
-    private void addClient(Client client) {
-        if (client == null)
+    public static void addClient(Client client) {
+        if (client == null){
             throw new RuntimeException("Can't insert null Client");
-        
-        if (client.getAddress() == null ||
-                client.getCep() == null ||
-                client.getCpf() == null ||
-        client.getPhoneNumber() == null ||
-               client.getName() == null) {
-            throw new RuntimeException("");
-        }
-        
-        for (Client c : getClients()) {
-            if (c.getPhoneNumber().equals(client.getPhoneNumber())) {
-                getClients().remove(c);
-                break;
+        }else{
+            if (client.getAddress().equals("") ||
+                    client.getCep().equals("") ||
+            client.getPhoneNumber().equals("") ||
+                   client.getName().equals("")) {
+                JOptionPane.showMessageDialog(null, "Não foi possivel registrar ou atualizar cliente, informações incompletas!");
+            }else{
+                for (Client c : getClients()) {
+                    if (c.getPhoneNumber().equals(client.getPhoneNumber())) {
+                        getClients().remove(c);
+                        break;
+                    }
+                }
+                getClients().add(client);
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado/atualizado com sucesso");
             }
         }
-        getClients().add(client);
-    }
+    }   
     
-    public Client findClient(String phoneNumber) {
+    public static Client findClient(String phoneNumber) {
         for (Client client : getClients()) {
             if (client.getPhoneNumber().equals(phoneNumber)) {
                 return client;

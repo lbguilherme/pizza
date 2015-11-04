@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         
+        Pizzaria pizzaria = new Pizzaria();
         //test para ui
         Client testclient = new Client();
         testclient.setName("bisnaga");
@@ -18,7 +19,7 @@ public class Main {
         testclient.setPhoneNumber("123123");
         ArrayList<Client> newclients = Pizzaria.getClients(); 
         newclients.add(testclient);
-        Pizzaria.setClients(newclients);;
+        Pizzaria.setClients(newclients);
         
         
         pizzasystem.ui.MainFrame.main(null);
