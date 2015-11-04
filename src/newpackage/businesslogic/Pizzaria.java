@@ -12,10 +12,38 @@ import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
 
 public class Pizzaria {
-    private static final ArrayList<Employee> employees = new ArrayList<>();
-    private static final ArrayList<Client> clients = new ArrayList<>();
+    private static ArrayList<Employee> employees = new ArrayList<>();
+    private static ArrayList<Client> clients = new ArrayList<>();
     private static final Menu menu = new Menu();
     private static final Queue<ClientRequest> requests = new ArrayDeque<>();
+
+    /**
+     * @return the employees
+     */
+    public static ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
+    /**
+     * @param aEmployees the employees to set
+     */
+    public static void setEmployees(ArrayList<Employee> aEmployees) {
+        employees = aEmployees;
+    }
+
+    /**
+     * @return the clients
+     */
+    public static ArrayList<Client> getClients() {
+        return clients;
+    }
+
+    /**
+     * @param aClients the clients to set
+     */
+    public static void setClients(ArrayList<Client> aClients) {
+        clients = aClients;
+    }
     
     private Employee currentUser;
     
@@ -39,7 +67,7 @@ public class Pizzaria {
         
         PasswordHasher hasher = new PasswordHasher();
         String passHash = hasher.hash(pass);
-        for (Employee emp : employees) {
+        for (Employee emp : getEmployees()) {
             if (emp.getUser().equals(user) && emp.getHashPass().equals(passHash)) {
                 currentUser = emp;
                 return true;
@@ -67,17 +95,17 @@ public class Pizzaria {
             throw new RuntimeException("");
         }
         
-        for (Client c : clients) {
+        for (Client c : getClients()) {
             if (c.getPhoneNumber().equals(client.getPhoneNumber())) {
-                clients.remove(c);
+                getClients().remove(c);
                 break;
             }
         }
-        clients.add(client);
+        getClients().add(client);
     }
     
     public Client findClient(String phoneNumber) {
-        for (Client client : clients) {
+        for (Client client : getClients()) {
             if (client.getPhoneNumber().equals(phoneNumber)) {
                 return client;
             }
@@ -143,7 +171,7 @@ public class Pizzaria {
                 throw new RuntimeException("Unable to register employee, employee data missing.");
             }
             else{
-                employees.add(employee);
+                getEmployees().add(employee);
             }
         }
     }

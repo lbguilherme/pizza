@@ -1120,11 +1120,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Procurar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_SearchClientButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="RegisterOrder_UpdateClientButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Atualizar ou Registrar Novo Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_UpdateClientButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="RegisterOrder_BackButton">
               <Properties>

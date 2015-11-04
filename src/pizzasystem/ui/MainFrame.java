@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package pizzasystem.ui;
+import newpackage.businesslogic.Pizzaria;
+import pizzasystem.data.Client;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
@@ -648,8 +652,18 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_RegisterOrderButton.setText("Realizar Pedido");
 
         RegisterOrder_SearchClientButton.setText("Procurar");
+        RegisterOrder_SearchClientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_SearchClientButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_UpdateClientButton.setText("Atualizar ou Registrar Novo Cliente");
+        RegisterOrder_UpdateClientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_UpdateClientButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_BackButton.setText("Voltar");
         RegisterOrder_BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1260,6 +1274,50 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.GoBack();
     }//GEN-LAST:event_FinishOrder_BackButtonActionPerformed
+
+    private void RegisterOrder_SearchClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_SearchClientButtonActionPerformed
+        String number = (RegisterOrder_PhoneNumberField.getText());
+        for(Client client : Pizzaria.getClients()){
+            if (client.getPhoneNumber().equals(number)){
+                RegisterOrder_AddressField.setText(client.getAddress());
+                RegisterOrder_CEPField.setText(client.getCep());
+                RegisterOrder_NameField.setText(client.getName()); 
+            }
+        }
+        
+    }//GEN-LAST:event_RegisterOrder_SearchClientButtonActionPerformed
+
+    private void RegisterOrder_UpdateClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_UpdateClientButtonActionPerformed
+        if (RegisterOrder_PhoneNumberField.getText().equals("") ||
+                RegisterOrder_AddressField.getText().equals("") ||
+                RegisterOrder_CEPField.getText().equals("") ||
+                RegisterOrder_NameField.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Não foi possivel registrar ou atualizar cliente, informações incompletas!");
+        }else{
+            boolean newclient = true;
+            for(Client client : Pizzaria.getClients()){
+                if (client.getPhoneNumber().equals(RegisterOrder_PhoneNumberField.getText())){
+                    client.setName(RegisterOrder_NameField.getText());
+                    client.setAddress(RegisterOrder_AddressField.getText());
+                    client.setCep(RegisterOrder_CEPField.getText());
+                    newclient = false;
+                    JOptionPane.showMessageDialog(null, "Cadastro do cliente atualizado com sucesso");
+                    break;
+                }
+            }
+            if (newclient){
+                Client clienttoadd = new Client();
+                clienttoadd.setName(RegisterOrder_NameField.getText());
+                clienttoadd.setAddress(RegisterOrder_AddressField.getText());
+                clienttoadd.setCep(RegisterOrder_CEPField.getText());
+                clienttoadd.setPhoneNumber(RegisterOrder_PhoneNumberField.getText());
+                ArrayList<Client> newclients = Pizzaria.getClients();
+                newclients.add(clienttoadd);
+                Pizzaria.setClients(newclients);
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso");
+            }
+        }
+    }//GEN-LAST:event_RegisterOrder_UpdateClientButtonActionPerformed
 
     private void RegisterOrder() {
         MainJPanel.removeAll();
