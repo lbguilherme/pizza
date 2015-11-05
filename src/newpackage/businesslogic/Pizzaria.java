@@ -6,11 +6,12 @@ import java.util.Queue;
 import javax.swing.JOptionPane;
 import pizzasystem.data.Client;
 import pizzasystem.data.ClientRequest;
-import pizzasystem.data.DrinkType;
+import pizzasystem.data.OtherProduct;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Menu;
 import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
+import pizzasystem.ui.MainFrame;
 
 public class Pizzaria {
     private static ArrayList<Employee> employees = new ArrayList<>();
@@ -122,37 +123,51 @@ public class Pizzaria {
         addClient(request.getClient());
     }
     
-    public static void registerPizza(PizzaTaste pizza){
-        if (pizza.getTasteName() == null ||
+    public static int registerPizza(PizzaTaste pizza){
+        boolean atualizada = false;
+        if (pizza.getTasteName()[0].equals("") ||
                 pizza.getPrice() == null ||
                 pizza.getSize() == null){
-            throw new RuntimeException("Couldn't register new pizza, this pizza is missing some information");
+            JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar pizza, há informações faltando!");
+            return 0;
         }
-        else{
-            if (getMenu().getPizzas().contains(pizza)){
-                throw new RuntimeException("Pizza already registered");
+        for(PizzaTaste pizzainmenu : getMenu().getPizzas()){
+            if (pizzainmenu.getTasteName()[0].equals(pizza.getTasteName()[0]) &&
+                    pizzainmenu.getSize() == pizza.getSize()){
+                pizzainmenu.setPrice(pizza.getPrice());
+                JOptionPane.showMessageDialog(null, "Valor da pizza atualizado.");
+                return 0;
             }
-            else{
-            ArrayList<PizzaTaste> newMenu = (ArrayList<PizzaTaste>) getMenu().getPizzas();
-            newMenu.add(pizza);
-            getMenu().setPizzas(newMenu);
-            }    
         }
+        for(PizzaTaste pizzainmenu : getMenu().getPizzas()){
+            if (pizzainmenu.getTasteName()[0].equals(pizza.getTasteName()[0])){
+                ArrayList<PizzaTaste> newMenu = (ArrayList<PizzaTaste>) getMenu().getPizzas();
+                newMenu.add(pizza);
+                getMenu().setPizzas(newMenu);
+                JOptionPane.showMessageDialog(null, "Pizza cadastrada com sucesso.");
+                return 0;
+            }
+        }
+        ArrayList<PizzaTaste> newMenu = (ArrayList<PizzaTaste>) getMenu().getPizzas();
+        newMenu.add(pizza);
+        getMenu().setPizzas(newMenu);
+        JOptionPane.showMessageDialog(null, "Pizza cadastrada com sucesso.");
+            return 1;
     }
         
-    public static void registerDrink(DrinkType drink){
+    public static void registerDrink(OtherProduct drink){
         if ((drink.getName() == null) ||
                 (drink.getPrice() == null)){
             throw new RuntimeException("Couldn't register new drink, this drink is missing some information");
         }
         else{
-            if (getMenu().getDrinks().contains(drink)){
+            if (getMenu().getOutros().contains(drink)){
                 throw new RuntimeException("drink already registered");
             }
             else{
-            ArrayList<DrinkType> newMenu = (ArrayList<DrinkType>) getMenu().getDrinks();
+            ArrayList<OtherProduct> newMenu = (ArrayList<OtherProduct>) getMenu().getOutros();
             newMenu.add(drink);
-            getMenu().setDrinks(newMenu);
+            getMenu().setOutros(newMenu);
             }    
         }
     }

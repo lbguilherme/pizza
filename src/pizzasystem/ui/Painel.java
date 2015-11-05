@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import newpackage.businesslogic.Pizzaria;
-import pizzasystem.data.DrinkType;
+import pizzasystem.data.OtherProduct;
 import pizzasystem.data.PizzaTaste;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -42,7 +42,7 @@ public class Painel extends javax.swing.JFrame {
     
     public static String[] getDrinkList(){
         ArrayList<String> drinks = new ArrayList<>();
-        for (DrinkType drink : Pizzaria.getMenu().getDrinks()){
+        for (OtherProduct drink : Pizzaria.getMenu().getOutros()){
             drinks.add(drink.getName());
         }
         return drinks.toArray(new String[drinks.size()]);

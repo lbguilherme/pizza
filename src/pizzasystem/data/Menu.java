@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Menu {
     
     private ArrayList<PizzaTaste> pizzas = new ArrayList<>();
-    private ArrayList<DrinkType> drinks = new ArrayList<>();
+    private ArrayList<OtherProduct> outros = new ArrayList<>();
 
     public ArrayList<PizzaTaste> getPizzas() {
         return pizzas;
@@ -15,12 +15,12 @@ public class Menu {
         this.pizzas = pizzas;
     }
 
-    public ArrayList<DrinkType> getDrinks() {
-        return drinks;
+    public ArrayList<OtherProduct> getOutros() {
+        return outros;
     }
 
-    public void setDrinks(ArrayList<DrinkType> drinks) {
-        this.drinks = drinks;
+    public void setOutros(ArrayList<OtherProduct> outros) {
+        this.outros = outros;
     }
     
 

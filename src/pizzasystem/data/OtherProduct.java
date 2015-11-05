@@ -1,6 +1,6 @@
 package pizzasystem.data;
 
-public class DrinkType {
+public class OtherProduct {
     private String name;
     private Float price;
 

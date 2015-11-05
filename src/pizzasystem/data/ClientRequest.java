@@ -13,24 +13,24 @@ public class ClientRequest {
     }
     
     private ArrayList<PizzaTaste> pizzas = new ArrayList<>();
-    private ArrayList<DrinkType> drinks = new ArrayList<>();
+    private ArrayList<OtherProduct> outros = new ArrayList<>();
     private Status status;
     private Client client;
 
     public Float getTotalPrice() {
         Float pizzaPrice = 0f;
-        Float drinkPrice = 0f;
+        Float outroPrice = 0f;
         if (pizzas != null){
             for (PizzaTaste pizza : pizzas){
                 pizzaPrice += pizza.getPrice();
             }
         }
-        if (drinks != null){
-            for (DrinkType drink :drinks){
-                drinkPrice += drink.getPrice();
+        if (outros != null){
+            for (OtherProduct outro :outros){
+                outroPrice += outro.getPrice();
             }
         }
-        return pizzaPrice + drinkPrice;
+        return pizzaPrice + outroPrice;
     }
     
     
@@ -53,16 +53,16 @@ public class ClientRequest {
         return pizzas != null;
     }
 
-    public ArrayList<DrinkType> getDrink() {
-        return drinks;
+    public ArrayList<OtherProduct> getOutros() {
+        return outros;
     }
 
-    public void setDrink(ArrayList<DrinkType> drinks) {
-        this.drinks = drinks;
+    public void setOutros(ArrayList<OtherProduct> outros) {
+        this.outros = outros;
     }
     
-    public boolean hasDrink() {
-        return drinks != null;
+    public boolean hasDrinks() {
+        return outros != null;
     }
 
     public Status getStatus() {
