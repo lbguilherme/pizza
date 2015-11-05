@@ -779,81 +779,106 @@
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="RegisterOrder_NameLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_PhoneNumberLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_AddressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_CEPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="RegisterOrder_PhoneNumberField" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="RegisterOrder_SearchClientButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="RegisterOrder_NameLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_PhoneNumberLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_AddressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_CEPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="RegisterOrder_UpdateClientButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="RegisterOrder_BackButton" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="RegisterOrder_PhoneNumberField" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Component id="RegisterOrder_SearchClientButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="RegisterOrder_UpdateClientButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="RegisterOrder_BackButton" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="RegisterOrder_NameField" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_AddressField" min="-2" pref="250" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_CEPField" min="-2" pref="100" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Component id="RegisterOrder_NameField" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_AddressField" min="-2" pref="250" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_CEPField" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="RegisterOrder_PizzaTitle" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_Title" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_Separator" alignment="0" min="-2" pref="670" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="RegisterOrder_Title" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="RegisterOrder_PizzaLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                              <Component id="RegisterOrder_TasteField2" min="-2" pref="184" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="RegisterOrder_AddPizzaButton" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="RegisterOrder_RemoveItemButton" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="RegisterOrder_SizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="RegisterOrder_TasteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RegisterOrder_PizzaTitle" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="RegisterOrder_Separator" min="-2" pref="670" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                                      <Component id="RegisterOrder_PizzaLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                                                      <Component id="RegisterOrder_ItemLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="RegisterOrder_DrinkLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="RegisterOrder_AddPizzaButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_RemoveItemButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_SizeLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_TasteLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jComboBox1" min="-2" pref="184" max="-2" attributes="0"/>
+                                                  <Component id="RegisterOrder_TasteField2" min="-2" pref="184" max="-2" attributes="0"/>
+                                                  <Component id="RegisterOrder_SizeField" min="-2" pref="184" max="-2" attributes="0"/>
                                                   <Component id="RegisterOrder_TasteField1" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
                                                   <Component id="RegisterOrder_TasteField3" min="-2" pref="184" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="RegisterOrder_ItemLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="RegisterOrder_RegisterOrderButton" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                                          <Component id="RegisterOrder_ItensList" min="-2" pref="169" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="RegisterOrder_DrinkLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="RegisterOrder_DrinkList" min="-2" pref="141" max="-2" attributes="0"/>
-                                                  <Component id="RegisterOrder_AddDrinkButton" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                              <Component id="RegisterOrder_PriceField" min="-2" pref="85" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="RegisterOrder_RegisterOrderButton" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_ItensList" min="-2" pref="169" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_AddDrinkButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="RegisterOrder_OutroField" min="-2" pref="184" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -887,55 +912,67 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="RegisterOrder_Separator" min="-2" pref="17" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="RegisterOrder_PizzaTitle" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RegisterOrder_PizzaTitle" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="RegisterOrder_PizzaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RegisterOrder_ItemLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="RegisterOrder_DrinkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_ItemLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="RegisterOrder_TasteLabel" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="RegisterOrder_DrinkList" min="-2" pref="41" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="RegisterOrder_AddDrinkButton" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_OutroField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_AddDrinkButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="73" pref="168" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="RegisterOrder_ItensList" pref="101" max="32767" attributes="0"/>
+                                      <Component id="RegisterOrder_ItensList" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               <Component id="RegisterOrder_TasteField2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="RegisterOrder_TasteField1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RegisterOrder_TasteField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_TasteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="RegisterOrder_TasteField3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="RegisterOrder_SizeLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RegisterOrder_SizeField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_SizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Component id="RegisterOrder_RegisterOrderButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RegisterOrder_PriceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RegisterOrder_AddPizzaButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RegisterOrder_RemoveItemButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="RegisterOrder_AddPizzaButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="RegisterOrder_RemoveItemButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="RegisterOrder_RegisterOrderButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1081,31 +1118,15 @@
             </Container>
             <Component class="javax.swing.JLabel" name="RegisterOrder_DrinkLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Bebidas"/>
+                <Property name="text" type="java.lang.String" value="Outros"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="RegisterOrder_DrinkList">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="jList2">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
             <Component class="javax.swing.JButton" name="RegisterOrder_AddDrinkButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Adicionar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="RegisterOrder_SizeField">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new DefaultComboBoxModel(PizzaTaste.Size.values())" type="code"/>
@@ -1122,14 +1143,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_TasteField1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="RegisterOrder_TasteField2">
+            <Component class="javax.swing.JComboBox" name="RegisterOrder_OutroField">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new DefaultComboBoxModel(getTasteList())" type="code"/>
+                  <Connection code="new DefaultComboBoxModel(getDrinkList())" type="code"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_TasteField2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_OutroFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="RegisterOrder_TasteField3">
@@ -1141,6 +1162,26 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_TasteField3ActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="RegisterOrder_TasteField2">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultComboBoxModel(getTasteList())" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_TasteField2ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterOrder_PriceField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="R$"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -1494,21 +1535,39 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="RegisterPizza_BackButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="RegisterPizza_RegisterPizzaButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterPizza_Title" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="RegisterPizza_TasteLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="RegisterPizza_OutroNameField" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="RegisterPizza_OutroPriceField" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="252" pref="252" max="-2" attributes="0"/>
+                              <Component id="RegisterPizza_TasteLabel7" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="RegisterPizza_RegisterPizzaButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="RegisterPizza_TasteLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="RegisterPizza_TasteField" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                       <Component id="RegisterPizza_PriceField" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="RegisterPizza_Title" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="RegisterPizza_Title1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                                       <Component id="RegisterPizza_TasteLabel5" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1525,11 +1584,6 @@
                       </Group>
                       <EmptySpace pref="233" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="RegisterPizza_BackButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1537,9 +1591,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="RegisterPizza_Title" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="RegisterPizza_TasteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="RegisterPizza_TasteLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterPizza_Title1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1550,7 +1604,19 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="RegisterPizza_RegisterPizzaButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="RegisterPizza_Title" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="RegisterPizza_TasteLabel7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RegisterPizza_OutroNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterPizza_OutroPriceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RegisterPizza_TasteLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="RegisterPizza_RegisterPizzaButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="194" max="32767" attributes="0"/>
                       <Component id="RegisterPizza_BackButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
@@ -1563,7 +1629,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="20" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Registrar Pizza"/>
+                <Property name="text" type="java.lang.String" value="Registrar outro produto"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="RegisterPizza_TasteLabel">
@@ -1607,6 +1673,36 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterPizza_TasteLabel6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Produto:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterPizza_OutroNameField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="RegisterPizza_OutroPriceField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterPizza_TasteLabel7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="RegisterPizza_Title1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registrar Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="RegisterPizza_RegisterPizzaButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar novo produto"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterPizza_RegisterPizzaButton1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

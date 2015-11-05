@@ -155,20 +155,25 @@ public class Pizzaria {
             return 1;
     }
         
-    public static void registerDrink(OtherProduct drink){
-        if ((drink.getName() == null) ||
-                (drink.getPrice() == null)){
-            throw new RuntimeException("Couldn't register new drink, this drink is missing some information");
+    public static int registerOutro(OtherProduct outro){
+        if ((outro.getName() == null) ||
+                (outro.getPrice() == null)){
+            JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar o produto, há informações faltando!");
+            return 0;
         }
         else{
-            if (getMenu().getOutros().contains(drink)){
-                throw new RuntimeException("drink already registered");
+            for(OtherProduct outroinmenu : getMenu().getOutros()){
+                if (outroinmenu.getName().equals(outro.getName())){
+                    outroinmenu.setPrice(outro.getPrice());
+                    JOptionPane.showMessageDialog(null, "Valor do produto atualizado com sucesso.");
+                    return 0;
+                }
             }
-            else{
             ArrayList<OtherProduct> newMenu = (ArrayList<OtherProduct>) getMenu().getOutros();
-            newMenu.add(drink);
+            newMenu.add(outro);
             getMenu().setOutros(newMenu);
-            }    
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso.");
+            return 1;
         }
     }
     
@@ -191,6 +196,20 @@ public class Pizzaria {
                 getEmployees().add(employee);
             }
         }
+    }
+    
+    public static Float calculatePizzaPrice(PizzaTaste pizza) {
+        Float maxPrice = 0f;
+        for (String taste : pizza.getTasteName()){
+            for (PizzaTaste pizzainmenu : getMenu().getPizzas()) {
+                if ((pizzainmenu.getTasteName()[0].equals(taste)) &&
+                        pizzainmenu.getSize() == pizza.getSize()){
+                    maxPrice = Float.max(maxPrice, pizzainmenu.getPrice());
+                    break;
+                }
+            }
+        }
+        return maxPrice;
     }
 
     public static Menu getMenu() {

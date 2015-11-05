@@ -37,17 +37,5 @@ public class PizzaTaste {
         this.size = size;
     }
     
-    public Float calculatePizzaPrice() {
-        Float maxPrice = 0f;
-        for (String taste : tastes){
-            for (PizzaTaste pizza : Pizzaria.getMenu().getPizzas()) {
-                if (pizza.getTasteName()[0].equals(taste)){
-                    maxPrice = Float.max(maxPrice, pizza.getPrice());
-                    break;
-                }
-            }
-        }
-        return maxPrice;
-    }
 
 }
