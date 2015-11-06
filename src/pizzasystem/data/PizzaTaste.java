@@ -1,5 +1,5 @@
 package pizzasystem.data;
-import newpackage.businesslogic.Pizzaria;
+import java.io.Serializable;
         
 public class PizzaTaste {
     

@@ -1,5 +1,6 @@
 package pizzasystem.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ClientRequest {

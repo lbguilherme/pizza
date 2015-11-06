@@ -1,5 +1,6 @@
 package newpackage.businesslogic;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -13,7 +14,7 @@ import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
 import pizzasystem.ui.MainFrame;
 
-public class Pizzaria {
+public class Pizzaria{
     private static ArrayList<Employee> employees = new ArrayList<>();
     private static ArrayList<Client> clients = new ArrayList<>();
     private static Menu menu = new Menu();
@@ -63,26 +64,38 @@ public class Pizzaria {
         }
     }
     
-    public static boolean doLogin(String user, String pass) {
-        if (currentUser != null)
-            throw new RuntimeException("Already logged in");
-        
+    public static int doLogin(String user, String pass) {
+        if (getCurrentUser() != null){
+            JOptionPane.showMessageDialog(null, "Já existe um usuario logado!");
+            return 0;
+        }
         PasswordHasher hasher = new PasswordHasher();
         String passHash = hasher.hash(pass);
         for (Employee emp : getEmployees()) {
             if (emp.getUser().equals(user) && emp.getHashPass().equals(passHash)) {
-                currentUser = emp;
-                return true;
+                setCurrentUser(emp);
+                switch (getCurrentUser().getRole()){
+                    case Admin:
+                        return 1;
+                    case Attendant:
+                        return 2;
+                    case Cook:
+                        return 3;
+                    case Delivery:
+                        return 4;
+                    default:
+                        return 0;
+                }
             }
         }
-        return false;
+        return 0;
     }
     
     public static Employee.Role currentEmployeeRole() {
-        if (currentUser == null)
+        if (getCurrentUser() == null)
             throw new RuntimeException("Not logged in");
         
-        return currentUser.getRole();
+        return getCurrentUser().getRole();
     }
     
     public static void addClient(Client client) {
@@ -179,21 +192,22 @@ public class Pizzaria {
     
     public static void registerEmployee(Employee employee){
         if (employee == null){
-            throw new RuntimeException("Can't insert null drink");
+            throw new RuntimeException("Can't insert null employee");
         }
         else{
             if (employee.getAddress() == null ||
-            employee.getCep() == null ||
-            employee.getCpf() == null ||
-    employee.getPhoneNumber() == null ||
-           employee.getName() == null ||
-       employee.getHashPass() == null ||
+            employee.getCep().equals("") ||
+            employee.getCpf().equals("") ||
+    employee.getPhoneNumber().equals("") ||
+           employee.getName().equals("") ||
+       employee.getHashPass().equals("") ||
            employee.getRole() == null ||
-           employee.getUser() == null){
-                throw new RuntimeException("Unable to register employee, employee data missing.");
+           employee.getUser().equals("")){
+                JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar funcionario, há informações faltando");
             }
             else{
                 getEmployees().add(employee);
+                JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso.");
             }
         }
     }
@@ -214,5 +228,24 @@ public class Pizzaria {
 
     public static Menu getMenu() {
         return menu;
+    }
+
+
+    public static void setMenu(Menu aMenu) {
+        menu = aMenu;
+    }
+
+    /**
+     * @return the currentUser
+     */
+    public static Employee getCurrentUser() {
+        return currentUser;
+    }
+
+    /**
+     * @param aCurrentUser the currentUser to set
+     */
+    public static void setCurrentUser(Employee aCurrentUser) {
+        currentUser = aCurrentUser;
     }
 }

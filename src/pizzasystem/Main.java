@@ -1,23 +1,53 @@
 package pizzasystem;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import newpackage.businesslogic.Pizzaria;
-import pizzasystem.data.Client;
-import pizzasystem.data.PizzaTaste;
-import pizzasystem.data.PizzaTaste.Size;
+import pizzasystem.data.Menu;
+import java.lang.NullPointerException;
+import pizzasystem.data.Employee;
+import pizzasystem.utility.PasswordHasher;
 
-import newpackage.businesslogic.Pizzaria;
 
 public class Main {
+    
+    public static void saveField(String fieldName, Object fieldValue) throws IOException {
+      FileOutputStream fos = new FileOutputStream(new File("MyClass-" + fieldName + ".dat"));
+      ObjectOutputStream oos = new ObjectOutputStream(fos);
+      oos.writeObject(fieldValue);
+      oos.close();
+    }
 
+
+    public static Object readField(String fieldName) throws IOException, ClassNotFoundException {
+      FileInputStream fis = new FileInputStream(new File("MyClass-" + fieldName + ".dat"));
+      ObjectInputStream ois = new ObjectInputStream(fis);
+      Object value = ois.readObject();
+      ois.close();
+
+      return value;
+    }
+    
     public static void main(String[] args) {
+        if (Pizzaria.getEmployees().isEmpty()) {
+            Employee admin = new Employee();
+            admin.setName("admin");
+            admin.setUser("admin");
+            admin.setHashPass(new PasswordHasher().hash("admin"));
+            admin.setAddress("");
+            admin.setCep("");
+            admin.setPhoneNumber("");
+            admin.setCpf("");
+            admin.setRole(Employee.Role.Admin);
+            Pizzaria.getEmployees().add(admin);
+        }
         pizzasystem.ui.MainFrame.main(null);
-        //test para ui
-        //PizzaTaste newpizza  = new PizzaTaste();
-       // newpizza.setTastes(new String[] {"bisnaga", "", ""});
-       // newpizza.setPrice(25f);
-       // newpizza.setSize(Size.Family);
-       // Pizzaria.registerPizza(newpizza);
     }
     
 }

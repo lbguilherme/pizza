@@ -1,6 +1,8 @@
 package pizzasystem.data;
 
-public class Employee extends Person {
+import java.io.Serializable;
+
+public class Employee extends Person{
     
     public enum Role {
         Admin,

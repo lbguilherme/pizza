@@ -1,6 +1,8 @@
 package pizzasystem.data;
 
-public class OtherProduct {
+import java.io.Serializable;
+
+public class OtherProduct{
     private String name;
     private Float price;
 

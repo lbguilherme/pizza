@@ -1,11 +1,12 @@
 package pizzasystem.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Menu {
+public class Menu{
     
-    private ArrayList<PizzaTaste> pizzas = new ArrayList<>();
-    private ArrayList<OtherProduct> outros = new ArrayList<>();
+    private transient ArrayList<PizzaTaste> pizzas = new ArrayList<>();
+    private transient ArrayList<OtherProduct> outros = new ArrayList<>();
 
     public ArrayList<PizzaTaste> getPizzas() {
         return pizzas;
