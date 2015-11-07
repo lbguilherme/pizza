@@ -4,7 +4,7 @@ import static java.lang.reflect.Array.set;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-import newpackage.businesslogic.Pizzaria;
+import businesslogic.Pizzaria;
 import pizzasystem.data.OtherProduct;
 import pizzasystem.data.PizzaTaste;
 /*

@@ -5,7 +5,7 @@
  */
 package pizzasystem.ui;
 import java.io.IOException;
-import newpackage.businesslogic.Pizzaria;
+import businesslogic.Pizzaria;
 import pizzasystem.data.Client;
 import java.util.ArrayList;
 import java.util.logging.Level;

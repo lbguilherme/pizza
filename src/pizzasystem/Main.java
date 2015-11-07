@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import newpackage.businesslogic.Pizzaria;
+import businesslogic.Pizzaria;
 import pizzasystem.data.Menu;
 import java.lang.NullPointerException;
 import pizzasystem.data.Employee;
