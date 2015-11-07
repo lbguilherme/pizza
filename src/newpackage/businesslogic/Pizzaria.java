@@ -15,42 +15,42 @@ import pizzasystem.utility.PasswordHasher;
 import pizzasystem.ui.MainFrame;
 
 public class Pizzaria{
-    private static ArrayList<Employee> employees = new ArrayList<>();
-    private static ArrayList<Client> clients = new ArrayList<>();
-    private static Menu menu = new Menu();
-    private static Queue<ClientRequest> requests = new ArrayDeque<>();
+    private ArrayList<Employee> employees = new ArrayList<>();
+    private ArrayList<Client> clients = new ArrayList<>();
+    private Menu menu = new Menu();
+    private Queue<ClientRequest> requests = new ArrayDeque<>();
 
     /**
      * @return the employees
      */
-    public static ArrayList<Employee> getEmployees() {
+    public ArrayList<Employee> getEmployees() {
         return employees;
     }
 
     /**
      * @param aEmployees the employees to set
      */
-    public static void setEmployees(ArrayList<Employee> aEmployees) {
+    public void setEmployees(ArrayList<Employee> aEmployees) {
         employees = aEmployees;
     }
 
     /**
      * @return the clients
      */
-    public static ArrayList<Client> getClients() {
+    public ArrayList<Client> getClients() {
         return clients;
     }
 
     /**
      * @param aClients the clients to set
      */
-    public static void setClients(ArrayList<Client> aClients) {
+    public void setClients(ArrayList<Client> aClients) {
         clients = aClients;
     }
     
-    private static Employee currentUser;
+    private Employee currentUser;
     
-    public static void Pizzaria() {
+    public void Pizzaria() {
         if (employees.isEmpty()) {
             Employee admin = new Employee();
             admin.setName("admin");
@@ -64,7 +64,7 @@ public class Pizzaria{
         }
     }
     
-    public static int doLogin(String user, String pass) {
+    public int doLogin(String user, String pass) {
         if (getCurrentUser() != null){
             JOptionPane.showMessageDialog(null, "Já existe um usuario logado!");
             return 0;
@@ -91,14 +91,14 @@ public class Pizzaria{
         return 0;
     }
     
-    public static Employee.Role currentEmployeeRole() {
+    public Employee.Role currentEmployeeRole() {
         if (getCurrentUser() == null)
             throw new RuntimeException("Not logged in");
         
         return getCurrentUser().getRole();
     }
     
-    public static void addClient(Client client) {
+    public void addClient(Client client) {
         if (client == null){
             throw new RuntimeException("Can't insert null Client");
         }else{
@@ -120,7 +120,7 @@ public class Pizzaria{
         }
     }   
     
-    public static Client findClient(String phoneNumber) {
+    public Client findClient(String phoneNumber) {
         for (Client client : getClients()) {
             if (client.getPhoneNumber().equals(phoneNumber)) {
                 return client;
@@ -129,14 +129,14 @@ public class Pizzaria{
         return null;
     }
     
-    public static void addClientRequest(ClientRequest request) {
+    public void addClientRequest(ClientRequest request) {
         if (request == null)
             throw new RuntimeException("Can't insert null ClientRequest");
         
         addClient(request.getClient());
     }
     
-    public static int registerPizza(PizzaTaste pizza){
+    public int registerPizza(PizzaTaste pizza){
         boolean atualizada = false;
         if (pizza.getTasteName()[0].equals("") ||
                 pizza.getPrice() == null ||
@@ -168,7 +168,7 @@ public class Pizzaria{
             return 1;
     }
         
-    public static int registerOutro(OtherProduct outro){
+    public int registerOutro(OtherProduct outro){
         if ((outro.getName() == null) ||
                 (outro.getPrice() == null)){
             JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar o produto, há informações faltando!");
@@ -190,7 +190,7 @@ public class Pizzaria{
         }
     }
     
-    public static void registerEmployee(Employee employee){
+    public void registerEmployee(Employee employee){
         if (employee == null){
             throw new RuntimeException("Can't insert null employee");
         }
@@ -212,7 +212,7 @@ public class Pizzaria{
         }
     }
     
-    public static Float calculatePizzaPrice(PizzaTaste pizza) {
+    public Float calculatePizzaPrice(PizzaTaste pizza) {
         Float maxPrice = 0f;
         for (String taste : pizza.getTasteName()){
             for (PizzaTaste pizzainmenu : getMenu().getPizzas()) {
@@ -226,26 +226,26 @@ public class Pizzaria{
         return maxPrice;
     }
 
-    public static Menu getMenu() {
+    public Menu getMenu() {
         return menu;
     }
 
 
-    public static void setMenu(Menu aMenu) {
+    public void setMenu(Menu aMenu) {
         menu = aMenu;
     }
 
     /**
      * @return the currentUser
      */
-    public static Employee getCurrentUser() {
+    public Employee getCurrentUser() {
         return currentUser;
     }
 
     /**
      * @param aCurrentUser the currentUser to set
      */
-    public static void setCurrentUser(Employee aCurrentUser) {
+    public void setCurrentUser(Employee aCurrentUser) {
         currentUser = aCurrentUser;
     }
 }

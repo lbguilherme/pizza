@@ -29,7 +29,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public static String[] getTasteList(){
         ArrayList<String> tastes = new ArrayList<>();
-        for (PizzaTaste pizza : Pizzaria.getMenu().getPizzas()){
+        for (PizzaTaste pizza : Main.getPizzaria().getMenu().getPizzas()){
             tastes.add(pizza.getTasteName()[0]);
         }
         String[] tastesarray = new String[tastes.size()];
@@ -39,7 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public static String[] getDrinkList(){
         ArrayList<String> drinks = new ArrayList<>();
-        for (OtherProduct drink : Pizzaria.getMenu().getOutros()){
+        for (OtherProduct drink : Main.getPizzaria().getMenu().getOutros()){
             drinks.add(drink.getName());
         }
         return drinks.toArray(new String[drinks.size()]);
@@ -1299,7 +1299,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginForm_LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_LoginButtonActionPerformed
-        this.LoginPower = Pizzaria.doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
+        this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
         switch(this.LoginPower) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Não foi possivel fazer login");
@@ -1344,7 +1344,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AtendenteForm_RegisterOrderActionPerformed
 
     private void AtendenteForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_LogoutActionPerformed
-        Pizzaria.setCurrentUser(null);
+        Main.getPizzaria().setCurrentUser(null);
         this.Logout();
     }//GEN-LAST:event_AtendenteForm_LogoutActionPerformed
 
@@ -1374,7 +1374,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AdminForm_FinishOrderActionPerformed
 
     private void AdminForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_LogoutActionPerformed
-        Pizzaria.setCurrentUser(null);
+        Main.getPizzaria().setCurrentUser(null);
         this.Logout();
     }//GEN-LAST:event_AdminForm_LogoutActionPerformed
 
@@ -1384,7 +1384,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PizzaioloForm_FinishPizzaActionPerformed
 
     private void PizzaioloForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaioloForm_LogoutActionPerformed
-        Pizzaria.setCurrentUser(null);
+        Main.getPizzaria().setCurrentUser(null);
         this.Logout();
     }//GEN-LAST:event_PizzaioloForm_LogoutActionPerformed
 
@@ -1394,7 +1394,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_EntregadorForm_FinishOrderActionPerformed
 
     private void EntregadorForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregadorForm_LogoutActionPerformed
-        Pizzaria.setCurrentUser(null);
+        Main.getPizzaria().setCurrentUser(null);
         this.Logout();
     }//GEN-LAST:event_EntregadorForm_LogoutActionPerformed
 
@@ -1430,7 +1430,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void RegisterOrder_SearchClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_SearchClientButtonActionPerformed
         String number = (RegisterOrder_PhoneNumberField.getText());
-        Client client = Pizzaria.findClient(number);
+        Client client = Main.getPizzaria().findClient(number);
         RegisterOrder_AddressField.setText(client.getAddress());
         RegisterOrder_CEPField.setText(client.getCep());
         RegisterOrder_NameField.setText(client.getName()); 
@@ -1443,7 +1443,7 @@ public class MainFrame extends javax.swing.JFrame {
         clienttoadd.setCep(RegisterOrder_CEPField.getText());
         clienttoadd.setName(RegisterOrder_NameField.getText());
         clienttoadd.setPhoneNumber(RegisterOrder_PhoneNumberField.getText());
-        Pizzaria.addClient(clienttoadd);    
+        Main.getPizzaria().addClient(clienttoadd);    
     }//GEN-LAST:event_RegisterOrder_UpdateClientButtonActionPerformed
 
     private void RegisterPizza_RegisterPizzaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_RegisterPizzaButtonActionPerformed
@@ -1453,7 +1453,7 @@ public class MainFrame extends javax.swing.JFrame {
         String[] tastes = new String[3];
         tastes[0] = RegisterPizza_TasteField.getText(); 
         newpizza.setTastes(tastes);
-        if (Pizzaria.registerPizza(newpizza) == 1){
+        if (Main.getPizzaria().registerPizza(newpizza) == 1){
             RegisterOrder_TasteField1.addItem(newpizza.getTasteName()[0]);
             RegisterOrder_TasteField2.addItem(newpizza.getTasteName()[0]);
             RegisterOrder_TasteField3.addItem(newpizza.getTasteName()[0]);
@@ -1480,7 +1480,7 @@ public class MainFrame extends javax.swing.JFrame {
         OtherProduct outro = new OtherProduct();
         outro.setName(RegisterPizza_OutroNameField.getText());
         outro.setPrice(Float.parseFloat(RegisterPizza_OutroPriceField.getText()));
-        if (Pizzaria.registerOutro(outro) == 1){
+        if (Main.getPizzaria().registerOutro(outro) == 1){
            RegisterOrder_OutroField.addItem(outro.getName()); 
         }
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButton1ActionPerformed
@@ -1496,7 +1496,7 @@ public class MainFrame extends javax.swing.JFrame {
         newemployee.setPhoneNumber(RegisterUser_AddressField.getText());
         newemployee.setRole((Role) RegisterUser_RoleField.getSelectedItem());
         newemployee.setUser(RegisterUser_UserField.getText());
-        Pizzaria.registerEmployee(newemployee);
+        Main.getPizzaria().registerEmployee(newemployee);
     }//GEN-LAST:event_RegisterUser_RegisterUserButtonActionPerformed
 
     private void RegisterUser_RoleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RoleFieldActionPerformed
@@ -1798,7 +1798,7 @@ public class MainFrame extends javax.swing.JFrame {
         pizza.setTastes(new String[] {(String) RegisterOrder_TasteField1.getSelectedItem(),
             (String) RegisterOrder_TasteField2.getSelectedItem(),
             (String) RegisterOrder_TasteField3.getSelectedItem()});
-        Float price = Pizzaria.calculatePizzaPrice(pizza);
+        Float price = Main.getPizzaria().calculatePizzaPrice(pizza);
         RegisterOrder_PriceField.setText(String.valueOf(price));
     }
 }

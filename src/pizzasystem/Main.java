@@ -17,6 +17,8 @@ import pizzasystem.utility.PasswordHasher;
 
 public class Main {
     
+    private static Pizzaria pizzaria = new Pizzaria();
+    
     public static void saveField(String fieldName, Object fieldValue) throws IOException {
       FileOutputStream fos = new FileOutputStream(new File("MyClass-" + fieldName + ".dat"));
       ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -35,7 +37,7 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        if (Pizzaria.getEmployees().isEmpty()) {
+        if (pizzaria.getEmployees().isEmpty()) {
             Employee admin = new Employee();
             admin.setName("admin");
             admin.setUser("admin");
@@ -45,9 +47,23 @@ public class Main {
             admin.setPhoneNumber("");
             admin.setCpf("");
             admin.setRole(Employee.Role.Admin);
-            Pizzaria.getEmployees().add(admin);
+            pizzaria.getEmployees().add(admin);
         }
         pizzasystem.ui.MainFrame.main(null);
+    }
+
+    /**
+     * @return the pizzaria
+     */
+    public static Pizzaria getPizzaria() {
+        return pizzaria;
+    }
+
+    /**
+     * @param pizzaria the pizzaria to set
+     */
+    public static void setPizzaria(Pizzaria pizzaria) {
+        Main.pizzaria = pizzaria;
     }
     
 }
