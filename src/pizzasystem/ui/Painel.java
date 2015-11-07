@@ -7,6 +7,7 @@ import javax.swing.JComboBox;
 import businesslogic.Pizzaria;
 import pizzasystem.data.OtherProduct;
 import pizzasystem.data.PizzaTaste;
+import pizzasystem.Main;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,7 +35,7 @@ public class Painel extends javax.swing.JFrame {
     
     public static String[] getTasteList(){
         ArrayList<String> tastes = new ArrayList<>();
-        for (PizzaTaste pizza : Pizzaria.getMenu().getPizzas()){
+        for (PizzaTaste pizza : Main.getPizzaria().getMenu().getPizzas()){
             tastes.add(pizza.getTasteName()[0]);
         }
         return tastes.toArray(new String[tastes.size()]);
@@ -42,7 +43,7 @@ public class Painel extends javax.swing.JFrame {
     
     public static String[] getDrinkList(){
         ArrayList<String> drinks = new ArrayList<>();
-        for (OtherProduct drink : Pizzaria.getMenu().getOutros()){
+        for (OtherProduct drink : Main.getPizzaria().getMenu().getOutros()){
             drinks.add(drink.getName());
         }
         return drinks.toArray(new String[drinks.size()]);
