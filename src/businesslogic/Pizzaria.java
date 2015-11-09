@@ -48,21 +48,8 @@ public class Pizzaria{
         clients = aClients;
     }
     
+
     private Employee currentUser;
-    
-    public void Pizzaria() {
-        if (employees.isEmpty()) {
-            Employee admin = new Employee();
-            admin.setName("admin");
-            admin.setUser("admin");
-            admin.setHashPass(new PasswordHasher().hash("admin"));
-            admin.setAddress("");
-            admin.setCep("");
-            admin.setPhoneNumber("");
-            admin.setCpf("");
-            employees.add(admin);
-        }
-    }
     
     public int doLogin(String user, String pass) {
         if (getCurrentUser() != null){
