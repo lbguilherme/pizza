@@ -7,6 +7,9 @@ package pizzasystem.ui;
 import java.io.IOException;
 import businesslogic.Pizzaria;
 import com.sun.glass.events.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayDeque;
 import pizzasystem.data.Client;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -16,6 +19,7 @@ import javafx.scene.input.KeyCode;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import pizzasystem.data.OtherProduct;
 import pizzasystem.data.PizzaTaste;
@@ -57,11 +61,20 @@ public class MainFrame extends javax.swing.JFrame {
      */
      // para diferentes usuarios quando voltar a tela
     
+    Timer timer;
+    
     public MainFrame() {
         initComponents();
         MainJPanel.removeAll();
         MainJPanel.add(Login);
         MainJPanel.revalidate();
+        timer = new Timer(5000,new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
+            }
+        });
+        timer.start();
     }
 
     private int LoginPower = 0;
@@ -344,7 +357,7 @@ public class MainFrame extends javax.swing.JFrame {
         AdminForm_Name.setText("Administrador: Nome");
 
         Orders_Table.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        Orders_Table.setModel(new DefaultTableModel());
+        Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
         AdminForm_Orders.setViewportView(Orders_Table);
 
         AdminForm_OrdersLabel.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -1411,12 +1424,12 @@ public class MainFrame extends javax.swing.JFrame {
         Request.setStatus(Status.Requested);
         Request.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText())); // seta o client
         Queue<ClientRequest> newRequests = Main.getPizzaria().getRequests();
-        newRequests.add(Main.getPizzaria().getCurrentRequest());
+        newRequests.add(Request);
         Main.getPizzaria().setRequests(newRequests); // add o request para lista de requests
         Main.getPizzaria().setOrdering(false); // ordering false
         RegisterOrder_ItensList2.setModel(new DefaultListModel()); // lista limpa
         //Main.getPizzaria().setCurrentRequest(new ClientRequest());
-        
+        Main.getPizzaria().setCurrentRequest(new ClientRequest());
     }//GEN-LAST:event_RegisterOrder_RegisterOrderButtonActionPerformed
 
     private void LoginForm_PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldKeyPressed
@@ -1430,6 +1443,40 @@ public class MainFrame extends javax.swing.JFrame {
         setPizzaPrice();
     }//GEN-LAST:event_RegisterOrder_SizeFieldActionPerformed
 
+    private String[][] showRequests(){
+        Queue<ClientRequest> requests = Main.getPizzaria().getRequests();
+        Queue<ClientRequest> copiedRequests = new ArrayDeque<>(requests);
+        ClientRequest request;
+        String[][] output2;
+        ArrayList<String[]> output = new ArrayList<>();
+        ArrayList<ClientRequest> requestsList = new ArrayList<>();
+        while(copiedRequests.peek() != null){
+            request = copiedRequests.poll();
+            requestsList.add(request);
+        }
+        for(ClientRequest requestL : requestsList){
+            String[] row = new String[2];
+            row[0] = requestL.getStatus().toString();
+            for(PizzaTaste pizza : requestL.getPizzas()){
+                if(row[1] == null){
+                    row[1] = "*" + pizza.getTasteName()[0] + pizza.getTasteName()[1] + pizza.getTasteName()[2] + "*";
+                }else{
+                    row[1] += "*" + pizza.getTasteName()[0] + pizza.getTasteName()[1] + pizza.getTasteName()[2] + "*";
+                }
+            }
+            for(OtherProduct outro : requestL.getOutros()){
+                if(row[1] == null){
+                    row[1] = "*" + outro.getName() + "*";
+                }else{
+                    row[1] += "*" + outro.getName() + "*";
+                }
+            }
+            output.add(row);
+        }
+        output2 = output.toArray(new String[requestsList.size()][]);
+        return output2;
+    }
+    
     private void RegisterOrder() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
@@ -1471,7 +1518,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void FinishPizza() {
-        Main.getPizzaria().getRequests().peek().setStatus(Status.ReadyForDelivery);
+        Main.getPizzaria().finishPizza();
     }
     
     private void FinishOrder() {

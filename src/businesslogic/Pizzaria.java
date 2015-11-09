@@ -3,10 +3,12 @@ package businesslogic;
 import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Queue;
 import javax.swing.JOptionPane;
 import pizzasystem.data.Client;
 import pizzasystem.data.ClientRequest;
+import pizzasystem.data.ClientRequest.Status;
 import pizzasystem.data.OtherProduct;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Menu;
@@ -300,5 +302,22 @@ public class Pizzaria{
      */
     public void setRequests(Queue<ClientRequest> requests) {
         this.requests = requests;
+    }
+    
+    public void finishPizza() {
+        Iterator<ClientRequest> oi = this.getRequests().iterator();
+        ClientRequest atual;
+        
+        while(oi.hasNext()) {
+            atual = oi.next();
+            if(atual.getStatus() == Status.Requested) {
+                atual.setStatus(Status.ReadyForDelivery);
+                break;
+            }
+        }
+    }
+    
+    public void finishOrder() {
+        
     }
 }
