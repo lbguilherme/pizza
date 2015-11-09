@@ -10,6 +10,7 @@ import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayDeque;
+import java.sql.SQLException;
 import pizzasystem.data.Client;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -1212,7 +1213,48 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginForm_LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_LoginButtonActionPerformed
-        Login();
+        try {
+            this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
+        switch(this.LoginPower) {
+            case 0:
+                JOptionPane.showMessageDialog(null, "Não foi possivel fazer login");
+                return;
+            case 1:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Admin);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                return;
+            case 2:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Atendente);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                return;
+            case 3:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Pizzaiolo);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                return;
+            case 4:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Entregador);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+        }
     }//GEN-LAST:event_LoginForm_LoginButtonActionPerformed
 
     private void AtendenteForm_RegisterOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_RegisterOrderActionPerformed
@@ -1360,10 +1402,15 @@ public class MainFrame extends javax.swing.JFrame {
         newemployee.setCpf(RegisterUser_CPFField.getText());
         newemployee.setHashPass(hasher.hash(RegisterUser_PasswordField.getText()));
         newemployee.setName(RegisterUser_NameField.getText());
-        newemployee.setPhoneNumber(RegisterUser_AddressField.getText());
+        newemployee.setPhoneNumber(RegisterUser_PhoneNumberField.getText());
         newemployee.setRole((Role) RegisterUser_RoleField.getSelectedItem());
         newemployee.setUser(RegisterUser_UserField.getText());
-        Main.getPizzaria().registerEmployee(newemployee);
+        try {
+            Main.getPizzaria().registerEmployee(newemployee);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
     }//GEN-LAST:event_RegisterUser_RegisterUserButtonActionPerformed
 
     private void RegisterUser_RoleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RoleFieldActionPerformed
@@ -1435,7 +1482,11 @@ public class MainFrame extends javax.swing.JFrame {
     private void LoginForm_PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           Login();
+            try {
+                Login();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_LoginForm_PasswordFieldKeyPressed
 
@@ -1535,7 +1586,7 @@ public class MainFrame extends javax.swing.JFrame {
             MainJPanel.revalidate();
     }
     
-    private void Login() {
+    private void Login() throws SQLException {
         this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
         switch(this.LoginPower) {
             case 0:
