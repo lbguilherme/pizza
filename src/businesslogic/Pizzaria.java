@@ -318,6 +318,18 @@ public class Pizzaria{
     }
     
     public void finishOrder() {
+        if (this.getRequests().peek().getStatus() == Status.Delivered){
+            ClientRequest removed = this.getRequests().poll();
+        }
+        Iterator<ClientRequest> oi = this.getRequests().iterator();
+        ClientRequest atual;
         
+        while(oi.hasNext()) {
+            atual = oi.next();
+            if(atual.getStatus() == Status.ReadyForDelivery) {
+                atual.setStatus(Status.Delivered);
+                break;
+            }
+        }
     }
 }

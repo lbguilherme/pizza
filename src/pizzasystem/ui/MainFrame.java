@@ -1522,7 +1522,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void FinishOrder() {
-        Main.getPizzaria().getRequests().peek().setStatus(Status.Delivered);
+        Main.getPizzaria().finishOrder();
     }
     
     private void Logout() {
