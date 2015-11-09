@@ -1,6 +1,12 @@
 package businesslogic;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -19,7 +25,19 @@ public class Pizzaria{
     private ArrayList<Client> clients = new ArrayList<>();
     private Menu menu = new Menu();
     private Queue<ClientRequest> requests = new ArrayDeque<>();
+    private Connection db;
 
+    private Connection getDb() throws SQLException {
+        if (db == null) {
+            String url = "jdbc:mysql://45.55.166.39:3306/pizza";
+            String user = "root";
+            String password = "pizza";
+            db = DriverManager.getConnection(url, user, password);
+        }
+        
+        return db;
+    } 
+    
     /**
      * @return the employees
      */
@@ -47,44 +65,43 @@ public class Pizzaria{
     public void setClients(ArrayList<Client> aClients) {
         clients = aClients;
     }
-    
 
     private Employee currentUser;
-    
-    public int doLogin(String user, String pass) {
-        if (getCurrentUser() != null){
+
+    public int doLogin(String user, String pass) throws SQLException {
+        if (getCurrentUser() != null) {
             JOptionPane.showMessageDialog(null, "Já existe um usuario logado!");
             return 0;
         }
         PasswordHasher hasher = new PasswordHasher();
         String passHash = hasher.hash(pass);
-        for (Employee emp : getEmployees()) {
-            if (emp.getUser().equals(user) && emp.getHashPass().equals(passHash)) {
-                setCurrentUser(emp);
-                switch (getCurrentUser().getRole()){
-                    case Admin:
-                        return 1;
-                    case Attendant:
-                        return 2;
-                    case Cook:
-                        return 3;
-                    case Delivery:
-                        return 4;
-                    default:
-                        return 0;
-                }
+        
+        Employee emp = Employee.fetch(getDb(), user);
+        if (emp != null && emp.getHashPass().equals(passHash)) {
+            setCurrentUser(emp);
+            switch (getCurrentUser().getRole()){
+                case Admin:
+                    return 1;
+                case Attendant:
+                    return 2;
+                case Cook:
+                    return 3;
+                case Delivery:
+                    return 4;
+                default:
+                    return 0;
             }
         }
         return 0;
     }
-    
+
     public Employee.Role currentEmployeeRole() {
         if (getCurrentUser() == null)
             throw new RuntimeException("Not logged in");
-        
+
         return getCurrentUser().getRole();
     }
-    
+
     public void addClient(Client client) {
         if (client == null){
             throw new RuntimeException("Can't insert null Client");
@@ -105,8 +122,8 @@ public class Pizzaria{
                 JOptionPane.showMessageDialog(null, "Cliente cadastrado/atualizado com sucesso");
             }
         }
-    }   
-    
+    }
+
     public Client findClient(String phoneNumber) {
         for (Client client : getClients()) {
             if (client.getPhoneNumber().equals(phoneNumber)) {
@@ -115,14 +132,14 @@ public class Pizzaria{
         }
         return null;
     }
-    
+
     public void addClientRequest(ClientRequest request) {
         if (request == null)
             throw new RuntimeException("Can't insert null ClientRequest");
-        
+
         addClient(request.getClient());
     }
-    
+
     public int registerPizza(PizzaTaste pizza){
         boolean atualizada = false;
         if (pizza.getTasteName()[0].equals("") ||
@@ -154,7 +171,7 @@ public class Pizzaria{
         JOptionPane.showMessageDialog(null, "Pizza cadastrada com sucesso.");
             return 1;
     }
-        
+
     public int registerOutro(OtherProduct outro){
         if ((outro.getName() == null) ||
                 (outro.getPrice() == null)){
@@ -176,8 +193,8 @@ public class Pizzaria{
             return 1;
         }
     }
-    
-    public void registerEmployee(Employee employee){
+
+    public void registerEmployee(Employee employee) throws SQLException {
         if (employee == null){
             throw new RuntimeException("Can't insert null employee");
         }
@@ -193,12 +210,13 @@ public class Pizzaria{
                 JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar funcionario, há informações faltando");
             }
             else{
-                getEmployees().add(employee);
+                employee.save(getDb());
+
                 JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso.");
             }
         }
     }
-    
+
     public Float calculatePizzaPrice(PizzaTaste pizza) {
         Float maxPrice = 0f;
         for (String taste : pizza.getTasteName()){

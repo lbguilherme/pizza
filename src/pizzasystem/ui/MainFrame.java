@@ -6,6 +6,7 @@
 package pizzasystem.ui;
 import java.io.IOException;
 import businesslogic.Pizzaria;
+import java.sql.SQLException;
 import pizzasystem.data.Client;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -1299,7 +1300,12 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginForm_LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_LoginButtonActionPerformed
-        this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
+        try {
+            this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
         switch(this.LoginPower) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Não foi possivel fazer login");
@@ -1493,10 +1499,15 @@ public class MainFrame extends javax.swing.JFrame {
         newemployee.setCpf(RegisterUser_CPFField.getText());
         newemployee.setHashPass(hasher.hash(RegisterUser_PasswordField.getText()));
         newemployee.setName(RegisterUser_NameField.getText());
-        newemployee.setPhoneNumber(RegisterUser_AddressField.getText());
+        newemployee.setPhoneNumber(RegisterUser_PhoneNumberField.getText());
         newemployee.setRole((Role) RegisterUser_RoleField.getSelectedItem());
         newemployee.setUser(RegisterUser_UserField.getText());
-        Main.getPizzaria().registerEmployee(newemployee);
+        try {
+            Main.getPizzaria().registerEmployee(newemployee);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
     }//GEN-LAST:event_RegisterUser_RegisterUserButtonActionPerformed
 
     private void RegisterUser_RoleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RoleFieldActionPerformed
