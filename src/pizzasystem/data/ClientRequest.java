@@ -4,12 +4,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ClientRequest {
+
+    /**
+     * @return the pizzas
+     */
+    public ArrayList<PizzaTaste> getPizzas() {
+        return pizzas;
+    }
+
+    /**
+     * @param pizzas the pizzas to set
+     */
+    public void setPizzas(ArrayList<PizzaTaste> pizzas) {
+        this.pizzas = pizzas;
+    }
     
     public enum Status {
         Requested,
-        Cooking,
         ReadyForDelivery,
-        OnTheWay,
         Delivered
     }
     
@@ -21,8 +33,8 @@ public class ClientRequest {
     public Float getTotalPrice() {
         Float pizzaPrice = 0f;
         Float outroPrice = 0f;
-        if (pizzas != null){
-            for (PizzaTaste pizza : pizzas){
+        if (getPizzas() != null){
+            for (PizzaTaste pizza : getPizzas()){
                 pizzaPrice += pizza.getPrice();
             }
         }
@@ -36,22 +48,22 @@ public class ClientRequest {
     
     
     public PizzaTaste.Size getPizzaSize() {
-        if (pizzas == null) return null;
-        return pizzas.get(0).getSize();
+        if (getPizzas() == null) return null;
+        return getPizzas().get(0).getSize();
     }
     
     public void addPizza(PizzaTaste pizza) {
-        if (pizzas == null) {
-            pizzas = new ArrayList<>();
+        if (getPizzas() == null) {
+            setPizzas(new ArrayList<>());
         } else {
             if (!pizza.getSize().equals(pizzas.get(0).getSize()))
                 throw new RuntimeException();
         }
-        pizzas.add(pizza);
+        getPizzas().add(pizza);
     }
     
     public boolean hasPizza() {
-        return pizzas != null;
+        return getPizzas() != null;
     }
 
     public ArrayList<OtherProduct> getOutros() {

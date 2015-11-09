@@ -19,6 +19,9 @@ public class Pizzaria{
     private ArrayList<Client> clients = new ArrayList<>();
     private Menu menu = new Menu();
     private Queue<ClientRequest> requests = new ArrayDeque<>();
+    
+    private boolean ordering = false;
+    private ClientRequest currentRequest = new ClientRequest();
 
     /**
      * @return the employees
@@ -137,7 +140,6 @@ public class Pizzaria{
     }
     
     public int registerPizza(PizzaTaste pizza){
-        boolean atualizada = false;
         if (pizza.getTasteName()[0].equals("") ||
                 pizza.getPrice() == null ||
                 pizza.getSize() == null){
@@ -225,6 +227,15 @@ public class Pizzaria{
         }
         return maxPrice;
     }
+    
+    public Float getOtherPrice(String name){
+        for(OtherProduct outro : menu.getOutros()){
+            if (outro.getName().equals(name)){
+                return outro.getPrice();
+            }
+        }
+        return 0f;
+    }
 
     public Menu getMenu() {
         return menu;
@@ -247,5 +258,47 @@ public class Pizzaria{
      */
     public void setCurrentUser(Employee aCurrentUser) {
         currentUser = aCurrentUser;
+    }
+
+    /**
+     * @return the ordering
+     */
+    public boolean isOrdering() {
+        return ordering;
+    }
+
+    /**
+     * @param ordering the ordering to set
+     */
+    public void setOrdering(boolean ordering) {
+        this.ordering = ordering;
+    }
+
+    /**
+     * @return the currentRequest
+     */
+    public ClientRequest getCurrentRequest() {
+        return currentRequest;
+    }
+
+    /**
+     * @param currentRequest the currentRequest to set
+     */
+    public void setCurrentRequest(ClientRequest currentRequest) {
+        this.currentRequest = currentRequest;
+    }
+
+    /**
+     * @return the requests
+     */
+    public Queue<ClientRequest> getRequests() {
+        return requests;
+    }
+
+    /**
+     * @param requests the requests to set
+     */
+    public void setRequests(Queue<ClientRequest> requests) {
+        this.requests = requests;
     }
 }

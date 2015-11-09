@@ -6,16 +6,23 @@
 package pizzasystem.ui;
 import java.io.IOException;
 import businesslogic.Pizzaria;
+import com.sun.glass.events.KeyEvent;
 import pizzasystem.data.Client;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.input.KeyCode;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import pizzasystem.data.OtherProduct;
 import pizzasystem.data.PizzaTaste;
 import pizzasystem.data.PizzaTaste.Size;
 import pizzasystem.Main;
+import pizzasystem.data.ClientRequest;
+import pizzasystem.data.ClientRequest.Status;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Employee.Role;
 import pizzasystem.utility.PasswordHasher;
@@ -130,7 +137,7 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_RemoveItemButton = new javax.swing.JButton();
         RegisterOrder_ItemLabel = new javax.swing.JLabel();
         RegisterOrder_ItensList = new javax.swing.JScrollPane();
-        jList8 = new javax.swing.JList();
+        RegisterOrder_ItensList2 = new javax.swing.JList();
         RegisterOrder_DrinkLabel = new javax.swing.JLabel();
         RegisterOrder_AddDrinkButton = new javax.swing.JButton();
         RegisterOrder_SizeField = new javax.swing.JComboBox();
@@ -188,18 +195,6 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterPizza_TasteLabel7 = new javax.swing.JLabel();
         RegisterPizza_Title1 = new javax.swing.JLabel();
         RegisterPizza_RegisterPizzaButton1 = new javax.swing.JButton();
-        FinishPizza = new javax.swing.JPanel();
-        FinishPizza_Title = new javax.swing.JLabel();
-        FinishPizza_NumberLabel = new javax.swing.JLabel();
-        FinishPizza_NumberField = new javax.swing.JTextField();
-        FinishPizza_FinishPizzaButton = new javax.swing.JButton();
-        FinishPizza_BackButton = new javax.swing.JButton();
-        FinishOrder = new javax.swing.JPanel();
-        FinishOrder_Title = new javax.swing.JLabel();
-        FinishOrder_NumberLabel = new javax.swing.JLabel();
-        FinishOrder_NumberField = new javax.swing.JTextField();
-        FinishOrder_FinishOrderButton = new javax.swing.JButton();
-        FinishOrder_BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -218,6 +213,11 @@ public class MainFrame extends javax.swing.JFrame {
         LoginForm_PasswordLabel.setText("Senha");
 
         LoginForm_PasswordField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        LoginForm_PasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LoginForm_PasswordFieldKeyPressed(evt);
+            }
+        });
 
         LoginForm_LoginButton.setText("Login");
         LoginForm_LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -344,22 +344,7 @@ public class MainFrame extends javax.swing.JFrame {
         AdminForm_Name.setText("Administrador: Nome");
 
         Orders_Table.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        Orders_Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Número", "Telefone", "Status", "Valor", "Endereço", "Pedido"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        Orders_Table.setModel(new DefaultTableModel());
         AdminForm_Orders.setViewportView(Orders_Table);
 
         AdminForm_OrdersLabel.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -632,6 +617,11 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_SizeLabel.setText("Tamanho");
 
         RegisterOrder_RegisterOrderButton.setText("Realizar Pedido");
+        RegisterOrder_RegisterOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_RegisterOrderButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_SearchClientButton.setText("Procurar");
         RegisterOrder_SearchClientButton.addActionListener(new java.awt.event.ActionListener() {
@@ -657,18 +647,34 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_PizzaLabel.setText("Pizza");
 
         RegisterOrder_AddPizzaButton.setText("Adicionar");
+        RegisterOrder_AddPizzaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_AddPizzaButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_RemoveItemButton.setText("Remover");
 
         RegisterOrder_ItemLabel.setText("Itens");
 
-        RegisterOrder_ItensList.setViewportView(jList8);
+        RegisterOrder_ItensList2.setModel(new DefaultListModel());
+        RegisterOrder_ItensList.setViewportView(RegisterOrder_ItensList2);
 
         RegisterOrder_DrinkLabel.setText("Outros");
 
         RegisterOrder_AddDrinkButton.setText("Adicionar");
+        RegisterOrder_AddDrinkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_AddDrinkButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_SizeField.setModel(new DefaultComboBoxModel(PizzaTaste.Size.values()));
+        RegisterOrder_SizeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_SizeFieldActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_TasteField1.setModel(new DefaultComboBoxModel(getTasteList()));
         RegisterOrder_TasteField1.addActionListener(new java.awt.event.ActionListener() {
@@ -1178,112 +1184,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         MainJPanel.add(RegisterPizza, "card2");
 
-        FinishPizza_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        FinishPizza_Title.setText("Finalizar Pizza");
-
-        FinishPizza_NumberLabel.setText("Número");
-
-        FinishPizza_FinishPizzaButton.setText("Finalizar Pizza");
-
-        FinishPizza_BackButton.setText("Voltar");
-        FinishPizza_BackButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FinishPizza_BackButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout FinishPizzaLayout = new javax.swing.GroupLayout(FinishPizza);
-        FinishPizza.setLayout(FinishPizzaLayout);
-        FinishPizzaLayout.setHorizontalGroup(
-            FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FinishPizzaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FinishPizzaLayout.createSequentialGroup()
-                        .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FinishPizza_FinishPizzaButton)
-                            .addGroup(FinishPizzaLayout.createSequentialGroup()
-                                .addComponent(FinishPizza_NumberLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(FinishPizza_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(590, Short.MAX_VALUE))
-                    .addGroup(FinishPizzaLayout.createSequentialGroup()
-                        .addComponent(FinishPizza_Title)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(FinishPizza_BackButton)
-                        .addGap(40, 40, 40))))
-        );
-        FinishPizzaLayout.setVerticalGroup(
-            FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FinishPizzaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FinishPizza_Title)
-                    .addComponent(FinishPizza_BackButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FinishPizza_NumberLabel)
-                    .addComponent(FinishPizza_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FinishPizza_FinishPizzaButton)
-                .addContainerGap(392, Short.MAX_VALUE))
-        );
-
-        MainJPanel.add(FinishPizza, "card2");
-
-        FinishOrder_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        FinishOrder_Title.setText("Finalizar Pedido");
-
-        FinishOrder_NumberLabel.setText("Número");
-
-        FinishOrder_FinishOrderButton.setText("Finalizar Pedido");
-
-        FinishOrder_BackButton.setText("Voltar");
-        FinishOrder_BackButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FinishOrder_BackButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout FinishOrderLayout = new javax.swing.GroupLayout(FinishOrder);
-        FinishOrder.setLayout(FinishOrderLayout);
-        FinishOrderLayout.setHorizontalGroup(
-            FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FinishOrderLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FinishOrderLayout.createSequentialGroup()
-                        .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FinishOrder_FinishOrderButton)
-                            .addGroup(FinishOrderLayout.createSequentialGroup()
-                                .addComponent(FinishOrder_NumberLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(FinishOrder_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(590, Short.MAX_VALUE))
-                    .addGroup(FinishOrderLayout.createSequentialGroup()
-                        .addComponent(FinishOrder_Title)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(FinishOrder_BackButton)
-                        .addGap(40, 40, 40))))
-        );
-        FinishOrderLayout.setVerticalGroup(
-            FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FinishOrderLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FinishOrder_Title)
-                    .addComponent(FinishOrder_BackButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FinishOrder_NumberLabel)
-                    .addComponent(FinishOrder_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FinishOrder_FinishOrderButton)
-                .addContainerGap(392, Short.MAX_VALUE))
-        );
-
-        MainJPanel.add(FinishOrder, "card2");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1299,43 +1199,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginForm_LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_LoginButtonActionPerformed
-        this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
-        switch(this.LoginPower) {
-            case 0:
-                JOptionPane.showMessageDialog(null, "Não foi possivel fazer login");
-                return;
-            case 1:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Admin);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                return;
-            case 2:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Atendente);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                return;
-            case 3:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Pizzaiolo);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                return;
-            case 4:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Entregador);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-        }
+        Login();
     }//GEN-LAST:event_LoginForm_LoginButtonActionPerformed
 
     private void AtendenteForm_RegisterOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_RegisterOrderActionPerformed
@@ -1418,16 +1282,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.GoBack();
     }//GEN-LAST:event_RegisterPizza_BackButtonActionPerformed
 
-    private void FinishPizza_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishPizza_BackButtonActionPerformed
-        // TODO add your handling code here:
-        this.GoBack();
-    }//GEN-LAST:event_FinishPizza_BackButtonActionPerformed
-
-    private void FinishOrder_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishOrder_BackButtonActionPerformed
-        // TODO add your handling code here:
-        this.GoBack();
-    }//GEN-LAST:event_FinishOrder_BackButtonActionPerformed
-
     private void RegisterOrder_SearchClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_SearchClientButtonActionPerformed
         String number = (RegisterOrder_PhoneNumberField.getText());
         Client client = Main.getPizzaria().findClient(number);
@@ -1503,6 +1357,79 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RegisterUser_RoleFieldActionPerformed
 
+    private void RegisterOrder_AddPizzaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_AddPizzaButtonActionPerformed
+        DefaultListModel lista = (DefaultListModel) RegisterOrder_ItensList2.getModel();
+        lista.addElement(RegisterOrder_TasteField1.getSelectedItem() + ", " + RegisterOrder_TasteField2.getSelectedItem() + ", " + RegisterOrder_TasteField3.getSelectedItem());
+        RegisterOrder_ItensList2.setModel(lista);
+        if (!Main.getPizzaria().isOrdering()){
+            Main.getPizzaria().setOrdering(true);
+            PizzaTaste newPizza = new PizzaTaste();
+            newPizza.setTastes(new String[] {(String) RegisterOrder_TasteField1.getSelectedItem(),(String) RegisterOrder_TasteField2.getSelectedItem(),(String) RegisterOrder_TasteField3.getSelectedItem()});
+            newPizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
+            newPizza.setPrice(Main.getPizzaria().calculatePizzaPrice(newPizza));
+            ArrayList<PizzaTaste> pizzas = Main.getPizzaria().getCurrentRequest().getPizzas();
+            pizzas.add(newPizza);
+            Main.getPizzaria().getCurrentRequest().setPizzas(pizzas);
+        }else{
+            PizzaTaste newPizza = new PizzaTaste();
+            newPizza.setTastes(new String[] {(String) RegisterOrder_TasteField1.getSelectedItem(),(String) RegisterOrder_TasteField2.getSelectedItem(),(String) RegisterOrder_TasteField3.getSelectedItem()});
+            newPizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
+            newPizza.setPrice(Main.getPizzaria().calculatePizzaPrice(newPizza));
+            ArrayList<PizzaTaste> pizzas = Main.getPizzaria().getCurrentRequest().getPizzas();
+            pizzas.add(newPizza);
+            Main.getPizzaria().getCurrentRequest().setPizzas(pizzas);
+        }
+    }//GEN-LAST:event_RegisterOrder_AddPizzaButtonActionPerformed
+
+    private void RegisterOrder_AddDrinkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_AddDrinkButtonActionPerformed
+        DefaultListModel lista = (DefaultListModel) RegisterOrder_ItensList2.getModel();
+        lista.addElement(RegisterOrder_OutroField.getSelectedItem());
+        RegisterOrder_ItensList2.setModel(lista);
+        if (!Main.getPizzaria().isOrdering()){
+            Main.getPizzaria().setOrdering(true);
+            OtherProduct newOutro = new OtherProduct();
+            newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
+            newOutro.setPrice(Main.getPizzaria().getOtherPrice((String) RegisterOrder_OutroField.getSelectedItem()));
+            ArrayList<OtherProduct> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
+            newOther.add(newOutro);
+            Main.getPizzaria().getCurrentRequest().setOutros(newOther);
+        }else{
+            OtherProduct newOutro = new OtherProduct();
+            newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
+            newOutro.setPrice(Main.getPizzaria().getOtherPrice((String) RegisterOrder_OutroField.getSelectedItem()));
+            ArrayList<OtherProduct> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
+            newOther.add(newOutro);
+            Main.getPizzaria().getCurrentRequest().setOutros(newOther); 
+        }
+    }//GEN-LAST:event_RegisterOrder_AddDrinkButtonActionPerformed
+
+    private void RegisterOrder_RegisterOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_RegisterOrderButtonActionPerformed
+        // TODO add your handling code here:
+        // vai pegar o client request que ta la (pizzaria) e adicionar na lista de requests e vai limpar a lista; ordering false; 
+        // atualizar o client do request, atualizar o status,
+        ClientRequest Request = Main.getPizzaria().getCurrentRequest(); // pega o request atual
+        Request.setStatus(Status.Requested);
+        Request.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText())); // seta o client
+        Queue<ClientRequest> newRequests = Main.getPizzaria().getRequests();
+        newRequests.add(Main.getPizzaria().getCurrentRequest());
+        Main.getPizzaria().setRequests(newRequests); // add o request para lista de requests
+        Main.getPizzaria().setOrdering(false); // ordering false
+        RegisterOrder_ItensList2.setModel(new DefaultListModel()); // lista limpa
+        //Main.getPizzaria().setCurrentRequest(new ClientRequest());
+        
+    }//GEN-LAST:event_RegisterOrder_RegisterOrderButtonActionPerformed
+
+    private void LoginForm_PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           Login();
+        }
+    }//GEN-LAST:event_LoginForm_PasswordFieldKeyPressed
+
+    private void RegisterOrder_SizeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_SizeFieldActionPerformed
+        setPizzaPrice();
+    }//GEN-LAST:event_RegisterOrder_SizeFieldActionPerformed
+
     private void RegisterOrder() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
@@ -1544,23 +1471,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void FinishPizza() {
-        MainJPanel.removeAll();
-            MainJPanel.repaint();
-            MainJPanel.revalidate();
-            
-            MainJPanel.add(FinishPizza);
-            MainJPanel.repaint();
-            MainJPanel.revalidate();
+        Main.getPizzaria().getRequests().peek().setStatus(Status.ReadyForDelivery);
     }
     
     private void FinishOrder() {
-        MainJPanel.removeAll();
-            MainJPanel.repaint();
-            MainJPanel.revalidate();
-            
-            MainJPanel.add(FinishOrder);
-            MainJPanel.repaint();
-            MainJPanel.revalidate();
+        Main.getPizzaria().getRequests().peek().setStatus(Status.Delivered);
     }
     
     private void Logout() {
@@ -1574,6 +1489,43 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void Login() {
+        this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
+        switch(this.LoginPower) {
+            case 0:
+                JOptionPane.showMessageDialog(null, "Não foi possivel fazer login");
+                return;
+            case 1:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Admin);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                return;
+            case 2:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Atendente);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                return;
+            case 3:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Pizzaiolo);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                return;
+            case 4:
+                MainJPanel.removeAll();
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+                MainJPanel.add(Entregador);
+                MainJPanel.repaint();
+                MainJPanel.revalidate();
+        }
         
     }
     
@@ -1679,18 +1631,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel EntregadorForm_Name;
     private javax.swing.JScrollPane EntregadorForm_Orders2;
     private javax.swing.JLabel EntregadorForm_OrdersLabel;
-    private javax.swing.JPanel FinishOrder;
-    private javax.swing.JButton FinishOrder_BackButton;
-    private javax.swing.JButton FinishOrder_FinishOrderButton;
-    private javax.swing.JTextField FinishOrder_NumberField;
-    private javax.swing.JLabel FinishOrder_NumberLabel;
-    private javax.swing.JLabel FinishOrder_Title;
-    private javax.swing.JPanel FinishPizza;
-    private javax.swing.JButton FinishPizza_BackButton;
-    private javax.swing.JButton FinishPizza_FinishPizzaButton;
-    private javax.swing.JTextField FinishPizza_NumberField;
-    private javax.swing.JLabel FinishPizza_NumberLabel;
-    private javax.swing.JLabel FinishPizza_Title;
     private javax.swing.JPanel Login;
     private javax.swing.JButton LoginForm_LoginButton;
     private javax.swing.JTextField LoginForm_PasswordField;
@@ -1732,6 +1672,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel RegisterOrder_DrinkLabel;
     private javax.swing.JLabel RegisterOrder_ItemLabel;
     private javax.swing.JScrollPane RegisterOrder_ItensList;
+    private javax.swing.JList RegisterOrder_ItensList2;
     private javax.swing.JTextField RegisterOrder_NameField;
     private javax.swing.JLabel RegisterOrder_NameLabel;
     private javax.swing.JComboBox RegisterOrder_OutroField;
@@ -1789,7 +1730,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField RegisterUser_UserField;
     private javax.swing.JLabel RegisterUser_UserLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList8;
     // End of variables declaration//GEN-END:variables
 
     private void setPizzaPrice() {
