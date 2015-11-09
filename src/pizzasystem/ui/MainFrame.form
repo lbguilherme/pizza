@@ -129,9 +129,6 @@
                   <Font name="Arial" size="15" style="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LoginForm_PasswordFieldKeyPressed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="LoginForm_LoginButton">
               <Properties>
@@ -368,8 +365,15 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="11" style="0"/>
                     </Property>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultTableModel(showRequests(), new String[]{&quot;Status&quot;, &quot;Pedido&quot;})" type="code"/>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="6" rowCount="1">
+                        <Column editable="false" title="N&#xfa;mero" type="java.lang.Object"/>
+                        <Column editable="false" title="Telefone" type="java.lang.Object"/>
+                        <Column editable="false" title="Status" type="java.lang.Object"/>
+                        <Column editable="false" title="Valor" type="java.lang.Object"/>
+                        <Column editable="false" title="Endere&#xe7;o" type="java.lang.Object"/>
+                        <Column editable="false" title="Pedido" type="java.lang.Object"/>
+                      </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
@@ -1020,9 +1024,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Realizar Pedido"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_RegisterOrderButtonActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="RegisterOrder_SearchClientButton">
               <Properties>
@@ -1057,9 +1058,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Adicionar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_AddPizzaButtonActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="RegisterOrder_RemoveItemButton">
               <Properties>
@@ -1078,10 +1076,10 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="RegisterOrder_ItensList2">
+                <Component class="javax.swing.JList" name="jList8">
                   <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultListModel()" type="code"/>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1096,9 +1094,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Adicionar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_AddDrinkButtonActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="RegisterOrder_SizeField">
               <Properties>
@@ -1106,9 +1101,6 @@
                   <Connection code="new DefaultComboBoxModel(PizzaTaste.Size.values())" type="code"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterOrder_SizeFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="RegisterOrder_TasteField1">
               <Properties>
@@ -1671,6 +1663,176 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterPizza_RegisterPizzaButton1ActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="FinishPizza">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FinishPizza_FinishPizzaButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="FinishPizza_NumberLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="FinishPizza_NumberField" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="590" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="FinishPizza_Title" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="FinishPizza_BackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="FinishPizza_Title" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishPizza_BackButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FinishPizza_NumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishPizza_NumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="FinishPizza_FinishPizzaButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="392" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="FinishPizza_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Finalizar Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FinishPizza_NumberLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FinishPizza_NumberField">
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishPizza_FinishPizzaButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar Pizza"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishPizza_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FinishPizza_BackButtonActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="FinishOrder">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FinishOrder_FinishOrderButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="FinishOrder_NumberLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="FinishOrder_NumberField" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="590" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="FinishOrder_Title" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="FinishOrder_BackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="FinishOrder_Title" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishOrder_BackButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FinishOrder_NumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FinishOrder_NumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="FinishOrder_FinishOrderButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="392" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="FinishOrder_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Finalizar Pedido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FinishOrder_NumberLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FinishOrder_NumberField">
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishOrder_FinishOrderButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar Pedido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="FinishOrder_BackButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FinishOrder_BackButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -66,7 +66,7 @@ public class Employee extends Person{
     public void save(Connection db) throws SQLException {
         super.save(db);
         String query = "INSERT INTO Employee VALUES(?, ?, ?, ?) " +
-            "ON DUPLICATE KEY UPDATE user=VALUES(user), phoneNumber=VALUES(phoneNumber), " +
+            "ON DUPLICATE KEY UPDATE phoneNumber=VALUES(phoneNumber), " +
             "hashPass=VALUES(hashPass), role=VALUES(role);";
         PreparedStatement stmt = db.prepareStatement(query);
         stmt.setString(1, getUser());

@@ -4,25 +4,21 @@
  * and open the template in the editor.
  */
 package pizzasystem.ui;
-import java.io.IOException;
-import businesslogic.Pizzaria;
 import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayDeque;
 import java.sql.SQLException;
-import pizzasystem.data.Client;
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.input.KeyCode;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
-import pizzasystem.data.OtherProduct;
+import pizzasystem.data.OtherProductType;
 import pizzasystem.data.PizzaTaste;
 import pizzasystem.data.PizzaTaste.Size;
 import pizzasystem.Main;
@@ -30,6 +26,7 @@ import pizzasystem.data.ClientRequest;
 import pizzasystem.data.ClientRequest.Status;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Employee.Role;
+import pizzasystem.data.Person;
 import pizzasystem.utility.PasswordHasher;
 
 /**
@@ -38,32 +35,38 @@ import pizzasystem.utility.PasswordHasher;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    
-    public static String[] getTasteList(){
+
+    public static String[] getTasteList() {
         ArrayList<String> tastes = new ArrayList<>();
-        for (PizzaTaste pizza : Main.getPizzaria().getMenu().getPizzas()){
-            tastes.add(pizza.getTasteName()[0]);
+        try {
+            for (PizzaTaste pizza : Main.getPizzaria().getMenu().getPizzaTastes()){
+                tastes.add(pizza.getName());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        String[] tastesarray = new String[tastes.size()];
-        tastesarray = tastes.toArray(tastesarray);
-        return tastesarray;
+        return tastes.toArray(new String[tastes.size()]);
     }
-    
-    public static String[] getDrinkList(){
+
+    public static String[] getDrinkList() {
         ArrayList<String> drinks = new ArrayList<>();
-        for (OtherProduct drink : Main.getPizzaria().getMenu().getOutros()){
-            drinks.add(drink.getName());
+        try {
+            for (OtherProductType drink : Main.getPizzaria().getMenu().getOtherProductTypes()){
+                drinks.add(drink.getName());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return drinks.toArray(new String[drinks.size()]);
     }
-    
+
     /**
      * Creates new form MainFrame
      */
      // para diferentes usuarios quando voltar a tela
-    
+
     Timer timer;
-    
+
     public MainFrame() {
         initComponents();
         MainJPanel.removeAll();
@@ -1339,34 +1342,49 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void RegisterOrder_SearchClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_SearchClientButtonActionPerformed
         String number = (RegisterOrder_PhoneNumberField.getText());
-        Client client = Main.getPizzaria().findClient(number);
-        RegisterOrder_AddressField.setText(client.getAddress());
-        RegisterOrder_CEPField.setText(client.getCep());
-        RegisterOrder_NameField.setText(client.getName()); 
+        try {
+            Person client = Main.getPizzaria().findClient(number);
+            if (client == null)
+                return;
+            RegisterOrder_AddressField.setText(client.getAddress());
+            RegisterOrder_CEPField.setText(client.getCep());
+            RegisterOrder_NameField.setText(client.getName());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
     }//GEN-LAST:event_RegisterOrder_SearchClientButtonActionPerformed
 
     private void RegisterOrder_UpdateClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_UpdateClientButtonActionPerformed
-
-        Client clienttoadd = new Client();
-        clienttoadd.setAddress(RegisterOrder_AddressField.getText());
-        clienttoadd.setCep(RegisterOrder_CEPField.getText());
-        clienttoadd.setName(RegisterOrder_NameField.getText());
-        clienttoadd.setPhoneNumber(RegisterOrder_PhoneNumberField.getText());
-        Main.getPizzaria().addClient(clienttoadd);    
+        Person person = new Person();
+        person.setAddress(RegisterOrder_AddressField.getText());
+        person.setCep(RegisterOrder_CEPField.getText());
+        person.setName(RegisterOrder_NameField.getText());
+        person.setPhoneNumber(RegisterOrder_PhoneNumberField.getText());
+        try {
+            Main.getPizzaria().addClient(person);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
     }//GEN-LAST:event_RegisterOrder_UpdateClientButtonActionPerformed
 
     private void RegisterPizza_RegisterPizzaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_RegisterPizzaButtonActionPerformed
+        /*
+        TODO: PizzaTastes tem três preços, e só um nome de sabor
+        
         PizzaTaste newpizza = new PizzaTaste();
         newpizza.setPrice(Float.parseFloat(RegisterPizza_PriceField.getText()));
         newpizza.setSize((Size) RegisterPizza_SizeField.getSelectedItem());
         String[] tastes = new String[3];
-        tastes[0] = RegisterPizza_TasteField.getText(); 
+        tastes[0] = RegisterPizza_TasteField.getText();
         newpizza.setTastes(tastes);
         if (Main.getPizzaria().registerPizza(newpizza) == 1){
             RegisterOrder_TasteField1.addItem(newpizza.getTasteName()[0]);
             RegisterOrder_TasteField2.addItem(newpizza.getTasteName()[0]);
             RegisterOrder_TasteField3.addItem(newpizza.getTasteName()[0]);
         }
+        */
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButtonActionPerformed
 
     private void RegisterOrder_TasteField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_TasteField1ActionPerformed
@@ -1386,11 +1404,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterOrder_TasteField2ActionPerformed
 
     private void RegisterPizza_RegisterPizzaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_RegisterPizzaButton1ActionPerformed
-        OtherProduct outro = new OtherProduct();
+        OtherProductType outro = new OtherProductType();
         outro.setName(RegisterPizza_OutroNameField.getText());
         outro.setPrice(Float.parseFloat(RegisterPizza_OutroPriceField.getText()));
         if (Main.getPizzaria().registerOutro(outro) == 1){
-           RegisterOrder_OutroField.addItem(outro.getName()); 
+           RegisterOrder_OutroField.addItem(outro.getName());
         }
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButton1ActionPerformed
 
@@ -1447,25 +1465,25 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_ItensList2.setModel(lista);
         if (!Main.getPizzaria().isOrdering()){
             Main.getPizzaria().setOrdering(true);
-            OtherProduct newOutro = new OtherProduct();
+            OtherProductType newOutro = new OtherProductType();
             newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
             newOutro.setPrice(Main.getPizzaria().getOtherPrice((String) RegisterOrder_OutroField.getSelectedItem()));
-            ArrayList<OtherProduct> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
+            ArrayList<OtherProductType> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
             newOther.add(newOutro);
             Main.getPizzaria().getCurrentRequest().setOutros(newOther);
         }else{
-            OtherProduct newOutro = new OtherProduct();
+            OtherProductType newOutro = new OtherProductType();
             newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
             newOutro.setPrice(Main.getPizzaria().getOtherPrice((String) RegisterOrder_OutroField.getSelectedItem()));
-            ArrayList<OtherProduct> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
+            ArrayList<OtherProductType> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
             newOther.add(newOutro);
-            Main.getPizzaria().getCurrentRequest().setOutros(newOther); 
+            Main.getPizzaria().getCurrentRequest().setOutros(newOther);
         }
     }//GEN-LAST:event_RegisterOrder_AddDrinkButtonActionPerformed
 
     private void RegisterOrder_RegisterOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_RegisterOrderButtonActionPerformed
         // TODO add your handling code here:
-        // vai pegar o client request que ta la (pizzaria) e adicionar na lista de requests e vai limpar a lista; ordering false; 
+        // vai pegar o client request que ta la (pizzaria) e adicionar na lista de requests e vai limpar a lista; ordering false;
         // atualizar o client do request, atualizar o status,
         ClientRequest Request = Main.getPizzaria().getCurrentRequest(); // pega o request atual
         Request.setStatus(Status.Requested);
@@ -1515,7 +1533,7 @@ public class MainFrame extends javax.swing.JFrame {
                     row[1] += "*" + pizza.getTasteName()[0] + pizza.getTasteName()[1] + pizza.getTasteName()[2] + "*";
                 }
             }
-            for(OtherProduct outro : requestL.getOutros()){
+            for(OtherProductType outro : requestL.getOutros()){
                 if(row[1] == null){
                     row[1] = "*" + outro.getName() + "*";
                 }else{
@@ -1527,65 +1545,65 @@ public class MainFrame extends javax.swing.JFrame {
         output2 = output.toArray(new String[requestsList.size()][]);
         return output2;
     }
-    
+
     private void RegisterOrder() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
             MainJPanel.revalidate();
-            
+
             MainJPanel.add(RegisterOrder);
             MainJPanel.repaint();
             MainJPanel.revalidate();
     }
-    
+
     private void RegisterClient() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
             MainJPanel.revalidate();
-            
+
             MainJPanel.add(RegisterClient);
             MainJPanel.repaint();
             MainJPanel.revalidate();
     }
-    
+
     private void RegisterUser() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
             MainJPanel.revalidate();
-            
+
             MainJPanel.add(RegisterUser);
             MainJPanel.repaint();
             MainJPanel.revalidate();
     }
-    
+
     private void RegisterPizza() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
             MainJPanel.revalidate();
-            
+
             MainJPanel.add(RegisterPizza);
             MainJPanel.repaint();
             MainJPanel.revalidate();
     }
-    
+
     private void FinishPizza() {
         Main.getPizzaria().finishPizza();
     }
-    
+
     private void FinishOrder() {
         Main.getPizzaria().finishOrder();
     }
-    
+
     private void Logout() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
             MainJPanel.revalidate();
-            
+
             MainJPanel.add(Login);
             MainJPanel.repaint();
             MainJPanel.revalidate();
     }
-    
+
     private void Login() throws SQLException {
         this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
         switch(this.LoginPower) {
@@ -1624,9 +1642,9 @@ public class MainFrame extends javax.swing.JFrame {
                 MainJPanel.repaint();
                 MainJPanel.revalidate();
         }
-        
+
     }
-    
+
     private void GoBack() {
         switch(this.LoginPower) {
             case 1: // admin
@@ -1668,7 +1686,7 @@ public class MainFrame extends javax.swing.JFrame {
             default: // outros(teste/error)
                 this.Logout();
                 break;
-                
+
         }
     }
     /**
@@ -1678,7 +1696,7 @@ public class MainFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

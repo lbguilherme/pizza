@@ -51,7 +51,7 @@ public class Person {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
     protected void setFromResultSet(ResultSet result) throws SQLException {
         setPhoneNumber(result.getString("phoneNumber"));
         setName(result.getString("name"));
@@ -60,9 +60,22 @@ public class Person {
         setCep(result.getString("cep"));
     }
 
+    public static Person fetch(Connection db, String phoneNumber) throws SQLException {
+        String query = "select * from Person where phoneNumber=?;";
+        PreparedStatement stmt = db.prepareStatement(query);
+        stmt.setString(1, phoneNumber);
+        ResultSet result = stmt.executeQuery();
+        if (!result.first())
+            return null;
+
+        Person person = new Person();
+        person.setFromResultSet(result);
+        return person;
+    }
+
     public void save(Connection db) throws SQLException {
         String query = "INSERT INTO Person VALUES(?, ?, ?, ?, ?) " +
-            "ON DUPLICATE KEY UPDATE phoneNumber=VALUES(phoneNumber), name=VALUES(name), "+
+            "ON DUPLICATE KEY UPDATE name=VALUES(name), "+
             "cpf=VALUES(cpf), address=VALUES(address), cep=VALUES(cep);";
         PreparedStatement stmt = db.prepareStatement(query);
         stmt.setString(1, getPhoneNumber());
