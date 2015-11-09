@@ -1366,6 +1366,8 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        } catch (RuntimeException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_RegisterOrder_UpdateClientButtonActionPerformed
 
@@ -1407,9 +1409,13 @@ public class MainFrame extends javax.swing.JFrame {
         OtherProductType outro = new OtherProductType();
         outro.setName(RegisterPizza_OutroNameField.getText());
         outro.setPrice(Float.parseFloat(RegisterPizza_OutroPriceField.getText()));
-        if (Main.getPizzaria().registerOutro(outro) == 1){
-           RegisterOrder_OutroField.addItem(outro.getName());
+        try{
+            Main.getPizzaria().registerOutro(outro);
         }
+        catch(SQLException e){
+           //tratamento exception aqui     
+        }
+        RegisterOrder_OutroField.addItem(outro.getName());
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButton1ActionPerformed
 
     private void RegisterUser_RegisterUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RegisterUserButtonActionPerformed

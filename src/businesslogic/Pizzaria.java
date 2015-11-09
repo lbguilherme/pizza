@@ -73,10 +73,10 @@ public class Pizzaria{
                     client.getCep().equals("") ||
             client.getPhoneNumber().equals("") ||
                    client.getName().equals("")) {
-                JOptionPane.showMessageDialog(null, "Não foi possivel registrar ou atualizar cliente, informações incompletas!");
+                throw new RuntimeException("Não foi possivel registrar ou atualizar cliente, informações incompletas!");
             }else{
                 client.save(getDb());
-                JOptionPane.showMessageDialog(null, "Cliente cadastrado/atualizado com sucesso");
+                throw new RuntimeException("Cliente cadastrado/atualizado com sucesso");
             }
         }
     }
@@ -95,7 +95,7 @@ public class Pizzaria{
     public void registerPizza(PizzaTaste pizza) throws SQLException {
         // TODO: Checar todos os atributos
         pizza.save(getDb());
-        JOptionPane.showMessageDialog(null, "Pizza cadastrada com sucesso.");
+        throw new RuntimeException("Pizza cadastrada com sucesso.");
     }
 
     public void registerOutro(OtherProductType outro) throws SQLException {
