@@ -161,6 +161,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         RegisterOrder_PriceField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         RegisterUser = new javax.swing.JPanel();
         RegisterUser_Title = new javax.swing.JLabel();
         RegisterUser_PhoneNumberLabel = new javax.swing.JLabel();
@@ -278,22 +279,7 @@ public class MainFrame extends javax.swing.JFrame {
         AdminForm_Name.setText("Administrador: Nome");
 
         Orders_Table.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        Orders_Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Número", "Telefone", "Status", "Valor", "Endereço", "Pedido"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
         AdminForm_Orders.setViewportView(Orders_Table);
 
         AdminForm_OrdersLabel.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -313,7 +299,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        AdminForm_RegisterPizza.setText("Cadastrar Pizza");
+        AdminForm_RegisterPizza.setText("Cadastrar Produto");
         AdminForm_RegisterPizza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdminForm_RegisterPizzaActionPerformed(evt);
@@ -361,15 +347,19 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(AdminLayout.createSequentialGroup()
                                 .addComponent(AdminForm_RegisterPizza)
                                 .addGap(28, 28, 28)
-                                .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(AdminForm_Logout)
-                                    .addComponent(AdminForm_RegisterUser))))))
+                                .addComponent(AdminForm_RegisterUser)))))
                 .addContainerGap(75, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdminLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AdminForm_Logout)
+                .addContainerGap())
         );
         AdminLayout.setVerticalGroup(
             AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap()
+                .addComponent(AdminForm_Logout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AdminForm_Name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -379,8 +369,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AdminForm_FinishPizza)
-                    .addComponent(AdminForm_FinishOrder)
-                    .addComponent(AdminForm_Logout))
+                    .addComponent(AdminForm_FinishOrder))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(AdminForm_OrdersLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -566,6 +555,11 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_SizeLabel.setText("Tamanho");
 
         RegisterOrder_RegisterOrderButton.setText("Realizar Pedido");
+        RegisterOrder_RegisterOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_RegisterOrderButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_SearchClientButton.setText("Procurar");
         RegisterOrder_SearchClientButton.addActionListener(new java.awt.event.ActionListener() {
@@ -591,16 +585,27 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_PizzaLabel.setText("Pizza");
 
         RegisterOrder_AddPizzaButton.setText("Adicionar");
+        RegisterOrder_AddPizzaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_AddPizzaButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_RemoveItemButton.setText("Remover");
 
         RegisterOrder_ItemLabel.setText("Itens");
 
+        RegisterOrder_ItensList2.setModel(new DefaultListModel());
         RegisterOrder_ItensList.setViewportView(RegisterOrder_ItensList2);
 
         RegisterOrder_DrinkLabel.setText("Outros");
 
         RegisterOrder_AddDrinkButton.setText("Adicionar");
+        RegisterOrder_AddDrinkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_AddDrinkButtonActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_SizeField.setModel(new DefaultComboBoxModel(PizzaTaste.Size.values()));
         RegisterOrder_SizeField.addActionListener(new java.awt.event.ActionListener() {
@@ -645,6 +650,13 @@ public class MainFrame extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -735,8 +747,13 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addGap(61, 61, 61))))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterOrderLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterOrderLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterOrderLayout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(352, 352, 352))))
         );
         RegisterOrderLayout.setVerticalGroup(
             RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -783,7 +800,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(RegisterOrder_AddDrinkButton))
                             .addGroup(RegisterOrderLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(RegisterOrder_ItensList, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(RegisterOrder_ItensList, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(RegisterOrderLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(RegisterOrder_TasteField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -801,7 +818,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(RegisterOrder_PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegisterOrder_AddPizzaButton)
                     .addComponent(RegisterOrder_RemoveItemButton)
@@ -1351,6 +1370,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_LoginForm_PasswordFieldActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        currentRequest = null;
+        RegisterOrder_ItensList2.setModel(new DefaultListModel());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private String[][] showRequests(){
         Queue<ClientRequest> requests = Main.getPizzaria().getRequests();
         Queue<ClientRequest> copiedRequests = new ArrayDeque<>(requests);
@@ -1662,6 +1686,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField RegisterUser_UserField;
     private javax.swing.JLabel RegisterUser_UserLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
