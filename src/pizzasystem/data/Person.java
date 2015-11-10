@@ -65,8 +65,8 @@ public class Person {
 
     public void save(Connection db) throws SQLException {
         String query = "INSERT INTO Person VALUES(?, ?, ?, ?) " +
-            "ON DUPLICATE KEY UPDATE name=VALUES(name), "+
-            "address=VALUES(address), cep=VALUES(cep);";
+            "ON DUPLICATE KEY UPDATE phoneNumber=VALUES(phoneNumber), "+
+            "name=VALUES(name), address=VALUES(address), cep=VALUES(cep);";
         PreparedStatement stmt = db.prepareStatement(query);
         stmt.setString(1, getPhoneNumber());
         stmt.setString(2, getName());
