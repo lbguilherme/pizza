@@ -27,6 +27,7 @@ import pizzasystem.data.ClientRequest.Status;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Employee.Role;
 import pizzasystem.data.Person;
+import pizzasystem.data.Pizza;
 import pizzasystem.utility.PasswordHasher;
 
 /**
@@ -34,6 +35,8 @@ import pizzasystem.utility.PasswordHasher;
  * @author jools
  */
 public class MainFrame extends javax.swing.JFrame {
+    
+    private ClientRequest currentRequest;
 
 
     public static String[] getTasteList() {
@@ -1217,46 +1220,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void LoginForm_LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_LoginButtonActionPerformed
         try {
-            this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-        }
-        switch(this.LoginPower) {
-            case 0:
-                JOptionPane.showMessageDialog(null, "Não foi possivel fazer login");
-                return;
-            case 1:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Admin);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                return;
-            case 2:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Atendente);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                return;
-            case 3:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Pizzaiolo);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                return;
-            case 4:
-                MainJPanel.removeAll();
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
-                MainJPanel.add(Entregador);
-                MainJPanel.repaint();
-                MainJPanel.revalidate();
+            Login();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LoginForm_LoginButtonActionPerformed
 
@@ -1445,23 +1411,25 @@ public class MainFrame extends javax.swing.JFrame {
         DefaultListModel lista = (DefaultListModel) RegisterOrder_ItensList2.getModel();
         lista.addElement(RegisterOrder_TasteField1.getSelectedItem() + ", " + RegisterOrder_TasteField2.getSelectedItem() + ", " + RegisterOrder_TasteField3.getSelectedItem());
         RegisterOrder_ItensList2.setModel(lista);
-        if (!Main.getPizzaria().isOrdering()){
-            Main.getPizzaria().setOrdering(true);
-            PizzaTaste newPizza = new PizzaTaste();
-            newPizza.setTastes(new String[] {(String) RegisterOrder_TasteField1.getSelectedItem(),(String) RegisterOrder_TasteField2.getSelectedItem(),(String) RegisterOrder_TasteField3.getSelectedItem()});
+        if (this.currentRequest != null){
+            Pizza newPizza = new Pizza();
+            newPizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
+            newPizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
+            newPizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
             newPizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
-            newPizza.setPrice(Main.getPizzaria().calculatePizzaPrice(newPizza));
-            ArrayList<PizzaTaste> pizzas = Main.getPizzaria().getCurrentRequest().getPizzas();
+            ArrayList<Pizza> pizzas = (ArrayList<Pizza>) currentRequest.getPizzas();
             pizzas.add(newPizza);
-            Main.getPizzaria().getCurrentRequest().setPizzas(pizzas);
+            currentRequest.setPizzas(pizzas);
         }else{
-            PizzaTaste newPizza = new PizzaTaste();
-            newPizza.setTastes(new String[] {(String) RegisterOrder_TasteField1.getSelectedItem(),(String) RegisterOrder_TasteField2.getSelectedItem(),(String) RegisterOrder_TasteField3.getSelectedItem()});
+            this.currentRequest = new ClientRequest();
+            Pizza newPizza = new Pizza();
+            newPizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
+            newPizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
+            newPizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
             newPizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
-            newPizza.setPrice(Main.getPizzaria().calculatePizzaPrice(newPizza));
-            ArrayList<PizzaTaste> pizzas = Main.getPizzaria().getCurrentRequest().getPizzas();
+            ArrayList<Pizza> pizzas = (ArrayList<Pizza>) currentRequest.getPizzas();
             pizzas.add(newPizza);
-            Main.getPizzaria().getCurrentRequest().setPizzas(pizzas);
+            currentRequest.setPizzas(pizzas);
         }
     }//GEN-LAST:event_RegisterOrder_AddPizzaButtonActionPerformed
 
@@ -1469,38 +1437,46 @@ public class MainFrame extends javax.swing.JFrame {
         DefaultListModel lista = (DefaultListModel) RegisterOrder_ItensList2.getModel();
         lista.addElement(RegisterOrder_OutroField.getSelectedItem());
         RegisterOrder_ItensList2.setModel(lista);
-        if (!Main.getPizzaria().isOrdering()){
-            Main.getPizzaria().setOrdering(true);
+        if (this.currentRequest != null){
             OtherProductType newOutro = new OtherProductType();
             newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
-            newOutro.setPrice(Main.getPizzaria().getOtherPrice((String) RegisterOrder_OutroField.getSelectedItem()));
-            ArrayList<OtherProductType> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
-            newOther.add(newOutro);
-            Main.getPizzaria().getCurrentRequest().setOutros(newOther);
+            try {
+                newOutro.setPrice(Main.getPizzaria().findOtherProduct((String) RegisterOrder_OutroField.getSelectedItem()).getPrice());
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ArrayList<OtherProductType> newOthers = currentRequest.getOthers();
+            newOthers.add(newOutro);
+            currentRequest.setOthers(newOthers);
         }else{
+            this.currentRequest = new ClientRequest();
             OtherProductType newOutro = new OtherProductType();
             newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
-            newOutro.setPrice(Main.getPizzaria().getOtherPrice((String) RegisterOrder_OutroField.getSelectedItem()));
-            ArrayList<OtherProductType> newOther = Main.getPizzaria().getCurrentRequest().getOutros();
-            newOther.add(newOutro);
-            Main.getPizzaria().getCurrentRequest().setOutros(newOther);
+            try {
+                newOutro.setPrice(Main.getPizzaria().findOtherProduct((String) RegisterOrder_OutroField.getSelectedItem()).getPrice());
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ArrayList<OtherProductType> newOthers = currentRequest.getOthers();
+            newOthers.add(newOutro);
+            currentRequest.setOthers(newOthers);
         }
     }//GEN-LAST:event_RegisterOrder_AddDrinkButtonActionPerformed
 
     private void RegisterOrder_RegisterOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_RegisterOrderButtonActionPerformed
         // TODO add your handling code here:
         // vai pegar o client request que ta la (pizzaria) e adicionar na lista de requests e vai limpar a lista; ordering false;
-        // atualizar o client do request, atualizar o status,
-        ClientRequest Request = Main.getPizzaria().getCurrentRequest(); // pega o request atual
-        Request.setStatus(Status.Requested);
-        Request.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText())); // seta o client
+        currentRequest.setStatus(Status.Requested);
+        try {
+            currentRequest.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText())); // seta o client
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Queue<ClientRequest> newRequests = Main.getPizzaria().getRequests();
-        newRequests.add(Request);
-        Main.getPizzaria().setRequests(newRequests); // add o request para lista de requests
-        Main.getPizzaria().setOrdering(false); // ordering false
-        RegisterOrder_ItensList2.setModel(new DefaultListModel()); // lista limpa
-        //Main.getPizzaria().setCurrentRequest(new ClientRequest());
-        Main.getPizzaria().setCurrentRequest(new ClientRequest());
+        newRequests.add(currentRequest);
+        Main.getPizzaria().setRequests(newRequests);
+        currentRequest = null;
+        RegisterOrder_ItensList2.setModel(new DefaultListModel());
     }//GEN-LAST:event_RegisterOrder_RegisterOrderButtonActionPerformed
 
     private void LoginForm_PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldKeyPressed
@@ -1532,18 +1508,18 @@ public class MainFrame extends javax.swing.JFrame {
         for(ClientRequest requestL : requestsList){
             String[] row = new String[2];
             row[0] = requestL.getStatus().toString();
-            for(PizzaTaste pizza : requestL.getPizzas()){
+            for(Pizza pizza : requestL.getPizzas()){
                 if(row[1] == null){
-                    row[1] = "*" + pizza.getTasteName()[0] + pizza.getTasteName()[1] + pizza.getTasteName()[2] + "*";
+                    row[1] = "*" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "*";
                 }else{
-                    row[1] += "*" + pizza.getTasteName()[0] + pizza.getTasteName()[1] + pizza.getTasteName()[2] + "*";
+                    row[1] += "*" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "*";
                 }
             }
-            for(OtherProductType outro : requestL.getOutros()){
+            for(OtherProductType other : requestL.getOthers()){
                 if(row[1] == null){
-                    row[1] = "*" + outro.getName() + "*";
+                    row[1] = "*" + other.getName() + "*";
                 }else{
-                    row[1] += "*" + outro.getName() + "*";
+                    row[1] += "*" + other.getName() + "*";
                 }
             }
             output.add(row);
@@ -1593,11 +1569,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void FinishPizza() {
-        Main.getPizzaria().finishPizza();
+       // Main.getPizzaria().finishPizza();
     }
 
     private void FinishOrder() {
-        Main.getPizzaria().finishOrder();
+       // Main.getPizzaria().finishOrder();
     }
 
     private void Logout() {
@@ -1611,7 +1587,12 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void Login() throws SQLException {
-        this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
+        try {
+            this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
         switch(this.LoginPower) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Não foi possivel fazer login");
@@ -1855,12 +1836,17 @@ public class MainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setPizzaPrice() {
-        PizzaTaste pizza = new PizzaTaste();
+        Pizza pizza = new Pizza();
         pizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
-        pizza.setTastes(new String[] {(String) RegisterOrder_TasteField1.getSelectedItem(),
-            (String) RegisterOrder_TasteField2.getSelectedItem(),
-            (String) RegisterOrder_TasteField3.getSelectedItem()});
-        Float price = Main.getPizzaria().calculatePizzaPrice(pizza);
+        pizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
+        pizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
+        pizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
+        Float price = 0f;
+        try {
+            price = Main.getPizzaria().calculatePizzaPrice(pizza);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         RegisterOrder_PriceField.setText(String.valueOf(price));
     }
 }

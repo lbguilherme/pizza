@@ -11,6 +11,7 @@ import pizzasystem.data.ClientRequest;
 import pizzasystem.data.OtherProductType;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Menu;
+import pizzasystem.data.Pizza;
 import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
 
@@ -144,4 +145,53 @@ public class Pizzaria{
     public void setCurrentUser(Employee aCurrentUser) {
         currentUser = aCurrentUser;
     }
+    
+    public OtherProductType findOtherProduct(String otherName) throws SQLException{
+        for(OtherProductType otherInMenu : this.getMenu().getOtherProductTypes()){
+            if (otherInMenu.getName().equals(otherName)){
+                return otherInMenu;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return the requests
+     */
+    public Queue<ClientRequest> getRequests() {
+        return requests;
+    }
+
+    /**
+     * @param requests the requests to set
+     */
+    public void setRequests(Queue<ClientRequest> requests) {
+        this.requests = requests;
+    }
+    
+    
+    public Float calculatePizzaPrice(Pizza pizza) throws SQLException{
+        Float maxPrice = 0f;
+        maxPrice = Float.max(maxPrice, getPizzaPrice(pizza.getTaste1(), pizza.getSize()));
+        maxPrice = Float.max(maxPrice, getPizzaPrice(pizza.getTaste2(), pizza.getSize()));
+        maxPrice = Float.max(maxPrice, getPizzaPrice(pizza.getTaste3(), pizza.getSize()));
+        return maxPrice;
+    } 
+    
+    public Float getPizzaPrice(String pizzaName, PizzaTaste.Size size) throws SQLException{
+        for (PizzaTaste pizzaInMenu : getMenu().getPizzaTastes()) {
+            if ((pizzaInMenu.getName().equals(pizzaName))){
+                switch (size){
+                    case Medium:
+                        return pizzaInMenu.getPriceMedium();
+                    case Big:
+                        return pizzaInMenu.getPriceBig();
+                    case Family:
+                        return pizzaInMenu.getPriceFamily();
+                }
+            }
+        }
+        return 0f;
+    }
+    
 }

@@ -1,6 +1,5 @@
 package pizzasystem.data;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +10,20 @@ import java.util.List;
 
 public class ClientRequest {
 
+    /**
+     * @return the others
+     */
+    public ArrayList<OtherProductType> getOthers() {
+        return others;
+    }
+
+    /**
+     * @param others the others to set
+     */
+    public void setOthers(ArrayList<OtherProductType> others) {
+        this.others = others;
+    }
+
     public enum Status {
         Requested,
         ReadyForDelivery,
@@ -18,7 +31,8 @@ public class ClientRequest {
     }
 
     private int id = -1;
-    private List<Pizza> pizzas = new ArrayList<>();
+    private ArrayList<Pizza> pizzas = new ArrayList<>();
+    private ArrayList<OtherProductType> others = new ArrayList<>();
     private Status status;
     private Person client;
 
@@ -32,7 +46,7 @@ public class ClientRequest {
     /**
      * @param pizzas the pizzas to set
      */
-    public void setPizzas(List<Pizza> pizzas) {
+    public void setPizzas(ArrayList<Pizza> pizzas) {
         this.pizzas = pizzas;
     }
 
