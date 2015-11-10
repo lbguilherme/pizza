@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -73,12 +75,7 @@ public class MainFrame extends javax.swing.JFrame {
         MainJPanel.add(Login);
         MainJPanel.revalidate();
         timer = new Timer(5000, (ActionEvent ev) -> {
-            try {
                 Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
-            } catch (SQLException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-            }
         });
         timer.start();
     }
@@ -1328,14 +1325,14 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterOrder_AddDrinkButtonActionPerformed
 
     private void RegisterOrder_RegisterOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_RegisterOrderButtonActionPerformed
-        // TODO add your handling code here:
-        // vai pegar o client request que ta la (pizzaria) e adicionar na lista de requests e vai limpar a lista; ordering false;
         currentRequest.setStatus(Status.Requested);
         try {
-            currentRequest.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText())); // seta o client
+            currentRequest.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText()));
             Main.getPizzaria().addRequest(currentRequest);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        } catch (RuntimeException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         currentRequest = null;
         RegisterOrder_ItensList2.setModel(new DefaultListModel());
@@ -1374,27 +1371,33 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_ItensList2.setModel(new DefaultListModel());
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private String[][] showRequests() throws SQLException {
+    private String[][] showRequests(){
         String[][] output2;
         ArrayList<String[]> output = new ArrayList<>();
-        List<ClientRequest> requestsList = Main.getPizzaria().getRequests();
+        List<ClientRequest> requestsList = null;
+        try {
+            requestsList = Main.getPizzaria().getRequests();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
         for(ClientRequest request : requestsList){
             String[] row = new String[2];
             row[0] = request.getStatus().toString();
             for(Pizza pizza : request.getPizzas()){
                 if(row[1] == null){
-                    row[1] = "*" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "*";
+                    row[1] = "*" + pizza.getSize() + ":" + pizza.getTaste1() + "-" + pizza.getTaste2() + "-" + pizza.getTaste3() + "* ";
                 }else{
-                    row[1] += "*" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "*";
+                    row[1] += "*" + pizza.getSize() + ":" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "* ";
                 }
             }
             for(OtherProductType other : request.getOthers()){
                 if(row[1] == null){
-                    row[1] = "*" + other.getName() + "*";
+                    row[1] = "*" + other.getName() + "* ";
                 }else{
-                    row[1] += "*" + other.getName() + "*";
+                    row[1] += "*" + other.getName() + "* ";
                 }
             }
+            
             output.add(row);
         }
         output2 = output.toArray(new String[requestsList.size()][]);

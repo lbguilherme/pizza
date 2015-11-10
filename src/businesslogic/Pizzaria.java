@@ -88,7 +88,12 @@ public class Pizzaria{
     }
 
     public Person findClient(String phoneNumber) throws SQLException {
-        return Person.fetch(getDb(), phoneNumber);
+        if(Person.fetch(getDb(), phoneNumber) != null){
+             return Person.fetch(getDb(), phoneNumber);
+        }else{
+            throw new RuntimeException("Cliente não encontrado.");
+        }
+       
     }
 
     public void addClientRequest(ClientRequest request) throws SQLException {
@@ -168,7 +173,11 @@ public class Pizzaria{
     }
 
     public void addRequest(ClientRequest request) throws SQLException {
-        request.save(getDb());
+        if (request.getClient() != null && request.getStatus() != null){
+            request.save(getDb());
+        } else {
+            throw new RuntimeException("Não foi possivel realizar o pedido.");
+        }
     }
     
     public Float calculatePizzaPrice(Pizza pizza) throws SQLException{
