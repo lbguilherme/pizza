@@ -167,6 +167,7 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_TasteField2 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         RegisterOrder_PriceField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         RegisterClient = new javax.swing.JPanel();
         RegisterClient_Title = new javax.swing.JLabel();
         RegisterClient_PhoneNumberLabel = new javax.swing.JLabel();
@@ -215,6 +216,18 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterPizza_TasteLabel7 = new javax.swing.JLabel();
         RegisterPizza_Title1 = new javax.swing.JLabel();
         RegisterPizza_RegisterPizzaButton1 = new javax.swing.JButton();
+        FinishPizza = new javax.swing.JPanel();
+        FinishPizza_Title = new javax.swing.JLabel();
+        FinishPizza_NumberLabel = new javax.swing.JLabel();
+        FinishPizza_NumberField = new javax.swing.JTextField();
+        FinishPizza_FinishPizzaButton = new javax.swing.JButton();
+        FinishPizza_BackButton = new javax.swing.JButton();
+        FinishOrder = new javax.swing.JPanel();
+        FinishOrder_Title = new javax.swing.JLabel();
+        FinishOrder_NumberLabel = new javax.swing.JLabel();
+        FinishOrder_NumberField = new javax.swing.JTextField();
+        FinishOrder_FinishOrderButton = new javax.swing.JButton();
+        FinishOrder_BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -233,11 +246,6 @@ public class MainFrame extends javax.swing.JFrame {
         LoginForm_PasswordLabel.setText("Senha");
 
         LoginForm_PasswordField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        LoginForm_PasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                LoginForm_PasswordFieldKeyPressed(evt);
-            }
-        });
 
         LoginForm_LoginButton.setText("Login");
         LoginForm_LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -364,7 +372,22 @@ public class MainFrame extends javax.swing.JFrame {
         AdminForm_Name.setText("Administrador: Nome");
 
         Orders_Table.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
+        Orders_Table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Número", "Telefone", "Status", "Valor", "Endereço", "Pedido"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         AdminForm_Orders.setViewportView(Orders_Table);
 
         AdminForm_OrdersLabel.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -637,11 +660,6 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_SizeLabel.setText("Tamanho");
 
         RegisterOrder_RegisterOrderButton.setText("Realizar Pedido");
-        RegisterOrder_RegisterOrderButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterOrder_RegisterOrderButtonActionPerformed(evt);
-            }
-        });
 
         RegisterOrder_SearchClientButton.setText("Procurar");
         RegisterOrder_SearchClientButton.addActionListener(new java.awt.event.ActionListener() {
@@ -667,34 +685,18 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_PizzaLabel.setText("Pizza");
 
         RegisterOrder_AddPizzaButton.setText("Adicionar");
-        RegisterOrder_AddPizzaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterOrder_AddPizzaButtonActionPerformed(evt);
-            }
-        });
 
         RegisterOrder_RemoveItemButton.setText("Remover");
 
         RegisterOrder_ItemLabel.setText("Itens");
 
-        RegisterOrder_ItensList2.setModel(new DefaultListModel());
         RegisterOrder_ItensList.setViewportView(RegisterOrder_ItensList2);
 
         RegisterOrder_DrinkLabel.setText("Outros");
 
         RegisterOrder_AddDrinkButton.setText("Adicionar");
-        RegisterOrder_AddDrinkButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterOrder_AddDrinkButtonActionPerformed(evt);
-            }
-        });
 
         RegisterOrder_SizeField.setModel(new DefaultComboBoxModel(PizzaTaste.Size.values()));
-        RegisterOrder_SizeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterOrder_SizeFieldActionPerformed(evt);
-            }
-        });
 
         RegisterOrder_TasteField1.setModel(new DefaultComboBoxModel(getTasteList()));
         RegisterOrder_TasteField1.addActionListener(new java.awt.event.ActionListener() {
@@ -728,6 +730,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         RegisterOrder_PriceField.setText("R$");
 
+        jButton1.setText("Deslogar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RegisterOrderLayout = new javax.swing.GroupLayout(RegisterOrder);
         RegisterOrder.setLayout(RegisterOrderLayout);
         RegisterOrderLayout.setHorizontalGroup(
@@ -750,30 +759,29 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addGap(33, 33, 33)
                                         .addComponent(RegisterOrder_SearchClientButton)
                                         .addGap(18, 18, 18)
-                                        .addComponent(RegisterOrder_UpdateClientButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(RegisterOrder_BackButton))
+                                        .addComponent(RegisterOrder_UpdateClientButton))
                                     .addComponent(RegisterOrder_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(RegisterOrder_AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(RegisterOrder_CEPField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(RegisterOrderLayout.createSequentialGroup()
-                                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(RegisterOrderLayout.createSequentialGroup()
                                     .addComponent(RegisterOrder_Title)
-                                    .addGroup(RegisterOrderLayout.createSequentialGroup()
-                                        .addComponent(RegisterOrder_PizzaTitle)
-                                        .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(RegisterOrderLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(RegisterOrder_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(RegisterOrderLayout.createSequentialGroup()
-                                                .addGap(71, 71, 71)
-                                                .addComponent(RegisterOrder_PizzaLabel)
-                                                .addGap(194, 194, 194)
-                                                .addComponent(RegisterOrder_ItemLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(RegisterOrder_DrinkLabel)
-                                                .addGap(132, 132, 132)))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(RegisterOrder_BackButton))
+                                .addGroup(RegisterOrderLayout.createSequentialGroup()
+                                    .addComponent(RegisterOrder_PizzaTitle)
+                                    .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(RegisterOrderLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(RegisterOrder_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(RegisterOrderLayout.createSequentialGroup()
+                                            .addGap(71, 71, 71)
+                                            .addComponent(RegisterOrder_PizzaLabel)
+                                            .addGap(194, 194, 194)
+                                            .addComponent(RegisterOrder_ItemLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(RegisterOrder_DrinkLabel)
+                                            .addGap(132, 132, 132))))))
                         .addContainerGap())
                     .addGroup(RegisterOrderLayout.createSequentialGroup()
                         .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,19 +822,26 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(RegisterOrder_OutroField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(61, 61, 61))))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterOrderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         RegisterOrderLayout.setVerticalGroup(
             RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegisterOrderLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(RegisterOrder_Title)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegisterOrder_Title)
+                    .addComponent(RegisterOrder_BackButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegisterOrder_PhoneNumberLabel)
                     .addComponent(RegisterOrder_PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RegisterOrder_SearchClientButton)
-                    .addComponent(RegisterOrder_UpdateClientButton)
-                    .addComponent(RegisterOrder_BackButton))
+                    .addComponent(RegisterOrder_UpdateClientButton))
                 .addGap(18, 18, 18)
                 .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegisterOrder_NameLabel)
@@ -875,7 +890,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(RegisterOrder_PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(RegisterOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegisterOrder_AddPizzaButton)
                     .addComponent(RegisterOrder_RemoveItemButton)
@@ -1204,6 +1219,112 @@ public class MainFrame extends javax.swing.JFrame {
 
         MainJPanel.add(RegisterPizza, "card2");
 
+        FinishPizza_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        FinishPizza_Title.setText("Finalizar Pizza");
+
+        FinishPizza_NumberLabel.setText("Número");
+
+        FinishPizza_FinishPizzaButton.setText("Finalizar Pizza");
+
+        FinishPizza_BackButton.setText("Voltar");
+        FinishPizza_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FinishPizza_BackButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout FinishPizzaLayout = new javax.swing.GroupLayout(FinishPizza);
+        FinishPizza.setLayout(FinishPizzaLayout);
+        FinishPizzaLayout.setHorizontalGroup(
+            FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishPizzaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FinishPizzaLayout.createSequentialGroup()
+                        .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FinishPizza_FinishPizzaButton)
+                            .addGroup(FinishPizzaLayout.createSequentialGroup()
+                                .addComponent(FinishPizza_NumberLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(FinishPizza_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(590, Short.MAX_VALUE))
+                    .addGroup(FinishPizzaLayout.createSequentialGroup()
+                        .addComponent(FinishPizza_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FinishPizza_BackButton)
+                        .addGap(40, 40, 40))))
+        );
+        FinishPizzaLayout.setVerticalGroup(
+            FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishPizzaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FinishPizza_Title)
+                    .addComponent(FinishPizza_BackButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FinishPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FinishPizza_NumberLabel)
+                    .addComponent(FinishPizza_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FinishPizza_FinishPizzaButton)
+                .addContainerGap(392, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(FinishPizza, "card2");
+
+        FinishOrder_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        FinishOrder_Title.setText("Finalizar Pedido");
+
+        FinishOrder_NumberLabel.setText("Número");
+
+        FinishOrder_FinishOrderButton.setText("Finalizar Pedido");
+
+        FinishOrder_BackButton.setText("Voltar");
+        FinishOrder_BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FinishOrder_BackButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout FinishOrderLayout = new javax.swing.GroupLayout(FinishOrder);
+        FinishOrder.setLayout(FinishOrderLayout);
+        FinishOrderLayout.setHorizontalGroup(
+            FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishOrderLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FinishOrderLayout.createSequentialGroup()
+                        .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FinishOrder_FinishOrderButton)
+                            .addGroup(FinishOrderLayout.createSequentialGroup()
+                                .addComponent(FinishOrder_NumberLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(FinishOrder_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(590, Short.MAX_VALUE))
+                    .addGroup(FinishOrderLayout.createSequentialGroup()
+                        .addComponent(FinishOrder_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FinishOrder_BackButton)
+                        .addGap(40, 40, 40))))
+        );
+        FinishOrderLayout.setVerticalGroup(
+            FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FinishOrderLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FinishOrder_Title)
+                    .addComponent(FinishOrder_BackButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FinishOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FinishOrder_NumberLabel)
+                    .addComponent(FinishOrder_NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FinishOrder_FinishOrderButton)
+                .addContainerGap(392, Short.MAX_VALUE))
+        );
+
+        MainJPanel.add(FinishOrder, "card2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1222,25 +1343,10 @@ public class MainFrame extends javax.swing.JFrame {
         Login();
     }//GEN-LAST:event_LoginForm_LoginButtonActionPerformed
 
-    private void AtendenteForm_RegisterOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_RegisterOrderActionPerformed
-        // TODO add your handling code here:
-        this.RegisterOrder();
-    }//GEN-LAST:event_AtendenteForm_RegisterOrderActionPerformed
-
-    private void AtendenteForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_LogoutActionPerformed
-        Main.getPizzaria().setCurrentUser(null);
-        this.Logout();
-    }//GEN-LAST:event_AtendenteForm_LogoutActionPerformed
-
     private void AdminForm_RegisterOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_RegisterOrderActionPerformed
         // TODO add your handling code here:
         this.RegisterOrder();
     }//GEN-LAST:event_AdminForm_RegisterOrderActionPerformed
-
-    private void AdminForm_RegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_RegisterUserActionPerformed
-        // TODO add your handling code here:
-        this.RegisterUser();
-    }//GEN-LAST:event_AdminForm_RegisterUserActionPerformed
 
     private void AdminForm_RegisterPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_RegisterPizzaActionPerformed
         // TODO add your handling code here:
@@ -1284,13 +1390,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void RegisterOrder_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_BackButtonActionPerformed
         // TODO add your handling code here:
-        this.GoBack();
+        if (LoginPower == 1){
+            this.GoBack();
+        }else{
+            JOptionPane.showMessageDialog(null, "Opção disponivel apenas para administrador");
+        }
     }//GEN-LAST:event_RegisterOrder_BackButtonActionPerformed
-
-    private void RegisterClient_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterClient_BackButtonActionPerformed
-        // TODO add your handling code here:
-        this.GoBack();
-    }//GEN-LAST:event_RegisterClient_BackButtonActionPerformed
 
     private void RegisterUser_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_BackButtonActionPerformed
         // TODO add your handling code here:
@@ -1484,6 +1589,39 @@ public class MainFrame extends javax.swing.JFrame {
     private void RegisterOrder_SizeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_SizeFieldActionPerformed
         setPizzaPrice();
     }//GEN-LAST:event_RegisterOrder_SizeFieldActionPerformed
+
+    private void AdminForm_RegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_RegisterUserActionPerformed
+        // TODO add your handling code here:
+        this.RegisterUser();
+    }//GEN-LAST:event_AdminForm_RegisterUserActionPerformed
+
+    private void AtendenteForm_RegisterOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_RegisterOrderActionPerformed
+        // TODO add your handling code here:
+        this.RegisterOrder();
+    }//GEN-LAST:event_AtendenteForm_RegisterOrderActionPerformed
+
+    private void AtendenteForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_LogoutActionPerformed
+        Main.getPizzaria().setCurrentUser(null);
+        this.Logout();
+    }//GEN-LAST:event_AtendenteForm_LogoutActionPerformed
+
+    private void FinishOrder_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishOrder_BackButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FinishOrder_BackButtonActionPerformed
+
+    private void FinishPizza_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishPizza_BackButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FinishPizza_BackButtonActionPerformed
+
+    private void RegisterClient_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterClient_BackButtonActionPerformed
+        // TODO add your handling code here:
+        this.GoBack();
+    }//GEN-LAST:event_RegisterClient_BackButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Main.getPizzaria().setCurrentUser(null);
+        this.Logout();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private String[][] showRequests(){
         Queue<ClientRequest> requests = Main.getPizzaria().getRequests();
@@ -1724,6 +1862,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel EntregadorForm_Name;
     private javax.swing.JScrollPane EntregadorForm_Orders2;
     private javax.swing.JLabel EntregadorForm_OrdersLabel;
+    private javax.swing.JPanel FinishOrder;
+    private javax.swing.JButton FinishOrder_BackButton;
+    private javax.swing.JButton FinishOrder_FinishOrderButton;
+    private javax.swing.JTextField FinishOrder_NumberField;
+    private javax.swing.JLabel FinishOrder_NumberLabel;
+    private javax.swing.JLabel FinishOrder_Title;
+    private javax.swing.JPanel FinishPizza;
+    private javax.swing.JButton FinishPizza_BackButton;
+    private javax.swing.JButton FinishPizza_FinishPizzaButton;
+    private javax.swing.JTextField FinishPizza_NumberField;
+    private javax.swing.JLabel FinishPizza_NumberLabel;
+    private javax.swing.JLabel FinishPizza_Title;
     private javax.swing.JPanel Login;
     private javax.swing.JButton LoginForm_LoginButton;
     private javax.swing.JTextField LoginForm_PasswordField;
@@ -1822,6 +1972,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel RegisterUser_TypeLabel;
     private javax.swing.JTextField RegisterUser_UserField;
     private javax.swing.JLabel RegisterUser_UserLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
