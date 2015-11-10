@@ -128,12 +128,11 @@ public class Pizzaria{
        employee.getHashPass().equals("") ||
            employee.getRole() == null ||
            employee.getUser().equals("")){
-                JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar funcionario, há informações faltando");
+                throw new RuntimeException("Não foi possivel cadastrar funcionario, há informações faltando");
             }
             else{
                 employee.save(getDb());
-
-                JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso.");
+                throw new RuntimeException("Funcionario cadastrado com sucesso.");
             }
         }
     }
