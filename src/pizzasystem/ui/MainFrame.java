@@ -1219,11 +1219,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginForm_LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_LoginButtonActionPerformed
-        try {
-            Login();
-        } catch (SQLException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Login();
     }//GEN-LAST:event_LoginForm_LoginButtonActionPerformed
 
     private void AtendenteForm_RegisterOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtendenteForm_RegisterOrderActionPerformed
@@ -1379,7 +1375,7 @@ public class MainFrame extends javax.swing.JFrame {
             Main.getPizzaria().registerOutro(outro);
         }
         catch(SQLException e){
-           //tratamento exception aqui     
+           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");    
         }
         RegisterOrder_OutroField.addItem(outro.getName());
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButton1ActionPerformed
@@ -1398,7 +1394,6 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             Main.getPizzaria().registerEmployee(newemployee);
         } catch (SQLException e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
         }
     }//GEN-LAST:event_RegisterUser_RegisterUserButtonActionPerformed
@@ -1443,7 +1438,7 @@ public class MainFrame extends javax.swing.JFrame {
             try {
                 newOutro.setPrice(Main.getPizzaria().findOtherProduct((String) RegisterOrder_OutroField.getSelectedItem()).getPrice());
             } catch (SQLException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
             }
             ArrayList<OtherProductType> newOthers = currentRequest.getOthers();
             newOthers.add(newOutro);
@@ -1455,7 +1450,7 @@ public class MainFrame extends javax.swing.JFrame {
             try {
                 newOutro.setPrice(Main.getPizzaria().findOtherProduct((String) RegisterOrder_OutroField.getSelectedItem()).getPrice());
             } catch (SQLException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
             }
             ArrayList<OtherProductType> newOthers = currentRequest.getOthers();
             newOthers.add(newOutro);
@@ -1470,7 +1465,7 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             currentRequest.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText())); // seta o client
         } catch (SQLException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
         }
         Queue<ClientRequest> newRequests = Main.getPizzaria().getRequests();
         newRequests.add(currentRequest);
@@ -1482,11 +1477,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void LoginForm_PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            try {
                 Login();
-            } catch (SQLException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_LoginForm_PasswordFieldKeyPressed
 
@@ -1586,11 +1577,10 @@ public class MainFrame extends javax.swing.JFrame {
             MainJPanel.revalidate();
     }
 
-    private void Login() throws SQLException {
+    private void Login(){
         try {
             this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());
         } catch (SQLException e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
         }
         switch(this.LoginPower) {
@@ -1845,7 +1835,7 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             price = Main.getPizzaria().calculatePizzaPrice(pizza);
         } catch (SQLException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
         }
         RegisterOrder_PriceField.setText(String.valueOf(price));
     }
