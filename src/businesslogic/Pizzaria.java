@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import pizzasystem.data.Person;
 import pizzasystem.data.ClientRequest;
@@ -24,6 +26,11 @@ public class Pizzaria{
             String url = "jdbc:mysql://45.55.166.39:3306/pizza";
             String user = "root";
             String password = "pizza";
+            try {  
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Pizzaria.class.getName()).log(Level.SEVERE, null, ex);
+            }
             db = DriverManager.getConnection(url, user, password);
         }
 
@@ -102,7 +109,7 @@ public class Pizzaria{
     public void registerOutro(OtherProductType outro) throws SQLException {
         // TODO: Checar todos os atributos
         outro.save(getDb());
-        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso.");
+        throw new RuntimeException("Produto cadastrado com sucesso.");
     }
 
     public void registerEmployee(Employee employee) throws SQLException {

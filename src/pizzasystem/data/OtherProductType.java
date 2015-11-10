@@ -49,7 +49,7 @@ public class OtherProductType{
     }
 
     public void save(Connection db) throws SQLException {
-        String query = "INSERT INTO OtherProductType VALUES(?, ?, ?, ?) " +
+        String query = "INSERT INTO OtherProductType VALUES(?, ?) " +
             "ON DUPLICATE KEY UPDATE price=VALUES(price);";
         PreparedStatement stmt = db.prepareStatement(query);
         stmt.setString(1, getName());

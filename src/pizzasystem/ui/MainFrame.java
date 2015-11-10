@@ -187,8 +187,7 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterPizza_TasteField = new javax.swing.JTextField();
         RegisterPizza_RegisterPizzaButton = new javax.swing.JButton();
         RegisterPizza_BackButton = new javax.swing.JButton();
-        RegisterPizza_PriceField = new javax.swing.JTextField();
-        RegisterPizza_SizeField = new javax.swing.JComboBox();
+        RegisterPizza_PriceFieldBig = new javax.swing.JTextField();
         RegisterPizza_TasteLabel4 = new javax.swing.JLabel();
         RegisterPizza_TasteLabel5 = new javax.swing.JLabel();
         RegisterPizza_TasteLabel6 = new javax.swing.JLabel();
@@ -197,6 +196,9 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterPizza_TasteLabel7 = new javax.swing.JLabel();
         RegisterPizza_Title1 = new javax.swing.JLabel();
         RegisterPizza_RegisterPizzaButton1 = new javax.swing.JButton();
+        RegisterPizza_TasteLabel1 = new javax.swing.JLabel();
+        RegisterPizza_PriceFieldMedium = new javax.swing.JTextField();
+        RegisterPizza_PriceFieldFamily = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -215,6 +217,16 @@ public class MainFrame extends javax.swing.JFrame {
         LoginForm_PasswordLabel.setText("Senha");
 
         LoginForm_PasswordField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        LoginForm_PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginForm_PasswordFieldActionPerformed(evt);
+            }
+        });
+        LoginForm_PasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LoginForm_PasswordFieldKeyPressed(evt);
+            }
+        });
 
         LoginForm_LoginButton.setText("Login");
         LoginForm_LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -591,6 +603,11 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterOrder_AddDrinkButton.setText("Adicionar");
 
         RegisterOrder_SizeField.setModel(new DefaultComboBoxModel(PizzaTaste.Size.values()));
+        RegisterOrder_SizeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterOrder_SizeFieldActionPerformed(evt);
+            }
+        });
 
         RegisterOrder_TasteField1.setModel(new DefaultComboBoxModel(getTasteList()));
         RegisterOrder_TasteField1.addActionListener(new java.awt.event.ActionListener() {
@@ -622,7 +639,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Preço:");
 
-        RegisterOrder_PriceField.setText("R$");
+        RegisterOrder_PriceField.setText("R$" + String.valueOf(setPizzaPrice()));
 
         jButton1.setText("Deslogar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -921,7 +938,7 @@ public class MainFrame extends javax.swing.JFrame {
         RegisterPizza_Title.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         RegisterPizza_Title.setText("Registrar outro produto");
 
-        RegisterPizza_TasteLabel.setText("Tamanho:");
+        RegisterPizza_TasteLabel.setText("Preço Big:");
 
         RegisterPizza_RegisterPizzaButton.setText("Registrar Nova Pizza");
         RegisterPizza_RegisterPizzaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -937,11 +954,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        RegisterPizza_SizeField.setModel(new DefaultComboBoxModel(PizzaTaste.Size.values()));
+        RegisterPizza_PriceFieldBig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterPizza_PriceFieldBigActionPerformed(evt);
+            }
+        });
 
         RegisterPizza_TasteLabel4.setText("Sabor");
 
-        RegisterPizza_TasteLabel5.setText("Preço:");
+        RegisterPizza_TasteLabel5.setText("Preço Family:");
 
         RegisterPizza_TasteLabel6.setText("Produto:");
 
@@ -957,6 +978,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        RegisterPizza_TasteLabel1.setText("Preço Medium:");
+
         javax.swing.GroupLayout RegisterPizzaLayout = new javax.swing.GroupLayout(RegisterPizza);
         RegisterPizza.setLayout(RegisterPizzaLayout);
         RegisterPizzaLayout.setHorizontalGroup(
@@ -968,14 +991,14 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(RegisterPizzaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                        .addComponent(RegisterPizza_Title1)
+                        .addGap(121, 121, 121)
+                        .addComponent(RegisterPizza_TasteLabel5)
+                        .addGap(86, 86, 86)
+                        .addComponent(RegisterPizza_TasteLabel))
                     .addComponent(RegisterPizza_RegisterPizzaButton1)
                     .addComponent(RegisterPizza_Title)
-                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
-                        .addComponent(RegisterPizza_TasteLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(RegisterPizza_OutroNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(RegisterPizza_OutroPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(RegisterPizzaLayout.createSequentialGroup()
                         .addGap(252, 252, 252)
                         .addComponent(RegisterPizza_TasteLabel7))
@@ -983,37 +1006,49 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(RegisterPizzaLayout.createSequentialGroup()
                         .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                                .addComponent(RegisterPizza_TasteLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(RegisterPizza_OutroNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(RegisterPizzaLayout.createSequentialGroup()
                                 .addComponent(RegisterPizza_TasteLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(RegisterPizza_TasteField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(78, 78, 78)
-                                .addComponent(RegisterPizza_PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(RegisterPizzaLayout.createSequentialGroup()
-                                .addComponent(RegisterPizza_Title1)
-                                .addGap(121, 121, 121)
-                                .addComponent(RegisterPizza_TasteLabel5)))
-                        .addGap(69, 69, 69)
+                                .addComponent(RegisterPizza_TasteField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(78, 78, 78)
                         .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegisterPizza_SizeField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterPizzaLayout.createSequentialGroup()
-                                .addComponent(RegisterPizza_TasteLabel)
-                                .addGap(20, 20, 20)))))
-                .addContainerGap(268, Short.MAX_VALUE))
+                            .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                                .addComponent(RegisterPizza_PriceFieldFamily, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(RegisterPizza_PriceFieldBig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(RegisterPizza_OutroPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(RegisterPizza_TasteLabel1))
+                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(RegisterPizza_PriceFieldMedium, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         RegisterPizzaLayout.setVerticalGroup(
             RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegisterPizzaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RegisterPizza_TasteLabel)
-                    .addComponent(RegisterPizza_TasteLabel5)
-                    .addComponent(RegisterPizza_Title1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RegisterPizza_TasteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RegisterPizza_PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RegisterPizza_SizeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RegisterPizza_TasteLabel4))
+                .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(RegisterPizza_Title1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RegisterPizza_TasteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterPizza_TasteLabel4)
+                            .addComponent(RegisterPizza_PriceFieldFamily, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterPizza_PriceFieldBig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegisterPizza_PriceFieldMedium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(RegisterPizzaLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(RegisterPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RegisterPizza_TasteLabel5)
+                            .addComponent(RegisterPizza_TasteLabel)
+                            .addComponent(RegisterPizza_TasteLabel1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RegisterPizza_RegisterPizzaButton)
                 .addGap(28, 28, 28)
@@ -1140,7 +1175,6 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             Main.getPizzaria().addClient(person);
         } catch (SQLException e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
         } catch (RuntimeException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -1148,21 +1182,21 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterOrder_UpdateClientButtonActionPerformed
 
     private void RegisterPizza_RegisterPizzaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_RegisterPizzaButtonActionPerformed
-        /*
-        TODO: PizzaTastes tem três preços, e só um nome de sabor
-        
-        PizzaTaste newpizza = new PizzaTaste();
-        newpizza.setPrice(Float.parseFloat(RegisterPizza_PriceField.getText()));
-        newpizza.setSize((Size) RegisterPizza_SizeField.getSelectedItem());
-        String[] tastes = new String[3];
-        tastes[0] = RegisterPizza_TasteField.getText();
-        newpizza.setTastes(tastes);
-        if (Main.getPizzaria().registerPizza(newpizza) == 1){
-            RegisterOrder_TasteField1.addItem(newpizza.getTasteName()[0]);
-            RegisterOrder_TasteField2.addItem(newpizza.getTasteName()[0]);
-            RegisterOrder_TasteField3.addItem(newpizza.getTasteName()[0]);
+        PizzaTaste newPizzaTaste = new PizzaTaste();
+        newPizzaTaste.setPriceFamily(Float.parseFloat(RegisterPizza_PriceFieldFamily.getText()));
+        newPizzaTaste.setPriceBig(Float.parseFloat(RegisterPizza_PriceFieldBig.getText()));
+        newPizzaTaste.setPriceMedium(Float.parseFloat(RegisterPizza_PriceFieldMedium.getText()));
+        newPizzaTaste.setName(RegisterPizza_TasteField.getText());
+        try {
+            Main.getPizzaria().registerPizza(newPizzaTaste);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        } catch (RuntimeException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            RegisterOrder_TasteField1.addItem(newPizzaTaste.getName());
+            RegisterOrder_TasteField2.addItem(newPizzaTaste.getName());
+            RegisterOrder_TasteField3.addItem(newPizzaTaste.getName());
         }
-        */
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButtonActionPerformed
 
     private void RegisterOrder_TasteField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_TasteField1ActionPerformed
@@ -1187,11 +1221,12 @@ public class MainFrame extends javax.swing.JFrame {
         outro.setPrice(Float.parseFloat(RegisterPizza_OutroPriceField.getText()));
         try{
             Main.getPizzaria().registerOutro(outro);
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");    
+        } catch(RuntimeException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            RegisterOrder_OutroField.addItem(outro.getName());
         }
-        catch(SQLException e){
-           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");    
-        }
-        RegisterOrder_OutroField.addItem(outro.getName());
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButton1ActionPerformed
 
     private void RegisterUser_RegisterUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RegisterUserButtonActionPerformed
@@ -1289,9 +1324,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterOrder_RegisterOrderButtonActionPerformed
 
     private void LoginForm_PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldKeyPressed
-        // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-                Login();
+            this.Login();
         }
     }//GEN-LAST:event_LoginForm_PasswordFieldKeyPressed
 
@@ -1308,6 +1342,14 @@ public class MainFrame extends javax.swing.JFrame {
         Main.getPizzaria().setCurrentUser(null);
         this.Logout();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void RegisterPizza_PriceFieldBigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_PriceFieldBigActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterPizza_PriceFieldBigActionPerformed
+
+    private void LoginForm_PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldActionPerformed
+
+    }//GEN-LAST:event_LoginForm_PasswordFieldActionPerformed
 
     private String[][] showRequests(){
         Queue<ClientRequest> requests = Main.getPizzaria().getRequests();
@@ -1585,12 +1627,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton RegisterPizza_BackButton;
     private javax.swing.JTextField RegisterPizza_OutroNameField;
     private javax.swing.JTextField RegisterPizza_OutroPriceField;
-    private javax.swing.JTextField RegisterPizza_PriceField;
+    private javax.swing.JTextField RegisterPizza_PriceFieldBig;
+    private javax.swing.JTextField RegisterPizza_PriceFieldFamily;
+    private javax.swing.JTextField RegisterPizza_PriceFieldMedium;
     private javax.swing.JButton RegisterPizza_RegisterPizzaButton;
     private javax.swing.JButton RegisterPizza_RegisterPizzaButton1;
-    private javax.swing.JComboBox RegisterPizza_SizeField;
     private javax.swing.JTextField RegisterPizza_TasteField;
     private javax.swing.JLabel RegisterPizza_TasteLabel;
+    private javax.swing.JLabel RegisterPizza_TasteLabel1;
     private javax.swing.JLabel RegisterPizza_TasteLabel4;
     private javax.swing.JLabel RegisterPizza_TasteLabel5;
     private javax.swing.JLabel RegisterPizza_TasteLabel6;
@@ -1621,7 +1665,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
-    private void setPizzaPrice() {
+    private Float setPizzaPrice() {
         Pizza pizza = new Pizza();
         pizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
         pizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
@@ -1633,6 +1677,7 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
         }
-        RegisterOrder_PriceField.setText(String.valueOf(price));
+        RegisterOrder_PriceField.setText("R$" + String.valueOf(price));
+        return price;
     }
 }
