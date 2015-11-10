@@ -70,8 +70,8 @@ public class Person {
         PreparedStatement stmt = db.prepareStatement(query);
         stmt.setString(1, getPhoneNumber());
         stmt.setString(2, getName());
-        stmt.setString(4, getAddress());
-        stmt.setString(5, getCep());
+        stmt.setString(3, getAddress());
+        stmt.setString(4, getCep());
         stmt.executeUpdate();
     }
 

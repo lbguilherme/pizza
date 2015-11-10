@@ -7,30 +7,17 @@ import java.sql.SQLException;
 
 public class Employee extends Person{
 
-    /**
-     * @return the cpf
-     */
-    public String getCpf() {
-        return cpf;
-    }
-
-    /**
-     * @param cpf the cpf to set
-     */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public enum Role {
         Admin,
         Attendant,
         Cook,
         Delivery
     }
-    private String cpf;
+    
     private String user;
     private String hashPass;
     private Role role;
+    private String cpf;
 
     public String getUser() {
         return user;
@@ -56,6 +43,20 @@ public class Employee extends Person{
         this.role = role;
     }
     
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     protected void setFromResultSet(ResultSet result) throws SQLException {
         super.setFromResultSet(result);
         setUser(result.getString("user"));
@@ -79,14 +80,15 @@ public class Employee extends Person{
 
     public void save(Connection db) throws SQLException {
         super.save(db);
-        String query = "INSERT INTO Employee VALUES(?, ?, ?, ?) " +
+        String query = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?) " +
             "ON DUPLICATE KEY UPDATE phoneNumber=VALUES(phoneNumber), " +
-            "hashPass=VALUES(hashPass), role=VALUES(role);";
+            "hashPass=VALUES(hashPass), role=VALUES(role), cpf=VALUES(cpf);";
         PreparedStatement stmt = db.prepareStatement(query);
         stmt.setString(1, getUser());
         stmt.setString(2, getPhoneNumber());
         stmt.setString(3, getHashPass());
         stmt.setString(4, getRole().name());
+        stmt.setString(5, getCpf());
         stmt.executeUpdate();
     }
 
