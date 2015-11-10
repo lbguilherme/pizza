@@ -4,7 +4,6 @@ use pizza;
 create table Person(
     phoneNumber     varchar(100)    not null primary key,
     name            varchar(100)    not null,
-    cpf             varchar(100)    not null,
     address         varchar(100)    not null,
     cep             varchar(100)    not null);
 
@@ -13,6 +12,7 @@ create table Employee(
     phoneNumber     varchar(100)    not null,
     hashPass        varchar(100)    not null,
     role            varchar(100)    not null,
+    cpf             varchar(100)    not null,
     foreign key (phoneNumber) references Person(phoneNumber));
 
 create table PizzaTaste(

@@ -12,20 +12,6 @@ import java.util.List;
 
 public class ClientRequest {
 
-    /**
-     * @return the others
-     */
-    public ArrayList<OtherProductType> getOthers() {
-        return others;
-    }
-
-    /**
-     * @param others the others to set
-     */
-    public void setOthers(ArrayList<OtherProductType> others) {
-        this.others = others;
-    }
-
     public enum Status {
         Requested,
         ReadyForDelivery,
@@ -34,7 +20,7 @@ public class ClientRequest {
 
     private int id = -1;
     private ArrayList<Pizza> pizzas = new ArrayList<>();
-    private ArrayList<OtherProductType> others = new ArrayList<>();
+    private ArrayList<OtherProduct> others = new ArrayList<>();
     private Status status;
     private Person client;
 
@@ -46,11 +32,12 @@ public class ClientRequest {
     }
 
     /**
-     * @param pizzas the pizzas to set
+     * @return the products
      */
-    public void setPizzas(ArrayList<Pizza> pizzas) {
-        this.pizzas = pizzas;
+    public List<OtherProduct> getOthers() {
+        return others;
     }
+
 
     public Float getTotalPrice() {
         /*
@@ -76,6 +63,10 @@ public class ClientRequest {
             throw new RuntimeException();
         
         pizzas.add(pizza);
+    }
+    
+    public void addOther(OtherProduct other) {
+        others.add(other);
     }
 
     public Status getStatus() {
@@ -106,13 +97,6 @@ public class ClientRequest {
         PreparedStatement stmt = db.prepareStatement(query);
         ResultSet result = stmt.executeQuery();
         
-        List<Pizza> list = new ArrayList<>();
-        while (result.next()) {
-            Pizza pizza = new Pizza();
-            pizza.setFromResultSet(result);
-            list.add(pizza);
-        }
-        
         HashMap<Integer, ClientRequest> idToRequestTable = new HashMap<>();
         for (ClientRequest request : requests) {
             idToRequestTable.put(request.id, request);
@@ -131,12 +115,11 @@ public class ClientRequest {
         result.beforeFirst();
         
         for (ClientRequest request : requests) {
+            request.pizzas = new ArrayList<Pizza>();
             if (idToPizzasSize.containsKey(request.id)) {
                 int size = idToPizzasSize.get(request.id);
-                request.pizzas = new ArrayList<Pizza>(size);
-                Collections.fill(request.pizzas, null);
-            } else {
-                request.pizzas = new ArrayList<Pizza>();
+                for (int i = 0; i < size; ++i)
+                    request.pizzas.add(null);
             }
         }
         
@@ -147,6 +130,47 @@ public class ClientRequest {
             pizza.setFromResultSet(result);
             ClientRequest request = idToRequestTable.get(id);
             request.pizzas.set(idx, pizza);
+        }
+    }
+    
+    protected static void fillOthers(Connection db, List<ClientRequest> requests) throws SQLException {
+        String query = "select * from OtherProduct;";
+        PreparedStatement stmt = db.prepareStatement(query);
+        ResultSet result = stmt.executeQuery();
+        
+        HashMap<Integer, ClientRequest> idToRequestTable = new HashMap<>();
+        for (ClientRequest request : requests) {
+            idToRequestTable.put(request.id, request);
+        }
+        
+        HashMap<Integer, Integer> idToOtherSize = new HashMap<>();
+        while (result.next()) {
+            int id = result.getInt("idClientRequest");
+            int idx = result.getInt("idx");
+            if (idToOtherSize.containsKey(id)) {
+                idToOtherSize.put(id, Math.max(idToOtherSize.get(id), idx+1));
+            } else {
+                idToOtherSize.put(id, idx+1);
+            }
+        }
+        result.beforeFirst();
+        
+        for (ClientRequest request : requests) {
+            request.others = new ArrayList<OtherProduct>();
+            if (idToOtherSize.containsKey(request.id)) {
+                int size = idToOtherSize.get(request.id);
+                for (int i = 0; i < size; ++i)
+                    request.others.add(null);
+            }
+        }
+        
+        while (result.next()) {
+            int id = result.getInt("idClientRequest");
+            int idx = result.getInt("idx");
+            OtherProduct other = new OtherProduct();
+            other.setFromResultSet(result);
+            ClientRequest request = idToRequestTable.get(id);
+            request.others.set(idx, other);
         }
     }
 
@@ -164,6 +188,7 @@ public class ClientRequest {
         }
         
         fillPizzas(db, list);
+        fillOthers(db, list);
 
         return list;
     }
@@ -208,6 +233,23 @@ public class ClientRequest {
             stmt.setString(4, pizza.getTaste2());
             stmt.setString(5, pizza.getTaste3());
             stmt.setString(6, pizza.getSize().name());
+            stmt.executeUpdate();
+        }
+    }
+    
+    private void saveOthers(Connection db) throws SQLException {
+        String deleteQuery = "DELETE FROM OtherProduct WHERE idClientRequest=?;";
+        PreparedStatement deleteStmt = db.prepareStatement(deleteQuery);
+        deleteStmt.setInt(1, id);
+        deleteStmt.executeUpdate();
+        
+        String query = "INSERT INTO OtherProduct VALUES(?, ?, ?);";
+        for (int idx = 0; idx < others.size(); ++idx) {
+            OtherProduct other = others.get(idx);
+            PreparedStatement stmt = db.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.setInt(2, idx);
+            stmt.setString(3, other.getProduct());
             stmt.executeUpdate();
         }
     }

@@ -25,6 +25,7 @@ import pizzasystem.data.ClientRequest;
 import pizzasystem.data.ClientRequest.Status;
 import pizzasystem.data.Employee;
 import pizzasystem.data.Employee.Role;
+import pizzasystem.data.OtherProduct;
 import pizzasystem.data.Person;
 import pizzasystem.data.Pizza;
 import pizzasystem.utility.PasswordHasher;
@@ -1247,56 +1248,29 @@ public class MainFrame extends javax.swing.JFrame {
         DefaultListModel lista = (DefaultListModel) RegisterOrder_ItensList2.getModel();
         lista.addElement(RegisterOrder_TasteField1.getSelectedItem() + ", " + RegisterOrder_TasteField2.getSelectedItem() + ", " + RegisterOrder_TasteField3.getSelectedItem());
         RegisterOrder_ItensList2.setModel(lista);
-        if (this.currentRequest != null){
-            Pizza newPizza = new Pizza();
-            newPizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
-            newPizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
-            newPizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
-            newPizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
-            ArrayList<Pizza> pizzas = (ArrayList<Pizza>) currentRequest.getPizzas();
-            pizzas.add(newPizza);
-            currentRequest.setPizzas(pizzas);
-        }else{
+        if (this.currentRequest == null){
             this.currentRequest = new ClientRequest();
-            Pizza newPizza = new Pizza();
-            newPizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
-            newPizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
-            newPizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
-            newPizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
-            ArrayList<Pizza> pizzas = (ArrayList<Pizza>) currentRequest.getPizzas();
-            pizzas.add(newPizza);
-            currentRequest.setPizzas(pizzas);
         }
+        
+        this.currentRequest = new ClientRequest();
+        Pizza newPizza = new Pizza();
+        newPizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
+        newPizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
+        newPizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
+        newPizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
+        currentRequest.addPizza(newPizza);
     }//GEN-LAST:event_RegisterOrder_AddPizzaButtonActionPerformed
 
     private void RegisterOrder_AddDrinkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_AddDrinkButtonActionPerformed
         DefaultListModel lista = (DefaultListModel) RegisterOrder_ItensList2.getModel();
         lista.addElement(RegisterOrder_OutroField.getSelectedItem());
         RegisterOrder_ItensList2.setModel(lista);
-        if (this.currentRequest != null){
-            OtherProductType newOutro = new OtherProductType();
-            newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
-            try {
-                newOutro.setPrice(Main.getPizzaria().findOtherProduct((String) RegisterOrder_OutroField.getSelectedItem()).getPrice());
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-            }
-            ArrayList<OtherProductType> newOthers = currentRequest.getOthers();
-            newOthers.add(newOutro);
-            currentRequest.setOthers(newOthers);
-        }else{
+        if (this.currentRequest == null){
             this.currentRequest = new ClientRequest();
-            OtherProductType newOutro = new OtherProductType();
-            newOutro.setName((String) RegisterOrder_OutroField.getSelectedItem());
-            try {
-                newOutro.setPrice(Main.getPizzaria().findOtherProduct((String) RegisterOrder_OutroField.getSelectedItem()).getPrice());
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-            }
-            ArrayList<OtherProductType> newOthers = currentRequest.getOthers();
-            newOthers.add(newOutro);
-            currentRequest.setOthers(newOthers);
         }
+        OtherProduct newOutro = new OtherProduct();
+        newOutro.setProduct((String) RegisterOrder_OutroField.getSelectedItem());
+        currentRequest.addOther(newOutro);
     }//GEN-LAST:event_RegisterOrder_AddDrinkButtonActionPerformed
 
     private void RegisterOrder_RegisterOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_RegisterOrderButtonActionPerformed
@@ -1365,11 +1339,11 @@ public class MainFrame extends javax.swing.JFrame {
                     row[1] += "*" + pizza.getSize() + ":" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "* ";
                 }
             }
-            for(OtherProductType other : request.getOthers()){
+            for(OtherProduct other : request.getOthers()){
                 if(row[1] == null){
-                    row[1] = "*" + other.getName() + "* ";
+                    row[1] = "*" + other.getProduct() + "* ";
                 }else{
-                    row[1] += "*" + other.getName() + "* ";
+                    row[1] += "*" + other.getProduct() + "* ";
                 }
             }
             
