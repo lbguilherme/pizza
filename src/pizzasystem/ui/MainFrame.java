@@ -75,7 +75,10 @@ public class MainFrame extends javax.swing.JFrame {
         MainJPanel.add(Login);
         MainJPanel.revalidate();
         timer = new Timer(5000, (ActionEvent ev) -> {
-                Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
+                String[][] newRequests = showRequests();
+                Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+                PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+                EntregadorForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
         });
         timer.start();
     }
@@ -112,14 +115,14 @@ public class MainFrame extends javax.swing.JFrame {
         Pizzaiolo = new javax.swing.JPanel();
         PizzaioloForm_Name = new javax.swing.JLabel();
         PizzaioloForm_Orders = new javax.swing.JScrollPane();
-        Orders_Table2 = new javax.swing.JTable();
+        PizzaioloForm_OrdersList2 = new javax.swing.JTable();
         PizzaioloForm_FinishPizza = new javax.swing.JButton();
         PizzaioloForm_Logout = new javax.swing.JButton();
         PizzaioloForm_OrdersLabel = new javax.swing.JLabel();
         Entregador = new javax.swing.JPanel();
         EntregadorForm_Name = new javax.swing.JLabel();
         EntregadorForm_Orders2 = new javax.swing.JScrollPane();
-        Orders_Table3 = new javax.swing.JTable();
+        EntregadorForm_OrdersList2 = new javax.swing.JTable();
         EntregadorForm_FinishOrder = new javax.swing.JButton();
         EntregadorForm_Logout = new javax.swing.JButton();
         EntregadorForm_OrdersLabel = new javax.swing.JLabel();
@@ -380,24 +383,9 @@ public class MainFrame extends javax.swing.JFrame {
         PizzaioloForm_Name.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         PizzaioloForm_Name.setText("Pizzaiolo: Nome");
 
-        Orders_Table2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        Orders_Table2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null}
-            },
-            new String [] {
-                "Número", "Pedido"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        PizzaioloForm_Orders.setViewportView(Orders_Table2);
+        PizzaioloForm_OrdersList2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
+        PizzaioloForm_Orders.setViewportView(PizzaioloForm_OrdersList2);
 
         PizzaioloForm_FinishPizza.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         PizzaioloForm_FinishPizza.setText("Finalizar Pizza");
@@ -455,24 +443,9 @@ public class MainFrame extends javax.swing.JFrame {
         EntregadorForm_Name.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         EntregadorForm_Name.setText("Entregador: Nome");
 
-        Orders_Table3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        Orders_Table3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Número", "Telefone", "Status", "Valor", "Endereço", "Pedido"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        EntregadorForm_Orders2.setViewportView(Orders_Table3);
+        EntregadorForm_OrdersList2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        EntregadorForm_OrdersList2.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
+        EntregadorForm_Orders2.setViewportView(EntregadorForm_OrdersList2);
 
         EntregadorForm_FinishOrder.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         EntregadorForm_FinishOrder.setText("Finalizar Entrega");
@@ -1261,6 +1234,8 @@ public class MainFrame extends javax.swing.JFrame {
             Main.getPizzaria().registerEmployee(newemployee);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        } catch (RuntimeException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_RegisterUser_RegisterUserButtonActionPerformed
 
@@ -1593,6 +1568,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel EntregadorForm_Name;
     private javax.swing.JScrollPane EntregadorForm_Orders2;
     private javax.swing.JLabel EntregadorForm_OrdersLabel;
+    private javax.swing.JTable EntregadorForm_OrdersList2;
     private javax.swing.JPanel Login;
     private javax.swing.JButton LoginForm_LoginButton;
     private javax.swing.JTextField LoginForm_PasswordField;
@@ -1602,14 +1578,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel LoginForm_UsernameLabel;
     private javax.swing.JPanel MainJPanel;
     private javax.swing.JTable Orders_Table;
-    private javax.swing.JTable Orders_Table2;
-    private javax.swing.JTable Orders_Table3;
     private javax.swing.JPanel Pizzaiolo;
     private javax.swing.JButton PizzaioloForm_FinishPizza;
     private javax.swing.JButton PizzaioloForm_Logout;
     private javax.swing.JLabel PizzaioloForm_Name;
     private javax.swing.JScrollPane PizzaioloForm_Orders;
     private javax.swing.JLabel PizzaioloForm_OrdersLabel;
+    private javax.swing.JTable PizzaioloForm_OrdersList2;
     private javax.swing.JPanel RegisterOrder;
     private javax.swing.JButton RegisterOrder_AddDrinkButton;
     private javax.swing.JButton RegisterOrder_AddPizzaButton;
