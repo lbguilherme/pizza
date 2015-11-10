@@ -277,6 +277,8 @@ public class MainFrame extends javax.swing.JFrame {
         AdminForm_Name.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         AdminForm_Name.setText("Administrador: Nome");
 
+        AdminForm_Orders.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
         Orders_Table.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
         AdminForm_Orders.setViewportView(Orders_Table);
