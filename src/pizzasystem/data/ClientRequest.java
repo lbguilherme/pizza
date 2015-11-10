@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class ClientRequest {
@@ -90,6 +92,76 @@ public class ClientRequest {
 
     public void setClient(Person client) {
         this.client = client;
+    }
+    
+    protected void setFromResultSet(ResultSet result) throws SQLException {
+        setStatus(Status.valueOf(result.getString("status")));
+        client = new Person();
+        client.setFromResultSet(result);
+        id = result.getInt("idClientRequest");
+    }
+    
+    protected static void fillPizzas(Connection db, List<ClientRequest> requests) throws SQLException {
+        String query = "select * from Pizza;";
+        PreparedStatement stmt = db.prepareStatement(query);
+        ResultSet result = stmt.executeQuery();
+        
+        List<Pizza> list = new ArrayList<>();
+        while (result.next()) {
+            Pizza pizza = new Pizza();
+            pizza.setFromResultSet(result);
+            list.add(pizza);
+        }
+        
+        HashMap<Integer, ClientRequest> idToRequestTable = new HashMap<>();
+        for (ClientRequest request : requests) {
+            idToRequestTable.put(request.id, request);
+        }
+        
+        HashMap<Integer, Integer> idToPizzasSize = new HashMap<>();
+        while (result.next()) {
+            int id = result.getInt("idClientRequest");
+            int idx = result.getInt("idx");
+            if (idToPizzasSize.containsKey(id)) {
+                idToPizzasSize.put(id, Math.max(idToPizzasSize.get(id), idx+1));
+            } else {
+                idToPizzasSize.put(id, idx+1);
+            }
+        }
+        result.beforeFirst();
+        
+        for (ClientRequest request : requests) {
+            int size = idToPizzasSize.get(request.id);
+            request.pizzas = new ArrayList<Pizza>(size);
+            Collections.fill(request.pizzas, null);
+        }
+        
+        while (result.next()) {
+            int id = result.getInt("idClientRequest");
+            int idx = result.getInt("idx");
+            Pizza pizza = new Pizza();
+            pizza.setFromResultSet(result);
+            ClientRequest request = idToRequestTable.get(id);
+            request.pizzas.set(idx, pizza);
+        }
+    }
+
+    public static List<ClientRequest> fetchAll(Connection db) throws SQLException {
+        String query = "select * from ClientRequest " +
+                "left join Person on ClientRequest.phoneNumber=Person.phoneNumber;";
+        PreparedStatement stmt = db.prepareStatement(query);
+        ResultSet result = stmt.executeQuery();
+        
+        List<ClientRequest> list = new ArrayList<>();
+        while (result.next()) {
+            ClientRequest request = new ClientRequest();
+            request.setFromResultSet(result);
+            list.add(request);
+        }
+        
+        fillPizzas(db, list);
+
+        return list;
     }
 
     private void insert(Connection db) throws SQLException {

@@ -7,12 +7,9 @@ package pizzasystem.ui;
 import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayDeque;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -75,10 +72,12 @@ public class MainFrame extends javax.swing.JFrame {
         MainJPanel.removeAll();
         MainJPanel.add(Login);
         MainJPanel.revalidate();
-        timer = new Timer(5000,new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
+        timer = new Timer(5000, (ActionEvent ev) -> {
+            try {
                 Orders_Table.setModel(new DefaultTableModel(showRequests(), new String[]{"Status", "Pedido"}));
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
             }
         });
         timer.start();
@@ -1278,12 +1277,10 @@ public class MainFrame extends javax.swing.JFrame {
         currentRequest.setStatus(Status.Requested);
         try {
             currentRequest.setClient(Main.getPizzaria().findClient(RegisterOrder_PhoneNumberField.getText())); // seta o client
+            Main.getPizzaria().addRequest(currentRequest);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
         }
-        Queue<ClientRequest> newRequests = Main.getPizzaria().getRequests();
-        newRequests.add(currentRequest);
-        Main.getPizzaria().setRequests(newRequests);
         currentRequest = null;
         RegisterOrder_ItensList2.setModel(new DefaultListModel());
     }//GEN-LAST:event_RegisterOrder_RegisterOrderButtonActionPerformed
@@ -1309,28 +1306,21 @@ public class MainFrame extends javax.swing.JFrame {
         this.Logout();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private String[][] showRequests(){
-        Queue<ClientRequest> requests = Main.getPizzaria().getRequests();
-        Queue<ClientRequest> copiedRequests = new ArrayDeque<>(requests);
-        ClientRequest request;
+    private String[][] showRequests() throws SQLException {
         String[][] output2;
         ArrayList<String[]> output = new ArrayList<>();
-        ArrayList<ClientRequest> requestsList = new ArrayList<>();
-        while(copiedRequests.peek() != null){
-            request = copiedRequests.poll();
-            requestsList.add(request);
-        }
-        for(ClientRequest requestL : requestsList){
+        List<ClientRequest> requestsList = Main.getPizzaria().getRequests();
+        for(ClientRequest request : requestsList){
             String[] row = new String[2];
-            row[0] = requestL.getStatus().toString();
-            for(Pizza pizza : requestL.getPizzas()){
+            row[0] = request.getStatus().toString();
+            for(Pizza pizza : request.getPizzas()){
                 if(row[1] == null){
                     row[1] = "*" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "*";
                 }else{
                     row[1] += "*" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "*";
                 }
             }
-            for(OtherProductType other : requestL.getOthers()){
+            for(OtherProductType other : request.getOthers()){
                 if(row[1] == null){
                     row[1] = "*" + other.getName() + "*";
                 }else{

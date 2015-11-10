@@ -2,6 +2,7 @@ package pizzasystem.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Pizza {
@@ -41,6 +42,13 @@ public class Pizza {
 
     public void setSize(PizzaTaste.Size size) {
         this.size = size;
+    }
+    
+    protected void setFromResultSet(ResultSet result) throws SQLException {
+        setTaste1(result.getString("taste1"));
+        setTaste2(result.getString("taste1"));
+        setTaste3(result.getString("taste1"));
+        setSize(PizzaTaste.Size.valueOf(result.getString("size")));
     }
     
 }

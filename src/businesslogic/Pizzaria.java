@@ -3,8 +3,7 @@ package businesslogic;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.List;
 import javax.swing.JOptionPane;
 import pizzasystem.data.Person;
 import pizzasystem.data.ClientRequest;
@@ -16,7 +15,6 @@ import pizzasystem.data.PizzaTaste;
 import pizzasystem.utility.PasswordHasher;
 
 public class Pizzaria{
-    private Queue<ClientRequest> requests = new ArrayDeque<>();
     private Connection db;
 
     private Connection getDb() throws SQLException {
@@ -158,17 +156,13 @@ public class Pizzaria{
     /**
      * @return the requests
      */
-    public Queue<ClientRequest> getRequests() {
-        return requests;
+    public List<ClientRequest> getRequests() throws SQLException {
+        return ClientRequest.fetchAll(getDb());
     }
 
-    /**
-     * @param requests the requests to set
-     */
-    public void setRequests(Queue<ClientRequest> requests) {
-        this.requests = requests;
+    public void addRequest(ClientRequest request) throws SQLException {
+        request.save(getDb());
     }
-    
     
     public Float calculatePizzaPrice(Pizza pizza) throws SQLException{
         Float maxPrice = 0f;
