@@ -7,13 +7,27 @@ import java.sql.SQLException;
 
 public class Employee extends Person{
 
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     public enum Role {
         Admin,
         Attendant,
         Cook,
         Delivery
     }
-
+    private String cpf;
     private String user;
     private String hashPass;
     private Role role;
