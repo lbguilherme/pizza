@@ -1353,16 +1353,6 @@ public class MainFrame extends javax.swing.JFrame {
             MainJPanel.revalidate();
     }
 
-    private void RegisterClient() {
-        MainJPanel.removeAll();
-            MainJPanel.repaint();
-            MainJPanel.revalidate();
-
-            MainJPanel.add(RegisterClient);
-            MainJPanel.repaint();
-            MainJPanel.revalidate();
-    }
-
     private void RegisterUser() {
         MainJPanel.removeAll();
             MainJPanel.repaint();
@@ -1423,7 +1413,7 @@ public class MainFrame extends javax.swing.JFrame {
                 MainJPanel.removeAll();
                 MainJPanel.repaint();
                 MainJPanel.revalidate();
-                MainJPanel.add(Atendente);
+                MainJPanel.add(RegisterOrder);
                 MainJPanel.repaint();
                 MainJPanel.revalidate();
                 return;
@@ -1462,7 +1452,7 @@ public class MainFrame extends javax.swing.JFrame {
                 MainJPanel.repaint();
                 MainJPanel.revalidate();
 
-                MainJPanel.add(Atendente);
+                MainJPanel.add(RegisterOrder);
                 MainJPanel.repaint();
                 MainJPanel.revalidate();
                 break;
