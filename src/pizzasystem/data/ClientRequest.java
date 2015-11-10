@@ -131,9 +131,13 @@ public class ClientRequest {
         result.beforeFirst();
         
         for (ClientRequest request : requests) {
-            int size = idToPizzasSize.get(request.id);
-            request.pizzas = new ArrayList<Pizza>(size);
-            Collections.fill(request.pizzas, null);
+            if (idToPizzasSize.containsKey(request.id)) {
+                int size = idToPizzasSize.get(request.id);
+                request.pizzas = new ArrayList<Pizza>(size);
+                Collections.fill(request.pizzas, null);
+            } else {
+                request.pizzas = new ArrayList<Pizza>();
+            }
         }
         
         while (result.next()) {
