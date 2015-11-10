@@ -1251,7 +1251,6 @@ public class MainFrame extends javax.swing.JFrame {
         if (this.currentRequest == null){
             this.currentRequest = new ClientRequest();
         }
-        
         this.currentRequest = new ClientRequest();
         Pizza newPizza = new Pizza();
         newPizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
@@ -1384,11 +1383,19 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void FinishPizza() {
-       // Main.getPizzaria().finishPizza();
+       try{
+           Main.getPizzaria().finishPizza();
+       } catch (SQLException e){
+           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       }
     }
 
     private void FinishOrder() {
-       // Main.getPizzaria().finishOrder();
+       try{
+           Main.getPizzaria().finishOrder();
+       } catch (SQLException e){
+           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       }
     }
 
     private void Logout() {

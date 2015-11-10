@@ -44,8 +44,8 @@ public class Pizza {
     
     protected void setFromResultSet(ResultSet result) throws SQLException {
         setTaste1(result.getString("taste1"));
-        setTaste2(result.getString("taste1"));
-        setTaste3(result.getString("taste1"));
+        setTaste2(result.getString("taste2"));
+        setTaste3(result.getString("taste3"));
         setSize(PizzaTaste.Size.valueOf(result.getString("size")));
     }
     

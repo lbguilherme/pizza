@@ -59,9 +59,6 @@ public class ClientRequest {
     }
     
     public void addPizza(Pizza pizza) {
-        if (pizzas.size() > 0 && !pizza.getSize().equals(pizzas.get(0).getSize()))
-            throw new RuntimeException();
-        
         pizzas.add(pizza);
     }
     

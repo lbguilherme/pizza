@@ -203,4 +203,24 @@ public class Pizzaria{
         return 0f;
     }
     
+ 
+   
+    public void finishOrder() throws SQLException {
+        for(ClientRequest request : getRequests()){
+            if (request.getStatus() == ClientRequest.Status.ReadyForDelivery){
+                request.setStatus(ClientRequest.Status.Delivered);
+                break;
+            }
+        }
+    }
+    
+    public void finishPizza() throws SQLException {
+        for(ClientRequest request : getRequests()){
+            if (request.getStatus() == ClientRequest.Status.Requested){
+                request.setStatus(ClientRequest.Status.ReadyForDelivery);
+                break;
+            }
+        }
+    }
+    
 }
