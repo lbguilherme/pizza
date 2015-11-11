@@ -5,7 +5,12 @@
  */
 package businesslogic;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,185 +19,185 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import pizzasystem.data.ClientRequest;
 import pizzasystem.data.Employee;
+import pizzasystem.data.OtherProduct;
 import pizzasystem.data.OtherProductType;
 import pizzasystem.data.Person;
 import pizzasystem.data.Pizza;
 import pizzasystem.data.PizzaTaste;
+import pizzasystem.utility.PasswordHasher;
 
 /**
  *
  * @author Felipe
  */
 public class PizzariaTest {
-    
+
+    static class PizzariaWithTestDb extends Pizzaria {
+        @Override
+        protected Connection getDb() throws SQLException {
+            if (db == null) {
+                String url = "jdbc:mysql://45.55.166.39:3306/pizzaTEST";
+                String user = "root";
+                String password = "pizza";
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Pizzaria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                db = DriverManager.getConnection(url, user, password);
+            }
+
+            return db;
+        }
+
+        public void truncateAllTables() throws SQLException {
+            Connection db = getDb();
+            db.createStatement().execute("DELETE FROM Pizza;");
+            db.createStatement().execute("DELETE FROM OtherProduct;");
+            db.createStatement().execute("DELETE FROM ClientRequest;");
+            db.createStatement().execute("DELETE FROM Employee;");
+            db.createStatement().execute("DELETE FROM Person;");
+            db.createStatement().execute("DELETE FROM PizzaTaste;");
+            db.createStatement().execute("DELETE FROM OtherProductType;");
+        }
+    }
+
     public PizzariaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
+    Pizzaria pizzaria;
+
     @Before
     public void setUp() {
+        pizzaria = new PizzariaWithTestDb();
     }
-    
+
     @After
     public void tearDown() {
+        try {
+            ((PizzariaWithTestDb)pizzaria).truncateAllTables();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Test of doLogin method, of class Pizzaria.
      */
     @Test
-    public void testDoLogin() throws Exception {
-        System.out.println("doLogin");
-        String user = "";
-        String pass = "";
-        Pizzaria instance = new Pizzaria();
-        int expResult = 0;
-        int result = instance.doLogin(user, pass);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testRegisterEmpAndDoLogin() throws Exception {
+        String user = "oidfoighfh";
+        String pass = "rtpijhiogp";
+
+        assertEquals(0, pizzaria.doLogin(user, pass));
+        assertEquals(null, pizzaria.getCurrentUser());
+
+        Employee emp = new Employee();
+        emp.setAddress("aaa");
+        emp.setCep("147");
+        emp.setCpf("456");
+        emp.setHashPass(new PasswordHasher().hash(pass));
+        emp.setName("Aaa");
+        emp.setPhoneNumber("123");
+        emp.setRole(Employee.Role.Attendant);
+        emp.setUser(user);
+        pizzaria.registerEmployee(emp);
+
+        assertEquals(2, pizzaria.doLogin(user, pass));
+        assertEquals("aaa", pizzaria.getCurrentUser().getAddress());
     }
 
     /**
      * Test of addClient method, of class Pizzaria.
      */
     @Test
-    public void testAddClient() throws Exception {
-        System.out.println("addClient");
-        Person client = null;
-        Pizzaria instance = new Pizzaria();
-        instance.addClient(client);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    public void testAddAndFindClient() throws Exception {
+        Person client = new Person();
+        client.setAddress("aaa bbb ccc");
+        client.setCep("741");
+        client.setName("Aaa Bbb");
+        client.setPhoneNumber("123456");
 
-    /**
-     * Test of findClient method, of class Pizzaria.
-     */
-    @Test
-    public void testFindClient() throws Exception {
-        System.out.println("findClient");
-        String phoneNumber = "";
-        Pizzaria instance = new Pizzaria();
-        Person expResult = null;
-        Person result = instance.findClient(phoneNumber);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            pizzaria.findClient("123456");
+            fail("Should throw");
+        } catch(RuntimeException e) {
+            assertEquals("Cliente não encontrado.", e.getMessage());
+        }
+        
+        pizzaria.addClient(client);
+        assertEquals("Aaa Bbb", pizzaria.findClient("123456").getName());
     }
 
     /**
      * Test of addClientRequest method, of class Pizzaria.
      */
     @Test
-    public void testAddClientRequest() throws Exception {
-        System.out.println("addClientRequest");
-        ClientRequest request = null;
-        Pizzaria instance = new Pizzaria();
-        instance.addClientRequest(request);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAddRequest() throws Exception {
+        Person client = new Person();
+        client.setAddress("aaa bbb ccc");
+        client.setCep("741");
+        client.setName("Aaa Bbb");
+        client.setPhoneNumber("123456");
+        pizzaria.addClient(client);
+        
+        ClientRequest request = new ClientRequest();
+        request.setClient(client);
+        request.setStatus(ClientRequest.Status.ReadyForDelivery);
+        
+        assertEquals(0, pizzaria.getRequests().size());
+        pizzaria.addRequest(request);
+        
+        List<ClientRequest> requests = pizzaria.getRequests();
+        assertEquals(1, requests.size());
+        assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(0).getStatus());
+        assertEquals("Aaa Bbb", requests.get(0).getClient().getName());
     }
 
     /**
      * Test of registerPizza method, of class Pizzaria.
      */
     @Test
-    public void testRegisterPizza() throws Exception {
-        System.out.println("registerPizza");
-        PizzaTaste pizza = null;
-        Pizzaria instance = new Pizzaria();
-        instance.registerPizza(pizza);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testRegisterAndGetPizza() throws Exception {
+        PizzaTaste pizza = new PizzaTaste();
+        pizza.setName("Broculis");
+        pizza.setPriceMedium(1f);
+        pizza.setPriceBig(2f);
+        pizza.setPriceFamily(3f);
+        
+        assertEquals(0, pizzaria.getPizzaTastes().size());
+        pizzaria.registerPizza(pizza);
+        
+        List<PizzaTaste> pizzas = pizzaria.getPizzaTastes();
+        assertEquals(1, pizzas.size());
+        assertEquals("Broculis", pizzas.get(0).getName());
+        assertEquals(2f, pizzas.get(0).getPrice(PizzaTaste.Size.Big), 0.0001f);
     }
 
     /**
      * Test of registerOutro method, of class Pizzaria.
      */
     @Test
-    public void testRegisterOutro() throws Exception {
-        System.out.println("registerOutro");
-        OtherProductType outro = null;
-        Pizzaria instance = new Pizzaria();
-        instance.registerOutro(outro);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of registerEmployee method, of class Pizzaria.
-     */
-    @Test
-    public void testRegisterEmployee() throws Exception {
-        System.out.println("registerEmployee");
-        Employee employee = null;
-        Pizzaria instance = new Pizzaria();
-        instance.registerEmployee(employee);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPizzaTastes method, of class Pizzaria.
-     */
-    @Test
-    public void testGetPizzaTastes() throws Exception {
-        System.out.println("getPizzaTastes");
-        Pizzaria instance = new Pizzaria();
-        List<PizzaTaste> expResult = null;
-        List<PizzaTaste> result = instance.getPizzaTastes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getOtherProductTypes method, of class Pizzaria.
-     */
-    @Test
-    public void testGetOtherProductTypes() throws Exception {
-        System.out.println("getOtherProductTypes");
-        Pizzaria instance = new Pizzaria();
-        List<OtherProductType> expResult = null;
-        List<OtherProductType> result = instance.getOtherProductTypes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCurrentUser method, of class Pizzaria.
-     */
-    @Test
-    public void testGetCurrentUser() {
-        System.out.println("getCurrentUser");
-        Pizzaria instance = new Pizzaria();
-        Employee expResult = null;
-        Employee result = instance.getCurrentUser();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setCurrentUser method, of class Pizzaria.
-     */
-    @Test
-    public void testSetCurrentUser() {
-        System.out.println("setCurrentUser");
-        Employee aCurrentUser = null;
-        Pizzaria instance = new Pizzaria();
-        instance.setCurrentUser(aCurrentUser);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testRegisterAndGetOutro() throws Exception {
+        OtherProductType product = new OtherProductType();
+        product.setName("Agua");
+        product.setPrice(5f);
+        
+        assertEquals(0, pizzaria.getOtherProductTypes().size());
+        pizzaria.registerOutro(product);
+        
+        List<OtherProductType> products = pizzaria.getOtherProductTypes();
+        assertEquals(1, products.size());
+        assertEquals("Agua", products.get(0).getName());
+        assertEquals(5f, products.get(0).getPrice(), 0.0001f);
     }
 
     /**
@@ -200,110 +205,105 @@ public class PizzariaTest {
      */
     @Test
     public void testFindOtherProduct() throws Exception {
-        System.out.println("findOtherProduct");
-        String otherName = "";
-        Pizzaria instance = new Pizzaria();
-        OtherProductType expResult = null;
-        OtherProductType result = instance.findOtherProduct(otherName);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getRequests method, of class Pizzaria.
-     */
-    @Test
-    public void testGetRequests() throws Exception {
-        System.out.println("getRequests");
-        Pizzaria instance = new Pizzaria();
-        List<ClientRequest> expResult = null;
-        List<ClientRequest> result = instance.getRequests();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addRequest method, of class Pizzaria.
-     */
-    @Test
-    public void testAddRequest() throws Exception {
-        System.out.println("addRequest");
-        ClientRequest request = null;
-        Pizzaria instance = new Pizzaria();
-        instance.addRequest(request);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        {
+            OtherProductType product = new OtherProductType();
+            product.setName("Agua");
+            product.setPrice(5f);
+            pizzaria.registerOutro(product);
+        }
+        {
+            OtherProductType product = new OtherProductType();
+            product.setName("Copo");
+            product.setPrice(8f);
+            pizzaria.registerOutro(product);
+        }
+        
+        assertEquals(2, pizzaria.getOtherProductTypes().size());
+        assertEquals(8f, pizzaria.findOtherProduct("Copo").getPrice(), 0.001f);
+        assertEquals(5f, pizzaria.findOtherProduct("Agua").getPrice(), 0.001f);
     }
 
     /**
      * Test of calculateRequestPrice method, of class Pizzaria.
      */
     @Test
-    public void testCalculateRequestPrice() throws Exception {
-        System.out.println("calculateRequestPrice");
-        ClientRequest request = null;
-        Pizzaria instance = new Pizzaria();
-        Float expResult = null;
-        Float result = instance.calculateRequestPrice(request);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of calculatePizzaPrice method, of class Pizzaria.
-     */
-    @Test
-    public void testCalculatePizzaPrice() throws Exception {
-        System.out.println("calculatePizzaPrice");
-        Pizza pizza = null;
-        Pizzaria instance = new Pizzaria();
-        Float expResult = null;
-        Float result = instance.calculatePizzaPrice(pizza);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPizzaPrice method, of class Pizzaria.
-     */
-    @Test
-    public void testGetPizzaPrice() throws Exception {
-        System.out.println("getPizzaPrice");
-        List<PizzaTaste> tastes = null;
-        String pizzaName = "";
-        PizzaTaste.Size size = null;
-        Pizzaria instance = new Pizzaria();
-        Float expResult = null;
-        Float result = instance.getPizzaPrice(tastes, pizzaName, size);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getOtherPrice method, of class Pizzaria.
-     */
-    @Test
-    public void testGetOtherPrice() throws Exception {
-        System.out.println("getOtherPrice");
-        List<OtherProductType> others = null;
-        String product = "";
-        Pizzaria instance = new Pizzaria();
-        Float expResult = null;
-        Float result = instance.getOtherPrice(others, product);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCalculatePrice() throws Exception {
+        {
+            PizzaTaste pizza = new PizzaTaste();
+            pizza.setName("Broculis");
+            pizza.setPriceMedium(1f);
+            pizza.setPriceBig(2f);
+            pizza.setPriceFamily(3f);
+            pizzaria.registerPizza(pizza);
+        }
+        {
+            PizzaTaste pizza = new PizzaTaste();
+            pizza.setName("Queijo");
+            pizza.setPriceMedium(10f);
+            pizza.setPriceBig(20f);
+            pizza.setPriceFamily(30f);
+            pizzaria.registerPizza(pizza);
+        }
+        {
+            OtherProductType product = new OtherProductType();
+            product.setName("Agua");
+            product.setPrice(5f);
+            pizzaria.registerOutro(product);
+        }
+        {
+            OtherProductType product = new OtherProductType();
+            product.setName("Copo");
+            product.setPrice(8f);
+            pizzaria.registerOutro(product);
+        }
+        
+        Person client = new Person();
+        client.setAddress("aaa bbb ccc");
+        client.setCep("741");
+        client.setName("Aaa Bbb");
+        client.setPhoneNumber("123456");
+        pizzaria.addClient(client);
+        
+        Pizza pizza1 = new Pizza();
+        pizza1.setTaste1("Broculis");
+        pizza1.setTaste2("Queijo");
+        pizza1.setTaste3("Queijo");
+        pizza1.setSize(PizzaTaste.Size.Big);
+        
+        Pizza pizza2 = new Pizza();
+        pizza2.setTaste1("Broculis");
+        pizza2.setTaste2("Broculis");
+        pizza2.setTaste3("Broculis");
+        pizza2.setSize(PizzaTaste.Size.Medium);
+        
+        OtherProduct product1 = new OtherProduct();
+        product1.setProduct("Agua");
+        
+        OtherProduct product2 = new OtherProduct();
+        product2.setProduct("Copo");
+        
+        OtherProduct product3 = new OtherProduct();
+        product3.setProduct("Agua");
+        
+        ClientRequest request = new ClientRequest();
+        request.setClient(client);
+        request.setStatus(ClientRequest.Status.ReadyForDelivery);
+        request.addPizza(pizza1);
+        request.addPizza(pizza2);
+        request.addOther(product1);
+        request.addOther(product2);
+        request.addOther(product3);
+        pizzaria.addRequest(request);
+        
+        assertEquals(20f, pizzaria.calculatePizzaPrice(pizza1), 0.001f);
+        assertEquals(1f, pizzaria.calculatePizzaPrice(pizza2), 0.001f);
+        assertEquals(39f, pizzaria.calculateRequestPrice(request), 0.001f);
     }
 
     /**
      * Test of finishOrder method, of class Pizzaria.
      */
-    @Test
+    //@Test
     public void testFinishOrder() throws Exception {
         System.out.println("finishOrder");
         Pizzaria instance = new Pizzaria();
@@ -315,7 +315,7 @@ public class PizzariaTest {
     /**
      * Test of finishPizza method, of class Pizzaria.
      */
-    @Test
+    //@Test
     public void testFinishPizza() throws Exception {
         System.out.println("finishPizza");
         Pizzaria instance = new Pizzaria();
@@ -327,7 +327,7 @@ public class PizzariaTest {
     /**
      * Test of removeDelivered method, of class Pizzaria.
      */
-    @Test
+    //@Test
     public void testRemoveDelivered() throws Exception {
         System.out.println("removeDelivered");
         Pizzaria instance = new Pizzaria();
@@ -335,5 +335,5 @@ public class PizzariaTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }

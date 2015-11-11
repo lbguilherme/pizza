@@ -1130,7 +1130,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AdminForm_FinishOrderActionPerformed
 
     private void AdminForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_LogoutActionPerformed
-        Main.getPizzaria().setCurrentUser(null);
+        Main.getPizzaria().logOut();
         this.Logout();
     }//GEN-LAST:event_AdminForm_LogoutActionPerformed
 
@@ -1145,7 +1145,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PizzaioloForm_FinishPizzaActionPerformed
 
     private void PizzaioloForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaioloForm_LogoutActionPerformed
-        Main.getPizzaria().setCurrentUser(null);
+        Main.getPizzaria().logOut();
         this.Logout();
     }//GEN-LAST:event_PizzaioloForm_LogoutActionPerformed
 
@@ -1160,7 +1160,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_EntregadorForm_FinishOrderActionPerformed
 
     private void EntregadorForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregadorForm_LogoutActionPerformed
-        Main.getPizzaria().setCurrentUser(null);
+        Main.getPizzaria().logOut();
         this.Logout();
     }//GEN-LAST:event_EntregadorForm_LogoutActionPerformed
 
@@ -1206,9 +1206,12 @@ public class MainFrame extends javax.swing.JFrame {
             Main.getPizzaria().addClient(person);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+            return;
         } catch (RuntimeException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            return;
         }
+        
+        JOptionPane.showMessageDialog(null, "Cliente cadastrado/atualizado com sucesso");
     }//GEN-LAST:event_RegisterOrder_UpdateClientButtonActionPerformed
 
     private void RegisterPizza_RegisterPizzaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_RegisterPizzaButtonActionPerformed
@@ -1221,12 +1224,13 @@ public class MainFrame extends javax.swing.JFrame {
             Main.getPizzaria().registerPizza(newPizzaTaste);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-        } catch (RuntimeException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-            RegisterOrder_TasteField1.addItem(newPizzaTaste.getName());
-            RegisterOrder_TasteField2.addItem(newPizzaTaste.getName());
-            RegisterOrder_TasteField3.addItem(newPizzaTaste.getName());
+            return;
         }
+        
+        JOptionPane.showMessageDialog(null, "Pizza cadastrada com sucesso.");
+        RegisterOrder_TasteField1.addItem(newPizzaTaste.getName());
+        RegisterOrder_TasteField2.addItem(newPizzaTaste.getName());
+        RegisterOrder_TasteField3.addItem(newPizzaTaste.getName());
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButtonActionPerformed
 
     private void RegisterOrder_TasteField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_TasteField1ActionPerformed
@@ -1252,11 +1256,12 @@ public class MainFrame extends javax.swing.JFrame {
         try{
             Main.getPizzaria().registerOutro(outro);
         } catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");    
-        } catch(RuntimeException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-            RegisterOrder_OutroField.addItem(outro.getName());
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+            return;
         }
+        
+        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso.");
+        RegisterOrder_OutroField.addItem(outro.getName());
     }//GEN-LAST:event_RegisterPizza_RegisterPizzaButton1ActionPerformed
 
     private void RegisterUser_RegisterUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RegisterUserButtonActionPerformed
@@ -1274,9 +1279,13 @@ public class MainFrame extends javax.swing.JFrame {
             Main.getPizzaria().registerEmployee(newemployee);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+            return;
         } catch (RuntimeException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
+            return;
         }
+        
+        JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso.");
     }//GEN-LAST:event_RegisterUser_RegisterUserButtonActionPerformed
 
     private void RegisterUser_RoleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RoleFieldActionPerformed
@@ -1340,7 +1349,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AdminForm_RegisterUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Main.getPizzaria().setCurrentUser(null);
+        Main.getPizzaria().logOut();
         this.Logout();
     }//GEN-LAST:event_jButton1ActionPerformed
 
