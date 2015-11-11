@@ -1,5 +1,7 @@
 <map id="businesslogic.Pizzaria.getPizzaTastes" name="businesslogic.Pizzaria.getPizzaTastes">
 <area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a209d314a015521abab5c3c393c372b9e" title="businesslogic.Pizzaria.calculate\lPizzaPrice" alt="" coords="228,5,436,47"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a5c4e2d71e7bdbb9c2a74038160f3a8ae" title="businesslogic.Pizzaria.calculate\lRequestPrice" alt="" coords="228,71,436,112"/>
-<area shape="rect" id="node4" href="$classpizzasystem_1_1ui_1_1MainFrame.html#a7ec4af0fb0c0ad0bee1401e83bbf646f" title="pizzasystem.ui.MainFrame.get\lTasteList" alt="" coords="231,136,433,177"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#a5c4e2d71e7bdbb9c2a74038160f3a8ae" title="businesslogic.Pizzaria.calculate\lRequestPrice" alt="" coords="228,71,436,112"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1ui_1_1MainFrame.html#a7ec4af0fb0c0ad0bee1401e83bbf646f" title="pizzasystem.ui.MainFrame.get\lTasteList" alt="" coords="231,136,433,177"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1PizzariaTest.html#aa58d23601018388550656d3b83410bc0" title="businesslogic.PizzariaTest.test\lRegisterAndGetPizza" alt="" coords="230,201,434,243"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="484,39,688,80"/>
 </map>

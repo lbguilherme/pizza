@@ -1,7 +1,10 @@
 <map id="pizzasystem.data.ClientRequest.getOthers" name="pizzasystem.data.ClientRequest.getOthers">
-<area shape="rect" id="node2" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a76eeb562771ccad6c9eee3ae9457a343" title="pizzasystem.transfer.Client\lRequestDAO.fillOthers" alt="" coords="288,39,471,80"/>
-<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="519,39,701,80"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#ad368766c0ac891cf5d9ef9ecb43fb67f" title="businesslogic.Pizzaria.get\lRequests" alt="" coords="749,39,924,80"/>
-<area shape="rect" id="node5" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="972,5,1159,47"/>
-<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="972,71,1159,112"/>
+<area shape="rect" id="node2" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a76eeb562771ccad6c9eee3ae9457a343" title="pizzasystem.transfer.Client\lRequestDAO.fillOthers" alt="" coords="288,123,471,164"/>
+<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="519,123,701,164"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#ad368766c0ac891cf5d9ef9ecb43fb67f" title="businesslogic.Pizzaria.get\lRequests" alt="" coords="749,123,924,164"/>
+<area shape="rect" id="node5" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="981,5,1167,47"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="businesslogic.PizzariaTest.test\lFinishing" alt="" coords="1224,64,1428,105"/>
+<area shape="rect" id="node7" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="981,123,1167,164"/>
+<area shape="rect" id="node8" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="businesslogic.PizzariaTest.test\lAddRequest" alt="" coords="972,188,1176,229"/>
+<area shape="rect" id="node9" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="972,253,1176,295"/>
 </map>

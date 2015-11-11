@@ -1,0 +1,11 @@
+<map id="businesslogic.PizzariaTest.testFindOtherProduct" name="businesslogic.PizzariaTest.testFindOtherProduct">
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a20916c9a4d30b189b9554ed142c31313" title="businesslogic.Pizzaria.find\lOtherProduct" alt="" coords="272,5,449,47"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a37a58960ff1c1142b5b99915873342a1" title="businesslogic.Pizzaria.get\lOtherProductTypes" alt="" coords="515,35,689,76"/>
+<area shape="rect" id="node6" href="$classpizzasystem_1_1data_1_1OtherProductType.html#aaa47c8c7d21b29f5ff74764d67bb7a2c" title="pizzasystem.data.OtherProduct\lType.getPrice" alt="" coords="257,123,464,164"/>
+<area shape="rect" id="node7" href="$classbusinesslogic_1_1Pizzaria.html#a9835ada679df2beb12e34ac717b5360d" title="businesslogic.Pizzaria.register\lOutro" alt="" coords="261,188,460,229"/>
+<area shape="rect" id="node9" href="$classpizzasystem_1_1data_1_1OtherProductType.html#af1e45abf1964f27bf4df7a4ef9207868" title="pizzasystem.data.OtherProduct\lType.setName" alt="" coords="257,253,464,295"/>
+<area shape="rect" id="node10" href="$classpizzasystem_1_1data_1_1OtherProductType.html#a70d5778229c6e2e05a37ea4896be74d7" title="pizzasystem.data.OtherProduct\lType.setPrice" alt="" coords="257,319,464,360"/>
+<area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#abc28b327511012b79bf147ec2b402638" title="pizzasystem.transfer.Other\lProductTypeDAO.fetchAll" alt="" coords="740,35,920,76"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#a0b9b2432edd9d56904573f846c4f0f6d" title="pizzasystem.transfer.Other\lProductTypeDAO.setFromResultSet" alt="" coords="968,35,1203,76"/>
+<area shape="rect" id="node8" href="$classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#acba95ce0adb9b1c206e1dd1d9482774e" title="pizzasystem.transfer.Other\lProductTypeDAO.save" alt="" coords="512,188,692,229"/>
+</map>

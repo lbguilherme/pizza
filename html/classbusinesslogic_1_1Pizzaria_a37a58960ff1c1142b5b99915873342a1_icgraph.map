@@ -1,5 +1,8 @@
 <map id="businesslogic.Pizzaria.getOtherProductTypes" name="businesslogic.Pizzaria.getOtherProductTypes">
 <area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a5c4e2d71e7bdbb9c2a74038160f3a8ae" title="businesslogic.Pizzaria.calculate\lRequestPrice" alt="" coords="228,5,436,47"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a20916c9a4d30b189b9554ed142c31313" title="businesslogic.Pizzaria.find\lOtherProduct" alt="" coords="243,71,421,112"/>
-<area shape="rect" id="node4" href="$classpizzasystem_1_1ui_1_1MainFrame.html#ae77756e3d3be8269e3c872e19a995593" title="pizzasystem.ui.MainFrame.get\lDrinkList" alt="" coords="231,136,433,177"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#a20916c9a4d30b189b9554ed142c31313" title="businesslogic.Pizzaria.find\lOtherProduct" alt="" coords="243,71,421,112"/>
+<area shape="rect" id="node5" href="$classbusinesslogic_1_1PizzariaTest.html#afca91ece9334dfd514c9da07ff07d875" title="businesslogic.PizzariaTest.test\lFindOtherProduct" alt="" coords="484,100,688,141"/>
+<area shape="rect" id="node6" href="$classpizzasystem_1_1ui_1_1MainFrame.html#ae77756e3d3be8269e3c872e19a995593" title="pizzasystem.ui.MainFrame.get\lDrinkList" alt="" coords="231,188,433,229"/>
+<area shape="rect" id="node7" href="$classbusinesslogic_1_1PizzariaTest.html#aa9c7061bcb63d946cec940c09385ef76" title="businesslogic.PizzariaTest.test\lRegisterAndGetOutro" alt="" coords="230,253,434,295"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="484,5,688,47"/>
 </map>

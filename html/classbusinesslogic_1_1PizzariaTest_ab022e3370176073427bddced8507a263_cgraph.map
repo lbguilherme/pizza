@@ -1,0 +1,12 @@
+<map id="businesslogic.PizzariaTest.testAddAndFindClient" name="businesslogic.PizzariaTest.testAddAndFindClient">
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#adb8e370c90e449312a2ed535d9f75444" title="businesslogic.Pizzaria.add\lClient" alt="" coords="282,5,459,47"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#a8a439ba0d5457b069fa1a34a5250cb12" title="businesslogic.Pizzaria.find\lClient" alt="" coords="282,71,459,112"/>
+<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1Person.html#a0d0fe9c4a441bfd4efcbc61b3e3c13e5" title="pizzasystem.data.Person.getName" alt="" coords="257,137,484,163"/>
+<area shape="rect" id="node8" href="$classpizzasystem_1_1data_1_1Person.html#a55a3fea0f595dbad63d8f509d78fcacc" title="pizzasystem.data.Person.set\lAddress" alt="" coords="275,188,467,229"/>
+<area shape="rect" id="node9" href="$classpizzasystem_1_1data_1_1Person.html#a01bf6d84f9b6a3118ff39a0048c8e4da" title="pizzasystem.data.Person.setCep" alt="" coords="263,254,479,281"/>
+<area shape="rect" id="node10" href="$classpizzasystem_1_1data_1_1Person.html#a5c5450e740db5890dfdf9eb9b8e6459c" title="pizzasystem.data.Person.setName" alt="" coords="257,305,484,331"/>
+<area shape="rect" id="node11" href="$classpizzasystem_1_1data_1_1Person.html#a8b9bbc02baa4f0154c7e5c2e2744afcc" title="pizzasystem.data.Person.set\lPhoneNumber" alt="" coords="275,356,467,397"/>
+<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a1ee6e1315a6db2687bcb79f012c60d34" title="pizzasystem.transfer.Person\lDAO.save" alt="" coords="532,5,721,47"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#afd67d1b023fdac19dcaef19b89b28407" title="pizzasystem.transfer.Person\lDAO.fetch" alt="" coords="532,71,721,112"/>
+<area shape="rect" id="node6" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a35e73a698efe46d23ad59774cccda3c1" title="pizzasystem.transfer.Person\lDAO.setFromResultSet" alt="" coords="769,71,959,112"/>
+</map>
