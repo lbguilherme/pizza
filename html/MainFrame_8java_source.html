@@ -1436,333 +1436,334 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;            Main.getPizzaria().removeDelivered();</div>
 <div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;        } <span class="keywordflow">catch</span> (SQLException e) {</div>
 <div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;            JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Falha na comunicação com banco de dados&quot;</span>);</div>
-<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;        } <span class="keywordflow">catch</span> (RuntimeException e){</div>
-<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;            JOptionPane.showMessageDialog(null, e.getMessage());</div>
-<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;        }</div>
-<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;    }<span class="comment">//GEN-LAST:event_jButton3ActionPerformed</span></div>
-<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;</div>
-<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;    <span class="keyword">private</span> String[][] showRequests(){</div>
-<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;        String[][] output2;</div>
-<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;        ArrayList&lt;String[]&gt; output = <span class="keyword">new</span> ArrayList&lt;&gt;();</div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;        List&lt;ClientRequest&gt; requestsList = null;</div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;            requestsList = Main.getPizzaria().getRequests();</div>
-<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;        } <span class="keywordflow">catch</span> (SQLException ex) {</div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;            JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Falha na comunicação com banco de dados&quot;</span>);</div>
-<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;        }</div>
-<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;        <span class="keywordflow">for</span>(ClientRequest request : requestsList){</div>
-<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;            String[] row = <span class="keyword">new</span> String[2];</div>
-<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;            row[0] = request.getStatus().toString();</div>
-<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;            <span class="keywordflow">for</span>(Pizza pizza : request.getPizzas()){</div>
-<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;                <span class="keywordflow">if</span>(row[1] == null){</div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;                    row[1] = <span class="stringliteral">&quot;*&quot;</span> + pizza.getSize() + <span class="stringliteral">&quot;:&quot;</span> + pizza.getTaste1() + <span class="stringliteral">&quot;-&quot;</span> + pizza.getTaste2() + <span class="stringliteral">&quot;-&quot;</span> + pizza.getTaste3() + <span class="stringliteral">&quot;* &quot;</span>;</div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;                }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;                    row[1] += <span class="stringliteral">&quot;*&quot;</span> + pizza.getSize() + <span class="stringliteral">&quot;:&quot;</span> + pizza.getTaste1() + <span class="stringliteral">&quot; &quot;</span> + pizza.getTaste2() + <span class="stringliteral">&quot; &quot;</span> + pizza.getTaste3() + <span class="stringliteral">&quot;* &quot;</span>;</div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;                }</div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;            }</div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;            <span class="keywordflow">for</span>(OtherProduct other : request.getOthers()){</div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;                <span class="keywordflow">if</span>(row[1] == null){</div>
-<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;                    row[1] = <span class="stringliteral">&quot;*&quot;</span> + other.getProduct() + <span class="stringliteral">&quot;* &quot;</span>;</div>
-<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;                }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;                    row[1] += <span class="stringliteral">&quot;*&quot;</span> + other.getProduct() + <span class="stringliteral">&quot;* &quot;</span>;</div>
-<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;                }</div>
-<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;            }</div>
-<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;            </div>
-<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;            output.add(row);</div>
-<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;        }</div>
-<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;        output2 = output.toArray(<span class="keyword">new</span> String[requestsList.size()][]);</div>
-<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;        <span class="keywordflow">return</span> output2;</div>
-<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;    }</div>
-<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;</div>
-<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterOrder() {</div>
-<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;        MainJPanel.removeAll();</div>
-<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;</div>
-<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;            MainJPanel.add(RegisterOrder);</div>
-<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;    }</div>
-<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;</div>
-<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterUser() {</div>
-<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;        MainJPanel.removeAll();</div>
-<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;</div>
-<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;            MainJPanel.add(RegisterUser);</div>
-<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;    }</div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;</div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterPizza() {</div>
-<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;        MainJPanel.removeAll();</div>
-<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;</div>
-<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;            MainJPanel.add(RegisterPizza);</div>
-<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;    }</div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;</div>
+<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;        }</div>
+<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;        </div>
+<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;        JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Pizzas entregues removidas da lista com sucesso.&quot;</span>);</div>
+<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;    }<span class="comment">//GEN-LAST:event_jButton3ActionPerformed</span></div>
+<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;</div>
+<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;    <span class="keyword">private</span> String[][] showRequests(){</div>
+<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;        String[][] output2;</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;        ArrayList&lt;String[]&gt; output = <span class="keyword">new</span> ArrayList&lt;&gt;();</div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;        List&lt;ClientRequest&gt; requestsList = null;</div>
+<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;            requestsList = Main.getPizzaria().getRequests();</div>
+<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;        } <span class="keywordflow">catch</span> (SQLException ex) {</div>
+<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;            JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Falha na comunicação com banco de dados&quot;</span>);</div>
+<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;        }</div>
+<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;        <span class="keywordflow">for</span>(ClientRequest request : requestsList){</div>
+<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;            String[] row = <span class="keyword">new</span> String[2];</div>
+<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;            row[0] = request.getStatus().toString();</div>
+<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;            <span class="keywordflow">for</span>(Pizza pizza : request.getPizzas()){</div>
+<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;                <span class="keywordflow">if</span>(row[1] == null){</div>
+<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;                    row[1] = <span class="stringliteral">&quot;*&quot;</span> + pizza.getSize() + <span class="stringliteral">&quot;:&quot;</span> + pizza.getTaste1() + <span class="stringliteral">&quot;-&quot;</span> + pizza.getTaste2() + <span class="stringliteral">&quot;-&quot;</span> + pizza.getTaste3() + <span class="stringliteral">&quot;* &quot;</span>;</div>
+<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;                }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;                    row[1] += <span class="stringliteral">&quot;*&quot;</span> + pizza.getSize() + <span class="stringliteral">&quot;:&quot;</span> + pizza.getTaste1() + <span class="stringliteral">&quot; &quot;</span> + pizza.getTaste2() + <span class="stringliteral">&quot; &quot;</span> + pizza.getTaste3() + <span class="stringliteral">&quot;* &quot;</span>;</div>
+<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;                }</div>
+<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;            }</div>
+<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;            <span class="keywordflow">for</span>(OtherProduct other : request.getOthers()){</div>
+<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;                <span class="keywordflow">if</span>(row[1] == null){</div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;                    row[1] = <span class="stringliteral">&quot;*&quot;</span> + other.getProduct() + <span class="stringliteral">&quot;* &quot;</span>;</div>
+<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;                }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;                    row[1] += <span class="stringliteral">&quot;*&quot;</span> + other.getProduct() + <span class="stringliteral">&quot;* &quot;</span>;</div>
+<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;                }</div>
+<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;            }</div>
+<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;            </div>
+<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;            output.add(row);</div>
+<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;        }</div>
+<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;        output2 = output.toArray(<span class="keyword">new</span> String[requestsList.size()][]);</div>
+<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;        <span class="keywordflow">return</span> output2;</div>
+<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;    }</div>
+<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;</div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterOrder() {</div>
+<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;        MainJPanel.removeAll();</div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;</div>
+<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;            MainJPanel.add(RegisterOrder);</div>
+<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;    }</div>
+<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;</div>
+<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterUser() {</div>
+<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;        MainJPanel.removeAll();</div>
+<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;</div>
+<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;            MainJPanel.add(RegisterUser);</div>
+<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;    }</div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;</div>
+<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterPizza() {</div>
+<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;        MainJPanel.removeAll();</div>
+<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;</div>
+<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;            MainJPanel.add(RegisterPizza);</div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;    }</div>
 <div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;</div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> Logout() {</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;        MainJPanel.removeAll();</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;</div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;            MainJPanel.add(Login);</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;            MainJPanel.repaint();</div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;            MainJPanel.revalidate();</div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;    }</div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;</div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> Login(){</div>
-<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;            this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());</div>
-<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;        } <span class="keywordflow">catch</span> (SQLException e) {</div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;            JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Falha na comunicação com banco de dados&quot;</span>);</div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;        }</div>
-<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;        <span class="keywordflow">switch</span>(this.LoginPower) {</div>
-<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;            <span class="keywordflow">case</span> 0:</div>
-<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;                JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Não foi possivel fazer login&quot;</span>);</div>
-<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;            <span class="keywordflow">case</span> 1:</div>
-<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;                MainJPanel.add(Admin);</div>
-<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;            <span class="keywordflow">case</span> 2:</div>
-<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;                MainJPanel.add(RegisterOrder);</div>
-<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;            <span class="keywordflow">case</span> 3:</div>
-<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;                MainJPanel.add(Pizzaiolo);</div>
-<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;            <span class="keywordflow">case</span> 4:</div>
-<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;                MainJPanel.add(Entregador);</div>
-<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;        }</div>
-<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;</div>
-<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;    }</div>
-<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;</div>
-<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> GoBack() {</div>
-<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;        <span class="keywordflow">switch</span>(this.LoginPower) {</div>
-<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;            <span class="keywordflow">case</span> 1: <span class="comment">// admin</span></div>
-<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;</div>
-<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;                MainJPanel.add(Admin);</div>
-<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;            <span class="keywordflow">case</span> 2: <span class="comment">// atendente</span></div>
-<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;</div>
-<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;                MainJPanel.add(RegisterOrder);</div>
-<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;            <span class="keywordflow">case</span> 3: <span class="comment">// pizzaiolo</span></div>
-<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;</div>
-<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;                MainJPanel.add(Pizzaiolo);</div>
-<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;            <span class="keywordflow">case</span> 4: <span class="comment">// entregador</span></div>
-<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;                MainJPanel.removeAll();</div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;</div>
-<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;                MainJPanel.add(Entregador);</div>
-<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;                MainJPanel.repaint();</div>
-<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;                MainJPanel.revalidate();</div>
-<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;            <span class="keywordflow">default</span>: <span class="comment">// outros(teste/error)</span></div>
-<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;                this.Logout();</div>
-<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;</div>
-<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;        }</div>
-<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;    }</div>
-<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;    </div>
-<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;    <span class="keyword">private</span> Float setPizzaPrice() {</div>
-<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;        Pizza pizza = <span class="keyword">new</span> Pizza();</div>
-<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;        pizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());</div>
-<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;        pizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());</div>
-<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;        pizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());</div>
-<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;        pizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());</div>
-<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;        Float price = 0f;</div>
-<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;            price = Main.getPizzaria().calculatePizzaPrice(pizza);</div>
-<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;        } <span class="keywordflow">catch</span> (SQLException ex) {</div>
-<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;            JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Falha na comunicação com banco de dados&quot;</span>);</div>
-<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;        }</div>
-<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;        RegisterOrder_PriceField.setText(<span class="stringliteral">&quot;R$&quot;</span> + String.valueOf(price));</div>
-<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;        <span class="keywordflow">return</span> price;</div>
-<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;    }</div>
-<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;    </div>
-<div class="line"><a name="l01562"></a><span class="lineno"><a class="line" href="classpizzasystem_1_1ui_1_1MainFrame.html#a93e3a4599d8e6a0ef91754bf41772410"> 1562</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html#a93e3a4599d8e6a0ef91754bf41772410">main</a>(String args[]) {</div>
-<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;        <span class="comment">/* Set the Nimbus look and feel */</span></div>
-<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;        <span class="comment">//&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;</span></div>
-<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;        <span class="comment">/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.</span></div>
-<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;<span class="comment">         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html</span></div>
-<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;            <span class="keywordflow">for</span> (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</div>
-<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;                <span class="keywordflow">if</span> (<span class="stringliteral">&quot;Nimbus&quot;</span>.equals(info.getName())) {</div>
-<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</div>
-<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;                }</div>
-<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;            }</div>
-<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160;        } <span class="keywordflow">catch</span> (ClassNotFoundException ex) {</div>
-<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
-<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;        } <span class="keywordflow">catch</span> (InstantiationException ex) {</div>
-<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
-<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;        } <span class="keywordflow">catch</span> (IllegalAccessException ex) {</div>
-<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
-<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;        } <span class="keywordflow">catch</span> (javax.swing.UnsupportedLookAndFeelException ex) {</div>
-<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
-<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;        }</div>
-<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;        <span class="comment">//&lt;/editor-fold&gt;</span></div>
-<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;</div>
-<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;        <span class="comment">/* Create and display the form */</span></div>
-<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;        java.awt.EventQueue.invokeLater(<span class="keyword">new</span> Runnable() {</div>
-<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> run() {</div>
-<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;                <span class="keyword">new</span> <a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>().setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;            }</div>
-<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;        });</div>
-<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;    }</div>
-<div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160;</div>
-<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;    <span class="comment">// Variables declaration - do not modify//GEN-BEGIN:variables</span></div>
-<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Admin;</div>
-<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_FinishOrder;</div>
-<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_FinishPizza;</div>
-<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_Logout;</div>
-<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel AdminForm_Name;</div>
-<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane AdminForm_Orders;</div>
-<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel AdminForm_OrdersLabel;</div>
-<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_RegisterOrder;</div>
-<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_RegisterPizza;</div>
-<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_RegisterUser;</div>
-<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Entregador;</div>
-<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;    <span class="keyword">private</span> javax.swing.JButton EntregadorForm_FinishOrder;</div>
-<div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;    <span class="keyword">private</span> javax.swing.JButton EntregadorForm_Logout;</div>
-<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel EntregadorForm_Name;</div>
-<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane EntregadorForm_Orders2;</div>
-<div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel EntregadorForm_OrdersLabel;</div>
-<div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160;    <span class="keyword">private</span> javax.swing.JTable EntregadorForm_OrdersList2;</div>
-<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Login;</div>
-<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;    <span class="keyword">private</span> javax.swing.JButton LoginForm_LoginButton;</div>
-<div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField LoginForm_PasswordField;</div>
-<div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel LoginForm_PasswordLabel;</div>
-<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel LoginForm_Title;</div>
-<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField LoginForm_UsernameField;</div>
-<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel LoginForm_UsernameLabel;</div>
-<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel MainJPanel;</div>
-<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;    <span class="keyword">private</span> javax.swing.JTable Orders_Table;</div>
-<div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Pizzaiolo;</div>
-<div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160;    <span class="keyword">private</span> javax.swing.JButton PizzaioloForm_FinishPizza;</div>
-<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;    <span class="keyword">private</span> javax.swing.JButton PizzaioloForm_Logout;</div>
-<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel PizzaioloForm_Name;</div>
-<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane PizzaioloForm_Orders;</div>
-<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel PizzaioloForm_OrdersLabel;</div>
-<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160;    <span class="keyword">private</span> javax.swing.JTable PizzaioloForm_OrdersList2;</div>
-<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel RegisterOrder;</div>
-<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_AddDrinkButton;</div>
-<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_AddPizzaButton;</div>
-<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_AddressField;</div>
-<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_AddressLabel;</div>
-<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_BackButton;</div>
-<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_CEPField;</div>
-<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_CEPLabel;</div>
-<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_DrinkLabel;</div>
-<div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_ItemLabel;</div>
-<div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane RegisterOrder_ItensList;</div>
-<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;    <span class="keyword">private</span> javax.swing.JList RegisterOrder_ItensList2;</div>
-<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_NameField;</div>
-<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_NameLabel;</div>
-<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_OutroField;</div>
-<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_PhoneNumberField;</div>
-<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_PhoneNumberLabel;</div>
-<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_PizzaLabel;</div>
-<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_PizzaTitle;</div>
-<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_PriceField;</div>
-<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_RegisterOrderButton;</div>
-<div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_SearchClientButton;</div>
-<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    <span class="keyword">private</span> javax.swing.JSeparator RegisterOrder_Separator;</div>
-<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_SizeField;</div>
-<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_SizeLabel;</div>
-<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_TasteField1;</div>
-<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_TasteField2;</div>
-<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_TasteField3;</div>
-<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_TasteLabel;</div>
-<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_Title;</div>
-<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_UpdateClientButton;</div>
-<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel RegisterPizza;</div>
-<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterPizza_BackButton;</div>
-<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_OutroNameField;</div>
-<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_OutroPriceField;</div>
-<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_PriceFieldBig;</div>
-<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_PriceFieldFamily;</div>
-<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_PriceFieldMedium;</div>
-<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterPizza_RegisterPizzaButton;</div>
-<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterPizza_RegisterPizzaButton1;</div>
-<div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_TasteField;</div>
-<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel;</div>
-<div class="line"><a name="l01670"></a><span class="lineno"> 1670</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel1;</div>
-<div class="line"><a name="l01671"></a><span class="lineno"> 1671</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel4;</div>
-<div class="line"><a name="l01672"></a><span class="lineno"> 1672</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel5;</div>
-<div class="line"><a name="l01673"></a><span class="lineno"> 1673</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel6;</div>
-<div class="line"><a name="l01674"></a><span class="lineno"> 1674</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel7;</div>
-<div class="line"><a name="l01675"></a><span class="lineno"> 1675</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_Title;</div>
-<div class="line"><a name="l01676"></a><span class="lineno"> 1676</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_Title1;</div>
-<div class="line"><a name="l01677"></a><span class="lineno"> 1677</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel RegisterUser;</div>
-<div class="line"><a name="l01678"></a><span class="lineno"> 1678</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_AddressField;</div>
-<div class="line"><a name="l01679"></a><span class="lineno"> 1679</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_AddressLabel;</div>
-<div class="line"><a name="l01680"></a><span class="lineno"> 1680</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterUser_BackButton;</div>
-<div class="line"><a name="l01681"></a><span class="lineno"> 1681</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_CEPField;</div>
-<div class="line"><a name="l01682"></a><span class="lineno"> 1682</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_CEPLabel;</div>
-<div class="line"><a name="l01683"></a><span class="lineno"> 1683</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_CPFField;</div>
-<div class="line"><a name="l01684"></a><span class="lineno"> 1684</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_CPFLabel;</div>
-<div class="line"><a name="l01685"></a><span class="lineno"> 1685</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_NameField;</div>
-<div class="line"><a name="l01686"></a><span class="lineno"> 1686</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_NameLabel;</div>
-<div class="line"><a name="l01687"></a><span class="lineno"> 1687</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_PasswordField;</div>
-<div class="line"><a name="l01688"></a><span class="lineno"> 1688</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_PasswordLabel;</div>
-<div class="line"><a name="l01689"></a><span class="lineno"> 1689</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_PhoneNumberField;</div>
-<div class="line"><a name="l01690"></a><span class="lineno"> 1690</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_PhoneNumberLabel;</div>
-<div class="line"><a name="l01691"></a><span class="lineno"> 1691</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterUser_RegisterUserButton;</div>
-<div class="line"><a name="l01692"></a><span class="lineno"> 1692</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterUser_RoleField;</div>
-<div class="line"><a name="l01693"></a><span class="lineno"> 1693</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_Title;</div>
-<div class="line"><a name="l01694"></a><span class="lineno"> 1694</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_TypeLabel;</div>
-<div class="line"><a name="l01695"></a><span class="lineno"> 1695</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_UserField;</div>
-<div class="line"><a name="l01696"></a><span class="lineno"> 1696</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_UserLabel;</div>
-<div class="line"><a name="l01697"></a><span class="lineno"> 1697</span>&#160;    <span class="keyword">private</span> javax.swing.JButton jButton1;</div>
-<div class="line"><a name="l01698"></a><span class="lineno"> 1698</span>&#160;    <span class="keyword">private</span> javax.swing.JButton jButton2;</div>
-<div class="line"><a name="l01699"></a><span class="lineno"> 1699</span>&#160;    <span class="keyword">private</span> javax.swing.JButton jButton3;</div>
-<div class="line"><a name="l01700"></a><span class="lineno"> 1700</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel jLabel1;</div>
-<div class="line"><a name="l01701"></a><span class="lineno"> 1701</span>&#160;    <span class="comment">// End of variables declaration//GEN-END:variables</span></div>
-<div class="line"><a name="l01702"></a><span class="lineno"> 1702</span>&#160;</div>
-<div class="line"><a name="l01703"></a><span class="lineno"> 1703</span>&#160;}</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;</div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> Logout() {</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;        MainJPanel.removeAll();</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;</div>
+<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;            MainJPanel.add(Login);</div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;            MainJPanel.repaint();</div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;            MainJPanel.revalidate();</div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;    }</div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;</div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> Login(){</div>
+<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;            this.LoginPower = Main.getPizzaria().doLogin(LoginForm_UsernameField.getText(), LoginForm_PasswordField.getText());</div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;        } <span class="keywordflow">catch</span> (SQLException e) {</div>
+<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;            JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Falha na comunicação com banco de dados&quot;</span>);</div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;        }</div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;        <span class="keywordflow">switch</span>(this.LoginPower) {</div>
+<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;            <span class="keywordflow">case</span> 0:</div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;                JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Não foi possivel fazer login&quot;</span>);</div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;            <span class="keywordflow">case</span> 1:</div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;                MainJPanel.add(Admin);</div>
+<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;            <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;                MainJPanel.add(RegisterOrder);</div>
+<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;            <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;                MainJPanel.add(Pizzaiolo);</div>
+<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;            <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;                MainJPanel.add(Entregador);</div>
+<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;        }</div>
+<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;</div>
+<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;    }</div>
+<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;</div>
+<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> GoBack() {</div>
+<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;        <span class="keywordflow">switch</span>(this.LoginPower) {</div>
+<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;            <span class="keywordflow">case</span> 1: <span class="comment">// admin</span></div>
+<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;</div>
+<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;                MainJPanel.add(Admin);</div>
+<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;            <span class="keywordflow">case</span> 2: <span class="comment">// atendente</span></div>
+<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;</div>
+<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;                MainJPanel.add(RegisterOrder);</div>
+<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;            <span class="keywordflow">case</span> 3: <span class="comment">// pizzaiolo</span></div>
+<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;</div>
+<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;                MainJPanel.add(Pizzaiolo);</div>
+<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;            <span class="keywordflow">case</span> 4: <span class="comment">// entregador</span></div>
+<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;                MainJPanel.removeAll();</div>
+<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;</div>
+<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;                MainJPanel.add(Entregador);</div>
+<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;                MainJPanel.repaint();</div>
+<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;                MainJPanel.revalidate();</div>
+<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;            <span class="keywordflow">default</span>: <span class="comment">// outros(teste/error)</span></div>
+<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;                this.Logout();</div>
+<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;</div>
+<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;        }</div>
+<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;    }</div>
+<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;    </div>
+<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;    <span class="keyword">private</span> Float setPizzaPrice() {</div>
+<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;        Pizza pizza = <span class="keyword">new</span> Pizza();</div>
+<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;        pizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());</div>
+<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;        pizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());</div>
+<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;        pizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());</div>
+<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;        pizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());</div>
+<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;        Float price = 0f;</div>
+<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;            price = Main.getPizzaria().calculatePizzaPrice(pizza);</div>
+<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;        } <span class="keywordflow">catch</span> (SQLException ex) {</div>
+<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;            JOptionPane.showMessageDialog(null, <span class="stringliteral">&quot;Falha na comunicação com banco de dados&quot;</span>);</div>
+<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;        }</div>
+<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;        RegisterOrder_PriceField.setText(<span class="stringliteral">&quot;R$&quot;</span> + String.valueOf(price));</div>
+<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;        <span class="keywordflow">return</span> price;</div>
+<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;    }</div>
+<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;    </div>
+<div class="line"><a name="l01563"></a><span class="lineno"><a class="line" href="classpizzasystem_1_1ui_1_1MainFrame.html#a93e3a4599d8e6a0ef91754bf41772410"> 1563</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html#a93e3a4599d8e6a0ef91754bf41772410">main</a>(String args[]) {</div>
+<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;        <span class="comment">/* Set the Nimbus look and feel */</span></div>
+<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;        <span class="comment">//&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;</span></div>
+<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;        <span class="comment">/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.</span></div>
+<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;<span class="comment">         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html</span></div>
+<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;            <span class="keywordflow">for</span> (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</div>
+<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;                <span class="keywordflow">if</span> (<span class="stringliteral">&quot;Nimbus&quot;</span>.equals(info.getName())) {</div>
+<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</div>
+<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;                }</div>
+<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160;            }</div>
+<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;        } <span class="keywordflow">catch</span> (ClassNotFoundException ex) {</div>
+<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
+<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;        } <span class="keywordflow">catch</span> (InstantiationException ex) {</div>
+<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
+<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;        } <span class="keywordflow">catch</span> (IllegalAccessException ex) {</div>
+<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
+<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;        } <span class="keywordflow">catch</span> (javax.swing.UnsupportedLookAndFeelException ex) {</div>
+<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;            java.util.logging.Logger.getLogger(<a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</div>
+<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;        }</div>
+<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;        <span class="comment">//&lt;/editor-fold&gt;</span></div>
+<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;</div>
+<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;        <span class="comment">/* Create and display the form */</span></div>
+<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;        java.awt.EventQueue.invokeLater(<span class="keyword">new</span> Runnable() {</div>
+<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> run() {</div>
+<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;                <span class="keyword">new</span> <a class="code" href="classpizzasystem_1_1ui_1_1MainFrame.html">MainFrame</a>().setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;            }</div>
+<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;        });</div>
+<div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160;    }</div>
+<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;</div>
+<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;    <span class="comment">// Variables declaration - do not modify//GEN-BEGIN:variables</span></div>
+<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Admin;</div>
+<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_FinishOrder;</div>
+<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_FinishPizza;</div>
+<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_Logout;</div>
+<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel AdminForm_Name;</div>
+<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane AdminForm_Orders;</div>
+<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel AdminForm_OrdersLabel;</div>
+<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_RegisterOrder;</div>
+<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_RegisterPizza;</div>
+<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;    <span class="keyword">private</span> javax.swing.JButton AdminForm_RegisterUser;</div>
+<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Entregador;</div>
+<div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;    <span class="keyword">private</span> javax.swing.JButton EntregadorForm_FinishOrder;</div>
+<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;    <span class="keyword">private</span> javax.swing.JButton EntregadorForm_Logout;</div>
+<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel EntregadorForm_Name;</div>
+<div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane EntregadorForm_Orders2;</div>
+<div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel EntregadorForm_OrdersLabel;</div>
+<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;    <span class="keyword">private</span> javax.swing.JTable EntregadorForm_OrdersList2;</div>
+<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Login;</div>
+<div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;    <span class="keyword">private</span> javax.swing.JButton LoginForm_LoginButton;</div>
+<div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField LoginForm_PasswordField;</div>
+<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel LoginForm_PasswordLabel;</div>
+<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel LoginForm_Title;</div>
+<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField LoginForm_UsernameField;</div>
+<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel LoginForm_UsernameLabel;</div>
+<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel MainJPanel;</div>
+<div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;    <span class="keyword">private</span> javax.swing.JTable Orders_Table;</div>
+<div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel Pizzaiolo;</div>
+<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;    <span class="keyword">private</span> javax.swing.JButton PizzaioloForm_FinishPizza;</div>
+<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;    <span class="keyword">private</span> javax.swing.JButton PizzaioloForm_Logout;</div>
+<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel PizzaioloForm_Name;</div>
+<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane PizzaioloForm_Orders;</div>
+<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel PizzaioloForm_OrdersLabel;</div>
+<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;    <span class="keyword">private</span> javax.swing.JTable PizzaioloForm_OrdersList2;</div>
+<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel RegisterOrder;</div>
+<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_AddDrinkButton;</div>
+<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_AddPizzaButton;</div>
+<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_AddressField;</div>
+<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_AddressLabel;</div>
+<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_BackButton;</div>
+<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_CEPField;</div>
+<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_CEPLabel;</div>
+<div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_DrinkLabel;</div>
+<div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_ItemLabel;</div>
+<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;    <span class="keyword">private</span> javax.swing.JScrollPane RegisterOrder_ItensList;</div>
+<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;    <span class="keyword">private</span> javax.swing.JList RegisterOrder_ItensList2;</div>
+<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_NameField;</div>
+<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_NameLabel;</div>
+<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_OutroField;</div>
+<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_PhoneNumberField;</div>
+<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_PhoneNumberLabel;</div>
+<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_PizzaLabel;</div>
+<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_PizzaTitle;</div>
+<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterOrder_PriceField;</div>
+<div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_RegisterOrderButton;</div>
+<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_SearchClientButton;</div>
+<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;    <span class="keyword">private</span> javax.swing.JSeparator RegisterOrder_Separator;</div>
+<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_SizeField;</div>
+<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_SizeLabel;</div>
+<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_TasteField1;</div>
+<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_TasteField2;</div>
+<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterOrder_TasteField3;</div>
+<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_TasteLabel;</div>
+<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterOrder_Title;</div>
+<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterOrder_UpdateClientButton;</div>
+<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel RegisterPizza;</div>
+<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterPizza_BackButton;</div>
+<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_OutroNameField;</div>
+<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_OutroPriceField;</div>
+<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_PriceFieldBig;</div>
+<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_PriceFieldFamily;</div>
+<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_PriceFieldMedium;</div>
+<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterPizza_RegisterPizzaButton;</div>
+<div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterPizza_RegisterPizzaButton1;</div>
+<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterPizza_TasteField;</div>
+<div class="line"><a name="l01670"></a><span class="lineno"> 1670</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel;</div>
+<div class="line"><a name="l01671"></a><span class="lineno"> 1671</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel1;</div>
+<div class="line"><a name="l01672"></a><span class="lineno"> 1672</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel4;</div>
+<div class="line"><a name="l01673"></a><span class="lineno"> 1673</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel5;</div>
+<div class="line"><a name="l01674"></a><span class="lineno"> 1674</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel6;</div>
+<div class="line"><a name="l01675"></a><span class="lineno"> 1675</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_TasteLabel7;</div>
+<div class="line"><a name="l01676"></a><span class="lineno"> 1676</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_Title;</div>
+<div class="line"><a name="l01677"></a><span class="lineno"> 1677</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterPizza_Title1;</div>
+<div class="line"><a name="l01678"></a><span class="lineno"> 1678</span>&#160;    <span class="keyword">private</span> javax.swing.JPanel RegisterUser;</div>
+<div class="line"><a name="l01679"></a><span class="lineno"> 1679</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_AddressField;</div>
+<div class="line"><a name="l01680"></a><span class="lineno"> 1680</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_AddressLabel;</div>
+<div class="line"><a name="l01681"></a><span class="lineno"> 1681</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterUser_BackButton;</div>
+<div class="line"><a name="l01682"></a><span class="lineno"> 1682</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_CEPField;</div>
+<div class="line"><a name="l01683"></a><span class="lineno"> 1683</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_CEPLabel;</div>
+<div class="line"><a name="l01684"></a><span class="lineno"> 1684</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_CPFField;</div>
+<div class="line"><a name="l01685"></a><span class="lineno"> 1685</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_CPFLabel;</div>
+<div class="line"><a name="l01686"></a><span class="lineno"> 1686</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_NameField;</div>
+<div class="line"><a name="l01687"></a><span class="lineno"> 1687</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_NameLabel;</div>
+<div class="line"><a name="l01688"></a><span class="lineno"> 1688</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_PasswordField;</div>
+<div class="line"><a name="l01689"></a><span class="lineno"> 1689</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_PasswordLabel;</div>
+<div class="line"><a name="l01690"></a><span class="lineno"> 1690</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_PhoneNumberField;</div>
+<div class="line"><a name="l01691"></a><span class="lineno"> 1691</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_PhoneNumberLabel;</div>
+<div class="line"><a name="l01692"></a><span class="lineno"> 1692</span>&#160;    <span class="keyword">private</span> javax.swing.JButton RegisterUser_RegisterUserButton;</div>
+<div class="line"><a name="l01693"></a><span class="lineno"> 1693</span>&#160;    <span class="keyword">private</span> javax.swing.JComboBox RegisterUser_RoleField;</div>
+<div class="line"><a name="l01694"></a><span class="lineno"> 1694</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_Title;</div>
+<div class="line"><a name="l01695"></a><span class="lineno"> 1695</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_TypeLabel;</div>
+<div class="line"><a name="l01696"></a><span class="lineno"> 1696</span>&#160;    <span class="keyword">private</span> javax.swing.JTextField RegisterUser_UserField;</div>
+<div class="line"><a name="l01697"></a><span class="lineno"> 1697</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel RegisterUser_UserLabel;</div>
+<div class="line"><a name="l01698"></a><span class="lineno"> 1698</span>&#160;    <span class="keyword">private</span> javax.swing.JButton jButton1;</div>
+<div class="line"><a name="l01699"></a><span class="lineno"> 1699</span>&#160;    <span class="keyword">private</span> javax.swing.JButton jButton2;</div>
+<div class="line"><a name="l01700"></a><span class="lineno"> 1700</span>&#160;    <span class="keyword">private</span> javax.swing.JButton jButton3;</div>
+<div class="line"><a name="l01701"></a><span class="lineno"> 1701</span>&#160;    <span class="keyword">private</span> javax.swing.JLabel jLabel1;</div>
+<div class="line"><a name="l01702"></a><span class="lineno"> 1702</span>&#160;    <span class="comment">// End of variables declaration//GEN-END:variables</span></div>
+<div class="line"><a name="l01703"></a><span class="lineno"> 1703</span>&#160;</div>
+<div class="line"><a name="l01704"></a><span class="lineno"> 1704</span>&#160;}</div>
 <div class="ttc" id="classpizzasystem_1_1utility_1_1PasswordHasher_html"><div class="ttname"><a href="classpizzasystem_1_1utility_1_1PasswordHasher.html">pizzasystem.utility.PasswordHasher</a></div><div class="ttdef"><b>Definition:</b> <a href="PasswordHasher_8java_source.html#l00010">PasswordHasher.java:10</a></div></div>
 <div class="ttc" id="classpizzasystem_1_1data_1_1OtherProductType_html"><div class="ttname"><a href="classpizzasystem_1_1data_1_1OtherProductType.html">pizzasystem.data.OtherProductType</a></div><div class="ttdef"><b>Definition:</b> <a href="OtherProductType_8java_source.html#l00015">OtherProductType.java:15</a></div></div>
 <div class="ttc" id="classpizzasystem_1_1data_1_1Person_html"><div class="ttname"><a href="classpizzasystem_1_1data_1_1Person.html">pizzasystem.data.Person</a></div><div class="ttdef"><b>Definition:</b> <a href="Person_8java_source.html#l00007">Person.java:7</a></div></div>
@@ -1771,7 +1772,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classpizzasystem_1_1data_1_1Pizza_html"><div class="ttname"><a href="classpizzasystem_1_1data_1_1Pizza.html">pizzasystem.data.Pizza</a></div><div class="ttdef"><b>Definition:</b> <a href="Pizza_8java_source.html#l00010">Pizza.java:10</a></div></div>
 <div class="ttc" id="enumpizzasystem_1_1data_1_1PizzaTaste_1_1Size_html"><div class="ttname"><a href="enumpizzasystem_1_1data_1_1PizzaTaste_1_1Size.html">pizzasystem.data.PizzaTaste.Size</a></div><div class="ttdef"><b>Definition:</b> <a href="PizzaTaste_8java_source.html#l00019">PizzaTaste.java:19</a></div></div>
 <div class="ttc" id="classpizzasystem_1_1ui_1_1MainFrame_html_a7ec4af0fb0c0ad0bee1401e83bbf646f"><div class="ttname"><a href="classpizzasystem_1_1ui_1_1MainFrame.html#a7ec4af0fb0c0ad0bee1401e83bbf646f">pizzasystem.ui.MainFrame.getTasteList</a></div><div class="ttdeci">static String[] getTasteList()</div><div class="ttdef"><b>Definition:</b> <a href="MainFrame_8java_source.html#l00045">MainFrame.java:45</a></div></div>
-<div class="ttc" id="classpizzasystem_1_1ui_1_1MainFrame_html_a93e3a4599d8e6a0ef91754bf41772410"><div class="ttname"><a href="classpizzasystem_1_1ui_1_1MainFrame.html#a93e3a4599d8e6a0ef91754bf41772410">pizzasystem.ui.MainFrame.main</a></div><div class="ttdeci">static void main(String args[])</div><div class="ttdef"><b>Definition:</b> <a href="MainFrame_8java_source.html#l01562">MainFrame.java:1562</a></div></div>
+<div class="ttc" id="classpizzasystem_1_1ui_1_1MainFrame_html_a93e3a4599d8e6a0ef91754bf41772410"><div class="ttname"><a href="classpizzasystem_1_1ui_1_1MainFrame.html#a93e3a4599d8e6a0ef91754bf41772410">pizzasystem.ui.MainFrame.main</a></div><div class="ttdeci">static void main(String args[])</div><div class="ttdef"><b>Definition:</b> <a href="MainFrame_8java_source.html#l01563">MainFrame.java:1563</a></div></div>
 <div class="ttc" id="classpizzasystem_1_1data_1_1ClientRequest_html_a96d4f6a229aae72f439d753db9554579"><div class="ttname"><a href="classpizzasystem_1_1data_1_1ClientRequest.html#a96d4f6a229aae72f439d753db9554579">pizzasystem.data.ClientRequest.addPizza</a></div><div class="ttdeci">void addPizza(Pizza pizza)</div><div class="ttdef"><b>Definition:</b> <a href="ClientRequest_8java_source.html#l00057">ClientRequest.java:57</a></div></div>
 <div class="ttc" id="classpizzasystem_1_1data_1_1OtherProduct_html"><div class="ttname"><a href="classpizzasystem_1_1data_1_1OtherProduct.html">pizzasystem.data.OtherProduct</a></div><div class="ttdef"><b>Definition:</b> <a href="OtherProduct_8java_source.html#l00015">OtherProduct.java:15</a></div></div>
 <div class="ttc" id="classpizzasystem_1_1data_1_1ClientRequest_html_a22c6942947cba5e76017ba2a11734644"><div class="ttname"><a href="classpizzasystem_1_1data_1_1ClientRequest.html#a22c6942947cba5e76017ba2a11734644">pizzasystem.data.ClientRequest.setStatus</a></div><div class="ttdeci">void setStatus(Status status)</div><div class="ttdef"><b>Definition:</b> <a href="ClientRequest_8java_source.html#l00081">ClientRequest.java:81</a></div></div>
