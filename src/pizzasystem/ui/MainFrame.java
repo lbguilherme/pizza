@@ -1089,13 +1089,19 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AdminForm_RegisterPizzaActionPerformed
 
     private void AdminForm_FinishPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_FinishPizzaActionPerformed
-        // TODO add your handling code here:
-        this.FinishPizza();
+        try{
+           Main.getPizzaria().finishPizza();
+       } catch (SQLException e){
+           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       }
     }//GEN-LAST:event_AdminForm_FinishPizzaActionPerformed
 
     private void AdminForm_FinishOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_FinishOrderActionPerformed
-        // TODO add your handling code here:
-        this.FinishOrder();
+        try{
+           Main.getPizzaria().finishOrder();
+       } catch (SQLException e){
+           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       }
     }//GEN-LAST:event_AdminForm_FinishOrderActionPerformed
 
     private void AdminForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_LogoutActionPerformed
@@ -1104,8 +1110,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AdminForm_LogoutActionPerformed
 
     private void PizzaioloForm_FinishPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaioloForm_FinishPizzaActionPerformed
-        // TODO add your handling code here:
-        this.FinishPizza();
+        try{
+           Main.getPizzaria().finishPizza();
+       } catch (SQLException e){
+           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       }
     }//GEN-LAST:event_PizzaioloForm_FinishPizzaActionPerformed
 
     private void PizzaioloForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaioloForm_LogoutActionPerformed
@@ -1114,8 +1123,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PizzaioloForm_LogoutActionPerformed
 
     private void EntregadorForm_FinishOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregadorForm_FinishOrderActionPerformed
-        // TODO add your handling code here:
-        this.FinishOrder();
+        try{
+           Main.getPizzaria().finishOrder();
+       } catch (SQLException e){
+           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       }
     }//GEN-LAST:event_EntregadorForm_FinishOrderActionPerformed
 
     private void EntregadorForm_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregadorForm_LogoutActionPerformed
@@ -1152,8 +1164,9 @@ public class MainFrame extends javax.swing.JFrame {
             RegisterOrder_CEPField.setText(client.getCep());
             RegisterOrder_NameField.setText(client.getName());
         } catch (SQLException e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        } catch (RuntimeException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_RegisterOrder_SearchClientButtonActionPerformed
 
@@ -1382,21 +1395,6 @@ public class MainFrame extends javax.swing.JFrame {
             MainJPanel.revalidate();
     }
 
-    private void FinishPizza() {
-       try{
-           Main.getPizzaria().finishPizza();
-       } catch (SQLException e){
-           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-       }
-    }
-
-    private void FinishOrder() {
-       try{
-           Main.getPizzaria().finishOrder();
-       } catch (SQLException e){
-           JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-       }
-    }
 
     private void Logout() {
         MainJPanel.removeAll();

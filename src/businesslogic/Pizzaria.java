@@ -209,7 +209,8 @@ public class Pizzaria{
         for(ClientRequest request : getRequests()){
             if (request.getStatus() == ClientRequest.Status.ReadyForDelivery){
                 request.setStatus(ClientRequest.Status.Delivered);
-                break;
+                request.save(getDb());
+                break;                
             }
         }
     }
@@ -217,7 +218,8 @@ public class Pizzaria{
     public void finishPizza() throws SQLException {
         for(ClientRequest request : getRequests()){
             if (request.getStatus() == ClientRequest.Status.Requested){
-                request.setStatus(ClientRequest.Status.ReadyForDelivery);
+                request.setStatus(ClientRequest.Status.ReadyForDelivery);                
+                request.save(getDb());
                 break;
             }
         }
