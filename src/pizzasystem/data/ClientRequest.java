@@ -205,7 +205,7 @@ public class ClientRequest {
     }
 
     private void update(Connection db) throws SQLException {
-        String query = "UPDATE Person SET phoneNumber=?, status=? WHERE id=?;";
+        String query = "UPDATE ClientRequest SET phoneNumber=?, status=? WHERE idClientRequest=?;";
         PreparedStatement stmt = db.prepareStatement(query);
         stmt.setString(1, getClient().getPhoneNumber());
         stmt.setString(2, getStatus().name());

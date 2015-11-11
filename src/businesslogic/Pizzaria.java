@@ -207,6 +207,9 @@ public class Pizzaria{
    
     public void finishOrder() throws SQLException {
         for(ClientRequest request : getRequests()){
+            if (request.getStatus() == ClientRequest.Status.Delivered){
+                
+            }
             if (request.getStatus() == ClientRequest.Status.ReadyForDelivery){
                 request.setStatus(ClientRequest.Status.Delivered);
                 request.save(getDb());

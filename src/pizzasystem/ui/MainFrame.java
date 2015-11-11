@@ -75,7 +75,7 @@ public class MainFrame extends javax.swing.JFrame {
         MainJPanel.removeAll();
         MainJPanel.add(Login);
         MainJPanel.revalidate();
-        timer = new Timer(5000, (ActionEvent ev) -> {
+        timer = new Timer(1500, (ActionEvent ev) -> {
                 String[][] newRequests = showRequests();
                 Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
                 PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
@@ -241,26 +241,30 @@ public class MainFrame extends javax.swing.JFrame {
         LoginLayout.setHorizontalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(285, 285, 285)
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LoginForm_UsernameLabel)
+                    .addComponent(LoginForm_PasswordLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LoginForm_LoginButton)
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LoginForm_UsernameLabel)
-                            .addComponent(LoginForm_PasswordLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LoginForm_UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LoginForm_PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(LoginForm_Title))
-                .addContainerGap(585, Short.MAX_VALUE))
+                    .addComponent(LoginForm_UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginForm_PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(340, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LoginForm_LoginButton)
+                .addGap(363, 363, 363))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LoginForm_Title)
+                .addGap(354, 354, 354))
         );
         LoginLayout.setVerticalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(113, 113, 113)
                 .addComponent(LoginForm_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(82, 82, 82)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginForm_UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LoginForm_UsernameLabel))
@@ -270,7 +274,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(LoginForm_PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(LoginForm_LoginButton)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         MainJPanel.add(Login, "card2");
@@ -1093,6 +1097,7 @@ public class MainFrame extends javax.swing.JFrame {
            Main.getPizzaria().finishPizza();
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+           e.printStackTrace();
        }
     }//GEN-LAST:event_AdminForm_FinishPizzaActionPerformed
 
