@@ -11,9 +11,14 @@ import pizzasystem.data.Person;
 import pizzasystem.data.ClientRequest;
 import pizzasystem.data.OtherProductType;
 import pizzasystem.data.Employee;
-import pizzasystem.data.Menu;
 import pizzasystem.data.Pizza;
 import pizzasystem.data.PizzaTaste;
+import pizzasystem.transfer.ClientRequestDAO;
+import pizzasystem.transfer.EmployeeDAO;
+import pizzasystem.transfer.OtherProductTypeDAO;
+import pizzasystem.transfer.PersonDAO;
+import pizzasystem.transfer.PizzaDAO;
+import pizzasystem.transfer.PizzaTasteDAO;
 import pizzasystem.utility.PasswordHasher;
 
 /**
@@ -56,7 +61,7 @@ public class Pizzaria{
         PasswordHasher hasher = new PasswordHasher();
         String passHash = hasher.hash(pass);
 
-        Employee emp = Employee.fetch(getDb(), user);
+        Employee emp = EmployeeDAO.fetch(getDb(), user);
         if (emp != null && emp.getHashPass().equals(passHash)) {
             setCurrentUser(emp);
             switch (getCurrentUser().getRole()){
@@ -101,7 +106,7 @@ public class Pizzaria{
                    client.getName().equals("")) {
                 throw new RuntimeException("Não foi possivel registrar ou atualizar cliente, informações incompletas!");
             }else{
-                client.save(getDb());
+                new PersonDAO(client).save(getDb());
                 throw new RuntimeException("Cliente cadastrado/atualizado com sucesso");
             }
         }
@@ -114,8 +119,9 @@ public class Pizzaria{
      * @throws SQLException
      */
     public Person findClient(String phoneNumber) throws SQLException {
-        if(Person.fetch(getDb(), phoneNumber) != null){
-             return Person.fetch(getDb(), phoneNumber);
+        Person client = PersonDAO.fetch(getDb(), phoneNumber);
+        if(client != null){
+             return client;
         }else{
             throw new RuntimeException("Cliente não encontrado.");
         }
@@ -141,7 +147,7 @@ public class Pizzaria{
      */
     public void registerPizza(PizzaTaste pizza) throws SQLException {
         // TODO: Checar todos os atributos
-        pizza.save(getDb());
+        new PizzaTasteDAO(pizza).save(getDb());
         throw new RuntimeException("Pizza cadastrada com sucesso.");
     }
 
@@ -152,7 +158,7 @@ public class Pizzaria{
      */
     public void registerOutro(OtherProductType outro) throws SQLException {
         // TODO: Checar todos os atributos
-        outro.save(getDb());
+        new OtherProductTypeDAO(outro).save(getDb());
         throw new RuntimeException("Produto cadastrado com sucesso.");
     }
 
@@ -177,7 +183,7 @@ public class Pizzaria{
                 throw new RuntimeException("Não foi possivel cadastrar funcionario, há informações faltando");
             }
             else{
-                employee.save(getDb());
+                new EmployeeDAO(employee).save(getDb());
                 throw new RuntimeException("Funcionario cadastrado com sucesso.");
             }
         }
@@ -185,13 +191,22 @@ public class Pizzaria{
     
     /**
      *
-     * @return Retorna o menu da pizzaria armazenado no database
+     * @return retorna a lista de pizzas disponiveis que estão no database
      * @throws SQLException
      */
-    public Menu getMenu() throws SQLException {
-        return new Menu(getDb());
+    public List<PizzaTaste> getPizzaTastes() throws SQLException {
+        return PizzaTasteDAO.fetchAll(db);
     }
-
+    
+    /**
+     *
+     * @return retorna a lista de outros produtos disponiveis que estão no database
+     * @throws SQLException
+     */
+    public List<OtherProductType> getOtherProductTypes() throws SQLException {
+        return OtherProductTypeDAO.fetchAll(db);
+    }
+    
     /**
      * @return the currentUser
      */
@@ -213,7 +228,7 @@ public class Pizzaria{
      * @throws SQLException
      */
     public OtherProductType findOtherProduct(String otherName) throws SQLException{
-        for(OtherProductType otherInMenu : this.getMenu().getOtherProductTypes()){
+        for(OtherProductType otherInMenu : this.getOtherProductTypes()){
             if (otherInMenu.getName().equals(otherName)){
                 return otherInMenu;
             }
@@ -226,7 +241,7 @@ public class Pizzaria{
      * @throws java.sql.SQLException
      */
     public List<ClientRequest> getRequests() throws SQLException {
-        return ClientRequest.fetchAll(getDb());
+        return ClientRequestDAO.fetchAll(getDb());
     }
 
     /**
@@ -236,7 +251,7 @@ public class Pizzaria{
      */
     public void addRequest(ClientRequest request) throws SQLException {
         if (request.getClient() != null && request.getStatus() != null){
-            request.save(getDb());
+            new ClientRequestDAO(request).save(getDb());
         } else {
             throw new RuntimeException("Não foi possivel realizar o pedido.");
         }
@@ -264,7 +279,7 @@ public class Pizzaria{
      * @throws SQLException
      */
     public Float getPizzaPrice(String pizzaName, PizzaTaste.Size size) throws SQLException{
-        for (PizzaTaste pizzaInMenu : getMenu().getPizzaTastes()) {
+        for (PizzaTaste pizzaInMenu : getPizzaTastes()) {
             if ((pizzaInMenu.getName().equals(pizzaName))){
                 switch (size){
                     case Medium:
@@ -287,7 +302,7 @@ public class Pizzaria{
         for(ClientRequest request : getRequests()){
             if (request.getStatus() == ClientRequest.Status.ReadyForDelivery){
                 request.setStatus(ClientRequest.Status.Delivered);
-                request.save(getDb());
+                new ClientRequestDAO(request).save(getDb());
                 return;               
             }
         }
@@ -301,8 +316,8 @@ public class Pizzaria{
     public void finishPizza() throws SQLException {
         for(ClientRequest request : getRequests()){
             if (request.getStatus() == ClientRequest.Status.Requested){
-                request.setStatus(ClientRequest.Status.ReadyForDelivery);                
-                request.save(getDb());
+                request.setStatus(ClientRequest.Status.ReadyForDelivery);
+                new ClientRequestDAO(request).save(getDb());
                 return;
             }
         }
@@ -312,9 +327,7 @@ public class Pizzaria{
     public void removeDelivered() throws SQLException{
         for (ClientRequest request : getRequests()){
             if (request.getStatus() == ClientRequest.Status.Delivered){
-                request.deletePizzas(getDb());
-                request.deleteOthers(getDb());
-                request.deleteRequests(getDb());
+                new ClientRequestDAO(request).deleteRequests(getDb());
             }                
         }
         throw new RuntimeException("Pizzas entregues removidas da lista com sucesso.");

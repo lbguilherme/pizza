@@ -32,13 +32,4 @@ public class OtherProduct {
         this.product = product;
     }
     
-    /**
-     *
-     * @param result
-     * @throws SQLException
-     */
-    protected void setFromResultSet(ResultSet result) throws SQLException {
-        setProduct(result.getString("product"));
-    }
-    
 }

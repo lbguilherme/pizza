@@ -5,10 +5,18 @@
  */
 package pizzasystem.transfer;
 
-/**
- *
- * @author Gabe
- */
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import pizzasystem.data.OtherProduct;
+
 public class OtherProductDAO {
     
+    /**
+     *
+     * @param result
+     * @throws SQLException
+     */
+    protected static void setFromResultSet(ResultSet result, OtherProduct object) throws SQLException {
+        object.setProduct(result.getString("product"));
+    }
 }

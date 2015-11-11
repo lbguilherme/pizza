@@ -45,7 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static String[] getTasteList() {
         ArrayList<String> tastes = new ArrayList<>();
         try {
-            for (PizzaTaste pizza : Main.getPizzaria().getMenu().getPizzaTastes()){
+            for (PizzaTaste pizza : Main.getPizzaria().getPizzaTastes()){
                 tastes.add(pizza.getName());
             }
         } catch (SQLException e) {
@@ -61,7 +61,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static String[] getDrinkList() {
         ArrayList<String> drinks = new ArrayList<>();
         try {
-            for (OtherProductType drink : Main.getPizzaria().getMenu().getOtherProductTypes()){
+            for (OtherProductType drink : Main.getPizzaria().getOtherProductTypes()){
                 drinks.add(drink.getName());
             }
         } catch (SQLException e) {
