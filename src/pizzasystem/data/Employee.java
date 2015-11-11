@@ -5,12 +5,35 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Gabe
+ */
 public class Employee extends Person{
 
+    /**
+     *
+     */
     public enum Role {
+
+        /**
+         *Administrador do sistema
+         */
         Admin,
+
+        /**
+         *Atendente da pizzaria
+         */
         Attendant,
+
+        /**
+         *Pizzaiolo
+         */
         Cook,
+
+        /**
+         *Entregador de pizzas
+         */
         Delivery
     }
     
@@ -19,26 +42,50 @@ public class Employee extends Person{
     private Role role;
     private String cpf;
 
+    /**
+     *
+     * @return o usuario do funcionario
+     */
     public String getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user
+     */
     public void setUser(String user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return o password do usuario
+     */
     public String getHashPass() {
         return hashPass;
     }
 
+    /**
+     *
+     * @param hashPass
+     */
     public void setHashPass(String hashPass) {
         this.hashPass = hashPass;
     }
 
+    /**
+     *
+     * @return retorna a função do funcionario
+     */
     public Role getRole() {
         return role;
     }
 
+    /**
+     *
+     * @param role
+     */
     public void setRole(Role role) {
         this.role = role;
     }
@@ -57,6 +104,11 @@ public class Employee extends Person{
         this.cpf = cpf;
     }
     
+    /**
+     *
+     * @param result
+     * @throws SQLException
+     */
     protected void setFromResultSet(ResultSet result) throws SQLException {
         super.setFromResultSet(result);
         setUser(result.getString("user"));
@@ -64,6 +116,13 @@ public class Employee extends Person{
         setRole(Role.valueOf(result.getString("role")));
     }
     
+    /**
+     *
+     * @param db
+     * @param user
+     * @return Retorna todos os funcionarios que estão no database
+     * @throws SQLException
+     */
     public static Employee fetch(Connection db, String user) throws SQLException {
         String query = "select * from Employee " +
                 "left join Person on Employee.phoneNumber=Person.phoneNumber where user=?;";
@@ -78,6 +137,11 @@ public class Employee extends Person{
         return employee;
     }
 
+    /**
+     *
+     * @param db
+     * @throws SQLException
+     */
     public void save(Connection db) throws SQLException {
         super.save(db);
         String query = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?) " +

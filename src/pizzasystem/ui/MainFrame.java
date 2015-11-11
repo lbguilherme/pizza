@@ -38,7 +38,10 @@ public class MainFrame extends javax.swing.JFrame {
     
     private ClientRequest currentRequest;
 
-
+    /**
+     *
+     * @return a lista de sabores em formato de array
+     */
     public static String[] getTasteList() {
         ArrayList<String> tastes = new ArrayList<>();
         try {
@@ -51,6 +54,10 @@ public class MainFrame extends javax.swing.JFrame {
         return tastes.toArray(new String[tastes.size()]);
     }
 
+    /**
+     *
+     * @return a lista de outros produtos em formato de array
+     */
     public static String[] getDrinkList() {
         ArrayList<String> drinks = new ArrayList<>();
         try {
@@ -66,16 +73,18 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-     // para diferentes usuarios quando voltar a tela
 
     Timer timer;
 
+    /**
+     *
+     */
     public MainFrame() {
         initComponents();
         MainJPanel.removeAll();
         MainJPanel.add(Login);
         MainJPanel.revalidate();
-        timer = new Timer(1500, (ActionEvent ev) -> {
+        timer = new Timer(4000, (ActionEvent ev) -> {
                 String[][] newRequests = showRequests();
                 Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
                 PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
@@ -113,6 +122,7 @@ public class MainFrame extends javax.swing.JFrame {
         AdminForm_FinishPizza = new javax.swing.JButton();
         AdminForm_FinishOrder = new javax.swing.JButton();
         AdminForm_Logout = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         Pizzaiolo = new javax.swing.JPanel();
         PizzaioloForm_Name = new javax.swing.JLabel();
         PizzaioloForm_Orders = new javax.swing.JScrollPane();
@@ -239,24 +249,25 @@ public class MainFrame extends javax.swing.JFrame {
         Login.setLayout(LoginLayout);
         LoginLayout.setHorizontalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LoginForm_UsernameLabel)
-                    .addComponent(LoginForm_PasswordLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LoginForm_UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LoginForm_PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(340, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(LoginForm_LoginButton)
-                .addGap(363, 363, 363))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LoginForm_Title)
                 .addGap(354, 354, 354))
+            .addGroup(LoginLayout.createSequentialGroup()
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LoginLayout.createSequentialGroup()
+                        .addGap(285, 285, 285)
+                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LoginForm_UsernameLabel)
+                            .addComponent(LoginForm_PasswordLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LoginForm_UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LoginForm_PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(LoginLayout.createSequentialGroup()
+                        .addGap(360, 360, 360)
+                        .addComponent(LoginForm_LoginButton)))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         LoginLayout.setVerticalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,6 +343,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Apagar pedidos Entregues");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AdminLayout = new javax.swing.GroupLayout(Admin);
         Admin.setLayout(AdminLayout);
         AdminLayout.setHorizontalGroup(
@@ -339,7 +357,10 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(AdminLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AdminForm_OrdersLabel)
+                    .addGroup(AdminLayout.createSequentialGroup()
+                        .addComponent(AdminForm_OrdersLabel)
+                        .addGap(192, 192, 192)
+                        .addComponent(jButton3))
                     .addComponent(AdminForm_Name)
                     .addComponent(AdminForm_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AdminLayout.createSequentialGroup()
@@ -366,20 +387,26 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(AdminForm_Logout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AdminForm_Name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AdminForm_RegisterOrder)
-                    .addComponent(AdminForm_RegisterUser)
-                    .addComponent(AdminForm_RegisterPizza))
-                .addGap(18, 18, 18)
-                .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AdminForm_FinishPizza)
-                    .addComponent(AdminForm_FinishOrder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(AdminForm_OrdersLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AdminForm_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AdminLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AdminForm_RegisterOrder)
+                            .addComponent(AdminForm_RegisterUser)
+                            .addComponent(AdminForm_RegisterPizza))
+                        .addGap(18, 18, 18)
+                        .addGroup(AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AdminForm_FinishPizza)
+                            .addComponent(AdminForm_FinishOrder))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addComponent(AdminForm_OrdersLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AdminForm_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(AdminLayout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jButton3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         MainJPanel.add(Admin, "card2");
@@ -1075,12 +1102,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginForm_LoginButtonActionPerformed
 
     private void AdminForm_RegisterOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_RegisterOrderActionPerformed
-        // TODO add your handling code here:
         this.RegisterOrder();
     }//GEN-LAST:event_AdminForm_RegisterOrderActionPerformed
 
     private void AdminForm_RegisterPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_RegisterPizzaActionPerformed
-        // TODO add your handling code here:
         this.RegisterPizza();
     }//GEN-LAST:event_AdminForm_RegisterPizzaActionPerformed
 
@@ -1089,7 +1114,8 @@ public class MainFrame extends javax.swing.JFrame {
            Main.getPizzaria().finishPizza();
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-           e.printStackTrace();
+       } catch (RuntimeException e){
+           JOptionPane.showMessageDialog(null, e.getMessage());
        }
     }//GEN-LAST:event_AdminForm_FinishPizzaActionPerformed
 
@@ -1098,6 +1124,8 @@ public class MainFrame extends javax.swing.JFrame {
            Main.getPizzaria().finishOrder();
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       } catch (RuntimeException e){
+           JOptionPane.showMessageDialog(null, e.getMessage());
        }
     }//GEN-LAST:event_AdminForm_FinishOrderActionPerformed
 
@@ -1111,6 +1139,8 @@ public class MainFrame extends javax.swing.JFrame {
            Main.getPizzaria().finishPizza();
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       } catch (RuntimeException e){
+           JOptionPane.showMessageDialog(null, e.getMessage());
        }
     }//GEN-LAST:event_PizzaioloForm_FinishPizzaActionPerformed
 
@@ -1124,6 +1154,8 @@ public class MainFrame extends javax.swing.JFrame {
            Main.getPizzaria().finishOrder();
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+       } catch (RuntimeException e){
+           JOptionPane.showMessageDialog(null, e.getMessage());
        }
     }//GEN-LAST:event_EntregadorForm_FinishOrderActionPerformed
 
@@ -1133,7 +1165,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_EntregadorForm_LogoutActionPerformed
 
     private void RegisterOrder_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_BackButtonActionPerformed
-        // TODO add your handling code here:
         if (LoginPower == 1){
             this.GoBack();
         }else{
@@ -1142,12 +1173,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterOrder_BackButtonActionPerformed
 
     private void RegisterUser_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_BackButtonActionPerformed
-        // TODO add your handling code here:
         this.GoBack();
     }//GEN-LAST:event_RegisterUser_BackButtonActionPerformed
 
     private void RegisterPizza_BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_BackButtonActionPerformed
-        // TODO add your handling code here:
         this.GoBack();
     }//GEN-LAST:event_RegisterPizza_BackButtonActionPerformed
 
@@ -1205,7 +1234,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterOrder_TasteField1ActionPerformed
 
     private void RegisterOrder_OutroFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_OutroFieldActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_RegisterOrder_OutroFieldActionPerformed
 
     private void RegisterOrder_TasteField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_TasteField3ActionPerformed
@@ -1251,7 +1280,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterUser_RegisterUserButtonActionPerformed
 
     private void RegisterUser_RoleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUser_RoleFieldActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_RegisterUser_RoleFieldActionPerformed
 
     private void RegisterOrder_AddPizzaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterOrder_AddPizzaButtonActionPerformed
@@ -1307,7 +1336,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterOrder_SizeFieldActionPerformed
 
     private void AdminForm_RegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_RegisterUserActionPerformed
-        // TODO add your handling code here:
         this.RegisterUser();
     }//GEN-LAST:event_AdminForm_RegisterUserActionPerformed
 
@@ -1317,7 +1345,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void RegisterPizza_PriceFieldBigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPizza_PriceFieldBigActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_RegisterPizza_PriceFieldBigActionPerformed
 
     private void LoginForm_PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldActionPerformed
@@ -1328,6 +1356,16 @@ public class MainFrame extends javax.swing.JFrame {
         currentRequest = null;
         RegisterOrder_ItensList2.setModel(new DefaultListModel());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try{
+            Main.getPizzaria().removeDelivered();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        } catch (RuntimeException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private String[][] showRequests(){
         String[][] output2;
@@ -1492,6 +1530,23 @@ public class MainFrame extends javax.swing.JFrame {
 
         }
     }
+    
+    private Float setPizzaPrice() {
+        Pizza pizza = new Pizza();
+        pizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
+        pizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
+        pizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
+        pizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
+        Float price = 0f;
+        try {
+            price = Main.getPizzaria().calculatePizzaPrice(pizza);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
+        }
+        RegisterOrder_PriceField.setText("R$" + String.valueOf(price));
+        return price;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1632,22 +1687,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel RegisterUser_UserLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
-    private Float setPizzaPrice() {
-        Pizza pizza = new Pizza();
-        pizza.setSize((Size) RegisterOrder_SizeField.getSelectedItem());
-        pizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
-        pizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
-        pizza.setTaste3((String) RegisterOrder_TasteField3.getSelectedItem());
-        Float price = 0f;
-        try {
-            price = Main.getPizzaria().calculatePizzaPrice(pizza);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-        }
-        RegisterOrder_PriceField.setText("R$" + String.valueOf(price));
-        return price;
-    }
 }

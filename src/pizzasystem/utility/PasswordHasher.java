@@ -3,10 +3,17 @@ package pizzasystem.utility;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ *
+ * @author Gabe
+ */
 public class PasswordHasher {
     
     private MessageDigest digester;
 
+    /**
+     *
+     */
     public PasswordHasher() {
         try {
             digester = MessageDigest.getInstance("SHA-1");
@@ -17,6 +24,11 @@ public class PasswordHasher {
         } 
     }
     
+    /**
+     *
+     * @param plainTextPassword
+     * @return
+     */
     public String hash(String plainTextPassword) {
         if (digester == null)
             return plainTextPassword;

@@ -5,7 +5,10 @@
  */
 package pizzasystem.transfer;
 
-
+/**
+ *
+ * @author Gabe
+ */
 public class ClientRequestDAO {
     
 }

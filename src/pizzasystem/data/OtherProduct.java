@@ -8,18 +8,35 @@ package pizzasystem.data;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Gabe
+ */
 public class OtherProduct {
 
     private String product;
 
+    /**
+     *
+     * @return retorna o produto
+     */
     public String getProduct() {
         return product;
     }
 
+    /**
+     *
+     * @param product
+     */
     public void setProduct(String product) {
         this.product = product;
     }
     
+    /**
+     *
+     * @param result
+     * @throws SQLException
+     */
     protected void setFromResultSet(ResultSet result) throws SQLException {
         setProduct(result.getString("product"));
     }

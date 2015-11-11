@@ -9,11 +9,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ *
+ * @author Gabe
+ */
 public class ClientRequest {
 
+    /**
+     *
+     */
     public enum Status {
+
+        /**
+         *
+         */
         Requested,
+
+        /**
+         *
+         */
         ReadyForDelivery,
+
+        /**
+         *
+         */
         Delivered
     }
 
@@ -36,51 +55,60 @@ public class ClientRequest {
     public List<OtherProduct> getOthers() {
         return others;
     }
-
-
-    public Float getTotalPrice() {
-        /*
-        Float pizzaPrice = 0f;
-        Float outroPrice = 0f;
-        if (getPizzas() != null){
-            for (PizzaTaste pizza : getPizzas()){
-                pizzaPrice += pizza.getPrice();
-            }
-        }
-        if (outros != null){
-            for (OtherProduct outro :outros){
-                outroPrice += outro.getPrice();
-            }
-        }
-        return pizzaPrice + outroPrice;
-        */
-        return 0f;
-    }
     
+    /**
+     *
+     * @param pizza
+     */
     public void addPizza(Pizza pizza) {
         pizzas.add(pizza);
     }
     
+    /**
+     *
+     * @param other
+     */
     public void addOther(OtherProduct other) {
         others.add(other);
     }
 
+    /**
+     *
+     * @return Retorna o status do pedido
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     *
+     * @param status
+     */
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    /**
+     *
+     * @return Retorna o cliente que pediu este pedido
+     */
     public Person getClient() {
         return client;
     }
 
+    /**
+     *
+     * @param client
+     */
     public void setClient(Person client) {
         this.client = client;
     }
     
+    /**
+     *
+     * @param result
+     * @throws SQLException
+     */
     protected void setFromResultSet(ResultSet result) throws SQLException {
         setStatus(Status.valueOf(result.getString("status")));
         client = new Person();
@@ -88,6 +116,12 @@ public class ClientRequest {
         id = result.getInt("idClientRequest");
     }
     
+    /**
+     *
+     * @param db
+     * @param requests
+     * @throws SQLException
+     */
     protected static void fillPizzas(Connection db, List<ClientRequest> requests) throws SQLException {
         String query = "select * from Pizza;";
         PreparedStatement stmt = db.prepareStatement(query);
@@ -129,6 +163,12 @@ public class ClientRequest {
         }
     }
     
+    /**
+     *
+     * @param db
+     * @param requests
+     * @throws SQLException
+     */
     protected static void fillOthers(Connection db, List<ClientRequest> requests) throws SQLException {
         String query = "select * from OtherProduct;";
         PreparedStatement stmt = db.prepareStatement(query);
@@ -170,6 +210,12 @@ public class ClientRequest {
         }
     }
 
+    /**
+     *
+     * @param db
+     * @return Retorna a lista de pedidos que esta no database
+     * @throws SQLException
+     */
     public static List<ClientRequest> fetchAll(Connection db) throws SQLException {
         String query = "select * from ClientRequest " +
                 "left join Person on ClientRequest.phoneNumber=Person.phoneNumber;";
@@ -250,6 +296,11 @@ public class ClientRequest {
         }
     }
 
+    /**
+     *
+     * @param db
+     * @throws SQLException
+     */
     public void save(Connection db) throws SQLException {
         if (id == -1) {
             insert(db);
@@ -258,5 +309,26 @@ public class ClientRequest {
         }
         savePizzas(db);
         saveOthers(db);
+    }
+    
+    public void deleteRequests(Connection db) throws SQLException{
+        String deleteQuery = "DELETE FROM ClientRequest WHERE idClientRequest=?;";
+        PreparedStatement deleteStmt = db.prepareStatement(deleteQuery);
+        deleteStmt.setInt(1, id);
+        deleteStmt.executeUpdate();
+    }
+    
+    public void deletePizzas(Connection db) throws SQLException{
+        String deleteQuery = "DELETE FROM Pizza WHERE idClientRequest=?;";
+        PreparedStatement deleteStmt = db.prepareStatement(deleteQuery);
+        deleteStmt.setInt(1, id);
+        deleteStmt.executeUpdate();
+    }
+    
+    public void deleteOthers(Connection db) throws SQLException{
+        String deleteQuery = "DELETE FROM OtherProduct WHERE idClientRequest=?;";
+        PreparedStatement deleteStmt = db.prepareStatement(deleteQuery);
+        deleteStmt.setInt(1, id);
+        deleteStmt.executeUpdate();
     }
 }
