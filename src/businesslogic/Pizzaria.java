@@ -11,6 +11,7 @@ import pizzasystem.data.Person;
 import pizzasystem.data.ClientRequest;
 import pizzasystem.data.OtherProductType;
 import pizzasystem.data.Employee;
+import pizzasystem.data.OtherProduct;
 import pizzasystem.data.Pizza;
 import pizzasystem.data.PizzaTaste;
 import pizzasystem.transfer.ClientRequestDAO;
@@ -259,36 +260,74 @@ public class Pizzaria{
     
     /**
      *
+     * @param request
+     * @return Retorna o valor total do pedido baseado em todas as pizzas e nos outros produtos
+     * @throws SQLException
+     */
+    public Float calculateRequestPrice(ClientRequest request) throws SQLException{
+        List<PizzaTaste> tastes = getPizzaTastes();
+        List<OtherProductType> others = getOtherProductTypes();
+        Float totalPrice = 0f;
+        
+        for (Pizza pizza : request.getPizzas()) {
+            Float maxPrice = 0f;
+            maxPrice = Float.max(maxPrice, getPizzaPrice(tastes, pizza.getTaste1(), pizza.getSize()));
+            maxPrice = Float.max(maxPrice, getPizzaPrice(tastes, pizza.getTaste2(), pizza.getSize()));
+            maxPrice = Float.max(maxPrice, getPizzaPrice(tastes, pizza.getTaste3(), pizza.getSize()));
+            totalPrice += maxPrice;
+        }
+        
+        for (OtherProduct other : request.getOthers()) {
+            totalPrice += getOtherPrice(others, other.getProduct());
+        }
+        
+        return totalPrice;
+    }
+    
+    /**
+     *
      * @param pizza
      * @return Retorna o valor da pizza baseado nos 3 sabores pedidos, o valor da pizza será o maior valor entre as pedidas
      * @throws SQLException
      */
     public Float calculatePizzaPrice(Pizza pizza) throws SQLException{
+        List<PizzaTaste> tastes = getPizzaTastes();
         Float maxPrice = 0f;
-        maxPrice = Float.max(maxPrice, getPizzaPrice(pizza.getTaste1(), pizza.getSize()));
-        maxPrice = Float.max(maxPrice, getPizzaPrice(pizza.getTaste2(), pizza.getSize()));
-        maxPrice = Float.max(maxPrice, getPizzaPrice(pizza.getTaste3(), pizza.getSize()));
+        maxPrice = Float.max(maxPrice, getPizzaPrice(tastes, pizza.getTaste1(), pizza.getSize()));
+        maxPrice = Float.max(maxPrice, getPizzaPrice(tastes, pizza.getTaste2(), pizza.getSize()));
+        maxPrice = Float.max(maxPrice, getPizzaPrice(tastes, pizza.getTaste3(), pizza.getSize()));
         return maxPrice;
     } 
     
     /**
      *
+     * @param tastes
      * @param pizzaName
      * @param size
      * @return Retorna o valor da pizza com o nome e tamanho passados como argumento 
      * @throws SQLException
      */
-    public Float getPizzaPrice(String pizzaName, PizzaTaste.Size size) throws SQLException{
-        for (PizzaTaste pizzaInMenu : getPizzaTastes()) {
+    public Float getPizzaPrice(List<PizzaTaste> tastes, String pizzaName, PizzaTaste.Size size) throws SQLException{
+        for (PizzaTaste pizzaInMenu : tastes) {
             if ((pizzaInMenu.getName().equals(pizzaName))){
-                switch (size){
-                    case Medium:
-                        return pizzaInMenu.getPriceMedium();
-                    case Big:
-                        return pizzaInMenu.getPriceBig();
-                    case Family:
-                        return pizzaInMenu.getPriceFamily();
-                }
+                return pizzaInMenu.getPrice(size);
+            }
+        }
+        return 0f;
+    }
+    
+    /**
+     *
+     * @param others
+     * @param product
+     * @param size
+     * @return Retorna o valor do produto com o nome como argumento 
+     * @throws SQLException
+     */
+    public Float getOtherPrice(List<OtherProductType> others, String product) throws SQLException{
+        for (OtherProductType otherInMenu : others) {
+            if ((otherInMenu.getName().equals(product))){
+                return otherInMenu.getPrice();
             }
         }
         return 0f;
