@@ -32,7 +32,7 @@ import pizzasystem.utility.PasswordHasher;
  */
 public class PizzariaTest {
 
-    static class PizzariaWithTestDb extends Pizzaria {
+    private static class PizzariaWithTestDb extends Pizzaria {
         @Override
         protected Connection getDb() throws SQLException {
             if (db == null) {
@@ -62,33 +62,18 @@ public class PizzariaTest {
         }
     }
 
-    public PizzariaTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    Pizzaria pizzaria;
+    private Pizzaria pizzaria;
 
     @Before
     public void setUp() {
         pizzaria = new PizzariaWithTestDb();
-    }
-
-    @After
-    public void tearDown() {
         try {
             ((PizzariaWithTestDb)pizzaria).truncateAllTables();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
+    
     /**
      * Test of doLogin method, of class Pizzaria.
      */
@@ -298,42 +283,107 @@ public class PizzariaTest {
         assertEquals(20f, pizzaria.calculatePizzaPrice(pizza1), 0.001f);
         assertEquals(1f, pizzaria.calculatePizzaPrice(pizza2), 0.001f);
         assertEquals(39f, pizzaria.calculateRequestPrice(request), 0.001f);
+        
+        assertEquals(39f, pizzaria.calculateRequestPrice(pizzaria.getRequests().get(0)), 0.001f);
     }
 
     /**
      * Test of finishOrder method, of class Pizzaria.
      */
-    //@Test
-    public void testFinishOrder() throws Exception {
-        System.out.println("finishOrder");
-        Pizzaria instance = new Pizzaria();
-        instance.finishOrder();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testFinishing() throws Exception {
+        Person client = new Person();
+        client.setAddress("aaa bbb ccc");
+        client.setCep("741");
+        client.setName("Aaa Bbb");
+        client.setPhoneNumber("123456");
+        pizzaria.addClient(client);
+        
+        ClientRequest request1 = new ClientRequest();
+        request1.setClient(client);
+        request1.setStatus(ClientRequest.Status.Requested);
+        pizzaria.addRequest(request1);
+        
+        ClientRequest request2 = new ClientRequest();
+        request2.setClient(client);
+        request2.setStatus(ClientRequest.Status.Requested);
+        pizzaria.addRequest(request2);
+        
+        ClientRequest request3 = new ClientRequest();
+        request3.setClient(client);
+        request3.setStatus(ClientRequest.Status.Requested);
+        pizzaria.addRequest(request3);
+        
+        {
+            List<ClientRequest> requests = pizzaria.getRequests();
+            assertEquals(3, requests.size());
+            assertEquals(request1.getId(), requests.get(0).getId());
+            assertEquals(request2.getId(), requests.get(1).getId());
+            assertEquals(request3.getId(), requests.get(2).getId());
+            assertEquals(ClientRequest.Status.Requested, requests.get(0).getStatus());
+            assertEquals(ClientRequest.Status.Requested, requests.get(1).getStatus());
+            assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
+        }
+        
+        pizzaria.finishPizza();
+        
+        {
+            List<ClientRequest> requests = pizzaria.getRequests();
+            assertEquals(3, requests.size());
+            assertEquals(request1.getId(), requests.get(0).getId());
+            assertEquals(request2.getId(), requests.get(1).getId());
+            assertEquals(request3.getId(), requests.get(2).getId());
+            assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(0).getStatus());
+            assertEquals(ClientRequest.Status.Requested, requests.get(1).getStatus());
+            assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
+        }
+        
+        pizzaria.finishPizza();
+        
+        {
+            List<ClientRequest> requests = pizzaria.getRequests();
+            assertEquals(3, requests.size());
+            assertEquals(request1.getId(), requests.get(0).getId());
+            assertEquals(request2.getId(), requests.get(1).getId());
+            assertEquals(request3.getId(), requests.get(2).getId());
+            assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(0).getStatus());
+            assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(1).getStatus());
+            assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
+        }
+        
+        pizzaria.finishOrder();
+        
+        {
+            List<ClientRequest> requests = pizzaria.getRequests();
+            assertEquals(3, requests.size());
+            assertEquals(request1.getId(), requests.get(0).getId());
+            assertEquals(request2.getId(), requests.get(1).getId());
+            assertEquals(request3.getId(), requests.get(2).getId());
+            assertEquals(ClientRequest.Status.Delivered, requests.get(0).getStatus());
+            assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(1).getStatus());
+            assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
+        }
+        
+        pizzaria.finishOrder();
+        
+        {
+            List<ClientRequest> requests = pizzaria.getRequests();
+            assertEquals(3, requests.size());
+            assertEquals(request1.getId(), requests.get(0).getId());
+            assertEquals(request2.getId(), requests.get(1).getId());
+            assertEquals(request3.getId(), requests.get(2).getId());
+            assertEquals(ClientRequest.Status.Delivered, requests.get(0).getStatus());
+            assertEquals(ClientRequest.Status.Delivered, requests.get(1).getStatus());
+            assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
+        }
+        
+        pizzaria.removeDelivered();
+        
+        {
+            List<ClientRequest> requests = pizzaria.getRequests();
+            assertEquals(1, requests.size());
+            assertEquals(request3.getId(), requests.get(0).getId());
+            assertEquals(ClientRequest.Status.Requested, requests.get(0).getStatus());
+        }
     }
-
-    /**
-     * Test of finishPizza method, of class Pizzaria.
-     */
-    //@Test
-    public void testFinishPizza() throws Exception {
-        System.out.println("finishPizza");
-        Pizzaria instance = new Pizzaria();
-        instance.finishPizza();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of removeDelivered method, of class Pizzaria.
-     */
-    //@Test
-    public void testRemoveDelivered() throws Exception {
-        System.out.println("removeDelivered");
-        Pizzaria instance = new Pizzaria();
-        instance.removeDelivered();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
 }

@@ -1371,9 +1371,10 @@ public class MainFrame extends javax.swing.JFrame {
             Main.getPizzaria().removeDelivered();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
-        } catch (RuntimeException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            return;
         }
+        
+        JOptionPane.showMessageDialog(null, "Pizzas entregues removidas da lista com sucesso.");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private String[][] showRequests(){

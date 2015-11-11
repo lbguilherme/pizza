@@ -338,6 +338,5 @@ public class Pizzaria{
                 new ClientRequestDAO(request).deleteRequests(getDb());
             }                
         }
-        throw new RuntimeException("Pizzas entregues removidas da lista com sucesso.");
     }
 }

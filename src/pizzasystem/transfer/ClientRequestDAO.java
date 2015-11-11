@@ -141,7 +141,8 @@ public class ClientRequestDAO {
      */
     public static List<ClientRequest> fetchAll(Connection db) throws SQLException {
         String query = "select * from ClientRequest " +
-                "left join Person on ClientRequest.phoneNumber=Person.phoneNumber;";
+                "left join Person on ClientRequest.phoneNumber=Person.phoneNumber " +
+                "order by idClientRequest;";
         PreparedStatement stmt = db.prepareStatement(query);
         ResultSet result = stmt.executeQuery();
         
