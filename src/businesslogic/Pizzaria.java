@@ -320,7 +320,6 @@ public class Pizzaria{
      *
      * @param others
      * @param product
-     * @param size
      * @return Retorna o valor do produto com o nome como argumento 
      * @throws SQLException
      */
