@@ -1,0 +1,12 @@
+<map id="pizzasystem.transfer.PersonDAO.setFromResultSet" name="pizzasystem.transfer.PersonDAO.setFromResultSet">
+<area shape="rect" id="node2" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#afd67d1b023fdac19dcaef19b89b28407" title="pizzasystem.transfer.Person\lDAO.fetch" alt="" coords="253,5,443,47"/>
+<area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1EmployeeDAO.html#a72c9f02f5f76f81310a9a3fa11ca0bcb" title="pizzasystem.transfer.Employee\lDAO.setFromResultSet" alt="" coords="245,71,451,112"/>
+<area shape="rect" id="node7" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#adc98c4209081bdc5eed0076e002cc82a" title="pizzasystem.transfer.Client\lRequestDAO.setFromResultSet" alt="" coords="243,136,453,177"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a8a439ba0d5457b069fa1a34a5250cb12" title="businesslogic.Pizzaria.find\lClient" alt="" coords="516,5,693,47"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1EmployeeDAO.html#ac9ceb25f8f9bf3d7940a5b79084a84de" title="pizzasystem.transfer.Employee\lDAO.fetch" alt="" coords="501,71,708,112"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#a5654e08969d95db139f7e009ee1ef699" title="businesslogic.Pizzaria.do\lLogin" alt="" coords="758,71,929,112"/>
+<area shape="rect" id="node8" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="513,136,696,177"/>
+<area shape="rect" id="node9" href="$classbusinesslogic_1_1Pizzaria.html#ad368766c0ac891cf5d9ef9ecb43fb67f" title="businesslogic.Pizzaria.get\lRequests" alt="" coords="756,136,931,177"/>
+<area shape="rect" id="node10" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="979,103,1165,144"/>
+<area shape="rect" id="node11" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="979,168,1165,209"/>
+</map>

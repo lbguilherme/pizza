@@ -1,0 +1,5 @@
+<map id="pizzasystem.transfer.ClientRequestDAO.save" name="pizzasystem.transfer.ClientRequestDAO.save">
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a36d6fde67f09155e0167ad786cff7eb4" title="businesslogic.Pizzaria.add\lRequest" alt="" coords="241,5,418,47"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="236,71,423,112"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="236,136,423,177"/>
+</map>

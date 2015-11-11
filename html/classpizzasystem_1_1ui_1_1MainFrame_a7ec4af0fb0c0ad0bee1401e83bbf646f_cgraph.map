@@ -1,0 +1,6 @@
+<map id="pizzasystem.ui.MainFrame.getTasteList" name="pizzasystem.ui.MainFrame.getTasteList">
+<area shape="rect" id="node2" href="$classpizzasystem_1_1Main.html#aa8a4df8faf451951abab764041a20475" title="pizzasystem.Main.getPizzaria" alt="" coords="255,5,452,32"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a6dd2db05ad0a51d492b7caf96af3ef66" title="businesslogic.Pizzaria.get\lPizzaTastes" alt="" coords="266,57,441,98"/>
+<area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#a4f3f3984daebf7ba5f6d381d8dd29c23" title="pizzasystem.transfer.Pizza\lTasteDAO.fetchAll" alt="" coords="500,57,681,98"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#a48d0cb0016f18f9508f7ff974ba2487f" title="pizzasystem.transfer.Pizza\lTasteDAO.setFromResultSet" alt="" coords="729,57,924,98"/>
+</map>

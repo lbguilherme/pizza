@@ -1,0 +1,11 @@
+<map id="businesslogic.Pizzaria.getRequests" name="businesslogic.Pizzaria.getRequests">
+<area shape="rect" id="node2" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="228,104,411,145"/>
+<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#adc98c4209081bdc5eed0076e002cc82a" title="pizzasystem.transfer.Client\lRequestDAO.setFromResultSet" alt="" coords="459,23,669,64"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a70abfe604e9971aeda90f95b183fc5fc" title="pizzasystem.transfer.Client\lRequestDAO.fillPizzas" alt="" coords="473,104,655,145"/>
+<area shape="rect" id="node8" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a76eeb562771ccad6c9eee3ae9457a343" title="pizzasystem.transfer.Client\lRequestDAO.fillOthers" alt="" coords="473,201,655,243"/>
+<area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a35e73a698efe46d23ad59774cccda3c1" title="pizzasystem.transfer.Person\lDAO.setFromResultSet" alt="" coords="740,5,929,47"/>
+<area shape="rect" id="node6" href="$classpizzasystem_1_1transfer_1_1PizzaDAO.html#a775e2ebff7928b6b2a582d3c7b331822" title="pizzasystem.transfer.Pizza\lDAO.setFromResultSet" alt="" coords="744,71,925,112"/>
+<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a40592fdfa5958ed6ba5a357ebf16ad0d" title="pizzasystem.data.ClientRequest.get\lPizzas" alt="" coords="717,136,952,177"/>
+<area shape="rect" id="node9" href="$classpizzasystem_1_1transfer_1_1OtherProductDAO.html#add1923f81f61a9da772b3ed64cf4188b" title="pizzasystem.transfer.Other\lProductDAO.setFromResultSet" alt="" coords="731,201,938,243"/>
+<area shape="rect" id="node10" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a4bfe9465a0e846f5f4b4ef08bad54401" title="pizzasystem.data.ClientRequest.get\lOthers" alt="" coords="717,267,952,308"/>
+</map>

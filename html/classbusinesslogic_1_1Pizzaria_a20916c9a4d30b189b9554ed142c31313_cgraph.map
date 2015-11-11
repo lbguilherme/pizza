@@ -1,0 +1,5 @@
+<map id="businesslogic.Pizzaria.findOtherProduct" name="businesslogic.Pizzaria.findOtherProduct">
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a37a58960ff1c1142b5b99915873342a1" title="businesslogic.Pizzaria.get\lOtherProductTypes" alt="" coords="231,5,405,47"/>
+<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#abc28b327511012b79bf147ec2b402638" title="pizzasystem.transfer.Other\lProductTypeDAO.fetchAll" alt="" coords="453,5,633,47"/>
+<area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#a0b9b2432edd9d56904573f846c4f0f6d" title="pizzasystem.transfer.Other\lProductTypeDAO.setFromResultSet" alt="" coords="681,5,916,47"/>
+</map>

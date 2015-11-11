@@ -1,0 +1,4 @@
+<map id="businesslogic.Pizzaria.getPizzaTastes" name="businesslogic.Pizzaria.getPizzaTastes">
+<area shape="rect" id="node2" href="$classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#a4f3f3984daebf7ba5f6d381d8dd29c23" title="pizzasystem.transfer.Pizza\lTasteDAO.fetchAll" alt="" coords="228,5,409,47"/>
+<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#a48d0cb0016f18f9508f7ff974ba2487f" title="pizzasystem.transfer.Pizza\lTasteDAO.setFromResultSet" alt="" coords="457,5,652,47"/>
+</map>
