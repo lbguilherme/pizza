@@ -84,7 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
         MainJPanel.removeAll();
         MainJPanel.add(Login);
         MainJPanel.revalidate();
-        timer = new Timer(4000, (ActionEvent ev) -> {
+        timer = new Timer(30000, (ActionEvent ev) -> {
                 String[][] newRequests = showRequests();
                 Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
                 PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
@@ -1111,7 +1111,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void AdminForm_FinishPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_FinishPizzaActionPerformed
         try{
-           Main.getPizzaria().finishPizza();
+            Main.getPizzaria().finishPizza();
+            String[][] newRequests = showRequests();
+            Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            EntregadorForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
        } catch (RuntimeException e){
@@ -1121,7 +1125,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void AdminForm_FinishOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminForm_FinishOrderActionPerformed
         try{
-           Main.getPizzaria().finishOrder();
+            Main.getPizzaria().finishOrder();
+            String[][] newRequests = showRequests();
+            Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            EntregadorForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
        } catch (RuntimeException e){
@@ -1136,7 +1144,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void PizzaioloForm_FinishPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaioloForm_FinishPizzaActionPerformed
         try{
-           Main.getPizzaria().finishPizza();
+            Main.getPizzaria().finishPizza();
+            String[][] newRequests = showRequests();
+            Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            EntregadorForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
        } catch (RuntimeException e){
@@ -1151,7 +1163,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void EntregadorForm_FinishOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregadorForm_FinishOrderActionPerformed
         try{
-           Main.getPizzaria().finishOrder();
+            Main.getPizzaria().finishOrder();
+            String[][] newRequests = showRequests();
+            Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            EntregadorForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
        } catch (RuntimeException e){
@@ -1299,7 +1315,6 @@ public class MainFrame extends javax.swing.JFrame {
         if (this.currentRequest == null){
             this.currentRequest = new ClientRequest();
         }
-        this.currentRequest = new ClientRequest();
         Pizza newPizza = new Pizza();
         newPizza.setTaste1((String) RegisterOrder_TasteField1.getSelectedItem());
         newPizza.setTaste2((String) RegisterOrder_TasteField2.getSelectedItem());
@@ -1330,8 +1345,15 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (RuntimeException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        DefaultTableModel model1 =(DefaultTableModel) Orders_Table.getModel();
+        model1.addRow(showOrderedRequest(currentRequest));
+        DefaultTableModel model2 =(DefaultTableModel) PizzaioloForm_OrdersList2.getModel();
+        model2.addRow(showOrderedRequest(currentRequest));
+        DefaultTableModel model3 =(DefaultTableModel) EntregadorForm_OrdersList2.getModel();
+        model3.addRow(showOrderedRequest(currentRequest));
         currentRequest = null;
         RegisterOrder_ItensList2.setModel(new DefaultListModel());
+        JOptionPane.showMessageDialog(null, "Pedido realizado com sucesso.");
     }//GEN-LAST:event_RegisterOrder_RegisterOrderButtonActionPerformed
 
     private void LoginForm_PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginForm_PasswordFieldKeyPressed
@@ -1369,6 +1391,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try{
             Main.getPizzaria().removeDelivered();
+            String[][] newRequests = showRequests();
+            Orders_Table.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            PizzaioloForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
+            EntregadorForm_OrdersList2.setModel(new DefaultTableModel(newRequests, new String[]{"Status", "Pedido"}));
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Falha na comunicação com banco de dados");
             return;
@@ -1408,6 +1434,26 @@ public class MainFrame extends javax.swing.JFrame {
         }
         output2 = output.toArray(new String[requestsList.size()][]);
         return output2;
+    }
+    
+    private String[] showOrderedRequest(ClientRequest request){
+        String [] row = new String[2];
+        for (Pizza pizza : request.getPizzas()){
+            if(row[1] == null){
+                    row[1] = "*" + pizza.getSize() + ":" + pizza.getTaste1() + "-" + pizza.getTaste2() + "-" + pizza.getTaste3() + "* ";
+                }else{
+                    row[1] += "*" + pizza.getSize() + ":" + pizza.getTaste1() + " " + pizza.getTaste2() + " " + pizza.getTaste3() + "* ";
+                }
+        }
+        for(OtherProduct other : request.getOthers()){
+                if(row[1] == null){
+                    row[1] = "*" + other.getProduct() + "* ";
+                }else{
+                    row[1] += "*" + other.getProduct() + "* ";
+                }
+        }
+        row[0] = request.getStatus().toString();
+        return row;
     }
 
     private void RegisterOrder() {
