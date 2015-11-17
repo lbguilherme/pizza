@@ -1,6 +1,6 @@
 <map id="pizzasystem.ui.MainFrame.getDrinkList" name="pizzasystem.ui.MainFrame.getDrinkList">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a37a58960ff1c1142b5b99915873342a1" title="businesslogic.Pizzaria.get\lOtherProductTypes" alt="" coords="266,5,441,47"/>
-<area shape="rect" id="node5" href="$classpizzasystem_1_1Main.html#aa8a4df8faf451951abab764041a20475" title="pizzasystem.Main.getPizzaria" alt="" coords="255,71,452,98"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a37a58960ff1c1142b5b99915873342a1" title="Obtém a lista de produtos disponíveis no banco de dados. " alt="" coords="266,5,441,47"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1Main.html#aa8a4df8faf451951abab764041a20475" title="Obtém a instancia da pizzaria para ser usada na interface. " alt="" coords="255,71,452,98"/>
 <area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#abc28b327511012b79bf147ec2b402638" title="pizzasystem.transfer.Other\lProductTypeDAO.fetchAll" alt="" coords="500,5,680,47"/>
 <area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#a0b9b2432edd9d56904573f846c4f0f6d" title="pizzasystem.transfer.Other\lProductTypeDAO.setFromResultSet" alt="" coords="728,5,963,47"/>
 </map>

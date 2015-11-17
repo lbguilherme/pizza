@@ -1,24 +1,26 @@
 <map id="businesslogic.PizzariaTest.testFinishing" name="businesslogic.PizzariaTest.testFinishing">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#adb8e370c90e449312a2ed535d9f75444" title="businesslogic.Pizzaria.add\lClient" alt="" coords="286,5,463,47"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#a36d6fde67f09155e0167ad786cff7eb4" title="businesslogic.Pizzaria.add\lRequest" alt="" coords="286,71,463,112"/>
-<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="281,201,468,243"/>
-<area shape="rect" id="node7" href="$classbusinesslogic_1_1Pizzaria.html#ad368766c0ac891cf5d9ef9ecb43fb67f" title="businesslogic.Pizzaria.get\lRequests" alt="" coords="547,201,722,243"/>
-<area shape="rect" id="node17" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="281,136,468,177"/>
-<area shape="rect" id="node18" href="$classpizzasystem_1_1data_1_1Person.html#a55a3fea0f595dbad63d8f509d78fcacc" title="pizzasystem.data.Person.set\lAddress" alt="" coords="279,319,471,360"/>
-<area shape="rect" id="node19" href="$classpizzasystem_1_1data_1_1Person.html#a01bf6d84f9b6a3118ff39a0048c8e4da" title="pizzasystem.data.Person.setCep" alt="" coords="267,385,483,411"/>
-<area shape="rect" id="node20" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a664e244083041fc689043cab592dd311" title="pizzasystem.data.ClientRequest.set\lClient" alt="" coords="257,436,492,477"/>
-<area shape="rect" id="node21" href="$classpizzasystem_1_1data_1_1Person.html#a5c5450e740db5890dfdf9eb9b8e6459c" title="pizzasystem.data.Person.setName" alt="" coords="261,502,488,529"/>
-<area shape="rect" id="node22" href="$classpizzasystem_1_1data_1_1Person.html#a8b9bbc02baa4f0154c7e5c2e2744afcc" title="pizzasystem.data.Person.set\lPhoneNumber" alt="" coords="279,553,471,595"/>
-<area shape="rect" id="node23" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a22c6942947cba5e76017ba2a11734644" title="pizzasystem.data.ClientRequest.set\lStatus" alt="" coords="257,619,492,660"/>
-<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a1ee6e1315a6db2687bcb79f012c60d34" title="pizzasystem.transfer.Person\lDAO.save" alt="" coords="540,5,729,47"/>
-<area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#ac52d337685cde778fff52b08b13007aa" title="pizzasystem.transfer.Client\lRequestDAO.save" alt="" coords="543,136,726,177"/>
-<area shape="rect" id="node8" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="777,201,960,243"/>
-<area shape="rect" id="node9" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#adc98c4209081bdc5eed0076e002cc82a" title="pizzasystem.transfer.Client\lRequestDAO.setFromResultSet" alt="" coords="1008,104,1219,145"/>
-<area shape="rect" id="node11" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a70abfe604e9971aeda90f95b183fc5fc" title="pizzasystem.transfer.Client\lRequestDAO.fillPizzas" alt="" coords="1022,201,1205,243"/>
-<area shape="rect" id="node14" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a76eeb562771ccad6c9eee3ae9457a343" title="pizzasystem.transfer.Client\lRequestDAO.fillOthers" alt="" coords="1022,283,1205,324"/>
-<area shape="rect" id="node10" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a35e73a698efe46d23ad59774cccda3c1" title="pizzasystem.transfer.Person\lDAO.setFromResultSet" alt="" coords="1289,87,1479,128"/>
-<area shape="rect" id="node12" href="$classpizzasystem_1_1transfer_1_1PizzaDAO.html#a775e2ebff7928b6b2a582d3c7b331822" title="pizzasystem.transfer.Pizza\lDAO.setFromResultSet" alt="" coords="1293,217,1475,259"/>
-<area shape="rect" id="node13" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a40592fdfa5958ed6ba5a357ebf16ad0d" title="pizzasystem.data.ClientRequest.get\lPizzas" alt="" coords="1267,152,1501,193"/>
-<area shape="rect" id="node15" href="$classpizzasystem_1_1transfer_1_1OtherProductDAO.html#add1923f81f61a9da772b3ed64cf4188b" title="pizzasystem.transfer.Other\lProductDAO.setFromResultSet" alt="" coords="1281,348,1487,389"/>
-<area shape="rect" id="node16" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a4bfe9465a0e846f5f4b4ef08bad54401" title="pizzasystem.data.ClientRequest.get\lOthers" alt="" coords="1267,283,1501,324"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#adb8e370c90e449312a2ed535d9f75444" title="Adiciona um novo cliente na tabela de clientes. " alt="" coords="291,5,469,47"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#a36d6fde67f09155e0167ad786cff7eb4" title="Adiciona um novo pedido na lista de pedidos. " alt="" coords="291,71,469,112"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="Fecha o pedido mais antigo, marcando&#45;o como entregue. " alt="" coords="287,201,473,243"/>
+<area shape="rect" id="node7" href="$classbusinesslogic_1_1Pizzaria.html#ad368766c0ac891cf5d9ef9ecb43fb67f" title="Retorna a lista de todos os pedidos efetuados pelos clientes. " alt="" coords="558,233,733,275"/>
+<area shape="rect" id="node17" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="Declara que o pedido mais antigo está pronto para ser enviado. " alt="" coords="287,136,473,177"/>
+<area shape="rect" id="node18" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a10bcc751687c9f11a85ec5b799f086dc" title="Obtém o identificador único deste pedido. " alt="" coords="257,383,503,410"/>
+<area shape="rect" id="node19" href="$classbusinesslogic_1_1Pizzaria.html#abdd812715d2e525ad33cf0caa57004ed" title="Remove todos os pedidos concluídos e já entregues da lista. " alt="" coords="281,267,479,308"/>
+<area shape="rect" id="node20" href="$classpizzasystem_1_1data_1_1Person.html#a55a3fea0f595dbad63d8f509d78fcacc" title="Atribui o endereço da pessoa. " alt="" coords="284,435,476,476"/>
+<area shape="rect" id="node21" href="$classpizzasystem_1_1data_1_1Person.html#a01bf6d84f9b6a3118ff39a0048c8e4da" title="Atribui o CEP do endereço. " alt="" coords="272,501,488,527"/>
+<area shape="rect" id="node22" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a664e244083041fc689043cab592dd311" title="Atribui o cliente deste pedido. " alt="" coords="263,552,497,593"/>
+<area shape="rect" id="node23" href="$classpizzasystem_1_1data_1_1Person.html#a5c5450e740db5890dfdf9eb9b8e6459c" title="Atribui o nome da pessoa. " alt="" coords="267,618,493,645"/>
+<area shape="rect" id="node24" href="$classpizzasystem_1_1data_1_1Person.html#a8b9bbc02baa4f0154c7e5c2e2744afcc" title="Atribui o número de telefone da pessoa. " alt="" coords="284,669,476,711"/>
+<area shape="rect" id="node25" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a22c6942947cba5e76017ba2a11734644" title="Atribui um estado ao pedido. " alt="" coords="263,735,497,776"/>
+<area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a1ee6e1315a6db2687bcb79f012c60d34" title="pizzasystem.transfer.Person\lDAO.save" alt="" coords="551,5,740,47"/>
+<area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#ac52d337685cde778fff52b08b13007aa" title="pizzasystem.transfer.Client\lRequestDAO.save" alt="" coords="554,136,737,177"/>
+<area shape="rect" id="node8" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="788,233,971,275"/>
+<area shape="rect" id="node9" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#adc98c4209081bdc5eed0076e002cc82a" title="pizzasystem.transfer.Client\lRequestDAO.setFromResultSet" alt="" coords="1019,136,1229,177"/>
+<area shape="rect" id="node11" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a70abfe604e9971aeda90f95b183fc5fc" title="pizzasystem.transfer.Client\lRequestDAO.fillPizzas" alt="" coords="1033,233,1215,275"/>
+<area shape="rect" id="node14" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a76eeb562771ccad6c9eee3ae9457a343" title="pizzasystem.transfer.Client\lRequestDAO.fillOthers" alt="" coords="1033,315,1215,356"/>
+<area shape="rect" id="node10" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a35e73a698efe46d23ad59774cccda3c1" title="pizzasystem.transfer.Person\lDAO.setFromResultSet" alt="" coords="1300,119,1489,160"/>
+<area shape="rect" id="node12" href="$classpizzasystem_1_1transfer_1_1PizzaDAO.html#a775e2ebff7928b6b2a582d3c7b331822" title="pizzasystem.transfer.Pizza\lDAO.setFromResultSet" alt="" coords="1304,249,1485,291"/>
+<area shape="rect" id="node13" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a40592fdfa5958ed6ba5a357ebf16ad0d" title="Obtém a lista de pizzas no pedido. " alt="" coords="1277,184,1512,225"/>
+<area shape="rect" id="node15" href="$classpizzasystem_1_1transfer_1_1OtherProductDAO.html#add1923f81f61a9da772b3ed64cf4188b" title="pizzasystem.transfer.Other\lProductDAO.setFromResultSet" alt="" coords="1291,380,1498,421"/>
+<area shape="rect" id="node16" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a4bfe9465a0e846f5f4b4ef08bad54401" title="Obtém a lista de produtos no pedido. " alt="" coords="1277,315,1512,356"/>
 </map>

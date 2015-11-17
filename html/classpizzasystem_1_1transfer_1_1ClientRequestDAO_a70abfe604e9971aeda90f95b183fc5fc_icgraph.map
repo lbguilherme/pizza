@@ -1,9 +1,10 @@
 <map id="pizzasystem.transfer.ClientRequestDAO.fillPizzas" name="pizzasystem.transfer.ClientRequestDAO.fillPizzas">
-<area shape="rect" id="node2" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="236,123,419,164"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#ad368766c0ac891cf5d9ef9ecb43fb67f" title="businesslogic.Pizzaria.get\lRequests" alt="" coords="467,123,641,164"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="698,5,885,47"/>
-<area shape="rect" id="node5" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="businesslogic.PizzariaTest.test\lFinishing" alt="" coords="941,64,1145,105"/>
-<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="698,123,885,164"/>
-<area shape="rect" id="node7" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="businesslogic.PizzariaTest.test\lAddRequest" alt="" coords="689,188,893,229"/>
-<area shape="rect" id="node8" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="689,253,893,295"/>
+<area shape="rect" id="node2" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#aa970298edd38f1df508fb192c658e577" title="pizzasystem.transfer.Client\lRequestDAO.fetchAll" alt="" coords="236,156,419,197"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#ad368766c0ac891cf5d9ef9ecb43fb67f" title="Retorna a lista de todos os pedidos efetuados pelos clientes. " alt="" coords="467,156,641,197"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="Fecha o pedido mais antigo, marcando&#45;o como entregue. " alt="" coords="698,5,885,47"/>
+<area shape="rect" id="node5" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="Test of finishOrder method, of class Pizzaria. " alt="" coords="941,93,1145,135"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="Declara que o pedido mais antigo está pronto para ser enviado. " alt="" coords="698,123,885,164"/>
+<area shape="rect" id="node7" href="$classbusinesslogic_1_1Pizzaria.html#abdd812715d2e525ad33cf0caa57004ed" title="Remove todos os pedidos concluídos e já entregues da lista. " alt="" coords="692,188,891,229"/>
+<area shape="rect" id="node8" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="Test of addClientRequest method, of class Pizzaria. " alt="" coords="689,253,893,295"/>
+<area shape="rect" id="node9" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="Test of calculateRequestPrice method, of class Pizzaria. " alt="" coords="689,319,893,360"/>
 </map>

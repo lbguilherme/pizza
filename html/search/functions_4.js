@@ -7,6 +7,7 @@ var searchData=
   ['getcurrentuser',['getCurrentUser',['../classbusinesslogic_1_1Pizzaria.html#a817877ef3f43dcba376989843f43ebab',1,'businesslogic::Pizzaria']]],
   ['getdrinklist',['getDrinkList',['../classpizzasystem_1_1ui_1_1MainFrame.html#ae77756e3d3be8269e3c872e19a995593',1,'pizzasystem::ui::MainFrame']]],
   ['gethashpass',['getHashPass',['../classpizzasystem_1_1data_1_1Employee.html#adec0462b1891467d687519b7b571716a',1,'pizzasystem::data::Employee']]],
+  ['getid',['getId',['../classpizzasystem_1_1data_1_1ClientRequest.html#a10bcc751687c9f11a85ec5b799f086dc',1,'pizzasystem::data::ClientRequest']]],
   ['getname',['getName',['../classpizzasystem_1_1data_1_1OtherProductType.html#a60f0837e85dca8e2d8403e3a5e7d8ba2',1,'pizzasystem.data.OtherProductType.getName()'],['../classpizzasystem_1_1data_1_1Person.html#a0d0fe9c4a441bfd4efcbc61b3e3c13e5',1,'pizzasystem.data.Person.getName()'],['../classpizzasystem_1_1data_1_1PizzaTaste.html#a8d9c844a3ddbeccbf887bbeeefe88f2e',1,'pizzasystem.data.PizzaTaste.getName()']]],
   ['getotherproducttypes',['getOtherProductTypes',['../classbusinesslogic_1_1Pizzaria.html#a37a58960ff1c1142b5b99915873342a1',1,'businesslogic::Pizzaria']]],
   ['getothers',['getOthers',['../classpizzasystem_1_1data_1_1ClientRequest.html#a4bfe9465a0e846f5f4b4ef08bad54401',1,'pizzasystem::data::ClientRequest']]],

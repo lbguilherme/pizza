@@ -1,12 +1,12 @@
 <map id="businesslogic.PizzariaTest.testRegisterEmpAndDoLogin" name="businesslogic.PizzariaTest.testRegisterEmpAndDoLogin">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a5654e08969d95db139f7e009ee1ef699" title="businesslogic.Pizzaria.do\lLogin" alt="" coords="271,136,442,177"/>
-<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#a817877ef3f43dcba376989843f43ebab" title="businesslogic.Pizzaria.get\lCurrentUser" alt="" coords="535,5,709,47"/>
-<area shape="rect" id="node10" href="$classpizzasystem_1_1data_1_1Person.html#ad703db5e7f40faa5816f52573a9cb8eb" title="pizzasystem.data.Person.get\lAddress" alt="" coords="261,201,453,243"/>
-<area shape="rect" id="node11" href="$classbusinesslogic_1_1Pizzaria.html#a74d1d92b0e22845e8b74846d65d1b983" title="businesslogic.Pizzaria.register\lEmployee" alt="" coords="257,292,456,333"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a66a450eb88e1135d24d2f4eb399c03cd" title="Faz o login com o usuário e senha e retorna o Employee.Role desse usuário. " alt="" coords="271,136,442,177"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#a817877ef3f43dcba376989843f43ebab" title="Retorna o usuário que fez login, ou null se não houver. " alt="" coords="535,5,709,47"/>
+<area shape="rect" id="node10" href="$classpizzasystem_1_1data_1_1Person.html#ad703db5e7f40faa5816f52573a9cb8eb" title="Obtém o endereço da pessoa. " alt="" coords="261,201,453,243"/>
+<area shape="rect" id="node11" href="$classbusinesslogic_1_1Pizzaria.html#a74d1d92b0e22845e8b74846d65d1b983" title="Registra um novo empregado que terá permissão de fazer login. " alt="" coords="257,292,456,333"/>
 <area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1EmployeeDAO.html#ac9ceb25f8f9bf3d7940a5b79084a84de" title="pizzasystem.transfer.Employee\lDAO.fetch" alt="" coords="519,71,725,112"/>
-<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1Employee.html#adec0462b1891467d687519b7b571716a" title="pizzasystem.data.Employee.get\lHashPass" alt="" coords="517,136,727,177"/>
-<area shape="rect" id="node8" href="$classpizzasystem_1_1data_1_1Employee.html#add66e2cfdf409ead8cdacc1716cf4ddf" title="pizzasystem.data.Employee.getRole" alt="" coords="504,202,740,229"/>
-<area shape="rect" id="node9" href="$classpizzasystem_1_1utility_1_1PasswordHasher.html#a903a5dea9cb9c2bd023567420edac222" title="pizzasystem.utility.Password\lHasher.hash" alt="" coords="525,253,719,295"/>
+<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1Employee.html#adec0462b1891467d687519b7b571716a" title="Obtém a senha do usuário na forma de uma hash. " alt="" coords="517,136,727,177"/>
+<area shape="rect" id="node8" href="$classpizzasystem_1_1data_1_1Employee.html#add66e2cfdf409ead8cdacc1716cf4ddf" title="Obtém o nível de permissão do usuário. " alt="" coords="504,202,740,229"/>
+<area shape="rect" id="node9" href="$classpizzasystem_1_1utility_1_1PasswordHasher.html#a903a5dea9cb9c2bd023567420edac222" title="Processa a senha com uma One&#45;Way&#45;Function e retorna o resultado codificado hexadecimal. " alt="" coords="525,253,719,295"/>
 <area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1EmployeeDAO.html#a72c9f02f5f76f81310a9a3fa11ca0bcb" title="pizzasystem.transfer.Employee\lDAO.setFromResultSet" alt="" coords="788,71,995,112"/>
 <area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a35e73a698efe46d23ad59774cccda3c1" title="pizzasystem.transfer.Person\lDAO.setFromResultSet" alt="" coords="1043,71,1232,112"/>
 <area shape="rect" id="node12" href="$classpizzasystem_1_1transfer_1_1EmployeeDAO.html#a67b884872962453ea08f71bbbfdd6a5a" title="pizzasystem.transfer.Employee\lDAO.save" alt="" coords="519,319,725,360"/>

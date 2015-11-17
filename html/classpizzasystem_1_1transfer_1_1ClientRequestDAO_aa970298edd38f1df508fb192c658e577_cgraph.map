@@ -3,8 +3,8 @@
 <area shape="rect" id="node5" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#a70abfe604e9971aeda90f95b183fc5fc" title="pizzasystem.transfer.Client\lRequestDAO.fillPizzas" alt="" coords="250,152,433,193"/>
 <area shape="rect" id="node8" href="$classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#adc98c4209081bdc5eed0076e002cc82a" title="pizzasystem.transfer.Client\lRequestDAO.setFromResultSet" alt="" coords="236,249,447,291"/>
 <area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1OtherProductDAO.html#add1923f81f61a9da772b3ed64cf4188b" title="pizzasystem.transfer.Other\lProductDAO.setFromResultSet" alt="" coords="509,5,715,47"/>
-<area shape="rect" id="node4" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a4bfe9465a0e846f5f4b4ef08bad54401" title="pizzasystem.data.ClientRequest.get\lOthers" alt="" coords="495,71,729,112"/>
+<area shape="rect" id="node4" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a4bfe9465a0e846f5f4b4ef08bad54401" title="Obtém a lista de produtos no pedido. " alt="" coords="495,71,729,112"/>
 <area shape="rect" id="node6" href="$classpizzasystem_1_1transfer_1_1PizzaDAO.html#a775e2ebff7928b6b2a582d3c7b331822" title="pizzasystem.transfer.Pizza\lDAO.setFromResultSet" alt="" coords="521,136,703,177"/>
-<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a40592fdfa5958ed6ba5a357ebf16ad0d" title="pizzasystem.data.ClientRequest.get\lPizzas" alt="" coords="495,201,729,243"/>
+<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1ClientRequest.html#a40592fdfa5958ed6ba5a357ebf16ad0d" title="Obtém a lista de pizzas no pedido. " alt="" coords="495,201,729,243"/>
 <area shape="rect" id="node9" href="$classpizzasystem_1_1transfer_1_1PersonDAO.html#a35e73a698efe46d23ad59774cccda3c1" title="pizzasystem.transfer.Person\lDAO.setFromResultSet" alt="" coords="517,267,707,308"/>
 </map>

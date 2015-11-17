@@ -1,3 +1,3 @@
 <map id="pizzasystem.data.Person" name="pizzasystem.data.Person">
-<area shape="rect" id="node2" href="$classpizzasystem_1_1data_1_1Employee.html" title="{pizzasystem.data.Employee\n||+ getCpf()\l+ getHashPass()\l+ getRole()\l+ getUser()\l+ setCpf()\l+ setHashPass()\l+ setRole()\l+ setUser()\l}" alt="" coords="5,233,192,413"/>
+<area shape="rect" id="node2" href="$classpizzasystem_1_1data_1_1Employee.html" title="Representa um funcionário que pode usar o sistema. " alt="" coords="5,233,192,413"/>
 </map>

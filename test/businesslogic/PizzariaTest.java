@@ -16,10 +16,16 @@ import pizzasystem.data.PizzaTaste;
 import pizzasystem.transfer.Database;
 import pizzasystem.utility.PasswordHasher;
 
+/**
+ * Testes das regras de negócio usando um banco de dados artificial.
+ */
 public class PizzariaTest {
-
     private Pizzaria pizzaria;
 
+    /**
+     * Inicialização executada antes de cada teste. Criará uma nova instancia da
+     * pizzaria com um banco de dados vazio.
+     */
     @Before
     public void setUp() {
         Database db = new Database("45.55.166.39", "3306", "pizzaTEST", "root", "pizza");

@@ -1,9 +1,9 @@
 <map id="pizzasystem.transfer.OtherProductTypeDAO.fetchAll" name="pizzasystem.transfer.OtherProductTypeDAO.fetchAll">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a37a58960ff1c1142b5b99915873342a1" title="businesslogic.Pizzaria.get\lOtherProductTypes" alt="" coords="233,129,408,171"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a5c4e2d71e7bdbb9c2a74038160f3a8ae" title="businesslogic.Pizzaria.calculate\lRequestPrice" alt="" coords="456,5,664,47"/>
-<area shape="rect" id="node5" href="$classbusinesslogic_1_1Pizzaria.html#a20916c9a4d30b189b9554ed142c31313" title="businesslogic.Pizzaria.find\lOtherProduct" alt="" coords="471,71,649,112"/>
-<area shape="rect" id="node6" href="$classbusinesslogic_1_1PizzariaTest.html#afca91ece9334dfd514c9da07ff07d875" title="businesslogic.PizzariaTest.test\lFindOtherProduct" alt="" coords="712,100,916,141"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a37a58960ff1c1142b5b99915873342a1" title="Obtém a lista de produtos disponíveis no banco de dados. " alt="" coords="233,129,408,171"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1Pizzaria.html#a5c4e2d71e7bdbb9c2a74038160f3a8ae" title="Calcula e retorna o preço total de um pedido, somando as pizzas e produtos. " alt="" coords="456,5,664,47"/>
+<area shape="rect" id="node5" href="$classbusinesslogic_1_1Pizzaria.html#a20916c9a4d30b189b9554ed142c31313" title="Encontra um produto no menu pelo nome. " alt="" coords="471,71,649,112"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1PizzariaTest.html#afca91ece9334dfd514c9da07ff07d875" title="Test of findOtherProduct method, of class Pizzaria. " alt="" coords="712,100,916,141"/>
 <area shape="rect" id="node7" href="$classpizzasystem_1_1ui_1_1MainFrame.html#ae77756e3d3be8269e3c872e19a995593" title="pizzasystem.ui.MainFrame.get\lDrinkList" alt="" coords="459,188,661,229"/>
-<area shape="rect" id="node8" href="$classbusinesslogic_1_1PizzariaTest.html#aa9c7061bcb63d946cec940c09385ef76" title="businesslogic.PizzariaTest.test\lRegisterAndGetOutro" alt="" coords="458,253,662,295"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="712,5,916,47"/>
+<area shape="rect" id="node8" href="$classbusinesslogic_1_1PizzariaTest.html#aa9c7061bcb63d946cec940c09385ef76" title="Test of registerOutro method, of class Pizzaria. " alt="" coords="458,253,662,295"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="Test of calculateRequestPrice method, of class Pizzaria. " alt="" coords="712,5,916,47"/>
 </map>

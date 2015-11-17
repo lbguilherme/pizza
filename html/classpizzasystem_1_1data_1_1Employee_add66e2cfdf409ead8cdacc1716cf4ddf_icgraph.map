@@ -1,4 +1,4 @@
 <map id="pizzasystem.data.Employee.getRole" name="pizzasystem.data.Employee.getRole">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a5654e08969d95db139f7e009ee1ef699" title="businesslogic.Pizzaria.do\lLogin" alt="" coords="289,5,460,47"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#a3cbc23d8238e2a126c400c2eb91f3499" title="businesslogic.PizzariaTest.test\lRegisterEmpAndDoLogin" alt="" coords="508,5,712,47"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a66a450eb88e1135d24d2f4eb399c03cd" title="Faz o login com o usuário e senha e retorna o Employee.Role desse usuário. " alt="" coords="289,5,460,47"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#a3cbc23d8238e2a126c400c2eb91f3499" title="Test of doLogin method, of class Pizzaria. " alt="" coords="508,5,712,47"/>
 </map>

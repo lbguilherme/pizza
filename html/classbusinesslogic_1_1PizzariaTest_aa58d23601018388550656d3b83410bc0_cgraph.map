@@ -1,10 +1,10 @@
 <map id="businesslogic.PizzariaTest.testRegisterAndGetPizza" name="businesslogic.PizzariaTest.testRegisterAndGetPizza">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a6dd2db05ad0a51d492b7caf96af3ef66" title="businesslogic.Pizzaria.get\lPizzaTastes" alt="" coords="296,5,471,47"/>
-<area shape="rect" id="node5" href="$classbusinesslogic_1_1Pizzaria.html#a250d9fac3218437151a52e402c695267" title="businesslogic.Pizzaria.register\lPizza" alt="" coords="284,71,483,112"/>
-<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a98c1bf500eb6da1eb75f8b9e1fc9d6c3" title="pizzasystem.data.PizzaTaste.setName" alt="" coords="257,137,509,163"/>
-<area shape="rect" id="node8" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a5541b6b1d1a004cb5fe71106aca2fbd2" title="pizzasystem.data.PizzaTaste.set\lPriceBig" alt="" coords="275,188,492,229"/>
-<area shape="rect" id="node9" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a12db082a1d1aa2993aff09485ea3f869" title="pizzasystem.data.PizzaTaste.set\lPriceFamily" alt="" coords="275,253,492,295"/>
-<area shape="rect" id="node10" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a0105ef34da98501c8e4be669b67cb868" title="pizzasystem.data.PizzaTaste.set\lPriceMedium" alt="" coords="275,319,492,360"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a6dd2db05ad0a51d492b7caf96af3ef66" title="Obtém a lista de sabores de pízza disponíveis no banco de dados. " alt="" coords="296,5,471,47"/>
+<area shape="rect" id="node5" href="$classbusinesslogic_1_1Pizzaria.html#a250d9fac3218437151a52e402c695267" title="Registra um novo sabor de pizza no menu, junto com os preços para cada tamanho. " alt="" coords="284,71,483,112"/>
+<area shape="rect" id="node7" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a98c1bf500eb6da1eb75f8b9e1fc9d6c3" title="Atribui o nome da pizza. " alt="" coords="257,137,509,163"/>
+<area shape="rect" id="node8" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a5541b6b1d1a004cb5fe71106aca2fbd2" title="Atribui o preço para o tamanho grande. " alt="" coords="275,188,492,229"/>
+<area shape="rect" id="node9" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a12db082a1d1aa2993aff09485ea3f869" title="Atribui o preço para o tamanho familia. " alt="" coords="275,253,492,295"/>
+<area shape="rect" id="node10" href="$classpizzasystem_1_1data_1_1PizzaTaste.html#a0105ef34da98501c8e4be669b67cb868" title="Atribui o preço para o tamanho médio. " alt="" coords="275,319,492,360"/>
 <area shape="rect" id="node3" href="$classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#a4f3f3984daebf7ba5f6d381d8dd29c23" title="pizzasystem.transfer.Pizza\lTasteDAO.fetchAll" alt="" coords="557,5,739,47"/>
 <area shape="rect" id="node4" href="$classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#a48d0cb0016f18f9508f7ff974ba2487f" title="pizzasystem.transfer.Pizza\lTasteDAO.setFromResultSet" alt="" coords="787,5,981,47"/>
 <area shape="rect" id="node6" href="$classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#adc11b1620e2f6d148e9fea10c4097d2a" title="pizzasystem.transfer.Pizza\lTasteDAO.save" alt="" coords="557,71,739,112"/>

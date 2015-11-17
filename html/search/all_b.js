@@ -1,26 +1,7 @@
 var searchData=
 [
-  ['save',['save',['../classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#ac52d337685cde778fff52b08b13007aa',1,'pizzasystem.transfer.ClientRequestDAO.save()'],['../classpizzasystem_1_1transfer_1_1EmployeeDAO.html#a67b884872962453ea08f71bbbfdd6a5a',1,'pizzasystem.transfer.EmployeeDAO.save()'],['../classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#acba95ce0adb9b1c206e1dd1d9482774e',1,'pizzasystem.transfer.OtherProductTypeDAO.save()'],['../classpizzasystem_1_1transfer_1_1PersonDAO.html#a1ee6e1315a6db2687bcb79f012c60d34',1,'pizzasystem.transfer.PersonDAO.save()'],['../classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#adc11b1620e2f6d148e9fea10c4097d2a',1,'pizzasystem.transfer.PizzaTasteDAO.save()']]],
-  ['setaddress',['setAddress',['../classpizzasystem_1_1data_1_1Person.html#a55a3fea0f595dbad63d8f509d78fcacc',1,'pizzasystem::data::Person']]],
-  ['setcep',['setCep',['../classpizzasystem_1_1data_1_1Person.html#a01bf6d84f9b6a3118ff39a0048c8e4da',1,'pizzasystem::data::Person']]],
-  ['setclient',['setClient',['../classpizzasystem_1_1data_1_1ClientRequest.html#a664e244083041fc689043cab592dd311',1,'pizzasystem::data::ClientRequest']]],
-  ['setcpf',['setCpf',['../classpizzasystem_1_1data_1_1Employee.html#afd6e6ff7453bb0ab18365dc40dc61af2',1,'pizzasystem::data::Employee']]],
-  ['setfromresultset',['setFromResultSet',['../classpizzasystem_1_1transfer_1_1ClientRequestDAO.html#adc98c4209081bdc5eed0076e002cc82a',1,'pizzasystem.transfer.ClientRequestDAO.setFromResultSet()'],['../classpizzasystem_1_1transfer_1_1EmployeeDAO.html#a72c9f02f5f76f81310a9a3fa11ca0bcb',1,'pizzasystem.transfer.EmployeeDAO.setFromResultSet()'],['../classpizzasystem_1_1transfer_1_1OtherProductDAO.html#add1923f81f61a9da772b3ed64cf4188b',1,'pizzasystem.transfer.OtherProductDAO.setFromResultSet()'],['../classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html#a0b9b2432edd9d56904573f846c4f0f6d',1,'pizzasystem.transfer.OtherProductTypeDAO.setFromResultSet()'],['../classpizzasystem_1_1transfer_1_1PersonDAO.html#a35e73a698efe46d23ad59774cccda3c1',1,'pizzasystem.transfer.PersonDAO.setFromResultSet()'],['../classpizzasystem_1_1transfer_1_1PizzaDAO.html#a775e2ebff7928b6b2a582d3c7b331822',1,'pizzasystem.transfer.PizzaDAO.setFromResultSet()'],['../classpizzasystem_1_1transfer_1_1PizzaTasteDAO.html#a48d0cb0016f18f9508f7ff974ba2487f',1,'pizzasystem.transfer.PizzaTasteDAO.setFromResultSet()']]],
-  ['sethashpass',['setHashPass',['../classpizzasystem_1_1data_1_1Employee.html#ac05ea11f867bd0cd4113cea908308075',1,'pizzasystem::data::Employee']]],
-  ['setname',['setName',['../classpizzasystem_1_1data_1_1OtherProductType.html#af1e45abf1964f27bf4df7a4ef9207868',1,'pizzasystem.data.OtherProductType.setName()'],['../classpizzasystem_1_1data_1_1Person.html#a5c5450e740db5890dfdf9eb9b8e6459c',1,'pizzasystem.data.Person.setName()'],['../classpizzasystem_1_1data_1_1PizzaTaste.html#a98c1bf500eb6da1eb75f8b9e1fc9d6c3',1,'pizzasystem.data.PizzaTaste.setName()']]],
-  ['setphonenumber',['setPhoneNumber',['../classpizzasystem_1_1data_1_1Person.html#a8b9bbc02baa4f0154c7e5c2e2744afcc',1,'pizzasystem::data::Person']]],
-  ['setprice',['setPrice',['../classpizzasystem_1_1data_1_1OtherProductType.html#a70d5778229c6e2e05a37ea4896be74d7',1,'pizzasystem::data::OtherProductType']]],
-  ['setpricebig',['setPriceBig',['../classpizzasystem_1_1data_1_1PizzaTaste.html#a5541b6b1d1a004cb5fe71106aca2fbd2',1,'pizzasystem::data::PizzaTaste']]],
-  ['setpricefamily',['setPriceFamily',['../classpizzasystem_1_1data_1_1PizzaTaste.html#a12db082a1d1aa2993aff09485ea3f869',1,'pizzasystem::data::PizzaTaste']]],
-  ['setpricemedium',['setPriceMedium',['../classpizzasystem_1_1data_1_1PizzaTaste.html#a0105ef34da98501c8e4be669b67cb868',1,'pizzasystem::data::PizzaTaste']]],
-  ['setproduct',['setProduct',['../classpizzasystem_1_1data_1_1OtherProduct.html#acb2fffe819531769f2d13b55ff533e11',1,'pizzasystem::data::OtherProduct']]],
-  ['setrole',['setRole',['../classpizzasystem_1_1data_1_1Employee.html#a2d640c0fd0e61abc07dbf865b68e5fef',1,'pizzasystem::data::Employee']]],
-  ['setsize',['setSize',['../classpizzasystem_1_1data_1_1Pizza.html#ad9cc56198157b04d419b4d0d2962e573',1,'pizzasystem::data::Pizza']]],
-  ['setstatus',['setStatus',['../classpizzasystem_1_1data_1_1ClientRequest.html#a22c6942947cba5e76017ba2a11734644',1,'pizzasystem::data::ClientRequest']]],
-  ['settaste1',['setTaste1',['../classpizzasystem_1_1data_1_1Pizza.html#a662464dacac493fd2c3f8dfee8ab9d9f',1,'pizzasystem::data::Pizza']]],
-  ['settaste2',['setTaste2',['../classpizzasystem_1_1data_1_1Pizza.html#aead8294c702279c4cf1baa8cda6b63e8',1,'pizzasystem::data::Pizza']]],
-  ['settaste3',['setTaste3',['../classpizzasystem_1_1data_1_1Pizza.html#a52da820b23fd93d499a6ecc8d338fbf3',1,'pizzasystem::data::Pizza']]],
-  ['setuser',['setUser',['../classpizzasystem_1_1data_1_1Employee.html#a941988bf6214de762e2896125568b5c1',1,'pizzasystem::data::Employee']]],
-  ['size',['Size',['../enumpizzasystem_1_1data_1_1PizzaTaste_1_1Size.html',1,'pizzasystem::data::PizzaTaste']]],
-  ['status',['Status',['../enumpizzasystem_1_1data_1_1ClientRequest_1_1Status.html',1,'pizzasystem::data::ClientRequest']]]
+  ['otherproduct',['OtherProduct',['../classpizzasystem_1_1data_1_1OtherProduct.html',1,'pizzasystem::data']]],
+  ['otherproductdao',['OtherProductDAO',['../classpizzasystem_1_1transfer_1_1OtherProductDAO.html',1,'pizzasystem::transfer']]],
+  ['otherproducttype',['OtherProductType',['../classpizzasystem_1_1data_1_1OtherProductType.html',1,'pizzasystem::data']]],
+  ['otherproducttypedao',['OtherProductTypeDAO',['../classpizzasystem_1_1transfer_1_1OtherProductTypeDAO.html',1,'pizzasystem::transfer']]]
 ];

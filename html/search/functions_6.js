@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../classpizzasystem_1_1ui_1_1MainFrame.html#a93e3a4599d8e6a0ef91754bf41772410',1,'pizzasystem::ui::MainFrame']]]
+  ['logout',['logOut',['../classbusinesslogic_1_1Pizzaria.html#a62cdae70134c909d79c4241844a40a16',1,'businesslogic::Pizzaria']]]
 ];

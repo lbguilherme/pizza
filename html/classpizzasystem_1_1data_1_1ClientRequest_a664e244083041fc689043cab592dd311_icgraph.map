@@ -1,5 +1,5 @@
 <map id="pizzasystem.data.ClientRequest.setClient" name="pizzasystem.data.ClientRequest.setClient">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="businesslogic.PizzariaTest.test\lAddRequest" alt="" coords="288,5,492,47"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="288,71,492,112"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="businesslogic.PizzariaTest.test\lFinishing" alt="" coords="288,136,492,177"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="Test of addClientRequest method, of class Pizzaria. " alt="" coords="288,5,492,47"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="Test of calculateRequestPrice method, of class Pizzaria. " alt="" coords="288,71,492,112"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="Test of finishOrder method, of class Pizzaria. " alt="" coords="288,136,492,177"/>
 </map>

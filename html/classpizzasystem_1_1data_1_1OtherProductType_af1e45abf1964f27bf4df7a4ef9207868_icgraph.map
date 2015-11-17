@@ -1,5 +1,5 @@
 <map id="pizzasystem.data.OtherProductType.setName" name="pizzasystem.data.OtherProductType.setName">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="260,5,464,47"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#afca91ece9334dfd514c9da07ff07d875" title="businesslogic.PizzariaTest.test\lFindOtherProduct" alt="" coords="260,71,464,112"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#aa9c7061bcb63d946cec940c09385ef76" title="businesslogic.PizzariaTest.test\lRegisterAndGetOutro" alt="" coords="260,136,464,177"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="Test of calculateRequestPrice method, of class Pizzaria. " alt="" coords="260,5,464,47"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#afca91ece9334dfd514c9da07ff07d875" title="Test of findOtherProduct method, of class Pizzaria. " alt="" coords="260,71,464,112"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#aa9c7061bcb63d946cec940c09385ef76" title="Test of registerOutro method, of class Pizzaria. " alt="" coords="260,136,464,177"/>
 </map>

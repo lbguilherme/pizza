@@ -1,4 +1,4 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classpizzasystem_1_1data_1_1Person.html" title="pizzasystem.data.Person" alt="" coords="5,5,176,32"/>
-<area shape="rect" id="node2" href="$classpizzasystem_1_1data_1_1Employee.html" title="pizzasystem.data.Employee" alt="" coords="224,5,411,32"/>
+<map id="Representação gráfica da hiearquia da classe" name="Representação gráfica da hiearquia da classe">
+<area shape="rect" id="node1" href="$classpizzasystem_1_1data_1_1Person.html" title="Representa um potencial cliente. " alt="" coords="5,5,176,32"/>
+<area shape="rect" id="node2" href="$classpizzasystem_1_1data_1_1Employee.html" title="Representa um funcionário que pode usar o sistema. " alt="" coords="224,5,411,32"/>
 </map>

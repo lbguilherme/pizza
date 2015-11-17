@@ -1,8 +1,8 @@
 <map id="pizzasystem.transfer.ClientRequestDAO.save" name="pizzasystem.transfer.ClientRequestDAO.save">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a36d6fde67f09155e0167ad786cff7eb4" title="businesslogic.Pizzaria.add\lRequest" alt="" coords="241,71,418,112"/>
-<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="236,136,423,177"/>
-<area shape="rect" id="node7" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="236,201,423,243"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="businesslogic.PizzariaTest.test\lAddRequest" alt="" coords="471,5,675,47"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="471,71,675,112"/>
-<area shape="rect" id="node5" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="businesslogic.PizzariaTest.test\lFinishing" alt="" coords="471,136,675,177"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a36d6fde67f09155e0167ad786cff7eb4" title="Adiciona um novo pedido na lista de pedidos. " alt="" coords="241,71,418,112"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="Fecha o pedido mais antigo, marcando&#45;o como entregue. " alt="" coords="236,136,423,177"/>
+<area shape="rect" id="node7" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="Declara que o pedido mais antigo está pronto para ser enviado. " alt="" coords="236,201,423,243"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="Test of addClientRequest method, of class Pizzaria. " alt="" coords="471,5,675,47"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="Test of calculateRequestPrice method, of class Pizzaria. " alt="" coords="471,71,675,112"/>
+<area shape="rect" id="node5" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="Test of finishOrder method, of class Pizzaria. " alt="" coords="471,136,675,177"/>
 </map>

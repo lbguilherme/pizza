@@ -1,7 +1,8 @@
 <map id="businesslogic.Pizzaria.getRequests" name="businesslogic.Pizzaria.getRequests">
-<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="businesslogic.Pizzaria.finish\lOrder" alt="" coords="237,5,423,47"/>
-<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="businesslogic.PizzariaTest.test\lFinishing" alt="" coords="480,64,684,105"/>
-<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="businesslogic.Pizzaria.finish\lPizza" alt="" coords="237,123,423,164"/>
-<area shape="rect" id="node5" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="businesslogic.PizzariaTest.test\lAddRequest" alt="" coords="228,188,432,229"/>
-<area shape="rect" id="node6" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="businesslogic.PizzariaTest.test\lCalculatePrice" alt="" coords="228,253,432,295"/>
+<area shape="rect" id="node2" href="$classbusinesslogic_1_1Pizzaria.html#a95f19e3f87cdb09cba51b924f41c26b9" title="Fecha o pedido mais antigo, marcando&#45;o como entregue. " alt="" coords="237,5,423,47"/>
+<area shape="rect" id="node3" href="$classbusinesslogic_1_1PizzariaTest.html#a30c412b3d5f2cc8d7c80a5d4291edb26" title="Test of finishOrder method, of class Pizzaria. " alt="" coords="480,93,684,135"/>
+<area shape="rect" id="node4" href="$classbusinesslogic_1_1Pizzaria.html#af74a4be40baf58990927d68645b6b6ac" title="Declara que o pedido mais antigo está pronto para ser enviado. " alt="" coords="237,123,423,164"/>
+<area shape="rect" id="node5" href="$classbusinesslogic_1_1Pizzaria.html#abdd812715d2e525ad33cf0caa57004ed" title="Remove todos os pedidos concluídos e já entregues da lista. " alt="" coords="231,188,429,229"/>
+<area shape="rect" id="node6" href="$classbusinesslogic_1_1PizzariaTest.html#a8cafb6e0e13855050842659f2cf38002" title="Test of addClientRequest method, of class Pizzaria. " alt="" coords="228,253,432,295"/>
+<area shape="rect" id="node7" href="$classbusinesslogic_1_1PizzariaTest.html#afb66b0f10cdff803f6c51d9242f52e16" title="Test of calculateRequestPrice method, of class Pizzaria. " alt="" coords="228,319,432,360"/>
 </map>
