@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package businesslogic;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import pizzasystem.data.ClientRequest;
@@ -24,58 +13,34 @@ import pizzasystem.data.OtherProductType;
 import pizzasystem.data.Person;
 import pizzasystem.data.Pizza;
 import pizzasystem.data.PizzaTaste;
+import pizzasystem.transfer.Database;
 import pizzasystem.utility.PasswordHasher;
 
-/**
- *
- * @author Felipe
- */
 public class PizzariaTest {
-
-    private static class PizzariaWithTestDb extends Pizzaria {
-        @Override
-        protected Connection getDb() throws SQLException {
-            if (db == null) {
-                String url = "jdbc:mysql://45.55.166.39:3306/pizzaTEST";
-                String user = "root";
-                String password = "pizza";
-                try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Pizzaria.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                db = DriverManager.getConnection(url, user, password);
-            }
-
-            return db;
-        }
-
-        public void truncateAllTables() throws SQLException {
-            Connection db = getDb();
-            db.createStatement().execute("DELETE FROM Pizza;");
-            db.createStatement().execute("DELETE FROM OtherProduct;");
-            db.createStatement().execute("DELETE FROM ClientRequest;");
-            db.createStatement().execute("DELETE FROM Employee;");
-            db.createStatement().execute("DELETE FROM Person;");
-            db.createStatement().execute("DELETE FROM PizzaTaste;");
-            db.createStatement().execute("DELETE FROM OtherProductType;");
-        }
-    }
 
     private Pizzaria pizzaria;
 
     @Before
     public void setUp() {
-        pizzaria = new PizzariaWithTestDb();
+        Database db = new Database("45.55.166.39", "3306", "pizzaTEST", "root", "pizza");
+        pizzaria = new Pizzaria(db);
         try {
-            ((PizzariaWithTestDb)pizzaria).truncateAllTables();
+            Connection conn = db.getConnection();
+            conn.createStatement().execute("DELETE FROM Pizza;");
+            conn.createStatement().execute("DELETE FROM OtherProduct;");
+            conn.createStatement().execute("DELETE FROM ClientRequest;");
+            conn.createStatement().execute("DELETE FROM Employee;");
+            conn.createStatement().execute("DELETE FROM Person;");
+            conn.createStatement().execute("DELETE FROM PizzaTaste;");
+            conn.createStatement().execute("DELETE FROM OtherProductType;");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Test of doLogin method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testRegisterEmpAndDoLogin() throws Exception {
@@ -102,6 +67,7 @@ public class PizzariaTest {
 
     /**
      * Test of addClient method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testAddAndFindClient() throws Exception {
@@ -117,13 +83,14 @@ public class PizzariaTest {
         } catch(RuntimeException e) {
             assertEquals("Cliente não encontrado.", e.getMessage());
         }
-        
+
         pizzaria.addClient(client);
         assertEquals("Aaa Bbb", pizzaria.findClient("123456").getName());
     }
 
     /**
      * Test of addClientRequest method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testAddRequest() throws Exception {
@@ -133,14 +100,14 @@ public class PizzariaTest {
         client.setName("Aaa Bbb");
         client.setPhoneNumber("123456");
         pizzaria.addClient(client);
-        
+
         ClientRequest request = new ClientRequest();
         request.setClient(client);
         request.setStatus(ClientRequest.Status.ReadyForDelivery);
-        
+
         assertEquals(0, pizzaria.getRequests().size());
         pizzaria.addRequest(request);
-        
+
         List<ClientRequest> requests = pizzaria.getRequests();
         assertEquals(1, requests.size());
         assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(0).getStatus());
@@ -149,6 +116,7 @@ public class PizzariaTest {
 
     /**
      * Test of registerPizza method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testRegisterAndGetPizza() throws Exception {
@@ -157,10 +125,10 @@ public class PizzariaTest {
         pizza.setPriceMedium(1f);
         pizza.setPriceBig(2f);
         pizza.setPriceFamily(3f);
-        
+
         assertEquals(0, pizzaria.getPizzaTastes().size());
         pizzaria.registerPizza(pizza);
-        
+
         List<PizzaTaste> pizzas = pizzaria.getPizzaTastes();
         assertEquals(1, pizzas.size());
         assertEquals("Broculis", pizzas.get(0).getName());
@@ -169,16 +137,17 @@ public class PizzariaTest {
 
     /**
      * Test of registerOutro method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testRegisterAndGetOutro() throws Exception {
         OtherProductType product = new OtherProductType();
         product.setName("Agua");
         product.setPrice(5f);
-        
+
         assertEquals(0, pizzaria.getOtherProductTypes().size());
         pizzaria.registerOutro(product);
-        
+
         List<OtherProductType> products = pizzaria.getOtherProductTypes();
         assertEquals(1, products.size());
         assertEquals("Agua", products.get(0).getName());
@@ -187,6 +156,7 @@ public class PizzariaTest {
 
     /**
      * Test of findOtherProduct method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFindOtherProduct() throws Exception {
@@ -202,7 +172,7 @@ public class PizzariaTest {
             product.setPrice(8f);
             pizzaria.registerOutro(product);
         }
-        
+
         assertEquals(2, pizzaria.getOtherProductTypes().size());
         assertEquals(8f, pizzaria.findOtherProduct("Copo").getPrice(), 0.001f);
         assertEquals(5f, pizzaria.findOtherProduct("Agua").getPrice(), 0.001f);
@@ -210,6 +180,7 @@ public class PizzariaTest {
 
     /**
      * Test of calculateRequestPrice method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCalculatePrice() throws Exception {
@@ -241,35 +212,35 @@ public class PizzariaTest {
             product.setPrice(8f);
             pizzaria.registerOutro(product);
         }
-        
+
         Person client = new Person();
         client.setAddress("aaa bbb ccc");
         client.setCep("741");
         client.setName("Aaa Bbb");
         client.setPhoneNumber("123456");
         pizzaria.addClient(client);
-        
+
         Pizza pizza1 = new Pizza();
         pizza1.setTaste1("Broculis");
         pizza1.setTaste2("Queijo");
         pizza1.setTaste3("Queijo");
         pizza1.setSize(PizzaTaste.Size.Big);
-        
+
         Pizza pizza2 = new Pizza();
         pizza2.setTaste1("Broculis");
         pizza2.setTaste2("Broculis");
         pizza2.setTaste3("Broculis");
         pizza2.setSize(PizzaTaste.Size.Medium);
-        
+
         OtherProduct product1 = new OtherProduct();
         product1.setProduct("Agua");
-        
+
         OtherProduct product2 = new OtherProduct();
         product2.setProduct("Copo");
-        
+
         OtherProduct product3 = new OtherProduct();
         product3.setProduct("Agua");
-        
+
         ClientRequest request = new ClientRequest();
         request.setClient(client);
         request.setStatus(ClientRequest.Status.ReadyForDelivery);
@@ -279,16 +250,17 @@ public class PizzariaTest {
         request.addOther(product2);
         request.addOther(product3);
         pizzaria.addRequest(request);
-        
+
         assertEquals(20f, pizzaria.calculatePizzaPrice(pizza1), 0.001f);
         assertEquals(1f, pizzaria.calculatePizzaPrice(pizza2), 0.001f);
         assertEquals(39f, pizzaria.calculateRequestPrice(request), 0.001f);
-        
+
         assertEquals(39f, pizzaria.calculateRequestPrice(pizzaria.getRequests().get(0)), 0.001f);
     }
 
     /**
      * Test of finishOrder method, of class Pizzaria.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFinishing() throws Exception {
@@ -298,22 +270,22 @@ public class PizzariaTest {
         client.setName("Aaa Bbb");
         client.setPhoneNumber("123456");
         pizzaria.addClient(client);
-        
+
         ClientRequest request1 = new ClientRequest();
         request1.setClient(client);
         request1.setStatus(ClientRequest.Status.Requested);
         pizzaria.addRequest(request1);
-        
+
         ClientRequest request2 = new ClientRequest();
         request2.setClient(client);
         request2.setStatus(ClientRequest.Status.Requested);
         pizzaria.addRequest(request2);
-        
+
         ClientRequest request3 = new ClientRequest();
         request3.setClient(client);
         request3.setStatus(ClientRequest.Status.Requested);
         pizzaria.addRequest(request3);
-        
+
         {
             List<ClientRequest> requests = pizzaria.getRequests();
             assertEquals(3, requests.size());
@@ -324,9 +296,9 @@ public class PizzariaTest {
             assertEquals(ClientRequest.Status.Requested, requests.get(1).getStatus());
             assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
         }
-        
+
         pizzaria.finishPizza();
-        
+
         {
             List<ClientRequest> requests = pizzaria.getRequests();
             assertEquals(3, requests.size());
@@ -337,9 +309,9 @@ public class PizzariaTest {
             assertEquals(ClientRequest.Status.Requested, requests.get(1).getStatus());
             assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
         }
-        
+
         pizzaria.finishPizza();
-        
+
         {
             List<ClientRequest> requests = pizzaria.getRequests();
             assertEquals(3, requests.size());
@@ -350,9 +322,9 @@ public class PizzariaTest {
             assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(1).getStatus());
             assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
         }
-        
+
         pizzaria.finishOrder();
-        
+
         {
             List<ClientRequest> requests = pizzaria.getRequests();
             assertEquals(3, requests.size());
@@ -363,9 +335,9 @@ public class PizzariaTest {
             assertEquals(ClientRequest.Status.ReadyForDelivery, requests.get(1).getStatus());
             assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
         }
-        
+
         pizzaria.finishOrder();
-        
+
         {
             List<ClientRequest> requests = pizzaria.getRequests();
             assertEquals(3, requests.size());
@@ -376,9 +348,9 @@ public class PizzariaTest {
             assertEquals(ClientRequest.Status.Delivered, requests.get(1).getStatus());
             assertEquals(ClientRequest.Status.Requested, requests.get(2).getStatus());
         }
-        
+
         pizzaria.removeDelivered();
-        
+
         {
             List<ClientRequest> requests = pizzaria.getRequests();
             assertEquals(1, requests.size());
